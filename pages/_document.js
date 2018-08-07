@@ -6,6 +6,9 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <title>
+            Team Awesome - Naomi
+          </title>
           <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>
