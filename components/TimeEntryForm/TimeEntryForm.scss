@@ -1,0 +1,86 @@
+@import "../../shared/styles/main";
+
+.time-entry {
+  background-color: $color-monochrome-2;
+  border: 1px solid $color-monochrome-6;
+  border-radius: $border-radius-primary;
+  display: flex;
+  flex-flow: column;
+  margin-top: 24px;
+  padding: 16px;
+
+  &__label {
+    color: $color-monochrome-4;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__input {
+    background-image: linear-gradient($color-monochrome-1, $color-monochrome-2);
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 600;
+    height: 36px;
+    margin: 10px 0;
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  &__button {
+    background-color: $color-accent-alt-5;
+    border: none;
+    border-radius: $border-radius-primary;
+    color: $color-monochrome-1;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 15px 0;
+    padding: 10px 0;
+  }
+
+  &-time {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    &__from,
+    &__to {
+      flex-basis: 49%;
+    }
+  }
+}
+
+@include tablet {
+  .time-entry {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    &-wrapper {
+      display: flex;
+      flex-basis: 75%;
+      justify-content: space-between;
+    }
+
+    &-employer,
+    &-activity {
+      flex-basis: 245px;
+    }
+
+    &-date {
+      flex-basis: 130px;
+    }
+
+    &-time {
+      flex-basis: 64px;
+    }
+
+    &__button {
+      width: 90px;
+    }
+  }
+
+}

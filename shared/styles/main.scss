@@ -1,0 +1,9 @@
+// include another .scss file from a sub-directory
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "default";
+@import "reset";
+
+// include your scss
+// @import "../../pages/index/index";

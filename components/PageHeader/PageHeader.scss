@@ -1,0 +1,44 @@
+@import "../../shared/styles/main";
+
+.timesheet-header { display: none; }
+
+@include tablet {
+  .timesheet-header {
+    align-items: center;
+    box-shadow: 0 1px 0 0 $color-monochrome-2;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    &__title,
+    &__text {
+      display: inline-block;
+    }
+
+    &__text {
+      color: $color-monochrome-3;
+
+      &::before {
+        color: $color-monochrome-3;
+        content: "|";
+        font-weight: $font-weight-light;
+        padding: 0 12px;
+      }
+    }
+
+    &__searchbar {
+      background: url("/static/icons/magnifying-glass.svg") top right no-repeat;
+      border: 1px solid $color-monochrome-6;
+      border-radius: $border-radius-primary;
+      font-family: $font-primary;
+      font-size: 14px;
+      height: 36px;
+      opacity: .6;
+      padding: 0 15px;
+      width: 240px;
+    }
+  }
+
+
+} // tablet
