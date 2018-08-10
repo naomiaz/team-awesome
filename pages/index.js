@@ -5,10 +5,10 @@ import TimeEntryForm from '../components/time-entry-form/TimeEntryForm';
 
 export default () => (
   <React.Fragment>
-    <NavHeader title="Team Awesome" />
+    <NavHeader siteName="Team Awesome" />
     <PageHeader
       pageTitle="Timesheets"
-      count={12}
+      unitCount={12}
       unit="entries"
     />
     <TimeEntryForm />
