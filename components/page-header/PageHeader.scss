@@ -1,9 +1,9 @@
 @import "../../shared/styles/main";
 
-.timesheet-header { display: none; }
+.page-header { display: none; }
 
 @include tablet {
-  .timesheet-header {
+  .page-header {
     align-items: center;
     box-shadow: 0 1px 0 0 $color-monochrome-2;
     display: flex;
@@ -28,17 +28,21 @@
     }
 
     &__searchbar {
-      background: url("/static/icons/magnifying-glass.svg") top right no-repeat;
+      background-color: transparent;
       border: 1px solid $color-monochrome-6;
       border-radius: $border-radius-primary;
       font-family: $font-primary;
       font-size: 14px;
       height: 36px;
       opacity: .6;
-      padding: 0 15px;
+      padding: 0 32px 0 15px;
       width: 240px;
+
+      &-btn {
+        background-color: transparent;
+        border: none;
+        margin-left: -32px;
+      }
     }
   }
-
-
-} // tablet
+}

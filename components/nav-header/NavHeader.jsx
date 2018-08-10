@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import './NavHeader.scss';
 
 class NavHeader extends React.Component {
-  // Constructor is necessary for adding custom properties (props), such as state changes
-  // super(props) allows you to access this.props inside the constructor
-  constructor(props) {
-    super(props);
-    this.state = { open: false };
-  }
+  state = { open: false };
+
+  menuOpen = () => {
+    // setState accepts a function with the first parameter being the current state,
+    // the return value of the function will update the state.
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
+  };
 
   render() {
     const { open } = this.state;
@@ -23,7 +26,12 @@ class NavHeader extends React.Component {
           </a>
         </div>
 
-        <button type="button" name="button" className={`menu-btn ${open ? ' menu-btn--open' : ''}`} onClick={() => this.setState({ open: !open })}>
+        <button
+          className={`menu-btn ${open ? ' menu-btn--open' : ''}`}
+          name="button"
+          onClick={this.menuOpen}
+          type="button"
+        >
           <img src="../../static/icons/hamburger.svg" className="menu-btn-icon menu-btn-icon--open" alt="" />
           <img src="../../static/icons/close.svg" className="menu-btn-icon menu-btn-icon--close" alt="" />
         </button>
@@ -31,27 +39,27 @@ class NavHeader extends React.Component {
         <nav className={`main-nav ${open ? ' main-nav--open' : ''}`}>
           <ul className="main-nav__list">
             <li className="main-nav__item">
-              <a href="/timesheets" className="main-nav__item--active">
+              <a className="main-nav__link main-nav__link--active" href="/timesheets">
                 Timesheets
               </a>
             </li>
             <li className="main-nav__item">
-              <a href="/team">
+              <a className="main-nav__link" href="/team">
                 Team members
               </a>
             </li>
             <li className="main-nav__item">
-              <a href="/projects">
+              <a className="main-nav__link" href="/projects">
                 Projects
               </a>
             </li>
             <li className="main-nav__item">
-              <a href="/clients">
+              <a className="main-nav__link" href="/clients">
                 Clients
               </a>
             </li>
             <li className="main-nav__item">
-              <a href="/documents">
+              <a className="main-nav__link" href="/documents">
                 Documents
               </a>
             </li>

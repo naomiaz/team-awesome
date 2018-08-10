@@ -11,15 +11,6 @@
   font-size: $heading-secondary-size;
   justify-content: center;
 
-  a {
-    &:active,
-    &:link,
-    &:hover,
-    &:visited {
-      color: $color-monochrome-1;
-      text-decoration: none;
-    }
-  }
 }
 
 // --- TEAM AWESOME LOGO ---
@@ -29,6 +20,8 @@
   text-align: center;
 
   &__title {
+    color: $color-monochrome-1;
+    text-decoration: none;
     text-transform: lowercase;
     z-index: 1;
   }
@@ -74,8 +67,6 @@
 // --- MAIN NAVIGATION ---
 .main-nav {
   @include mobile-max {
-    -webkit-transform: translate(0, 100%);
-    -webkit-transition: background-color .2s, color .2s, -webkit-transform .2s;
     background-color: $color-primary;
     bottom: 0;
     left: 0;
@@ -83,26 +74,22 @@
     right: 0;
     top: 50px;
     transform: translate(0, 100%);
-    transition: background-color .2s, color .2s, -webkit-transform .2s;
     transition: background-color .2s, color .2s, transform .2s;
-    transition: background-color .2s, color .2s, transform .2s, -webkit-transform .2s;
 
     &__item {
       margin: 40px 0;
       text-align: center;
-
-      a {
-        transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
-      }
     }
 
+    &__link {
+      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
 
-
-    &__item--active,
-    a:hover {
-      background-color: $color-active;
-      border-radius: $border-radius-primary;
-      padding: 1px 12px;
+      &:hover,
+      &--active {
+        background-color: $color-active;
+        border-radius: $border-radius-primary;
+        padding: 1px 12px;
+      }
     }
 
     &--open {
@@ -140,21 +127,19 @@
     &__item {
       display: inline-block;
       margin: 0 25px;
-      // padding: 4px 14px;
       text-align: center;
     }
 
-    &__item > a {
+    &__link {
       transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
 
-    }
-
-    &__item--active,
-    a:hover {
-      background-color: $color-active;
-      border-radius: $border-radius-primary;
-      margin: 0 -14px;
-      padding: 4px 14px;
+      &:hover,
+      &--active {
+        background-color: $color-active;
+        border-radius: $border-radius-primary;
+        margin: 0 -14px;
+        padding: 4px 14px;
+      }
     }
 
     &--open {
