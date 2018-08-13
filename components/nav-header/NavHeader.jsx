@@ -10,8 +10,8 @@ class NavHeader extends React.Component {
 
   state = { isMenuVisible: false };
 
-  menuVisible = () => {
-    // setState accepts a function with the first parameter being the current state,
+  toggleMenu = () => {
+    // `setState()` accepts a function with the first parameter being the current state (prevState),
     // the return value of the function will update the state.
     this.setState(prevState => ({
       isMenuVisible: !prevState.isMenuVisible
@@ -36,7 +36,7 @@ class NavHeader extends React.Component {
         <button
           className={`menu-btn ${isMenuVisible ? ' menu-btn--open' : ''}`}
           name="button"
-          onClick={this.menuVisible}
+          onClick={this.toggleMenu}
           type="button"
         >
           <img

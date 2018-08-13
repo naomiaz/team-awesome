@@ -109,7 +109,7 @@ class TimeEntryForm extends React.Component {
                 <label
                   className="time-entry__label"
                   htmlFor="time-from"
-                  >
+                >
                   From
                   <input
                     className="time-entry__input"
