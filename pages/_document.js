@@ -1,4 +1,5 @@
 import React from 'react';
+import '../shared/styles/main.scss';
 import Document, { Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
@@ -6,6 +7,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>
             Team Awesome - Naomi
           </title>

@@ -8,6 +8,14 @@
   "plugins": ["babel"],
   "root": true,
   "rules": {
-    "comma-dangle": [ "error", "never" ]
+    "comma-dangle": [ "error", "never" ],
+    "jsx-a11y/label-has-for": [ "off" ]
+    # "jsx-a11y/label-has-for": [ 2, {
+    #       "components": [ "Label" ],
+    #       "required": {
+    #           "some": [ "nesting", "id" ]
+    #       },
+    #       "allowChildren": false
+    #   }]
   }
 }

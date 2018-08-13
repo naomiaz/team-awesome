@@ -1,0 +1,193 @@
+@import "../../shared/styles/main";
+
+.row {
+  padding: 0 16px;
+}
+
+.header {
+  align-items: center;
+  background-color: $color-primary;
+  display: flex;
+  font-size: $heading-secondary-size;
+  justify-content: center;
+
+}
+
+// --- TEAM AWESOME LOGO ---
+.logo {
+  font-family: $font-secondary;
+  padding: 11px 0;
+  text-align: center;
+
+  &__title {
+    color: $color-monochrome-1;
+    text-decoration: none;
+    text-transform: lowercase;
+    z-index: 1;
+  }
+}
+
+// --- NAVIGATION ICONS ---
+.menu-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 2;
+
+  .menu-btn-icon {
+    &--open {
+      display: block;
+      height: auto;
+      width: 18px;
+    }
+
+    &--close { display: none; }
+  }
+
+  &--open {
+    .menu-btn-icon {
+      &--open { display: none; }
+
+      &--close {
+        display: block;
+        height: auto;
+        width: 17px;
+      }
+    }
+  }
+}
+
+// .menu-btn .menu-btn-icon--open {}
+// .menu-btn--open .menu-btn-icon--open {}
+// .menu-btn--open .menu-btn-icon--close {}
+
+// --- MAIN NAVIGATION ---
+.main-nav {
+  @include mobile-max {
+    background-color: $color-primary;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    transform: translate(0, 100%);
+    transition: background-color .2s, color .2s, transform .2s;
+
+    &__item {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    &__link {
+      color: $color-monochrome-1;
+      text-decoration: none;
+      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+
+      &:hover,
+      &--active {
+        background-color: $color-active;
+        border-radius: $border-radius-primary;
+        padding: 1px 12px;
+      }
+    }
+
+    &--open {
+      -webkit-transform: translate(0, 0);
+      background-color: inherit;
+      transform: translate(0, 0);
+      z-index: 3;
+    }
+  }
+}
+
+.btn-wrapper { display: none; }
+
+@include tablet {
+  .row {
+    padding: 0 12%;
+  }
+
+  // --------------------------
+  // HEADER
+  // --------------------------
+
+  .header {
+    height: 70px;
+    justify-content: space-between;
+  }
+
+  .logo { display: none; }
+  .menu-btn { display: none; }
+
+  .main-nav {
+    flex-basis: 70%;
+    font-size: 14px;
+
+    &__item {
+      display: inline-block;
+      margin: 0 25px;
+      text-align: center;
+    }
+
+    &__link {
+      color: $color-monochrome-1;
+      text-decoration: none;
+      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+
+      &:hover,
+      &--active {
+        background-color: $color-active;
+        border-radius: $border-radius-primary;
+        margin: 0 -14px;
+        padding: 4px 14px;
+      }
+    }
+
+    &--open {
+      height: auto;
+    }
+  }
+
+  // PROFILE BUTTON
+  .btn-wrapper {
+    align-items: center;
+    display: flex;
+    float: right;
+    justify-content: space-between;
+
+    .profile-btn {
+      align-items: center;
+      background-color: $color-monochrome-1;
+      border: none;
+      border-radius: 18px;
+      display: flex;
+      height: 36px;
+      justify-content: space-between;
+      margin: 0 2px;
+      padding-left: 10px;
+      padding-right: 3px;
+      width: 135px;
+
+      &__img--logo {
+        height: auto;
+        width: 75px;
+      }
+
+      &__img--user {
+        border-radius: 50%;
+        height: auto;
+        width: 32px;
+      }
+    }
+
+    .arrow-btn {
+      background-color: transparent;
+      border: none;
+      display: inherit;
+      margin: 0 16px 0 0;
+    }
+  }
+}
