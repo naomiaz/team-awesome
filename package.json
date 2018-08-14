@@ -1,25 +1,30 @@
 {
   "name": "team-awesome-naomi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Team Awesome repository for Naomi",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "start": "next start",
+    "lint": "eslint --ext js,jsx .",
     "start": "next start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/humanoidsbv/team-awesome-naomi.git"
   },
-  "author": "",
+  "author": "Naomi Zuiverloon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/humanoidsbv/team-awesome-naomi/issues"
   },
-  "homepage": "https://github.com/humanoidsbv/team-awesome-naomi#readme",
+  "homepage": "https://team-awesome-naomi.now.sh",
   "dependencies": {
+    "@zeit/next-sass": "^0.2.0",
+    "babel-eslint": "^8.2.6",
     "next": "^6.1.1",
+    "node-sass": "^4.9.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
