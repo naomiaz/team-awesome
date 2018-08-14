@@ -4,9 +4,8 @@
   "description": "Team Awesome repository for Naomi",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "dev": "next",
     "lint": "eslint --ext js,jsx .",
     "start": "next start"
   },
