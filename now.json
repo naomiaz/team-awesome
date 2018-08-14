@@ -1,0 +1,7 @@
+{
+  "alias": "team-awesome-naomi",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "name": "team-awesome-naomi"
+}
