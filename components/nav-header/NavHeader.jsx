@@ -101,7 +101,7 @@ class NavHeader extends React.Component {
             type="button"
           >
             <img
-              alt=""
+              alt="Humanoids"
               className="profile-btn__img--logo"
               src="../../static/images/logo-humanoids.png"
             />
