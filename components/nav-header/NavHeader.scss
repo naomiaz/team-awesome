@@ -1,19 +1,14 @@
 @import "../../shared/styles/main";
 
-.row {
-  padding: 0 16px;
-}
-
 .header {
   align-items: center;
   background-color: $color-primary;
   display: flex;
   font-size: $heading-secondary-size;
   justify-content: center;
-
 }
 
-// --- TEAM AWESOME LOGO ---
+// TEAM AWESOME LOGO
 .logo {
   font-family: $font-secondary;
   padding: 11px 0;
@@ -27,7 +22,7 @@
   }
 }
 
-// --- NAVIGATION ICONS ---
+// NAVIGATION ICONS
 .menu-btn {
   background: none;
   border: none;
@@ -64,7 +59,7 @@
 // .menu-btn--open .menu-btn-icon--open {}
 // .menu-btn--open .menu-btn-icon--close {}
 
-// --- MAIN NAVIGATION ---
+// MAIN NAVIGATION
 .main-nav {
   @include mobile-max {
     background-color: $color-primary;
@@ -106,14 +101,6 @@
 .btn-wrapper { display: none; }
 
 @include tablet {
-  .row {
-    padding: 0 12%;
-  }
-
-  // --------------------------
-  // HEADER
-  // --------------------------
-
   .header {
     height: 70px;
     justify-content: space-between;
@@ -122,6 +109,7 @@
   .logo { display: none; }
   .menu-btn { display: none; }
 
+  // NAVIGATION
   .main-nav {
     flex-basis: 70%;
     font-size: 14px;

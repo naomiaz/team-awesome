@@ -20,7 +20,7 @@ const PageHeader = ({ pageTitle, unitCount, unit }) => (
       <form action="/search_page.php">
         <input
           aria-label="Search through site content"
-          className="page-header__searchbar"
+          className="input-field page-header__searchbar"
           id="site-search"
           name="search"
           placeholder="Search"

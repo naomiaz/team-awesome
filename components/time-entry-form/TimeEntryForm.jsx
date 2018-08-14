@@ -15,7 +15,7 @@ class TimeEntryForm extends React.Component {
     const { isFormVisible } = this.state;
 
     return (
-      <div className="row">
+      <section className="row">
         <button
           className={`time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
           onClick={this.formVisible}
@@ -151,7 +151,7 @@ class TimeEntryForm extends React.Component {
             Add
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }

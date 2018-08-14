@@ -1,0 +1,30 @@
+// --------------------------
+// PAGE STYLES
+// --------------------------
+
+.row {
+  padding: 0 16px;
+}
+
+@include tablet {
+  .row {
+    padding: 0 12%;
+  }
+}
+
+.btn,
+.input-field {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+// --------------------------
+// TEXT STYLES
+// --------------------------
+
+.text--secondary {
+  color: $color-monochrome-4;
+  font-weight: 400;
+}
