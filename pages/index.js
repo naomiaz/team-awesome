@@ -1,7 +1,6 @@
 import React from 'react';
 import NavHeader from '../components/nav-header/NavHeader';
 import PageHeader from '../components/page-header/PageHeader';
-import TimeEntryForm from '../components/time-entry-form/TimeEntryForm';
 import TimeEntryOverview from '../components/time-entry-overview/TimeEntryOverview';
 
 export default () => (
@@ -12,7 +11,6 @@ export default () => (
       unitCount={12}
       unit="entries"
     />
-    <TimeEntryForm />
     <TimeEntryOverview />
   </React.Fragment>
 );

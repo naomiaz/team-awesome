@@ -1,6 +1,14 @@
 [{
+  "projectDate": "15-08-2018",
+  "projectId": "5",
+  "employer": "Foodora",
+  "activity": "Food",
+  "timeFrom": "10:00",
+  "timeTo": "15:00"
+  },
+  {
   "projectDate": "14-08-2018",
-  "projectId": 3,
+  "projectId": "4",
   "employer": "Port of Rotterdam",
   "activity": "Design",
   "timeFrom": "09:00",
@@ -8,7 +16,7 @@
   },
   {
   "projectDate": "13-08-2018",
-  "projectId": 2,
+  "projectId": "3",
   "employer": "Netflix",
   "activity": "Watching TV",
   "timeFrom": "09:00",
@@ -16,7 +24,15 @@
   },
   {
   "projectDate": "13-08-2018",
-  "projectId": 1,
+  "projectId": "2",
+  "employer": "Gemeente",
+  "activity": "Bla",
+  "timeFrom": "09:00",
+  "timeTo": "17:00"
+  },
+  {
+  "projectDate": "13-08-2018",
+  "projectId": "1",
   "employer": "Humanoids",
   "activity": "Yoga",
   "timeFrom": "13:00",

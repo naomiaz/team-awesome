@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './TimeEntryForm.scss';
+import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
   state = { isFormVisible: false };
@@ -145,6 +145,7 @@ class TimeEntryForm extends React.Component {
           <button
             className="time-entry__button-add"
             name="button"
+            onClick={submitNewEntry}
             type="button"
             value="Add"
           >

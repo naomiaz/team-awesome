@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './NavHeader.scss';
+import './nav-header.scss';
 
 class NavHeader extends React.Component {
   static propTypes = {

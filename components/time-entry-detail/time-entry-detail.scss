@@ -1,21 +1,7 @@
 @import "../../shared/styles/main";
 
-.time-entry {
-  &-overview {
-    margin-top: 32px;
-  }
-
-  &__date {
-    font-weight: 400;
-    margin-top: 25px;
-
-    .text--secondary {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-  }
-
-  &__project, {
+.time-entry-overview {
+  .time-entry__project {
     border: 1px solid $color-monochrome-6;
     border-left: 4px solid $color-primary;
     border-radius: $border-radius-primary;
@@ -24,12 +10,12 @@
     justify-content: space-between;
     padding: 30px 16px;
 
-    &__employer,
-    &__time {
+    .time-entry__employer,
+    .time-entry__time {
       flex-basis: 50%;
     }
 
-    &__time {
+    .time-entry__time {
       text-align: right;
     }
   }

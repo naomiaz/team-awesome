@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './PageHeader.scss';
+import './page-header.scss';
 
 const PageHeader = ({ pageTitle, unitCount, unit }) => (
   <section className="page-header">
