@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './NavHeader.scss';
+import './nav-header.scss';
 
 class NavHeader extends React.Component {
   static propTypes = {
@@ -14,6 +14,7 @@ class NavHeader extends React.Component {
     // `setState()` accepts a function with the first parameter being the current state (prevState),
     // the return value of the function will update the state.
     this.setState(prevState => ({
+      ...prevState,
       isMenuVisible: !prevState.isMenuVisible
     }));
   };

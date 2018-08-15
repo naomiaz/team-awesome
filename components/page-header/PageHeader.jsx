@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './PageHeader.scss';
+import './page-header.scss';
 
 const PageHeader = ({ pageTitle, unitCount, unit }) => (
   <section className="page-header">
@@ -20,7 +20,7 @@ const PageHeader = ({ pageTitle, unitCount, unit }) => (
       <form action="/">
         <input
           aria-label="Search through site content"
-          className="page-header__searchbar"
+          className="input-field page-header__searchbar"
           id="site-search"
           name="search"
           placeholder="Search"

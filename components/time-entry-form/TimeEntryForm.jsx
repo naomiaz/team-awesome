@@ -1,21 +1,24 @@
 import React from 'react';
 
-import './TimeEntryForm.scss';
+import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
-  state = { isFormVisible: false };
+  state = {
+    isFormVisible: false
+    // newEntry: {}
+  };
 
   formVisible = () => {
     this.setState(prevState => ({
       isFormVisible: !prevState.isFormVisible
     }));
-  };
+  }
 
   render() {
     const { isFormVisible } = this.state;
 
     return (
-      <div className="row">
+      <section className="row">
         <button
           className={`time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
           onClick={this.formVisible}
@@ -145,13 +148,14 @@ class TimeEntryForm extends React.Component {
           <button
             className="time-entry__button-add"
             name="button"
+            // onClick={submitNewEntry}
             type="button"
             value="Add"
           >
             Add
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }

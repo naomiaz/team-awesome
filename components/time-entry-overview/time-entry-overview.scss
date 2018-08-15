@@ -1,0 +1,16 @@
+@import "../../shared/styles/main";
+
+.time-entry-overview {
+  margin: 32px 0;
+
+  .time-entry__date {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    margin-top: 33px;
+  }
+
+  .text--secondary {
+    margin-bottom: 10px;
+  }
+}

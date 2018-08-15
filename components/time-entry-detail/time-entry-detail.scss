@@ -1,0 +1,22 @@
+@import "../../shared/styles/main";
+
+.time-entry-overview {
+  .time-entry__project {
+    border: 1px solid $color-monochrome-6;
+    border-left: 4px solid $color-primary;
+    border-radius: $border-radius-primary;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 30px 16px;
+
+    .time-entry__employer,
+    .time-entry__time {
+      flex-basis: 50%;
+    }
+
+    .time-entry__time {
+      text-align: right;
+    }
+  }
+}
