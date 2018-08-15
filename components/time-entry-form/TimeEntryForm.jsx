@@ -3,13 +3,16 @@ import React from 'react';
 import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
-  state = { isFormVisible: false };
+  state = {
+    isFormVisible: false
+    // newEntry: {}
+  };
 
   formVisible = () => {
     this.setState(prevState => ({
       isFormVisible: !prevState.isFormVisible
     }));
-  };
+  }
 
   render() {
     const { isFormVisible } = this.state;
@@ -145,7 +148,7 @@ class TimeEntryForm extends React.Component {
           <button
             className="time-entry__button-add"
             name="button"
-            onClick={submitNewEntry}
+            // onClick={submitNewEntry}
             type="button"
             value="Add"
           >

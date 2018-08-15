@@ -24,7 +24,7 @@ const generateTimesheet = data.map((currentTimeEntry, index, array) => (
 
 const TimeEntryOverview = () => (
   <React.Fragment>
-    <TimeEntryForm onSubmit={submitNewEntry} />
+    <TimeEntryForm />
 
     <section className="row time-entry-overview">
       {generateTimesheet}
