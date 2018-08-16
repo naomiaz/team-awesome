@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import './time-entry-detail.scss';
 
 const TimeEntryDetail = ({
-  employer, projectId, timeFrom, timeTo
+  client, projectId, timeFrom, timeTo
 }) => (
   <div className="time-entry__project" key={projectId}>
-    <div className="time-entry__employer">
+    <div className="time-entry__client">
       <p>
-        {employer}
+        {client}
       </p>
     </div>
     <div className="time-entry__time">
@@ -21,7 +21,7 @@ const TimeEntryDetail = ({
 );
 
 TimeEntryDetail.propTypes = {
-  employer: PropTypes.string.isRequired,
+  client: PropTypes.string.isRequired,
   projectId: PropTypes.string.isRequired,
   timeFrom: PropTypes.string.isRequired,
   timeTo: PropTypes.string.isRequired
