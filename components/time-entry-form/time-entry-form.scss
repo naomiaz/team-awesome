@@ -9,6 +9,10 @@
   margin-top: 24px;
   padding: 16px;
 
+  &__title {
+    display: none;
+  }
+
   &-wrapper {
     position: relative;
   }
@@ -109,6 +113,7 @@
     &__from,
     &__to {
       flex-basis: 49%;
+      width: 72px;
     }
   }
 
@@ -116,6 +121,13 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+
+    &__title {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+      margin-top: 33px;
+    }
 
     &-wrapper {
       display: flex;

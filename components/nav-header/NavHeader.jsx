@@ -11,13 +11,12 @@ class NavHeader extends React.Component {
   state = { isMenuVisible: false };
 
   toggleMenu = () => {
-    // `setState()` accepts a function with the first parameter being the current state (prevState),
-    // the return value of the function will update the state.
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       isMenuVisible: !prevState.isMenuVisible
     }));
   };
+
 
   render() {
     const { isMenuVisible } = this.state;
