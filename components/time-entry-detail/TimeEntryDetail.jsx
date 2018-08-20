@@ -5,8 +5,8 @@ import './time-entry-detail.scss';
 
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
-// calculateDuration = (timeFrom, timeTo) => (
-// (new Date(timeTo).parse() - new Date(timeFrom).parse()) /1000/60/60/24 )
+const calculateDuration = (timeFrom, timeTo) => new Date((Date.parse(timeTo)
+- Date.parse(timeFrom) - 3600000)).toLocaleTimeString('nl-NL', timeOptions);
 
 const TimeEntryDetail = ({
   client, id, timeFrom, timeTo
@@ -26,12 +26,11 @@ const TimeEntryDetail = ({
         `}
       </p>
       <p className="time-entry__duration">
-        Duration
+        {calculateDuration(timeFrom, timeTo)}
       </p>
     </div>
   </div>
 );
-
 
 TimeEntryDetail.propTypes = {
   client: PropTypes.string.isRequired,

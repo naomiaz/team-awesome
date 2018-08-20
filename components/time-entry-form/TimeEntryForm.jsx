@@ -36,13 +36,13 @@ class TimeEntryForm extends React.Component {
 
   createISOString = (date, time) => new Date(`${date} ${time}`).toISOString();
 
-  convertDateTimeToISO = (stateCopied) => {
-    const { date, timeFrom, timeTo } = stateCopied.timeEntry;
+  convertDateTimeToISO = (prevState) => {
+    const { date, timeFrom, timeTo } = prevState.timeEntry;
     const dateFormatted = this.convertDateToUS(date);
     const timeFromFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeFrom));
     const timeToFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeTo));
     return {
-      ...stateCopied.timeEntry,
+      ...prevState.timeEntry,
       date: dateFormatted,
       timeFrom: timeFromFormatted,
       timeTo: timeToFormatted
@@ -64,9 +64,9 @@ class TimeEntryForm extends React.Component {
     // Deconstruct handleEntrySubmit() from the props (as it's defined in the parent)
     const { handleEntrySubmit } = this.props;
     // Copy the current state to avoid direct date/time mutation
-    const stateCopied = { ...this.state };
+    const prevState = { ...this.state };
     // Convert the dates/times to ISOStrings before sending the data back to the parent
-    handleEntrySubmit(this.convertDateTimeToISO(stateCopied));
+    handleEntrySubmit(this.convertDateTimeToISO(prevState));
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
   }

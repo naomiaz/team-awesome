@@ -46,7 +46,9 @@ class TimeEntryOverview extends React.Component {
             <React.Fragment key={currentTimeEntry.timeFrom}>
               {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
                 <h3 className="text--secondary time-entry__date">
-                  { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '')}
+                  { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)
+                    .replace('/', '-')
+                    .replace(',', '')}
                   ${this.checkIfToday(currentTimeEntry.date)}` }
                 </h3>
               )}
