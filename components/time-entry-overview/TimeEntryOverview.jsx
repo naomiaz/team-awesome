@@ -2,13 +2,20 @@ import React from 'react';
 
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import timeEntryData from './mock-database.json';
+import fetchEntries from '../../services/db-fetch';
 
 import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
   state = {
-    timeEntries: timeEntryData
+    timeEntries: []
+  }
+
+  componentDidMount() {
+    fetchEntries()
+      .then((timeEntries) => (
+        this.setState(() => ({ timeEntries }))
+      ));
   }
 
   handleEntrySubmit = (newTimeEntry) => {
