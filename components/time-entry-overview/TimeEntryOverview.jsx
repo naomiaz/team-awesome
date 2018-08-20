@@ -2,7 +2,7 @@ import React from 'react';
 
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import fetchEntries from '../../services/db-fetch';
+import getEntries from '../../services/db-fetch';
 
 import './time-entry-overview.scss';
 
@@ -12,7 +12,7 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    fetchEntries()
+    getEntries()
       .then((timeEntries) => (
         this.setState(() => ({ timeEntries }))
       ));
