@@ -6,7 +6,7 @@ import './time-entry-detail.scss';
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
 // calculateDuration = (timeFrom, timeTo) => (
-// new Date(timeTo).parse() - new Date(timeFrom).parse() /1000/60/60/24 )
+// (new Date(timeTo).parse() - new Date(timeFrom).parse()) /1000/60/60/24 )
 
 const TimeEntryDetail = ({
   client, id, timeFrom, timeTo

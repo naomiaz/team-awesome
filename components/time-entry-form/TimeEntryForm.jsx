@@ -63,9 +63,8 @@ class TimeEntryForm extends React.Component {
     event.preventDefault();
     // Deconstruct handleEntrySubmit() from the props (as it's defined in the parent)
     const { handleEntrySubmit } = this.props;
-    // Copy the curryent state to avoid direct date/time mutation
+    // Copy the current state to avoid direct date/time mutation
     const stateCopied = { ...this.state };
-
     // Convert the dates/times to ISOStrings before sending the data back to the parent
     handleEntrySubmit(this.convertDateTimeToISO(stateCopied));
     // 'Clear' inputs -> reset default values constructed in static class
