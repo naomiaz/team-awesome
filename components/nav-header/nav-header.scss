@@ -5,7 +5,12 @@
   background-color: $color-primary;
   display: flex;
   font-size: $heading-secondary-size;
+  font-weight: $font-weight-semi-bold;
   justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 // TEAM AWESOME LOGO
@@ -104,6 +109,7 @@
   .header {
     height: 70px;
     justify-content: space-between;
+    position: static;
   }
 
   .logo { display: none; }
@@ -129,8 +135,8 @@
       &--active {
         background-color: $color-active;
         border-radius: $border-radius-primary;
-        margin: 0 -14px;
-        padding: 4px 14px;
+        margin: 0 -18px;
+        padding: 6px 18px;
       }
     }
 

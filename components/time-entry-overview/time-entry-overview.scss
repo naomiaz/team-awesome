@@ -14,3 +14,9 @@
     margin-bottom: 10px;
   }
 }
+
+.time-entry__project + .time-entry__project {
+  // background: #c7c7c7;
+  border-radius: 0 0 4px 4px;
+  margin-top: -1px;
+}

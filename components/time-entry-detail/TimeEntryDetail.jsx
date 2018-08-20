@@ -3,26 +3,38 @@ import PropTypes from 'prop-types';
 
 import './time-entry-detail.scss';
 
+const timeOptions = { hour: 'numeric', minute: 'numeric' };
+
+const calculateDuration = (timeFrom, timeTo) => new Date((Date.parse(timeTo)
+- Date.parse(timeFrom) - 3600000)).toLocaleTimeString('nl-NL', timeOptions);
+
 const TimeEntryDetail = ({
-  employer, projectId, timeFrom, timeTo
+  client, id, timeFrom, timeTo
 }) => (
-  <div className="time-entry__project" key={projectId}>
-    <div className="time-entry__employer">
+  <div className="time-entry__project" key={id}>
+    <div className="time-entry__client">
       <p>
-        {employer}
+        {client}
       </p>
     </div>
     <div className="time-entry__time">
       <p>
-        {`${timeFrom} - ${timeTo}`}
+        {`
+          ${new Date(`${timeFrom}`).toLocaleTimeString('nl-NL', timeOptions)}
+          -
+          ${new Date(`${timeTo}`).toLocaleTimeString('nl-NL', timeOptions)}
+        `}
+      </p>
+      <p className="time-entry__duration">
+        {calculateDuration(timeFrom, timeTo)}
       </p>
     </div>
   </div>
 );
 
 TimeEntryDetail.propTypes = {
-  employer: PropTypes.string.isRequired,
-  projectId: PropTypes.string.isRequired,
+  client: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   timeFrom: PropTypes.string.isRequired,
   timeTo: PropTypes.string.isRequired
 };

@@ -1,24 +1,87 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
+  static timeEntriesDefaultValues = {
+    client: 'Port of Rotterdam',
+    activity: 'Design',
+    date: '',
+    timeFrom: '',
+    timeTo: ''
+  };
+
+  static propTypes = {
+    handleEntrySubmit: PropTypes.func.isRequired
+  };
+
   state = {
-    isFormVisible: false
-    // newEntry: {}
+    isFormVisible: false,
+    timeEntry: TimeEntryForm.timeEntriesDefaultValues
   };
 
   formVisible = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isFormVisible: !prevState.isFormVisible
     }));
   }
 
+  convertDotToColon = (time) => time.replace('.', ':')
+
+  convertDateToUS = (date) => {
+    const dateSplitted = date.split('-');
+    return `${dateSplitted[2]}-${dateSplitted[1]}-${dateSplitted[0]}`;
+  }
+
+  createISOString = (date, time) => new Date(`${date} ${time}`).toISOString();
+
+  convertDateTimeToISO = (prevState) => {
+    const { date, timeFrom, timeTo } = prevState.timeEntry;
+    const dateFormatted = this.convertDateToUS(date);
+    const timeFromFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeFrom));
+    const timeToFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeTo));
+    return {
+      ...prevState.timeEntry,
+      date: dateFormatted,
+      timeFrom: timeFromFormatted,
+      timeTo: timeToFormatted
+    };
+  }
+
+  handleChange = ({ target }) => {
+    this.setState((prevState) => ({
+      timeEntry: {
+        ...prevState.timeEntry,
+        [target.name]: target.value
+      }
+    }));
+  }
+
+  handleSubmit = (event) => {
+    // Prevent the page from refreshing when the Add button is clicked
+    event.preventDefault();
+    // Deconstruct handleEntrySubmit() from the props (as it's defined in the parent)
+    const { handleEntrySubmit } = this.props;
+    // Copy the current state to avoid direct date/time mutation
+    const prevState = { ...this.state };
+    // Convert the dates/times to ISOStrings before sending the data back to the parent
+    handleEntrySubmit(this.convertDateTimeToISO(prevState));
+    // 'Clear' inputs -> reset default values constructed in static class
+    this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
+  }
+
   render() {
-    const { isFormVisible } = this.state;
+    const { isFormVisible, timeEntry } = this.state;
+    const {
+      client, activity, date, timeFrom, timeTo
+    } = timeEntry;
 
     return (
       <section className="row">
+        <h2 className="time-entry__title">
+          New Time Entry
+        </h2>
         <button
           className={`time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
           onClick={this.formVisible}
@@ -30,6 +93,7 @@ class TimeEntryForm extends React.Component {
 
         <form
           className={`time-entry ${isFormVisible ? ' time-entry--visible' : ' time-entry--hidden'}`}
+          onSubmit={this.handleSubmit}
         >
           <div className="time-entry-wrapper">
             <button
@@ -39,16 +103,19 @@ class TimeEntryForm extends React.Component {
             >
               <svg className="time-entry__icon--close" />
             </button>
-            <div className="time-entry-employer">
+
+            <div className="time-entry-client">
               <label
                 className="time-entry__label"
-                htmlFor="employer"
+                htmlFor="client"
               >
-                Employer
+                Client
                 <select
                   className="time-entry__input"
-                  id="employer"
-                  name="employer"
+                  id="client"
+                  name="client"
+                  onChange={this.handleChange}
+                  value={client}
                 >
                   <option value="Port of Rotterdam">
                     Port of Rotterdam
@@ -76,6 +143,8 @@ class TimeEntryForm extends React.Component {
                   className="time-entry__input"
                   id="activity"
                   name="activity"
+                  onChange={this.handleChange}
+                  value={activity}
                 >
                   <option value="Design">
                     Design
@@ -101,8 +170,12 @@ class TimeEntryForm extends React.Component {
                 Date
                 <input
                   className="time-entry__input"
+                  id="date"
                   name="date"
-                  type="date"
+                  onChange={this.handleChange}
+                  placeholder="DD-MM-JJJJ"
+                  type="text"
+                  value={date}
                 />
               </label>
             </div>
@@ -116,12 +189,12 @@ class TimeEntryForm extends React.Component {
                   From
                   <input
                     className="time-entry__input"
-                    defaultValue="08:00"
                     id="time-from"
-                    max="18:00"
-                    min="08:00"
-                    name="time-from"
-                    type="time"
+                    name="timeFrom"
+                    onChange={this.handleChange}
+                    placeholder="HH.MM"
+                    type="text"
+                    value={timeFrom}
                   />
                 </label>
               </div>
@@ -133,12 +206,12 @@ class TimeEntryForm extends React.Component {
                   To
                   <input
                     className="time-entry__input"
-                    defaultValue="18:00"
                     id="time-to"
-                    max="20:00"
-                    min="08:00"
-                    name="time-to"
-                    type="time"
+                    name="timeTo"
+                    onChange={this.handleChange}
+                    placeholder="HH.MM"
+                    type="text"
+                    value={timeTo}
                   />
                 </label>
               </div>
@@ -148,8 +221,7 @@ class TimeEntryForm extends React.Component {
           <button
             className="time-entry__button-add"
             name="button"
-            // onClick={submitNewEntry}
-            type="button"
+            type="submit"
             value="Add"
           >
             Add

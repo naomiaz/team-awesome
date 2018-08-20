@@ -2,14 +2,18 @@
 // PAGE STYLES
 // --------------------------
 
+body {
+  padding-top: 52px;
+}
+
 .row {
   padding: 0 16px;
 }
 
 @include tablet {
-  .row {
-    padding: 0 12%;
-  }
+  body { padding: 0; }
+
+  .row { padding: 0 12%; }
 }
 
 .btn,
