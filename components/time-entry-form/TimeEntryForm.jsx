@@ -20,6 +20,7 @@ class TimeEntryForm extends React.Component {
 
   state = {
     isFormVisible: false,
+    isFormLoading: false,
     timeEntry: TimeEntryForm.timeEntriesDefaultValues
   };
 
@@ -27,6 +28,12 @@ class TimeEntryForm extends React.Component {
   formVisible = () => {
     this.setState((prevState) => ({
       isFormVisible: !prevState.isFormVisible
+    }));
+  }
+
+  formLoading = () => {
+    this.setState((prevState) => ({
+      isFormLoading: !prevState.isFormLoading
     }));
   }
 
@@ -49,22 +56,24 @@ class TimeEntryForm extends React.Component {
     const dateFormatted = convertDateToIso(date);
     const timeFromFormatted = createIsoString(dateFormatted, convertTimeToIso(timeFrom));
     const timeToFormatted = createIsoString(dateFormatted, convertTimeToIso(timeTo));
-    // Update the current state to avoid direct date/time mutation
+    // Update the state
     const newTimeEntryFormatted = {
       ...timeEntry,
       date: dateFormatted,
       timeFrom: timeFromFormatted,
       timeTo: timeToFormatted
     };
-    // Send new object back to the parent
-    handleEntrySubmit(newTimeEntryFormatted);
+    // Disable Add btn (true), save the newTimeEntry, and only after saving enable Add btn (false)
+    this.formLoading();
+    handleEntrySubmit(newTimeEntryFormatted)
+      .then(() => this.formLoading());
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
   };
 
 
   render() {
-    const { isFormVisible, timeEntry } = this.state;
+    const { isFormVisible, isFormLoading, timeEntry } = this.state;
     const {
       client, activity, date, timeFrom, timeTo
     } = timeEntry;
@@ -211,6 +220,7 @@ class TimeEntryForm extends React.Component {
           </div>
 
           <button
+            disabled={isFormLoading}
             className="time-entry__button-add"
             name="button"
             type="submit"

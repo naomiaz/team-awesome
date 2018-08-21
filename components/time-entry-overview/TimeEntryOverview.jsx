@@ -16,7 +16,7 @@ class TimeEntryOverview extends React.Component {
     timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
   }
 
-  handleEntrySubmit = (newTimeEntry) => {
+  handleEntrySubmit = (newTimeEntry) => (
     timeEntriesPost(newTimeEntry).then(() => {
       this.setState((prevState) => ({
         timeEntries: [
@@ -24,8 +24,8 @@ class TimeEntryOverview extends React.Component {
           ...prevState.timeEntries
         ]
       }));
-    });
-  }
+    })
+  )
 
   render() {
     const { timeEntries } = this.state;
