@@ -1,14 +1,8 @@
 export const createIsoString = (date, time) => new Date(`${date} ${time}`).toISOString();
 
-export const convertDateToIso = (date) => {
-  const dateFormatted = date.split('-').reverse().join('-');
-  return dateFormatted;
-};
+export const convertDateToIso = (date) => date.split('-').reverse().join('-');
 
-export const convertTimeToIso = (time) => {
-  const timeFormatted = time.replace('.', ':');
-  return timeFormatted;
-};
+export const convertTimeToIso = (time) => time.replace('.', ':');
 
 export const getRelativeDay = (dateOfEntry) => {
   if (new Date(dateOfEntry).toLocaleDateString() === new Date().toLocaleDateString()) {
