@@ -4,9 +4,8 @@
   "description": "Team Awesome repository for Naomi",
   "main": "index.js",
   "scripts": {
-    "api": "json-server --watch api/time-entries.json",
     "build": "next build",
-    "dev": "next",
+    "dev": "next & json-server --watch api/time-entries.json",
     "lint": "eslint --ext js,jsx .",
     "start": "next start"
   },

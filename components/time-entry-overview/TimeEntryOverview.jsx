@@ -2,7 +2,8 @@ import React from 'react';
 
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import getEntries from '../../services/db-fetch';
+import timeEntriesApi from '../../services/time-entries-api/time-entries-api';
+import { checkIfToday } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
@@ -12,10 +13,7 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    getEntries()
-      .then((timeEntries) => (
-        this.setState(() => ({ timeEntries }))
-      ));
+    timeEntriesApi().then((timeEntries) => this.setState({ timeEntries }));
   }
 
   handleEntrySubmit = (newTimeEntry) => {
@@ -26,16 +24,14 @@ class TimeEntryOverview extends React.Component {
         ...prevState.timeEntries
       ]
     }));
-  };
 
-  checkIfToday = (dateOfEntry) => {
-    if (new Date(dateOfEntry).toLocaleDateString() === new Date().toLocaleDateString()) {
-      return '(Today)';
-    } if (new Date(dateOfEntry).toLocaleDateString()
-      === new Date(Date.now() - 86400000).toLocaleDateString()) {
-      return '(Yesterday)';
-    }
-    return '';
+    fetch('http://localhost:3001/api/time-entries', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTimeEntry)
+    });
   };
 
   render() {
@@ -56,7 +52,7 @@ class TimeEntryOverview extends React.Component {
                   { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)
                     .replace('/', '-')
                     .replace(',', '')}
-                  ${this.checkIfToday(currentTimeEntry.date)}` }
+                  ${checkIfToday(currentTimeEntry.date)}` }
                 </h3>
               )}
               <TimeEntryDetail {...currentTimeEntry} />
