@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { convertDateTimeToIso } from '../../services/date-time/date-time';
+import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
 
 import './time-entry-form.scss';
 
@@ -38,17 +38,40 @@ class TimeEntryForm extends React.Component {
     }));
   }
 
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // Deconstruct handleEntrySubmit() from the props
+  //   const { handleEntrySubmit } = this.props;
+  //   // Copy the current state to avoid direct date/time mutation
+  //   const prevState = { ...this.state };
+  //   // Convert the dates/times to ISOStrings before sending the data back to the parent
+  //   handleEntrySubmit(convertDateTimeToIso(prevState));
+  //   // 'Clear' inputs -> reset default values constructed in static class
+  //   this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
+  // }
+
   handleSubmit = (event) => {
     event.preventDefault();
-    // Deconstruct handleEntrySubmit() from the props
+    // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
+    const { timeEntry } = this.state;
+    const { date, timeFrom, timeTo } = timeEntry;
     const { handleEntrySubmit } = this.props;
-    // Copy the current state to avoid direct date/time mutation
-    const prevState = { ...this.state };
     // Convert the dates/times to ISOStrings before sending the data back to the parent
-    handleEntrySubmit(convertDateTimeToIso(prevState));
+    const dateFormatted = convertDateToIso(date);
+    const timeFromFormatted = createIsoString(dateFormatted, convertTimeToIso(timeFrom));
+    const timeToFormatted = createIsoString(dateFormatted, convertTimeToIso(timeTo));
+    // Update the current state to avoid direct date/time mutation
+    const newTimeEntryFormatted = {
+      ...timeEntry,
+      date: dateFormatted,
+      timeFrom: timeFromFormatted,
+      timeTo: timeToFormatted
+    };
+    // Send new object back to the parent
+    handleEntrySubmit(newTimeEntryFormatted);
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
-  }
+  };
 
   render() {
     const { isFormVisible, timeEntry } = this.state;

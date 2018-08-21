@@ -3,7 +3,7 @@ import React from 'react';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
 import { timeEntriesGet, timeEntriesPost } from '../../services/time-entries-api/time-entries-api';
-import { checkIfToday } from '../../services/date-time/date-time';
+import { getRelativeDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
@@ -42,10 +42,14 @@ class TimeEntryOverview extends React.Component {
                   { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)
                     .replace('/', '-')
                     .replace(',', '')}
-                  ${checkIfToday(currentTimeEntry.date)}` }
+                  ${getRelativeDay(currentTimeEntry.date)}` }
                 </h3>
               )}
-              <TimeEntryDetail {...currentTimeEntry} />
+              <TimeEntryDetail
+                client={currentTimeEntry.client}
+                timeFrom={currentTimeEntry.timeFrom}
+                timeTo={currentTimeEntry.timeTo}
+              />
             </React.Fragment>
           ))}
         </section>

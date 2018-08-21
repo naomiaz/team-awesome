@@ -6,12 +6,7 @@ import './time-entry-detail.scss';
 
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
-// const calculateDuration = (timeFrom, timeTo) => new Date((Date.parse(timeTo)
-// - Date.parse(timeFrom) - 3600000)).toLocaleTimeString('nl-NL', timeOptions);
-
-const TimeEntryDetail = ({
-  client, timeFrom, timeTo
-}) => (
+const TimeEntryDetail = ({ client, timeFrom, timeTo }) => (
   <div className="time-entry__project">
     <div className="time-entry__client">
       <p>
