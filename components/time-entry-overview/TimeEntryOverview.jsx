@@ -2,7 +2,7 @@ import React from 'react';
 
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import timeEntriesApi from '../../services/time-entries-api/time-entries-api';
+import { timeEntriesGet, timeEntriesPost } from '../../services/time-entries-api/time-entries-api';
 import { checkIfToday } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
@@ -13,25 +13,15 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    timeEntriesApi().then((timeEntries) => this.setState({ timeEntries }));
+    timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
   }
 
   handleEntrySubmit = (newTimeEntry) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      timeEntries: [
-        newTimeEntry,
-        ...prevState.timeEntries
-      ]
-    }));
-
-    fetch('http://localhost:3001/api/time-entries', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newTimeEntry)
-    });
+    timeEntriesPost(newTimeEntry)
+      .then(() => {
+        timeEntriesGet()
+          .then((timeEntries) => this.setState({ timeEntries }));
+      });
   };
 
   render() {

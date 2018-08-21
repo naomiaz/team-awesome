@@ -1,4 +1,10 @@
-const timeEntriesApi = () => fetch('http://localhost:3001/api/time-entries')
+export const timeEntriesGet = () => fetch('http://localhost:3001/api/time-entries')
   .then((response) => response.json());
 
-export default timeEntriesApi;
+export const timeEntriesPost = (newTimeEntry) => fetch('http://localhost:3001/api/time-entries', {
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(newTimeEntry)
+});
