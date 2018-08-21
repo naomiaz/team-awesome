@@ -36,7 +36,7 @@ class TimeEntryOverview extends React.Component {
           // if (index === 0 ) { date + component } ------->> 0 is falsy
           // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
           // if (currentTimeEntry.date === previousTimeEntry.date) { component }
-            <React.Fragment key={currentTimeEntry.timeFrom}>
+            <React.Fragment key={currentTimeEntry.id}>
               {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
                 <h3 className="text--secondary time-entry__date">
                   { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)

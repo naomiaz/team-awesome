@@ -23,6 +23,7 @@ class TimeEntryForm extends React.Component {
     timeEntry: TimeEntryForm.timeEntriesDefaultValues
   };
 
+
   formVisible = () => {
     this.setState((prevState) => ({
       isFormVisible: !prevState.isFormVisible
@@ -37,18 +38,6 @@ class TimeEntryForm extends React.Component {
       }
     }));
   }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // Deconstruct handleEntrySubmit() from the props
-  //   const { handleEntrySubmit } = this.props;
-  //   // Copy the current state to avoid direct date/time mutation
-  //   const prevState = { ...this.state };
-  //   // Convert the dates/times to ISOStrings before sending the data back to the parent
-  //   handleEntrySubmit(convertDateTimeToIso(prevState));
-  //   // 'Clear' inputs -> reset default values constructed in static class
-  //   this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
-  // }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -72,6 +61,7 @@ class TimeEntryForm extends React.Component {
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
   };
+
 
   render() {
     const { isFormVisible, timeEntry } = this.state;
