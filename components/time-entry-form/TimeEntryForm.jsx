@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
+
 import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
@@ -21,32 +23,11 @@ class TimeEntryForm extends React.Component {
     timeEntry: TimeEntryForm.timeEntriesDefaultValues
   };
 
+
   formVisible = () => {
     this.setState((prevState) => ({
       isFormVisible: !prevState.isFormVisible
     }));
-  }
-
-  convertDotToColon = (time) => time.replace('.', ':')
-
-  convertDateToUS = (date) => {
-    const dateSplitted = date.split('-');
-    return `${dateSplitted[2]}-${dateSplitted[1]}-${dateSplitted[0]}`;
-  }
-
-  createISOString = (date, time) => new Date(`${date} ${time}`).toISOString();
-
-  convertDateTimeToISO = (prevState) => {
-    const { date, timeFrom, timeTo } = prevState.timeEntry;
-    const dateFormatted = this.convertDateToUS(date);
-    const timeFromFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeFrom));
-    const timeToFormatted = this.createISOString(dateFormatted, this.convertDotToColon(timeTo));
-    return {
-      ...prevState.timeEntry,
-      date: dateFormatted,
-      timeFrom: timeFromFormatted,
-      timeTo: timeToFormatted
-    };
   }
 
   handleChange = ({ target }) => {
@@ -59,17 +40,28 @@ class TimeEntryForm extends React.Component {
   }
 
   handleSubmit = (event) => {
-    // Prevent the page from refreshing when the Add button is clicked
     event.preventDefault();
-    // Deconstruct handleEntrySubmit() from the props (as it's defined in the parent)
+    // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
+    const { timeEntry } = this.state;
+    const { date, timeFrom, timeTo } = timeEntry;
     const { handleEntrySubmit } = this.props;
-    // Copy the current state to avoid direct date/time mutation
-    const prevState = { ...this.state };
     // Convert the dates/times to ISOStrings before sending the data back to the parent
-    handleEntrySubmit(this.convertDateTimeToISO(prevState));
+    const dateFormatted = convertDateToIso(date);
+    const timeFromFormatted = createIsoString(dateFormatted, convertTimeToIso(timeFrom));
+    const timeToFormatted = createIsoString(dateFormatted, convertTimeToIso(timeTo));
+    // Update the current state to avoid direct date/time mutation
+    const newTimeEntryFormatted = {
+      ...timeEntry,
+      date: dateFormatted,
+      timeFrom: timeFromFormatted,
+      timeTo: timeToFormatted
+    };
+    // Send new object back to the parent
+    handleEntrySubmit(newTimeEntryFormatted);
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
-  }
+  };
+
 
   render() {
     const { isFormVisible, timeEntry } = this.state;
@@ -173,7 +165,7 @@ class TimeEntryForm extends React.Component {
                   id="date"
                   name="date"
                   onChange={this.handleChange}
-                  placeholder="DD-MM-JJJJ"
+                  placeholder="DD-MM-YYYY"
                   type="text"
                   value={date}
                 />
