@@ -12,6 +12,15 @@ const TimeEntryDetail = ({ client, timeFrom, timeTo }) => (
       <p>
         {client}
       </p>
+
+      <button
+        className="btn time-entry__button-delete"
+        type="button"
+      >
+        <svg className="time-entry__icon--delete" />
+        Delete
+      </button>
+
     </div>
     <div className="time-entry__time">
       <p>
