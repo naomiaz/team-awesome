@@ -12,11 +12,15 @@ const TimeEntryDetail = ({
 }) => {
   const handleClick = () => {
     console.log(id);
-    handleEntryDelete(id);
+    const deleteEntryPrompt = prompt(`Are you sure you want to remove this entry?
+    ${client} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
+    if (deleteEntryPrompt !== null) {
+      handleEntryDelete(id);
+    }
   };
 
   return (
-    <div className="time-entry__project" id={id}>
+    <div className="time-entry__project">
       <div className="time-entry__client">
         <p>
           {client}
