@@ -50,7 +50,7 @@ class TimeEntryForm extends React.Component {
     event.preventDefault();
     // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
     const { timeEntry } = this.state;
-    const { date, timeFrom, timeTo } = timeEntry;
+    const { date, timeFrom, timeTo, id } = timeEntry;
     const { handleEntrySubmit } = this.props;
     // Convert the dates/times to ISOStrings before sending the data back to the parent
     const dateFormatted = convertDateToIso(date);
@@ -60,6 +60,7 @@ class TimeEntryForm extends React.Component {
     const newTimeEntryFormatted = {
       ...timeEntry,
       date: dateFormatted,
+      id,
       timeFrom: timeFromFormatted,
       timeTo: timeToFormatted
     };
@@ -84,7 +85,7 @@ class TimeEntryForm extends React.Component {
           New Time Entry
         </h2>
         <button
-          className={`time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
+          className={`btn time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
           onClick={this.formVisible}
           type="button"
         >
@@ -221,7 +222,7 @@ class TimeEntryForm extends React.Component {
 
           <button
             disabled={isFormLoading}
-            className="time-entry__button-add"
+            className="btn time-entry__button-add"
             name="button"
             type="submit"
             value="Add"
