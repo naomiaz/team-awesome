@@ -8,7 +8,7 @@ export const getTimeEntries = (state) => state.timeEntries.items;
 export const initialState = {
   items: [],
   isLoading: false,
-  isSaving: false,
+  isFormSaving: false,
   isFormVisible: false,
   error: null
 };

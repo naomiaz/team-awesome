@@ -51,7 +51,7 @@ class TimeEntryForm extends React.Component {
     event.preventDefault();
     // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
     const { timeEntry } = this.state;
-    const { date, timeFrom, timeTo, id } = timeEntry;
+    const { date, timeFrom, timeTo } = timeEntry;
     const { handleEntrySubmit } = this.props;
     // Convert the dates/times to ISOStrings before sending the data back to the parent
     const dateFormatted = convertDateToIso(date);
@@ -61,7 +61,6 @@ class TimeEntryForm extends React.Component {
     const newTimeEntryFormatted = {
       ...timeEntry,
       date: dateFormatted,
-      id,
       timeFrom: timeFromFormatted,
       timeTo: timeToFormatted
     };
