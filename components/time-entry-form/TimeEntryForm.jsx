@@ -15,7 +15,8 @@ class TimeEntryForm extends React.Component {
   };
 
   static propTypes = {
-    handleEntrySubmit: PropTypes.func.isRequired
+    handleEntrySubmit: PropTypes.func.isRequired,
+    isFormSaving: PropTypes.bool.isRequired
   };
 
   state = {
@@ -65,16 +66,15 @@ class TimeEntryForm extends React.Component {
       timeTo: timeToFormatted
     };
     // Disable Add btn (true), save the newTimeEntry, and only after saving enable Add btn (false)
-    this.formLoading();
-    handleEntrySubmit(newTimeEntryFormatted)
-      .then(() => this.formLoading());
+    handleEntrySubmit(newTimeEntryFormatted);
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
   };
 
 
   render() {
-    const { isFormVisible, isFormLoading, timeEntry } = this.state;
+    const { isFormVisible, timeEntry } = this.state;
+    const { isFormSaving } = this.props;
     const {
       client, activity, date, timeFrom, timeTo
     } = timeEntry;
@@ -221,7 +221,7 @@ class TimeEntryForm extends React.Component {
           </div>
 
           <button
-            disabled={isFormLoading}
+            disabled={isFormSaving}
             className="btn time-entry__button-add"
             name="button"
             type="submit"

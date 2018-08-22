@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import { timeEntriesGet, timeEntriesPost, timeEntriesDelete } from '../../services/time-entries-api/time-entries-api';
+import { GetTimeEntries, PostTimeEntry, DeleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
 import { getRelativeDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
   static propTypes = {
+    isFormSaving: PropTypes.bool.isRequired,
+    saveTimeEntry: PropTypes.func.isRequired,
+    saveTimeEntrySuccess: PropTypes.func.isRequired,
     requestTimeEntries: PropTypes.func.isRequired,
     requestTimeEntriesSuccess: PropTypes.func.isRequired,
     timeEntries: PropTypes.arrayOf(
@@ -26,23 +29,18 @@ class TimeEntryOverview extends React.Component {
   componentDidMount() {
     const { requestTimeEntries, requestTimeEntriesSuccess } = this.props;
     requestTimeEntries();
-    timeEntriesGet().then((timeEntries) => requestTimeEntriesSuccess(timeEntries));
+    GetTimeEntries().then((timeEntries) => requestTimeEntriesSuccess(timeEntries));
     // timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
   }
 
-  handleEntrySubmit = (newTimeEntry) => (
-    timeEntriesPost(newTimeEntry).then((json) => {
-      this.setState((prevState) => ({
-        timeEntries: [
-          json,
-          ...prevState.timeEntries
-        ]
-      }));
-    })
-  )
+  handleEntrySubmit = (newTimeEntry) => {
+    const { saveTimeEntry, saveTimeEntrySuccess } = this.props;
+    saveTimeEntry();
+    PostTimeEntry(newTimeEntry).then(saveTimeEntrySuccess);
+  };
 
   handleEntryDelete = (id) => (
-    timeEntriesDelete(id).then(() => {
+    DeleteTimeEntry(id).then(() => {
       this.setState((prevState) => ({
         timeEntries: [
           ...prevState.timeEntries.filter((entry) => entry.id !== id)
@@ -52,11 +50,12 @@ class TimeEntryOverview extends React.Component {
   );
 
   render() {
-    const { timeEntries } = this.props;
+    const { timeEntries, isFormSaving } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <TimeEntryForm
+          isFormSaving={isFormSaving}
           handleEntrySubmit={this.handleEntrySubmit}
         />
 
