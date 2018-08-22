@@ -10,7 +10,7 @@ export const timeEntriesPost = (newTimeEntry) => fetch(endpoint, {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify(newTimeEntry)
-});
+}).then((response) => response.json());
 
 export const timeEntriesDelete = (id) => fetch(`${endpoint}/${id}`, {
   method: 'DELETE'

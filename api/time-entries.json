@@ -35,18 +35,10 @@
     {
       "client": "Audi",
       "activity": "Design",
-      "date": "2018-08-22",
-      "timeFrom": "2018-08-22T07:05:00.000Z",
-      "timeTo": "2018-08-22T08:30:00.000Z",
+      "date": "2018-10-19",
+      "timeFrom": "2018-10-19T08:00:00.000Z",
+      "timeTo": "2018-10-19T08:30:00.000Z",
       "id": 5
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "2018-08-18",
-      "timeFrom": "2018-08-18T08:00:00.000Z",
-      "timeTo": "2018-08-18T16:00:00.000Z",
-      "id": 6
     }
   ]
 }

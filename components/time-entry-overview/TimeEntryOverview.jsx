@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
 import { timeEntriesGet, timeEntriesPost, timeEntriesDelete } from '../../services/time-entries-api/time-entries-api';
@@ -8,19 +8,33 @@ import { getRelativeDay } from '../../services/date-time/date-time';
 import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
-  state = {
-    timeEntries: []
+  static propTypes = {
+    requestTimeEntries: PropTypes.func.isRequired,
+    requestTimeEntriesSuccess: PropTypes.func.isRequired,
+    timeEntries: PropTypes.arrayOf(
+      PropTypes.shape({
+        activity: PropTypes.string.isRequired,
+        client: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        timeFrom: PropTypes.string.isRequired,
+        timeTo: PropTypes.string.isRequired
+      })
+    ).isRequired
   }
 
   componentDidMount() {
-    timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
+    const { requestTimeEntries, requestTimeEntriesSuccess } = this.props;
+    requestTimeEntries();
+    timeEntriesGet().then((timeEntries) => requestTimeEntriesSuccess(timeEntries));
+    // timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
   }
 
   handleEntrySubmit = (newTimeEntry) => (
-    timeEntriesPost(newTimeEntry).then(() => {
+    timeEntriesPost(newTimeEntry).then((json) => {
       this.setState((prevState) => ({
         timeEntries: [
-          newTimeEntry,
+          json,
           ...prevState.timeEntries
         ]
       }));
@@ -38,7 +52,7 @@ class TimeEntryOverview extends React.Component {
   );
 
   render() {
-    const { timeEntries } = this.state;
+    const { timeEntries } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>

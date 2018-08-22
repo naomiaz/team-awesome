@@ -1,7 +1,7 @@
 import React from 'react';
 import NavHeader from '../components/nav-header/NavHeader';
 import PageHeader from '../components/page-header/PageHeader';
-import TimeEntryOverview from '../components/time-entry-overview/TimeEntryOverview';
+import TimeEntryOverview from '../components/time-entry-overview';
 
 export default () => (
   <React.Fragment>

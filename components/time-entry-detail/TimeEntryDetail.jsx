@@ -11,7 +11,6 @@ const TimeEntryDetail = ({
   client, handleEntryDelete, id, timeFrom, timeTo
 }) => {
   const handleClick = () => {
-    console.log(id);
     handleEntryDelete(id);
   };
 
