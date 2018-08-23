@@ -65,12 +65,11 @@ class TimeEntryForm extends React.Component {
 
 
   render() {
-    // const { isFormVisible, timeEntry } = this.state;
     const { timeEntry } = this.state;
-    const { isFormSaving, isFormVisible } = this.props;
     const {
       client, activity, date, timeFrom, timeTo
     } = timeEntry;
+    const { isFormSaving, isFormVisible } = this.props;
 
     return (
       <section className="row">

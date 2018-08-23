@@ -12,6 +12,7 @@
     padding: 20px 16px;
 
     .time-entry__button-delete {
+      -webkit-transition: .3s;
       background-color: $color-monochrome-1;
       border: none;
       color: $color-monochrome-1;
@@ -20,14 +21,22 @@
       justify-content: center;
       margin-left: 33px;
       opacity: 0;
-      transition: opacity .3s;
+      transition: .3s;
       width: 80px;
     }
 
     .time-entry__icon--delete {
-      height: 0;
+      -webkit-mask: url("/static/icons/forbid.svg") no-repeat;
+      -webkit-mask-size: 16px 16px;
+      -webkit-transition: .3s;
+      background-color: $color-monochrome-1;
+      border-style: none;
+      border-width: 0;
+      height: 16px;
+      margin-right: 7px;
       opacity: 0;
-      width: 0;
+      transition: .3s;
+      width: 16px;
     }
 
     &:hover {
