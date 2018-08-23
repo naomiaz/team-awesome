@@ -13,19 +13,19 @@ class TimeEntryDetail extends React.Component {
     date: PropTypes.string.isRequired,
     timeFrom: PropTypes.string.isRequired,
     timeTo: PropTypes.string.isRequired,
-    handleEntryDelete: PropTypes.func.isRequired
+    onEntryDelete: PropTypes.func.isRequired
   }
 
   handleClick = () => {
     const {
-      client, date, handleEntryDelete, id, timeFrom, timeTo
+      client, date, onEntryDelete, id, timeFrom, timeTo
     } = this.props;
     console.log(id);
     const deleteEntryPrompt = prompt(`Are you sure you want to remove this entry?
     ${client} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
 
     if (deleteEntryPrompt !== null) {
-      handleEntryDelete(id);
+      onEntryDelete(id);
     }
   };
 

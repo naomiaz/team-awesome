@@ -1,10 +1,18 @@
+// Actions
 const REQUEST_TIME_ENTRIES = 'REQUEST_TIME_ENTRIES';
 const REQUEST_TIME_ENTRIES_SUCCESS = 'REQUEST_TIME_ENTRIES_SUCCESS';
 const SAVE_TIME_ENTRY = 'SAVE_TIME_ENTRY';
 const SAVE_TIME_ENTRY_SUCCESS = 'SAVE_TIME_ENTRY_SUCESS';
+const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
+const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
+const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
 
-export const getTimeEntries = (state) => state.timeEntries.items;
+// State Selectors -> To be imported in Container Component
+export const getTimeEntriesSelector = (state) => state.timeEntries.items;
+export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
+export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
+// Initial State
 export const initialState = {
   items: [],
   isLoading: false,
@@ -13,37 +21,52 @@ export const initialState = {
   error: null
 };
 
+// Action Reducers
 export function timeEntriesReducer(state = initialState, action) {
   switch (action.type) {
+    case DELETE_TIME_ENTRY:
+      return { ...state, isFormSaving: true };
+    case DELETE_TIME_ENTRY_SUCCESS:
+      return {
+        ...state,
+        isFormSaving: false,
+        items: state.items.filter((item) => item.id !== action.id)
+      };
     case REQUEST_TIME_ENTRIES:
       return { ...state, isLoading: true };
     case REQUEST_TIME_ENTRIES_SUCCESS:
       return { ...state, isLoading: false, items: action.timeEntries };
     case SAVE_TIME_ENTRY:
-      return { ...state, isSaving: true };
+      return { ...state, isFormSaving: true };
     case SAVE_TIME_ENTRY_SUCCESS:
-      return { ...state, isSaving: false, items: [action.newTimeEntry, ...state.items] };
+      return { ...state, isFormSaving: false, items: [action.newTimeEntry, ...state.items] };
+    case TOGGLE_FORM_VISIBILITY:
+      return { ...state, isFormVisible: action.isFormVisible };
     default:
       return state;
   }
 }
 
-export const requestTimeEntries = () => ({
-  type: REQUEST_TIME_ENTRIES
+// Action Creators -> To be used in Component
+export const onToggleFormVisibility = (isFormVisible) => ({
+  type: TOGGLE_FORM_VISIBILITY,
+  isFormVisible
 });
 
-export const requestTimeEntriesSuccess = (timeEntries) => ({
+export const onDeleteTimeEntry = () => ({ type: DELETE_TIME_ENTRY });
+export const onDeleteTimeEntrySuccess = (id) => ({
+  type: DELETE_TIME_ENTRY_SUCCESS,
+  id
+});
+
+export const onRequestTimeEntries = () => ({ type: REQUEST_TIME_ENTRIES });
+export const onRequestTimeEntriesSuccess = (timeEntries) => ({
   type: REQUEST_TIME_ENTRIES_SUCCESS,
   timeEntries
 });
 
-export const saveTimeEntry = () => ({
-  type: SAVE_TIME_ENTRY
-});
-
-export const saveTimeEntrySuccess = (newTimeEntry) => ({
+export const onSaveTimeEntry = () => ({ type: SAVE_TIME_ENTRY });
+export const onSaveTimeEntrySuccess = (newTimeEntry) => ({
   type: SAVE_TIME_ENTRY_SUCCESS,
   newTimeEntry
 });
-
-// const exampleAction = {type: 'ADD_TIME_ENTRY', payload: {}}

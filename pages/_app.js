@@ -10,7 +10,7 @@ class TeamAwesome extends App {
   render() {
     const { Component, store } = this.props;
 
-    // Provider verbindt component met redux store
+    // Provider connects the component to the redux store
     return (
       <Container>
         <Provider store={store}>

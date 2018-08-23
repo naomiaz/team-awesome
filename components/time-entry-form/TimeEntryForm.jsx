@@ -15,28 +15,21 @@ class TimeEntryForm extends React.Component {
   };
 
   static propTypes = {
-    handleEntrySubmit: PropTypes.func.isRequired,
-    isFormSaving: PropTypes.bool.isRequired
+    onEntrySubmit: PropTypes.func.isRequired,
+    onToggleFormVisibility: PropTypes.func.isRequired,
+    isFormSaving: PropTypes.bool.isRequired,
+    isFormVisible: PropTypes.bool.isRequired
   };
 
   state = {
-    isFormVisible: false,
-    isFormLoading: false,
     timeEntry: TimeEntryForm.timeEntriesDefaultValues
   };
 
 
-  formVisible = () => {
-    this.setState((prevState) => ({
-      isFormVisible: !prevState.isFormVisible
-    }));
-  }
-
-  formLoading = () => {
-    this.setState((prevState) => ({
-      isFormLoading: !prevState.isFormLoading
-    }));
-  }
+  handleFormVisibility = () => {
+    const { onToggleFormVisibility, isFormVisible } = this.props;
+    onToggleFormVisibility(!isFormVisible);
+  };
 
   handleChange = ({ target }) => {
     this.setState((prevState) => ({
@@ -52,7 +45,7 @@ class TimeEntryForm extends React.Component {
     // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
-    const { handleEntrySubmit } = this.props;
+    const { onEntrySubmit } = this.props;
     // Convert the dates/times to ISOStrings before sending the data back to the parent
     const dateFormatted = convertDateToIso(date);
     const timeFromFormatted = createIsoString(dateFormatted, convertTimeToIso(timeFrom));
@@ -65,15 +58,16 @@ class TimeEntryForm extends React.Component {
       timeTo: timeToFormatted
     };
     // Disable Add btn (true), save the newTimeEntry, and only after saving enable Add btn (false)
-    handleEntrySubmit(newTimeEntryFormatted);
+    onEntrySubmit(newTimeEntryFormatted);
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
   };
 
 
   render() {
-    const { isFormVisible, timeEntry } = this.state;
-    const { isFormSaving } = this.props;
+    // const { isFormVisible, timeEntry } = this.state;
+    const { timeEntry } = this.state;
+    const { isFormSaving, isFormVisible } = this.props;
     const {
       client, activity, date, timeFrom, timeTo
     } = timeEntry;
@@ -85,7 +79,7 @@ class TimeEntryForm extends React.Component {
         </h2>
         <button
           className={`btn time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
-          onClick={this.formVisible}
+          onClick={this.handleFormVisibility}
           type="button"
         >
           <svg className="time-entry__icon--open" />
@@ -99,7 +93,7 @@ class TimeEntryForm extends React.Component {
           <div className="time-entry-wrapper">
             <button
               className="time-entry__button-close"
-              onClick={this.formVisible}
+              onClick={this.handleFormVisibility}
               type="button"
             >
               <svg className="time-entry__icon--close" />

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import { GetTimeEntries, PostTimeEntry, DeleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
+import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
 import { getRelativeDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
@@ -10,10 +10,14 @@ import './time-entry-overview.scss';
 class TimeEntryOverview extends React.Component {
   static propTypes = {
     isFormSaving: PropTypes.bool.isRequired,
-    saveTimeEntry: PropTypes.func.isRequired,
-    saveTimeEntrySuccess: PropTypes.func.isRequired,
-    requestTimeEntries: PropTypes.func.isRequired,
-    requestTimeEntriesSuccess: PropTypes.func.isRequired,
+    isFormVisible: PropTypes.bool.isRequired,
+    onDeleteTimeEntry: PropTypes.func.isRequired,
+    onDeleteTimeEntrySuccess: PropTypes.func.isRequired,
+    onRequestTimeEntries: PropTypes.func.isRequired,
+    onRequestTimeEntriesSuccess: PropTypes.func.isRequired,
+    onSaveTimeEntry: PropTypes.func.isRequired,
+    onSaveTimeEntrySuccess: PropTypes.func.isRequired,
+    onToggleFormVisibility: PropTypes.func.isRequired,
     timeEntries: PropTypes.arrayOf(
       PropTypes.shape({
         activity: PropTypes.string.isRequired,
@@ -27,36 +31,39 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { requestTimeEntries, requestTimeEntriesSuccess } = this.props;
-    requestTimeEntries();
-    GetTimeEntries().then((timeEntries) => requestTimeEntriesSuccess(timeEntries));
-    // timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
+    const { onRequestTimeEntries, onRequestTimeEntriesSuccess } = this.props;
+    onRequestTimeEntries();
+    getTimeEntries().then((timeEntries) => onRequestTimeEntriesSuccess(timeEntries));
   }
 
-  handleEntrySubmit = (newTimeEntry) => {
-    const { saveTimeEntry, saveTimeEntrySuccess } = this.props;
-    saveTimeEntry();
-    PostTimeEntry(newTimeEntry).then(saveTimeEntrySuccess);
+  onEntrySubmit = (newTimeEntry) => {
+    const { onSaveTimeEntry, onSaveTimeEntrySuccess } = this.props;
+    onSaveTimeEntry();
+    postTimeEntry(newTimeEntry).then(onSaveTimeEntrySuccess);
   };
 
-  handleEntryDelete = (id) => (
-    DeleteTimeEntry(id).then(() => {
-      this.setState((prevState) => ({
-        timeEntries: [
-          ...prevState.timeEntries.filter((entry) => entry.id !== id)
-        ]
-      }));
-    })
-  );
+  onEntryDelete = (id) => {
+    const { onDeleteTimeEntry, onDeleteTimeEntrySuccess } = this.props;
+    onDeleteTimeEntry();
+    deleteTimeEntry(id).then(() => onDeleteTimeEntrySuccess(id));
+  };
 
   render() {
-    const { timeEntries, isFormSaving } = this.props;
+    const {
+      timeEntries,
+      isFormSaving,
+      isFormVisible,
+      onToggleFormVisibility
+    } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <TimeEntryForm
           isFormSaving={isFormSaving}
-          handleEntrySubmit={this.handleEntrySubmit}
+          isFormVisible={isFormVisible}
+          onToggleFormVisibility={onToggleFormVisibility}
+          onEntrySubmit={this.onEntrySubmit}
+          timeEntries={timeEntries}
         />
 
         <section className="row time-entry-overview">
@@ -76,7 +83,7 @@ class TimeEntryOverview extends React.Component {
               <TimeEntryDetail
                 client={currentTimeEntry.client}
                 date={currentTimeEntry.date}
-                handleEntryDelete={this.handleEntryDelete}
+                onEntryDelete={this.onEntryDelete}
                 id={currentTimeEntry.id}
                 timeFrom={currentTimeEntry.timeFrom}
                 timeTo={currentTimeEntry.timeTo}

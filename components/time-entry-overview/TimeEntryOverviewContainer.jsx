@@ -2,22 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  getTimeEntries, requestTimeEntries, requestTimeEntriesSuccess, saveTimeEntry, saveTimeEntrySuccess
+  getTimeEntriesSelector,
+  isFormSavingSelector,
+  isFormVisibleSelector,
+  onDeleteTimeEntry,
+  onDeleteTimeEntrySuccess,
+  onRequestTimeEntries,
+  onRequestTimeEntriesSuccess,
+  onSaveTimeEntry,
+  onSaveTimeEntrySuccess,
+  onToggleFormVisibility
 } from '../../ducks/time-entries';
 import TimeEntryOverview from './TimeEntryOverview';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
-  timeEntries: getTimeEntries(state),
-  isFormSaving: state.timeEntries.isFormSaving
+  timeEntries: getTimeEntriesSelector(state),
+  isFormSaving: isFormSavingSelector(state),
+  isFormVisible: isFormVisibleSelector(state)
 });
 
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  requestTimeEntries,
-  requestTimeEntriesSuccess,
-  saveTimeEntry,
-  saveTimeEntrySuccess
+  onDeleteTimeEntry,
+  onDeleteTimeEntrySuccess,
+  onRequestTimeEntries,
+  onRequestTimeEntriesSuccess,
+  onSaveTimeEntry,
+  onSaveTimeEntrySuccess,
+  onToggleFormVisibility
 }, dispatch);
 
 const TimeEntryOverviewContainer = (props) => (
