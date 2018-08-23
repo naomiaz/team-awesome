@@ -1,14 +1,6 @@
 {
   "time-entries": [
     {
-      "date": "2018-08-13",
-      "id": 1,
-      "client": "Humanoids",
-      "activity": "Yoga",
-      "timeFrom": "2018-08-13T11:00:00.000Z",
-      "timeTo": "2018-08-13T15:00:00.000Z"
-    },
-    {
       "client": "Port of Rotterdam",
       "activity": "Design",
       "date": "2018-08-22",
@@ -41,7 +33,7 @@
       "id": 5
     },
     {
-      "client": "Port of Rotterdam",
+      "client": "Mercedes",
       "activity": "Design",
       "date": "2018-08-22",
       "timeFrom": "2018-08-22T07:05:00.000Z",

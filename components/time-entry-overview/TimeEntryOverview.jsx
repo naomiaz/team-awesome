@@ -75,6 +75,7 @@ class TimeEntryOverview extends React.Component {
               )}
               <TimeEntryDetail
                 client={currentTimeEntry.client}
+                date={currentTimeEntry.date}
                 handleEntryDelete={this.handleEntryDelete}
                 id={currentTimeEntry.id}
                 timeFrom={currentTimeEntry.timeFrom}
