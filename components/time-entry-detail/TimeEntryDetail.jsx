@@ -57,7 +57,7 @@ class TimeEntryDetail extends React.Component {
             `}
           </p>
           <p className="time-entry__duration">
-            {calculateDuration(timeFrom, timeTo)}
+            {new Date(calculateDuration(timeFrom, timeTo)).toLocaleTimeString('nl-NL', timeOptions)}
           </p>
         </div>
       </div>

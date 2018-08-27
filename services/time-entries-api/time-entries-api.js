@@ -1,7 +1,7 @@
 // const endpointGet = 'http://localhost:3001/api/time-entries/?_sort=id&_order=desc';
 const endpoint = 'http://localhost:3001/api/time-entries';
 
-export const getTimeEntries = () => fetch(`${endpoint}?_sort=id&_order=desc`)
+export const getTimeEntries = () => fetch(endpoint)
   .then((response) => response.json());
 
 export const postTimeEntry = (newTimeEntry) => fetch(endpoint, {

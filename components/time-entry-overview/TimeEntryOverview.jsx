@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
 import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
-import { getRelativeDay } from '../../services/date-time/date-time';
+import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
@@ -67,29 +67,30 @@ class TimeEntryOverview extends React.Component {
         />
 
         <section className="row time-entry-overview">
-          {timeEntries.map((currentTimeEntry, index, array) => (
-          // if (index === 0 ) { date + component } ------->> 0 is falsy
-          // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
-          // if (currentTimeEntry.date === previousTimeEntry.date) { component }
-            <React.Fragment key={currentTimeEntry.id}>
-              {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
-                <h3 className="text--secondary time-entry__date">
-                  { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)
-                    .replace('/', '-')
-                    .replace(',', '')}
-                  ${getRelativeDay(currentTimeEntry.date)}` }
-                </h3>
-              )}
-              <TimeEntryDetail
-                client={currentTimeEntry.client}
-                date={currentTimeEntry.date}
-                onEntryDelete={this.onEntryDelete}
-                id={currentTimeEntry.id}
-                timeFrom={currentTimeEntry.timeFrom}
-                timeTo={currentTimeEntry.timeTo}
-              />
-            </React.Fragment>
-          ))}
+          {timeEntries.map((currentTimeEntry, index, array) => {
+            // if (index === 0 ) { date + component } ------->> 0 is falsy
+            // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
+            // if (currentTimeEntry.date === previousTimeEntry.date) { component }
+            const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
+            return (
+              <React.Fragment key={currentTimeEntry.id}>
+                {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
+                  <div className="time-entry__date-row">
+                    <span className="text--secondary">
+                      {`${dateFormatted(currentTimeEntry.date)} ${getRelativeDay(currentTimeEntry.date)}`}
+                    </span>
+
+                    <span className="text--secondary">
+                      {new Date(calculateDurationPerDay(timeEntries, currentTimeEntry.date)).toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' })}
+                    </span>
+                  </div>
+                )}
+
+                <TimeEntryDetail {...currentTimeEntry} />
+              </React.Fragment>
+            );
+          })
+        }
         </section>
       </React.Fragment>
     );
