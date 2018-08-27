@@ -9,7 +9,8 @@ export const SET_FORM_VISIBILITY = 'SET_FORM_VISIBILITY';
 
 // State Selectors -> To be imported in Container Component
 // export const getTimeEntriesSelector = (state) => state.timeEntries.items;
-export const getTimeEntriesSelector = (state) => state.timeEntries.items.sort((a, b) => (new Date(b.date) - new Date(a.date)));
+export const getTimeEntriesSelector = (state) => state.timeEntries.items
+  .sort((a, b) => (new Date(b.date) - new Date(a.date)));
 export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
 export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
