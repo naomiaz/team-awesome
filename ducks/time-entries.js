@@ -7,12 +7,13 @@ export const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
 export const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
 export const SET_FORM_VISIBILITY = 'SET_FORM_VISIBILITY';
 
+
 // State Selectors -> To be imported in Container Component
-// export const getTimeEntriesSelector = (state) => state.timeEntries.items;
 export const getTimeEntriesSelector = (state) => state.timeEntries.items
   .sort((a, b) => (new Date(b.date) - new Date(a.date)));
 export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
 export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
+
 
 // Initial State
 export const initialState = {
@@ -22,6 +23,7 @@ export const initialState = {
   isFormVisible: false,
   error: null
 };
+
 
 // Action Reducers
 export function timeEntriesReducer(state = initialState, action) {
@@ -49,6 +51,7 @@ export function timeEntriesReducer(state = initialState, action) {
   }
 }
 
+
 // Action Creators -> To be called in Component (and are watched by rootSaga)
 export const toggleFormVisibility = (isFormVisible) => ({
   type: SET_FORM_VISIBILITY,
@@ -59,10 +62,22 @@ export const deleteTimeEntry = (id) => ({
   type: DELETE_TIME_ENTRY,
   id
 });
+export const deleteTimeEntrySuccess = (id) => ({
+  type: DELETE_TIME_ENTRY_SUCCESS,
+  id
+});
 
 export const requestTimeEntries = () => ({ type: REQUEST_TIME_ENTRIES });
+export const requestTimeEntriesSuccess = (timeEntries) => ({
+  type: REQUEST_TIME_ENTRIES_SUCCESS,
+  timeEntries
+});
 
 export const saveTimeEntry = (newTimeEntry) => ({
   type: SAVE_TIME_ENTRY,
   newTimeEntry
+});
+export const saveTimeEntrySuccess = (newEntry) => ({
+  type: SAVE_TIME_ENTRY_SUCCESS,
+  newEntry
 });

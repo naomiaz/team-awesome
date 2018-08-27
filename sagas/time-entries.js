@@ -2,32 +2,31 @@ import { put, takeEvery } from 'redux-saga/effects';
 import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../services/time-entries-api/time-entries-api';
 import {
   REQUEST_TIME_ENTRIES,
-  REQUEST_TIME_ENTRIES_SUCCESS,
   SAVE_TIME_ENTRY,
-  SAVE_TIME_ENTRY_SUCCESS,
   DELETE_TIME_ENTRY,
-  DELETE_TIME_ENTRY_SUCCESS
+  requestTimeEntriesSuccess,
+  saveTimeEntrySuccess,
+  deleteTimeEntrySuccess
 } from '../ducks/time-entries';
 
-// Generators
+// Generator functions
 export function* requestTimeEntriesGenerator() {
   const timeEntries = yield getTimeEntries();
-  yield put({ type: REQUEST_TIME_ENTRIES_SUCCESS, timeEntries });
+  yield put(requestTimeEntriesSuccess(timeEntries));
 }
 
 export function* saveTimeEntryGenerator({ newTimeEntry }) {
   const newEntry = yield postTimeEntry(newTimeEntry);
-  yield put({ type: SAVE_TIME_ENTRY_SUCCESS, newEntry });
+  yield put(saveTimeEntrySuccess(newEntry));
 }
 
 export function* deleteTimeEntryGenerator({ id }) {
   yield deleteTimeEntry(id);
-  yield put({ type: DELETE_TIME_ENTRY_SUCCESS, id });
+  yield put(deleteTimeEntrySuccess(id));
 }
 
 // Watcher functions
-// takeEvery is a helper function that listens for dispatched REQUEST_TIME_ENTRIES actions
-// and runs requestTimeEntries() each time.
+// takeEvery = helper function that listens for dispatched actions and then runs generator functions
 export function* watchGetTimeEntries() {
   yield takeEvery(REQUEST_TIME_ENTRIES, requestTimeEntriesGenerator);
 }
