@@ -4,7 +4,7 @@ import { all } from 'redux-saga/effects';
 import { navHeaderReducer } from './nav-header';
 import { timeEntriesReducer } from './time-entries';
 
-import { watchGetTimeEntries, watchPostTimeEntry, watchDeleteTimeEntry } from '../sagas/time-entries';
+import { watchTimeEntries } from '../sagas/time-entries';
 
 export const rootReducer = combineReducers({
   navHeader: navHeaderReducer,
@@ -13,8 +13,6 @@ export const rootReducer = combineReducers({
 
 export function* rootSaga() {
   yield all([
-    watchGetTimeEntries(),
-    watchPostTimeEntry(),
-    watchDeleteTimeEntry()
+    watchTimeEntries()
   ]);
 }
