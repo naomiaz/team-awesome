@@ -5,22 +5,19 @@ import './nav-header.scss';
 
 class NavHeader extends React.Component {
   static propTypes = {
-    siteName: PropTypes.string.isRequired
+    siteName: PropTypes.string.isRequired,
+    isMenuVisible: PropTypes.bool.isRequired,
+    onToggleMenuVisibility: PropTypes.func.isRequired
   }
 
-  state = { isMenuVisible: false };
-
   toggleMenu = () => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isMenuVisible: !prevState.isMenuVisible
-    }));
+    const { isMenuVisible, onToggleMenuVisibility } = this.props;
+    onToggleMenuVisibility(!isMenuVisible);
   };
 
 
   render() {
-    const { isMenuVisible } = this.state;
-    const { siteName } = this.props;
+    const { isMenuVisible, siteName } = this.props;
     return (
       <header className="header">
 

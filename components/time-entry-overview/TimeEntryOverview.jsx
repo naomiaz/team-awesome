@@ -1,75 +1,97 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import { timeEntriesGet, timeEntriesPost, timeEntriesDelete } from '../../services/time-entries-api/time-entries-api';
-import { getRelativeDay } from '../../services/date-time/date-time';
+import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
+import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
-  state = {
-    timeEntries: []
+  static propTypes = {
+    isFormSaving: PropTypes.bool.isRequired,
+    isFormVisible: PropTypes.bool.isRequired,
+    onDeleteTimeEntry: PropTypes.func.isRequired,
+    onDeleteTimeEntrySuccess: PropTypes.func.isRequired,
+    onRequestTimeEntries: PropTypes.func.isRequired,
+    onRequestTimeEntriesSuccess: PropTypes.func.isRequired,
+    onSaveTimeEntry: PropTypes.func.isRequired,
+    onSaveTimeEntrySuccess: PropTypes.func.isRequired,
+    onToggleFormVisibility: PropTypes.func.isRequired,
+    timeEntries: PropTypes.arrayOf(
+      PropTypes.shape({
+        activity: PropTypes.string.isRequired,
+        client: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        timeFrom: PropTypes.string.isRequired,
+        timeTo: PropTypes.string.isRequired
+      })
+    ).isRequired
   }
 
   componentDidMount() {
-    timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
+    const { onRequestTimeEntries, onRequestTimeEntriesSuccess } = this.props;
+    onRequestTimeEntries();
+    getTimeEntries().then((timeEntries) => onRequestTimeEntriesSuccess(timeEntries));
   }
 
-  handleEntrySubmit = (newTimeEntry) => (
-    timeEntriesPost(newTimeEntry).then(() => {
-      this.setState((prevState) => ({
-        timeEntries: [
-          newTimeEntry,
-          ...prevState.timeEntries
-        ]
-      }));
-    })
-  )
+  onEntrySubmit = (newTimeEntry) => {
+    const { onSaveTimeEntry, onSaveTimeEntrySuccess } = this.props;
+    onSaveTimeEntry();
+    postTimeEntry(newTimeEntry).then(onSaveTimeEntrySuccess);
+  };
 
-  handleEntryDelete = (id) => (
-    timeEntriesDelete(id).then(() => {
-      this.setState((prevState) => ({
-        timeEntries: [
-          ...prevState.timeEntries.filter((entry) => entry.id !== id)
-        ]
-      }));
-    })
-  );
+  onEntryDelete = (id) => {
+    const { onDeleteTimeEntry, onDeleteTimeEntrySuccess } = this.props;
+    onDeleteTimeEntry();
+    deleteTimeEntry(id).then(() => onDeleteTimeEntrySuccess(id));
+  };
 
   render() {
-    const { timeEntries } = this.state;
+    const {
+      timeEntries,
+      isFormSaving,
+      isFormVisible,
+      onToggleFormVisibility
+    } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <TimeEntryForm
-          handleEntrySubmit={this.handleEntrySubmit}
+          isFormSaving={isFormSaving}
+          isFormVisible={isFormVisible}
+          onToggleFormVisibility={onToggleFormVisibility}
+          onEntrySubmit={this.onEntrySubmit}
+          timeEntries={timeEntries}
         />
 
         <section className="row time-entry-overview">
-          {timeEntries.map((currentTimeEntry, index, array) => (
-          // if (index === 0 ) { date + component } ------->> 0 is falsy
-          // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
-          // if (currentTimeEntry.date === previousTimeEntry.date) { component }
-            <React.Fragment key={currentTimeEntry.id}>
-              {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
-                <h3 className="text--secondary time-entry__date">
-                  { `${new Date(currentTimeEntry.date).toLocaleDateString('en-NL', dateOptions)
-                    .replace('/', '-')
-                    .replace(',', '')}
-                  ${getRelativeDay(currentTimeEntry.date)}` }
-                </h3>
-              )}
-              <TimeEntryDetail
-                client={currentTimeEntry.client}
-                date={currentTimeEntry.date}
-                handleEntryDelete={this.handleEntryDelete}
-                id={currentTimeEntry.id}
-                timeFrom={currentTimeEntry.timeFrom}
-                timeTo={currentTimeEntry.timeTo}
-              />
-            </React.Fragment>
-          ))}
+          {timeEntries.map((currentTimeEntry, index, array) => {
+            // if (index === 0 ) { date + component } ------->> 0 is falsy
+            // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
+            // if (currentTimeEntry.date === previousTimeEntry.date) { component }
+            const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
+            return (
+              <React.Fragment key={currentTimeEntry.id}>
+                {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
+                  <div className="time-entry__date-row">
+                    <span className="text--secondary">
+                      {`${dateFormatted(currentTimeEntry.date)} ${getRelativeDay(currentTimeEntry.date)}`}
+                    </span>
+
+                    <span className="text--secondary">
+                      {new Date(calculateDurationPerDay(timeEntries, currentTimeEntry.date))
+                        .toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' })}
+                    </span>
+                  </div>
+                )}
+
+                <TimeEntryDetail {...currentTimeEntry} />
+              </React.Fragment>
+            );
+          })
+        }
         </section>
       </React.Fragment>
     );
