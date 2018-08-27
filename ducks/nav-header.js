@@ -21,7 +21,7 @@ export function navHeaderReducer(state = initialState, action) {
 }
 
 // Action Creators -> To be used in Component
-export const toggleMenuVisibility = (isMenuVisible) => ({
+export const setMenuVisibility = (isMenuVisible) => ({
   type: SET_MENU_VISIBILITY,
   isMenuVisible
 });
