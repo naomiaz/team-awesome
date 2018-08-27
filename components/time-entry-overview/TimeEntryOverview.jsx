@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../../services/time-entries-api/time-entries-api';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
@@ -12,11 +11,8 @@ class TimeEntryOverview extends React.Component {
     isFormSaving: PropTypes.bool.isRequired,
     isFormVisible: PropTypes.bool.isRequired,
     onDeleteTimeEntry: PropTypes.func.isRequired,
-    onDeleteTimeEntrySuccess: PropTypes.func.isRequired,
     onRequestTimeEntries: PropTypes.func.isRequired,
-    onRequestTimeEntriesSuccess: PropTypes.func.isRequired,
     onSaveTimeEntry: PropTypes.func.isRequired,
-    onSaveTimeEntrySuccess: PropTypes.func.isRequired,
     onToggleFormVisibility: PropTypes.func.isRequired,
     timeEntries: PropTypes.arrayOf(
       PropTypes.shape({
@@ -31,21 +27,18 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { onRequestTimeEntries, onRequestTimeEntriesSuccess } = this.props;
+    const { onRequestTimeEntries } = this.props;
     onRequestTimeEntries();
-    getTimeEntries().then((timeEntries) => onRequestTimeEntriesSuccess(timeEntries));
   }
 
   onEntrySubmit = (newTimeEntry) => {
-    const { onSaveTimeEntry, onSaveTimeEntrySuccess } = this.props;
-    onSaveTimeEntry();
-    postTimeEntry(newTimeEntry).then(onSaveTimeEntrySuccess);
+    const { onSaveTimeEntry } = this.props;
+    onSaveTimeEntry(newTimeEntry);
   };
 
   onEntryDelete = (id) => {
-    const { onDeleteTimeEntry, onDeleteTimeEntrySuccess } = this.props;
-    onDeleteTimeEntry();
-    deleteTimeEntry(id).then(() => onDeleteTimeEntrySuccess(id));
+    const { onDeleteTimeEntry } = this.props;
+    onDeleteTimeEntry(id);
   };
 
   render() {
@@ -87,7 +80,10 @@ class TimeEntryOverview extends React.Component {
                   </div>
                 )}
 
-                <TimeEntryDetail {...currentTimeEntry} />
+                <TimeEntryDetail
+                  {...currentTimeEntry}
+                  onEntryDelete={this.onEntryDelete}
+                />
               </React.Fragment>
             );
           })

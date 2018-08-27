@@ -6,11 +6,8 @@ import {
   isFormSavingSelector,
   isFormVisibleSelector,
   deleteTimeEntry,
-  deleteTimeEntrySuccess,
   requestTimeEntries,
-  requestTimeEntriesSuccess,
   saveTimeEntry,
-  saveTimeEntrySuccess,
   toggleFormVisibility
 } from '../../ducks/time-entries';
 import TimeEntryOverview from './TimeEntryOverview';
@@ -25,11 +22,8 @@ const mapStateToProps = (state) => ({
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   onDeleteTimeEntry: deleteTimeEntry,
-  onDeleteTimeEntrySuccess: deleteTimeEntrySuccess,
   onRequestTimeEntries: requestTimeEntries,
-  onRequestTimeEntriesSuccess: requestTimeEntriesSuccess,
   onSaveTimeEntry: saveTimeEntry,
-  onSaveTimeEntrySuccess: saveTimeEntrySuccess,
   onToggleFormVisibility: toggleFormVisibility
 }, dispatch);
 
