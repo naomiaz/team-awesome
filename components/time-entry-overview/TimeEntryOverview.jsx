@@ -81,7 +81,8 @@ class TimeEntryOverview extends React.Component {
                     </span>
 
                     <span className="text--secondary">
-                      {new Date(calculateDurationPerDay(timeEntries, currentTimeEntry.date)).toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' })}
+                      {new Date(calculateDurationPerDay(timeEntries, currentTimeEntry.date))
+                        .toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' })}
                     </span>
                   </div>
                 )}

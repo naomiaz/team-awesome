@@ -5,7 +5,7 @@ const SAVE_TIME_ENTRY = 'SAVE_TIME_ENTRY';
 const SAVE_TIME_ENTRY_SUCCESS = 'SAVE_TIME_ENTRY_SUCESS';
 const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
 const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
-const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
+const SET_FORM_VISIBILITY = 'SET_FORM_VISIBILITY';
 
 // State Selectors -> To be imported in Container Component
 export const getTimeEntriesSelector = (state) => state.timeEntries.items;
@@ -40,7 +40,7 @@ export function timeEntriesReducer(state = initialState, action) {
       return { ...state, isFormSaving: true };
     case SAVE_TIME_ENTRY_SUCCESS:
       return { ...state, isFormSaving: false, items: [action.newTimeEntry, ...state.items] };
-    case TOGGLE_FORM_VISIBILITY:
+    case SET_FORM_VISIBILITY:
       return { ...state, isFormVisible: action.isFormVisible };
     default:
       return state;
@@ -48,25 +48,25 @@ export function timeEntriesReducer(state = initialState, action) {
 }
 
 // Action Creators -> To be used in Component
-export const onToggleFormVisibility = (isFormVisible) => ({
-  type: TOGGLE_FORM_VISIBILITY,
+export const toggleFormVisibility = (isFormVisible) => ({
+  type: SET_FORM_VISIBILITY,
   isFormVisible
 });
 
-export const onDeleteTimeEntry = () => ({ type: DELETE_TIME_ENTRY });
-export const onDeleteTimeEntrySuccess = (id) => ({
+export const deleteTimeEntry = () => ({ type: DELETE_TIME_ENTRY });
+export const deleteTimeEntrySuccess = (id) => ({
   type: DELETE_TIME_ENTRY_SUCCESS,
   id
 });
 
-export const onRequestTimeEntries = () => ({ type: REQUEST_TIME_ENTRIES });
-export const onRequestTimeEntriesSuccess = (timeEntries) => ({
+export const requestTimeEntries = () => ({ type: REQUEST_TIME_ENTRIES });
+export const requestTimeEntriesSuccess = (timeEntries) => ({
   type: REQUEST_TIME_ENTRIES_SUCCESS,
   timeEntries
 });
 
-export const onSaveTimeEntry = () => ({ type: SAVE_TIME_ENTRY });
-export const onSaveTimeEntrySuccess = (newTimeEntry) => ({
+export const saveTimeEntry = () => ({ type: SAVE_TIME_ENTRY });
+export const saveTimeEntrySuccess = (newTimeEntry) => ({
   type: SAVE_TIME_ENTRY_SUCCESS,
   newTimeEntry
 });

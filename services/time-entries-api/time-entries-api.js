@@ -1,4 +1,3 @@
-// const endpointGet = 'http://localhost:3001/api/time-entries/?_sort=id&_order=desc';
 const endpoint = 'http://localhost:3001/api/time-entries';
 
 export const getTimeEntries = () => fetch(endpoint)

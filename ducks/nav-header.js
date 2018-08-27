@@ -1,5 +1,5 @@
 // Actions
-const TOGGLE_MENU_VISIBILITY = 'TOGGLE_MENU_VISIBILITY';
+const SET_MENU_VISIBILITY = 'SET_MENU_VISIBILITY';
 
 // State Selectors -> To be imported in Container Component
 export const isMenuVisibleSelector = (state) => state.navHeader.isMenuVisible;
@@ -13,7 +13,7 @@ export const initialState = {
 // Action Reducers
 export function navHeaderReducer(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_MENU_VISIBILITY:
+    case SET_MENU_VISIBILITY:
       return { ...state, isMenuVisible: action.isMenuVisible };
     default:
       return state;
@@ -21,7 +21,7 @@ export function navHeaderReducer(state = initialState, action) {
 }
 
 // Action Creators -> To be used in Component
-export const onToggleMenuVisibility = (isMenuVisible) => ({
-  type: TOGGLE_MENU_VISIBILITY,
+export const toggleMenuVisibility = (isMenuVisible) => ({
+  type: SET_MENU_VISIBILITY,
   isMenuVisible
 });

@@ -17,10 +17,9 @@ export const getRelativeDay = (dateOfEntry) => {
 export const calculateDuration = (timeFrom, timeTo) => {
   const timeDifference = (Date.parse(timeTo) - Date.parse(timeFrom));
   return timeDifference - 3600000;
-  // return new Date(timeDifference - 3600000).toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' });
 };
 
-export const calculateDurationPerDay = (array, date) => (array
+export const calculateDurationPerDay = (timeEntries, date) => (timeEntries
   .filter((timeEntry) => (timeEntry.date === date))
   .reduce((accumulator, timeEntry) => accumulator
     + (Date.parse(timeEntry.timeTo) - Date.parse(timeEntry.timeFrom)), 0)
