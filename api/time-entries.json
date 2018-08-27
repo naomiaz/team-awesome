@@ -1,132 +1,12 @@
 {
   "time-entries": [
     {
-      "date": "2018-08-20",
-      "id": 7,
-      "client": "Apple",
-      "activity": "Food",
-      "timeFrom": "2018-08-20T08:00:00.000Z",
-      "timeTo": "2018-08-20T12:30:00.000Z"
-    },
-    {
-      "date": "2018-08-19",
-      "id": 6,
-      "client": "Foodora",
-      "activity": "Food",
-      "timeFrom": "2018-08-19T08:00:00.000Z",
-      "timeTo": "2018-08-19T12:00:00.000Z"
-    },
-    {
-      "date": "2018-08-14",
-      "id": 5,
       "client": "Port of Rotterdam",
-      "activity": "Design",
-      "timeFrom": "2018-08-14T09:00:00.000Z",
-      "timeTo": "2018-08-14T14:00:00.000Z"
-    },
-    {
-      "date": "2018-08-14",
-      "id": 4,
-      "client": "AH",
-      "activity": "Design",
-      "timeFrom": "2018-08-14T14:00:00.000Z",
-      "timeTo": "2018-08-14T16:00:00.000Z"
-    },
-    {
-      "date": "2018-08-13",
-      "id": 3,
-      "client": "Netflix",
-      "activity": "Watching TV",
-      "timeFrom": "2018-08-13T08:00:00.000Z",
-      "timeTo": "2018-08-13T10:00:00.000Z"
-    },
-    {
-      "date": "2018-08-13",
-      "id": 2,
-      "client": "Gemeente",
-      "activity": "Bla",
-      "timeFrom": "2018-08-13T07:00:00.000Z",
-      "timeTo": "2018-08-13T15:00:00.000Z"
-    },
-    {
-      "date": "2018-08-13",
-      "id": 1,
-      "client": "Humanoids",
-      "activity": "Yoga",
-      "timeFrom": "2018-08-13T11:00:00.000Z",
-      "timeTo": "2018-08-13T15:00:00.000Z"
-    },
-    {
-      "client": "Mercedes",
-      "activity": "Saab",
-      "date": "2018-08-21",
-      "timeFrom": "2018-08-21T08:00:00.000Z",
-      "timeTo": "2018-08-21T08:30:00.000Z",
-      "id": 10
-    },
-    {
-      "client": "Audi",
       "activity": "Design",
       "date": "2018-08-22",
       "timeFrom": "2018-08-22T08:00:00.000Z",
-      "timeTo": "2018-08-22T08:30:00.000Z",
-      "id": 11
-    },
-    {
-      "client": "Audi",
-      "activity": "Audi",
-      "date": "2018-08-28",
-      "timeFrom": "2018-08-28T08:00:00.000Z",
-      "timeTo": "2018-08-28T13:04:00.000Z",
-      "id": 12
-    },
-    {
-      "client": "Saab",
-      "activity": "Mercedes",
-      "date": "2018-10-19",
-      "timeFrom": "2018-10-19T08:00:00.000Z",
-      "timeTo": "2018-10-19T16:00:00.000Z",
-      "id": 13
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "2018-12-19",
-      "timeFrom": "2018-12-19T09:00:00.000Z",
-      "timeTo": "2018-12-19T17:00:00.000Z",
-      "id": 14
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "2018-08-18",
-      "timeFrom": "2018-08-18T08:00:00.000Z",
-      "timeTo": "2018-08-18T16:00:00.000Z",
-      "id": 15
-    },
-    {
-      "client": "Saab",
-      "activity": "Saab",
-      "date": "3012-12-30",
-      "timeFrom": "3012-12-30T09:00:00.000Z",
-      "timeTo": "3012-12-30T17:00:00.000Z",
-      "id": 16
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "3012-12-30",
-      "timeFrom": "3012-12-30T09:00:00.000Z",
-      "timeTo": "3012-12-30T14:04:00.000Z",
-      "id": 17
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "2018-08-21",
-      "timeFrom": "2018-08-21T08:00:00.000Z",
-      "timeTo": "2018-08-21T16:00:00.000Z",
-      "id": 18
+      "timeTo": "2018-08-22T13:04:00.000Z",
+      "id": 2
     },
     {
       "client": "Port of Rotterdam",
@@ -134,47 +14,15 @@
       "date": "2018-08-22",
       "timeFrom": "2018-08-22T08:00:00.000Z",
       "timeTo": "2018-08-22T16:00:00.000Z",
-      "id": 19
-    },
-    {
-      "client": "Port of Rotterdam",
-      "activity": "Design",
-      "date": "2018-08-22",
-      "timeFrom": "2018-08-22T08:00:00.000Z",
-      "timeTo": "2018-08-22T13:00:00.000Z",
-      "id": 20
-    },
-    {
-      "client": "Saab",
-      "activity": "Design",
-      "date": "2018-08-21",
-      "timeFrom": "2018-08-21T08:30:00.000Z",
-      "timeTo": "2018-08-21T13:00:00.000Z",
-      "id": 21
+      "id": 7
     },
     {
       "client": "Mercedes",
       "activity": "Design",
-      "date": "2018-08-23",
-      "timeFrom": "2018-08-23T11:00:00.000Z",
-      "timeTo": "2018-08-23T12:00:00.000Z",
-      "id": 22
-    },
-    {
-      "client": "Saab",
-      "activity": "Design",
-      "date": "2018-08-24",
-      "timeFrom": "2018-08-24T12:10:00.000Z",
-      "timeTo": "2018-08-24T12:50:00.000Z",
-      "id": 23
-    },
-    {
-      "client": "Audi",
-      "activity": "Design",
-      "date": "2018-08-25",
-      "timeFrom": "2018-08-25T07:05:00.000Z",
-      "timeTo": "2018-08-25T07:25:00.000Z",
-      "id": 24
+      "date": "3012-12-30",
+      "timeFrom": "3012-12-30T09:00:00.000Z",
+      "timeTo": "3012-12-30T09:30:00.000Z",
+      "id": 8
     }
   ]
 }

@@ -56,6 +56,10 @@
     margin: 15px 0;
     padding: 10px 0;
     width: 100%;
+
+    &:disabled {
+      background-color: $color-monochrome-7;
+    }
   }
 
   &__button-new--visible {

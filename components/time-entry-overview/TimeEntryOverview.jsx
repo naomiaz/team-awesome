@@ -2,7 +2,7 @@ import React from 'react';
 
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
-import { timeEntriesGet, timeEntriesPost } from '../../services/time-entries-api/time-entries-api';
+import { timeEntriesGet, timeEntriesPost, timeEntriesDelete } from '../../services/time-entries-api/time-entries-api';
 import { getRelativeDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
@@ -16,7 +16,7 @@ class TimeEntryOverview extends React.Component {
     timeEntriesGet().then((timeEntries) => this.setState({ timeEntries }));
   }
 
-  handleEntrySubmit = (newTimeEntry) => {
+  handleEntrySubmit = (newTimeEntry) => (
     timeEntriesPost(newTimeEntry).then(() => {
       this.setState((prevState) => ({
         timeEntries: [
@@ -24,15 +24,27 @@ class TimeEntryOverview extends React.Component {
           ...prevState.timeEntries
         ]
       }));
-    });
-  }
+    })
+  )
+
+  handleEntryDelete = (id) => (
+    timeEntriesDelete(id).then(() => {
+      this.setState((prevState) => ({
+        timeEntries: [
+          ...prevState.timeEntries.filter((entry) => entry.id !== id)
+        ]
+      }));
+    })
+  );
 
   render() {
     const { timeEntries } = this.state;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
-        <TimeEntryForm handleEntrySubmit={this.handleEntrySubmit} />
+        <TimeEntryForm
+          handleEntrySubmit={this.handleEntrySubmit}
+        />
 
         <section className="row time-entry-overview">
           {timeEntries.map((currentTimeEntry, index, array) => (
@@ -50,6 +62,9 @@ class TimeEntryOverview extends React.Component {
               )}
               <TimeEntryDetail
                 client={currentTimeEntry.client}
+                date={currentTimeEntry.date}
+                handleEntryDelete={this.handleEntryDelete}
+                id={currentTimeEntry.id}
                 timeFrom={currentTimeEntry.timeFrom}
                 timeTo={currentTimeEntry.timeTo}
               />
