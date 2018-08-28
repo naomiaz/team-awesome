@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   isMenuVisibleSelector,
-  toggleMenuVisibility
+  setMenuVisibility
 } from '../../ducks/nav-header';
 import NavHeader from './NavHeader';
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  onToggleMenuVisibility: toggleMenuVisibility
+  onToggleMenuVisibility: setMenuVisibility
 }, dispatch);
 
 const NavHeaderContainer = (props) => (

@@ -8,12 +8,12 @@ const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
 class TimeEntryDetail extends React.Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
     client: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    onEntryDelete: PropTypes.func.isRequired,
     timeFrom: PropTypes.string.isRequired,
-    timeTo: PropTypes.string.isRequired,
-    onEntryDelete: PropTypes.func.isRequired
+    timeTo: PropTypes.string.isRequired
   }
 
   handleClick = () => {
