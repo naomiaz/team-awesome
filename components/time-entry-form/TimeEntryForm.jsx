@@ -7,11 +7,19 @@ import './time-entry-form.scss';
 
 class TimeEntryForm extends React.Component {
   static timeEntriesDefaultValues = {
-    client: 'Port of Rotterdam',
-    activity: 'Design',
-    date: '',
-    timeFrom: '',
-    timeTo: ''
+    timeEntry: {
+      client: 'Port of Rotterdam',
+      activity: 'Design',
+      date: '',
+      timeFrom: '',
+      timeTo: ''
+    },
+    validity: {
+      // True by default so that form doesn't show errors on page load
+      date: true,
+      timeFrom: true,
+      timeTo: true
+    }
   };
 
   static propTypes = {
@@ -21,8 +29,14 @@ class TimeEntryForm extends React.Component {
     isFormVisible: PropTypes.bool.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.formElement = React.createRef();
+  }
+
   state = {
-    timeEntry: TimeEntryForm.timeEntriesDefaultValues
+    timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry,
+    validity: TimeEntryForm.timeEntriesDefaultValues.validity
   };
 
 
@@ -30,6 +44,17 @@ class TimeEntryForm extends React.Component {
     const { onToggleFormVisibility, isFormVisible } = this.props;
     onToggleFormVisibility(!isFormVisible);
   };
+
+  handleBlur = ({ target }) => {
+    // check validity on blur
+    this.setState((prevState) => ({
+      validity: {
+        ...prevState.validity,
+        // e.g. date: true
+        [target.name]: target.validity.valid
+      }
+    }));
+  }
 
   handleChange = ({ target }) => {
     this.setState((prevState) => ({
@@ -40,32 +65,41 @@ class TimeEntryForm extends React.Component {
     }));
   }
 
+  checkFormValidation = () => (
+    // First check if the formElement exists
+    // Then loop over each formElement and check its validity -> .every() returns boolean
+    this.formElement.current
+    && Array.from(this.formElement.current.elements).every((input) => input.validity.valid)
+  )
+
   handleSubmit = (event) => {
     event.preventDefault();
-    // Deconstruct timeEntry from the state and handleEntrySubmit() from the props
+
+    if (!this.checkFormValidation()) {
+      return;
+    }
+
+
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
     const { onEntrySubmit } = this.props;
-    // Convert the dates/times to ISOStrings before sending the data back to the parent
-    const dateFormatted = convertDateToIso(date);
-    const timeFromFormatted = createIsoString(dateFormatted, convertTimeToIso(timeFrom));
-    const timeToFormatted = createIsoString(dateFormatted, convertTimeToIso(timeTo));
-    // Update the state
+    // Convert the dates/times to ISOStrings before updating the state
     const newTimeEntryFormatted = {
       ...timeEntry,
-      date: dateFormatted,
-      timeFrom: timeFromFormatted,
-      timeTo: timeToFormatted
+      date: convertDateToIso(date),
+      timeFrom: createIsoString(convertDateToIso(date), convertTimeToIso(timeFrom)),
+      timeTo: createIsoString(convertDateToIso(date), convertTimeToIso(timeTo))
     };
-    // Disable Add btn (true), save the newTimeEntry, and only after saving enable Add btn (false)
+
     onEntrySubmit(newTimeEntryFormatted);
+
     // 'Clear' inputs -> reset default values constructed in static class
-    this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues });
+    this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry });
   };
 
 
   render() {
-    const { timeEntry } = this.state;
+    const { timeEntry, validity } = this.state;
     const {
       client, activity, date, timeFrom, timeTo
     } = timeEntry;
@@ -88,6 +122,7 @@ class TimeEntryForm extends React.Component {
         <form
           className={`time-entry ${isFormVisible ? ' time-entry--visible' : ' time-entry--hidden'}`}
           onSubmit={this.handleSubmit}
+          ref={this.formElement}
         >
           <div className="time-entry-wrapper">
             <button
@@ -163,11 +198,17 @@ class TimeEntryForm extends React.Component {
               >
                 Date
                 <input
-                  className="time-entry__input"
+                  className={`
+                    time-entry__input
+                    time-entry__input--${validity.date ? 'valid' : 'invalid'}
+                  `}
                   id="date"
                   name="date"
+                  onBlur={this.handleBlur}
                   onChange={this.handleChange}
+                  pattern="(0[1-9]|[1-2][0-9]|3[0-1])[-](0[1-9]|1[0-2])[-]20[0-1][0-9]"
                   placeholder="DD-MM-YYYY"
+                  required
                   type="text"
                   value={date}
                 />
@@ -182,11 +223,17 @@ class TimeEntryForm extends React.Component {
                 >
                   From
                   <input
-                    className="time-entry__input"
+                    className={`
+                      time-entry__input
+                      time-entry__input--${validity.timeFrom ? 'valid' : 'invalid'}
+                    `}
                     id="time-from"
                     name="timeFrom"
+                    onBlur={this.handleBlur}
                     onChange={this.handleChange}
+                    pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
                     placeholder="HH.MM"
+                    required
                     type="text"
                     value={timeFrom}
                   />
@@ -199,11 +246,17 @@ class TimeEntryForm extends React.Component {
                 >
                   To
                   <input
-                    className="time-entry__input"
+                    className={`
+                      time-entry__input
+                      time-entry__input--${validity.timeTo ? 'valid' : 'invalid'}
+                    `}
                     id="time-to"
                     name="timeTo"
+                    onBlur={this.handleBlur}
                     onChange={this.handleChange}
+                    pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
                     placeholder="HH.MM"
+                    required
                     type="text"
                     value={timeTo}
                   />
@@ -213,7 +266,10 @@ class TimeEntryForm extends React.Component {
           </div>
 
           <button
-            disabled={isFormSaving}
+            // Disable the Add button if the form is saving or if the form isn't valid (false)
+            // this.checkFormValidation() is invoked each time the state updates after blurring ->
+            // It will return return true/become enabled once all items are valid
+            disabled={isFormSaving || !this.checkFormValidation()}
             className="btn time-entry__button-add"
             name="button"
             type="submit"
