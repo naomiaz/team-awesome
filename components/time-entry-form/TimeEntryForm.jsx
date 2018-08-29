@@ -79,7 +79,6 @@ class TimeEntryForm extends React.Component {
       return;
     }
 
-
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
     const { onEntrySubmit } = this.props;
