@@ -56,13 +56,6 @@ class TimeEntryForm extends React.Component {
     }));
   }
 
-  checkFormValidation = () => (
-    // First check if the formElement exists
-    // Then loop over each formElement and check its validity -> .every() returns boolean
-    this.formElement.current
-    && Array.from(this.formElement.current.elements).every((input) => input.validity.valid)
-  )
-
   handleChange = ({ target }) => {
     this.setState((prevState) => ({
       timeEntry: {
@@ -72,8 +65,20 @@ class TimeEntryForm extends React.Component {
     }));
   }
 
+  checkFormValidation = () => (
+    // First check if the formElement exists
+    // Then loop over each formElement and check its validity -> .every() returns boolean
+    this.formElement.current
+    && Array.from(this.formElement.current.elements).every((input) => input.validity.valid)
+  )
+
   handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!this.checkFormValidation()) {
+      return;
+    }
+
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
     const { onEntrySubmit } = this.props;
@@ -85,10 +90,8 @@ class TimeEntryForm extends React.Component {
       timeTo: createIsoString(convertDateToIso(date), convertTimeToIso(timeTo))
     };
 
-    // If the form validation returns true, submit new entry
-    if (this.checkFormValidation()) {
-      onEntrySubmit(newTimeEntryFormatted);
-    }
+    onEntrySubmit(newTimeEntryFormatted);
+
     // 'Clear' inputs -> reset default values constructed in static class
     this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry });
   };
@@ -204,7 +207,6 @@ class TimeEntryForm extends React.Component {
                   onChange={this.handleChange}
                   pattern="(0[1-9]|[1-2][0-9]|3[0-1])[-](0[1-9]|1[0-2])[-]20[0-1][0-9]"
                   placeholder="DD-MM-YYYY"
-                  ref={this.dateInput}
                   required
                   type="text"
                   value={date}
@@ -230,7 +232,6 @@ class TimeEntryForm extends React.Component {
                     onChange={this.handleChange}
                     pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
                     placeholder="HH.MM"
-                    ref={this.timeFromInput}
                     required
                     type="text"
                     value={timeFrom}
@@ -254,7 +255,6 @@ class TimeEntryForm extends React.Component {
                     onChange={this.handleChange}
                     pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
                     placeholder="HH.MM"
-                    ref={this.timeToInput}
                     required
                     type="text"
                     value={timeTo}
@@ -266,7 +266,7 @@ class TimeEntryForm extends React.Component {
 
           <button
             // Disable the Add button if the form is saving or if the form isn't valid (false)
-            // this.checkFormValidation() is invoke each time the state updates after blurring ->
+            // this.checkFormValidation() is invoked each time the state updates after blurring ->
             // It will return return true/become enabled once all items are valid
             disabled={isFormSaving || !this.checkFormValidation()}
             className="btn time-entry__button-add"
