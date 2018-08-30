@@ -50,7 +50,7 @@
     }
 
     &--invalid {
-      border-bottom: 1px solid $color-error;
+      border-bottom: 1px solid $color-accent-alt-10;
     }
   }
 
@@ -66,7 +66,8 @@
     width: 100%;
 
     &[disabled] {
-      background-color: $color-accent-alt-7;
+      background-color: $color-monochrome-6;
+      color: $color-monochrome-3;
     }
   }
 

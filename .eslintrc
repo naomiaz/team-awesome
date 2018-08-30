@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
+    "jest": true,
     "node": true
   },
   "parser": "babel-eslint",
@@ -9,7 +10,8 @@
   "root": true,
   "rules": {
     "comma-dangle": [ "error", "never" ],
-    "jsx-a11y/label-has-for": [ "off" ],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "arrow-parens": ["error", "always"]
   }
 }
