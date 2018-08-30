@@ -4,7 +4,13 @@ import { shallow } from 'enzyme';
 import TimeEntryForm from '../TimeEntryForm';
 
 test('is the initial state loaded in the component', () => {
-  const timeEntryForm = shallow(<TimeEntryForm />);
+  const timeEntryForm = shallow(<TimeEntryForm
+    onEntrySubmit={() => {}}
+    isFormSaving={false}
+    isFormVisible={false}
+    onToggleFormVisibility={() => {}}
+    timeEntries={[]}
+  />);
 
   expect(timeEntryForm.state()).toEqual({
     timeEntry: {
