@@ -8,7 +8,7 @@
     "dev": "next & json-server --watch api/time-entries.json",
     "lint": "eslint --ext js,jsx .",
     "start": "next start",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --watch"
   },
   "repository": {
     "type": "git",

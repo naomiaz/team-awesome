@@ -70,7 +70,7 @@ class TimeEntryOverview extends React.Component {
                 {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
                   <div className="time-entry__date-row">
                     <span className="text--secondary">
-                      {`${dateFormatted(currentTimeEntry.date)} ${getRelativeDay(currentTimeEntry.date)}`}
+                      {`${dateFormatted(currentTimeEntry.date)} ${getRelativeDay(currentTimeEntry.timeFrom)}`}
                     </span>
 
                     <span className="text--secondary">
