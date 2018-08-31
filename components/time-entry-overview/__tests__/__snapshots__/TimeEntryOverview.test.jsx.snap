@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Fragment>
+  <TimeEntryForm
+    isFormSaving={false}
+    isFormVisible={false}
+    onEntrySubmit={[Function]}
+    onToggleFormVisibility={[Function]}
+    timeEntries={
+      Array [
+        Object {
+          "activity": "Design",
+          "client": "Mercedes",
+          "date": "2018-08-27",
+          "id": 11,
+          "timeFrom": "2018-08-27T08:00:00.000Z",
+          "timeTo": "2018-08-27T12:00:00.000Z",
+        },
+      ]
+    }
+  />
+  <section
+    className="row time-entry-overview"
+  >
+    <div
+      key="11"
+    >
+      <div
+        className="time-entry__date-row"
+      >
+        <span
+          className="text--secondary"
+        >
+          Monday 08-27
+                      
+        </span>
+        <span
+          className="text--secondary"
+        >
+          04:00
+        </span>
+      </div>
+      <TimeEntryDetail
+        activity="Design"
+        client="Mercedes"
+        date="2018-08-27"
+        id={11}
+        onEntryDelete={[Function]}
+        timeFrom="2018-08-27T08:00:00.000Z"
+        timeTo="2018-08-27T12:00:00.000Z"
+      />
+    </div>
+  </section>
+</Fragment>
+`;
