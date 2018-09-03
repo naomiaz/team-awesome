@@ -53,7 +53,7 @@ class NavHeader extends React.Component {
             <li className="main-nav__item">
               <a
                 className="main-nav__link main-nav__link--active"
-                href="/timesheets"
+                href="/"
               >
                 Timesheets
               </a>
@@ -61,7 +61,7 @@ class NavHeader extends React.Component {
             <li className="main-nav__item">
               <a
                 className="main-nav__link"
-                href="/team"
+                href="/team-members"
               >
                 Team members
               </a>
@@ -92,7 +92,7 @@ class NavHeader extends React.Component {
 
         <div className="btn-wrapper">
           <button
-            className="profile-btn"
+            className="btn profile-btn"
             name="button"
             type="button"
           >
@@ -109,7 +109,7 @@ class NavHeader extends React.Component {
           </button>
 
           <button
-            className="arrow-btn"
+            className="btn arrow-btn"
             name="button"
             type="button"
           >
