@@ -10,22 +10,22 @@ class TeamMemberOverview extends React.Component {
   render() {
     return (
       <section className="team-member-overview row">
-        <div className="team-member__title-wrapper">
-          <h2 className="team-member__title">
+        <div className="team-member-overview__title-wrapper">
+          <h2 className="team-member-overview__title">
             All Humanoids
           </h2>
 
           <button
-            className="btn team-member__button-new"
+            className="btn team-member-overview__button-new"
             onClick={this.handleFormVisibility}
             type="button"
           >
-            <svg className="team-member__icon-plus" />
+            <svg className="team-member-overview__icon-plus" />
             New Humanoid
           </button>
 
-          <div className="team-member__select-container">
-            <select className="input-field team-member__select" name="sort" id="select">
+          <div className="team-member-overview__filter-container">
+            <select className="input-field team-member-overview__filter" name="sort" id="select">
               <option value="default">Sort by:</option>
               <option value="ascending">A-Z (asc)</option>
               <option value="descending">Z-A (desc)</option>
@@ -33,6 +33,7 @@ class TeamMemberOverview extends React.Component {
           </div>
         </div>
 
+        <TeamMemberDetail />
         <TeamMemberDetail />
       </section>
     );
