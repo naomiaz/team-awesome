@@ -119,7 +119,7 @@ class TimeEntryForm extends React.Component {
         </button>
 
         <form
-          className={`time-entry ${isFormVisible ? ' time-entry--visible' : ' time-entry--hidden'}`}
+          className={`time-entry ${isFormVisible ? 'time-entry--visible' : 'time-entry--hidden'}`}
           onSubmit={this.handleSubmit}
           ref={this.formElement}
         >

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="time-entry__project"
+>
+  <div
+    className="time-entry__client"
+  >
+    <p>
+      Port of Rotterdam
+    </p>
+    <button
+      className="btn time-entry__button-delete"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        className="time-entry__icon--delete"
+      />
+      Delete
+    </button>
+  </div>
+  <div
+    className="time-entry__time"
+  >
+    <p>
+      
+              14:00
+              -
+              16:00
+            
+    </p>
+    <p
+      className="time-entry__duration"
+    >
+      02:00
+    </p>
+  </div>
+</div>
+`;

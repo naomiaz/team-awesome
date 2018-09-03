@@ -66,11 +66,12 @@ class TimeEntryOverview extends React.Component {
             // if (currentTimeEntry.date === previousTimeEntry.date) { component }
             const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
             return (
-              <React.Fragment key={currentTimeEntry.id}>
+              <div key={currentTimeEntry.id}>
                 {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
                   <div className="time-entry__date-row">
                     <span className="text--secondary">
-                      {`${dateFormatted(currentTimeEntry.date)} ${getRelativeDay(currentTimeEntry.date)}`}
+                      {`${dateFormatted(currentTimeEntry.date)}
+                      ${getRelativeDay(currentTimeEntry.timeFrom)}`}
                     </span>
 
                     <span className="text--secondary">
@@ -84,7 +85,7 @@ class TimeEntryOverview extends React.Component {
                   {...currentTimeEntry}
                   onEntryDelete={this.onEntryDelete}
                 />
-              </React.Fragment>
+              </div>
             );
           })
         }
