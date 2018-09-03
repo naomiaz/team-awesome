@@ -1,89 +1,111 @@
 @import "../../shared/styles/main";
 
-.team-member__row {
+.team-member-item {
   align-items: center;
   border: 1px solid $color-monochrome-6;
   border-left: 4px solid $color-primary;
   border-radius: $border-radius-primary;
   margin-bottom: 20px;
 
-  .team-member {
-    // MAIN WRAPPER
-    &-main-wrapper {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      padding: 20px;
-      width: 100%;
-    }
+  // MAIN WRAPPER
+  &__main-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+  }
 
-    &-primary-wrapper {
+  &__primary-wrapper {
+    display: flex;
+    flex-flow: row;
+  }
+
+  &__secondary-wrapper {
+    display: none;
+
+    @include tablet {
       display: flex;
       flex-flow: row;
-    }
-
-    &-secondary-wrapper {
-      display: none;
-
-      @include tablet {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        margin-left: auto;
-        width: 450px;
-      }
-    }
-
-    // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
-    &-detail-wrapper--visible {
-      display: flex;
-      flex-flow: column;
-      margin-bottom: 20px;
-      width: 100%;
-
-      .team-member__detail-title {
-        background-color: $color-monochrome-2;
-        border-bottom: 1px solid $color-monochrome-6;
-        border-top: 1px solid $color-monochrome-6;
-        color: $color-text-secondary;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 10px 30px;
-      }
-
-      .team-member__employer-info {
-        padding: 20px 20px 0;
-      }
-    }
-
-    &-detail-wrapper--hidden {
-      display: none;
-    }
-
-    // GENERAL STYLES
-    &__avatar {
-      border-radius: 50%;
-      height: 50px;
-      margin-right: 25px;
-      width: 50px;
-    }
-
-    &__text--primary {
-      color: $color-text-primary;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    &__text--secondary {
-      color: $color-text-secondary;
-      font-size: 14px;
+      justify-content: space-between;
+      margin-left: auto;
+      width: 450px;
     }
   }
 
-  .caret-btn {
-    background-color: transparent;
-    border: none;
-    display: inherit;
-    margin-left: 50px;
+  // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
+  &__detail-wrapper--visible {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .team-member-item__detail-title {
+      background-color: $color-monochrome-2;
+      border-bottom: 1px solid $color-monochrome-6;
+      border-top: 1px solid $color-monochrome-6;
+      color: $color-text-secondary;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 30px;
+    }
+
+    .team-member-item__employer-info {
+      padding: 20px 20px 0;
+    }
+  }
+
+  &__detail-wrapper--hidden {
+    display: none;
+  }
+
+  // GENERAL STYLES
+  &__avatar {
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 25px;
+    width: 50px;
+  }
+
+  &__text--primary {
+    color: $color-text-primary;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__text--secondary {
+    color: $color-text-secondary;
+    font-size: 14px;
+  }
+}
+
+.caret-btn {
+  background-color: transparent;
+  border: none;
+  display: inherit;
+  margin-left: 50px;
+
+  .team-member-item__icon-caret {
+    -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
+    -webkit-mask-size: 10px 7px;
+    background-color: $color-monochrome-4;
+    border-style: none;
+    border-width: 0;
+    height: 10px;
+    position: relative;
+    transition: transform 0.2s;
+    width: 10px;
+
+    &--up {
+      -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
+      -webkit-mask-size: 10px 7px;
+      background-color: $color-monochrome-4;
+      border-style: none;
+      border-width: 0;
+      height: 10px;
+      position: relative;
+      transform: rotate(180deg);
+      width: 10px;
+    }
   }
 }
