@@ -26,6 +26,17 @@ body {
 
 .btn {
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input,
+select {
+  &:focus {
+    outline: none;
+  }
 }
 
 // --------------------------

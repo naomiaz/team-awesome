@@ -86,25 +86,24 @@
   margin-left: 50px;
 
   .team-member-item__icon-caret {
-    -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
-    -webkit-mask-size: 10px 7px;
-    background-color: $color-monochrome-4;
-    border-style: none;
-    border-width: 0;
-    height: 10px;
-    position: relative;
-    transition: transform 0.2s;
-    width: 10px;
+    &--down {
+      -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
+      -webkit-mask-size: 10px 7px;
+      background-color: $color-monochrome-4;
+      height: 10px;
+      transform: rotate(0deg);
+      transition: transform .2s linear;
+      width: 10px;
+    }
 
     &--up {
       -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
       -webkit-mask-size: 10px 7px;
       background-color: $color-monochrome-4;
-      border-style: none;
-      border-width: 0;
       height: 10px;
-      position: relative;
       transform: rotate(180deg);
+      transition: transform .2s linear;
+
       width: 10px;
     }
   }

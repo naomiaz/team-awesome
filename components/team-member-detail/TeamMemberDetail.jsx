@@ -75,7 +75,7 @@ class TimeEntryDetail extends React.Component {
             onClick={this.toggleDetailWrapper}
             type="button"
           >
-            <svg className={`team-member-item__icon-caret${isDetailWrapperVisible ? '--up' : ''}`} />
+            <svg className={`team-member-item__icon-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
           </button>
         </div>
 
