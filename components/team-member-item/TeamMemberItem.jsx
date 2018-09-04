@@ -83,21 +83,23 @@ class TeamMemberItem extends React.Component {
           <div className="team-member-item__detail-title">
             Detailed information about Naomi
           </div>
-          <div className="team-member-item__employer-info">
-            <p className="team-member-item__text--primary">
-              Hike One
-            </p>
-            <p className="team-member-item__text--secondary">
-              Current employer
-            </p>
-          </div>
-          <div className="team-member-item__employer-info">
-            <p className="team-member-item__text--primary">
-              February 2018
-            </p>
-            <p className="team-member-item__text--secondary">
-              Starting date
-            </p>
+          <div className="team-member-item__detail-content">
+            <div className="team-member-item__detail-employer-info">
+              <p className="team-member-item__text--primary">
+                Hike One
+              </p>
+              <p className="team-member-item__text--secondary">
+                Current employer
+              </p>
+            </div>
+            <div className="team-member-item__detail-employer-info">
+              <p className="team-member-item__text--primary">
+                February 2018
+              </p>
+              <p className="team-member-item__text--secondary">
+                Starting date
+              </p>
+            </div>
           </div>
         </div>
       </div>
