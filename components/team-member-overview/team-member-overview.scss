@@ -1,0 +1,65 @@
+@import "../../shared/styles/main";
+
+.team-member-overview {
+  margin: 30px 0;
+
+  &__title-wrapper {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  &__title {
+    display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+    }
+  }
+
+  &__button-new {
+    background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
+    border: 1px solid $color-accent-alt-6;
+    color: $color-monochrome-1;
+    display: block;
+    font-weight: 400;
+    height: 39px;
+    width: 100%;
+
+    @include tablet {
+      margin-left: auto;
+      width: 155px;
+    }
+  }
+
+  &__icon-plus {
+    -webkit-mask: url("/static/icons/plus.svg") no-repeat;
+    -webkit-mask-size: 10px 10px;
+    background-color: $color-accent-alt-7;
+    border-style: none;
+    border-width: 0;
+    height: 10px;
+    margin-right: 15px;
+    position: relative;
+    width: 10px;
+  }
+
+  &__filter {
+    display: none;
+
+    @include tablet {
+      background-color: transparent;
+      border: 1px solid $color-monochrome-6;
+      color: $color-monochrome-3;
+      display: block;
+      height: 39px;
+      margin-left: 12px;
+      position: relative;
+      width: 120px;
+    }
+  }
+}

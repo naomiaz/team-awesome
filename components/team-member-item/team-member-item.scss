@@ -1,0 +1,109 @@
+@import "../../shared/styles/main";
+
+.team-member-item {
+  align-items: center;
+  border: 1px solid $color-monochrome-6;
+  border-left: 4px solid $color-primary;
+  border-radius: $border-radius-primary;
+  margin-bottom: 20px;
+
+  // MAIN WRAPPER
+  &__main-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+  }
+
+  &__primary-wrapper {
+    display: flex;
+    flex-flow: row;
+  }
+
+  &__secondary-wrapper {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      margin-left: auto;
+      width: 450px;
+    }
+  }
+
+  // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
+  &__detail-wrapper {
+    &--visible {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__detail-title {
+    background-color: $color-monochrome-2;
+    border-bottom: 1px solid $color-monochrome-6;
+    border-top: 1px solid $color-monochrome-6;
+    color: $color-text-secondary;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 30px;
+  }
+
+  &__detail-content {
+    padding: 16px 20px;
+  }
+
+  &__detail-employer-info {
+    padding: 0 0 10px;
+  }
+
+  // GENERAL STYLES
+  &__avatar {
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 25px;
+    width: 50px;
+  }
+
+  &__text--primary {
+    color: $color-text-primary;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__text--secondary {
+    color: $color-text-secondary;
+    font-size: 14px;
+  }
+}
+
+.caret-btn {
+  background-color: transparent;
+  border: none;
+  display: inherit;
+  margin-left: 50px;
+
+  .team-member-item__icon-caret {
+    -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
+    -webkit-mask-size: 10px 7px;
+    background-color: $color-monochrome-4;
+    height: 10px;
+    width: 10px;
+
+    &--down {
+      transition: transform .3s;
+    }
+
+    &--up {
+      transform: rotate(180deg);
+      transition: transform .3s;
+    }
+  }
+}
