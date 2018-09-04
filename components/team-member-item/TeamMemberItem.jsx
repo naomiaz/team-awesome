@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './team-member-detail.scss';
+import './team-member-item.scss';
 
-class TimeEntryDetail extends React.Component {
+class TeamMemberItem extends React.Component {
   static propTypes = {
   }
 
@@ -12,7 +12,6 @@ class TimeEntryDetail extends React.Component {
 
   toggleDetailWrapper = () => {
     this.setState((prevState) => ({
-      ...prevState,
       isDetailWrapperVisible: !prevState.isDetailWrapperVisible
     }));
   };
@@ -26,7 +25,7 @@ class TimeEntryDetail extends React.Component {
           {/* PERSONALIA */}
           <div className="team-member-item__primary-wrapper">
             <img
-              alt=""
+              alt="Naomi Zuiverloon"
               className="team-member-item__avatar"
               src="../../static/images/avatar-naomi.jpg"
             />
@@ -106,4 +105,4 @@ class TimeEntryDetail extends React.Component {
   }
 }
 
-export default TimeEntryDetail;
+export default TeamMemberItem;

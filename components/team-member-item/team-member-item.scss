@@ -34,29 +34,31 @@
   }
 
   // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
-  &__detail-wrapper--visible {
-    display: flex;
-    flex-flow: column;
-    margin-bottom: 20px;
-    width: 100%;
+  &__detail-wrapper {
+    &--visible {
+      display: flex;
+      flex-flow: column;
+      margin-bottom: 20px;
+      width: 100%;
 
-    .team-member-item__detail-title {
-      background-color: $color-monochrome-2;
-      border-bottom: 1px solid $color-monochrome-6;
-      border-top: 1px solid $color-monochrome-6;
-      color: $color-text-secondary;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 10px 30px;
+      .team-member-item__detail-title {
+        background-color: $color-monochrome-2;
+        border-bottom: 1px solid $color-monochrome-6;
+        border-top: 1px solid $color-monochrome-6;
+        color: $color-text-secondary;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 30px;
+      }
+
+      .team-member-item__employer-info {
+        padding: 16px 20px 0;
+      }
     }
 
-    .team-member-item__employer-info {
-      padding: 20px 20px 0;
+    &--hidden {
+      display: none;
     }
-  }
-
-  &__detail-wrapper--hidden {
-    display: none;
   }
 
   // GENERAL STYLES

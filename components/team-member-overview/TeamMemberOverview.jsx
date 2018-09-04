@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamMemberDetail from '../team-member-detail/TeamMemberDetail';
+import TeamMemberItem from '../team-member-item/TeamMemberItem';
 
 import './team-member-overview.scss';
 
@@ -24,17 +24,15 @@ class TeamMemberOverview extends React.Component {
             New Humanoid
           </button>
 
-          <div className="team-member-overview__filter-container">
-            <select className="input-field team-member-overview__filter" name="sort" id="select">
-              <option value="default">Sort by:</option>
-              <option value="ascending">A-Z (asc)</option>
-              <option value="descending">Z-A (desc)</option>
-            </select>
-          </div>
+          <select className="input-field team-member-overview__filter" name="sort" id="select">
+            <option value="default">Sort by:</option>
+            <option value="ascending">A-Z (asc)</option>
+            <option value="descending">Z-A (desc)</option>
+          </select>
         </div>
 
-        <TeamMemberDetail />
-        <TeamMemberDetail />
+        <TeamMemberItem />
+        <TeamMemberItem />
       </section>
     );
   }

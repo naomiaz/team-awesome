@@ -24,14 +24,11 @@ body {
   font-weight: 600;
 }
 
-.btn {
+button {
   cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
 }
 
+button,
 input,
 select {
   &:focus {

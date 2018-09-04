@@ -13,6 +13,12 @@
 
   &__title {
     display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+    }
   }
 
   &__button-new {
@@ -23,6 +29,11 @@
     font-weight: 400;
     height: 39px;
     width: 100%;
+
+    @include tablet {
+      margin-left: auto;
+      width: 155px;
+    }
   }
 
   &__icon-plus {
@@ -37,35 +48,18 @@
     width: 10px;
   }
 
-  &__filter-container {
+  &__filter {
     display: none;
-  }
 
-  @include tablet {
-    &__title {
-      display: block;
-      font-size: 24px;
-      font-weight: $font-weight-light;
-    }
-
-    &__button-new {
-      margin-left: auto;
-      width: 155px;
-    }
-
-    &__filter-container {
-      display: block;
-      margin-left: 12px;
-      position: relative;
-    }
-
-    &__filter {
+    @include tablet {
       background-color: transparent;
       border: 1px solid $color-monochrome-6;
       color: $color-monochrome-3;
+      display: block;
       height: 39px;
+      margin-left: 12px;
+      position: relative;
       width: 120px;
     }
-    //https://www.w3schools.com/howto/howto_custom_filter.asp
   }
 }
