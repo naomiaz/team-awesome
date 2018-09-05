@@ -81,6 +81,10 @@
   &__first-column {
     font-weight: 600;
     text-align: center;
+
+    @include tablet {
+      margin: 0 15px 0 0;
+    }
   }
 
   &__avatar {
@@ -91,9 +95,14 @@
   }
 
   &__divider {
-    background: $color-monochrome-6;
-    margin-bottom: 19px;
-    width: 1px;
+    display: none;
+
+    @include tablet {
+      background: $color-monochrome-6;
+      display: block;
+      margin: 0 15px 19px;
+      width: 1px;
+    }
   }
 
   // FORM ELEMENTS
@@ -104,6 +113,11 @@
     font-weight: 500;
     padding-bottom: 19px;
     text-transform: capitalize;
+    width: 100%;
+
+    &--first {
+      margin-right: 10px;
+    }
   }
 
   &__input {
@@ -175,9 +189,7 @@
   }
 
   &__first-name,
-  &__last-name,
-  &__zip,
-  &__city {
-    flex-basis: 49%;
+  &__zip {
+    margin-right: 10px;
   }
 }

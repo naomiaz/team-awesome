@@ -32,7 +32,7 @@ const PageHeader = ({ pageTitle, unitCount, unit }) => (
         >
           <img
             alt=""
-            src="../../static/icons/magnifying-glass.svg"
+            src="/static/icons/magnifying-glass.svg"
           />
         </button>
       </form>

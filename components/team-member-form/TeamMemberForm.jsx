@@ -53,7 +53,7 @@ class TeamMemberForm extends React.Component {
                 <img
                   alt="Edit Avatar"
                   className="team-member-form__avatar"
-                  src="../../static/images/avatar-naomi.jpg"
+                  src="/static/images/avatar-naomi.jpg"
                 />
                 <p>
                   <a href="#" className="text-link">
@@ -65,74 +65,58 @@ class TeamMemberForm extends React.Component {
               {/* SECOND COLUMN */}
               <div className="team-member-form__second-column">
                 <div className="team-member-form__name">
-                  <div className="team-member-form__first-name">
-                    <label className="team-member-form__label" htmlFor="first-name">
-                      First name
-                      <input className="team-member-form__input" type="text" name="first-name" id="first-name" required />
-                    </label>
-                  </div>
-                  <div className="team-member-form__last-name">
-                    <label className="team-member-form__label" htmlFor="last-name">
-                      Last name
-                      <input className="team-member-form__input" type="text" id="last-name" name="last-name" required />
-                    </label>
-                  </div>
-                </div>
-                <div className="team-member-form__email">
-                  <label className="team-member-form__label" htmlFor="email">
-                    E-mail Address
-                    <input className="team-member-form__input" type="text" id="email" name="email" required />
+                  <label className="team-member-form__label team-member-form__label--first" htmlFor="first-name">
+                    First name
+                    <input className="team-member-form__input" type="text" name="first-name" id="first-name" required />
+                  </label>
+                  <label className="team-member-form__label team-member-form__label--first" htmlFor="last-name">
+                    Last name
+                    <input className="team-member-form__input" type="text" id="last-name" name="last-name" required />
                   </label>
                 </div>
-                <div className="team-member-form__bio">
-                  <label className="team-member-form__label" htmlFor="bio">
-                    Bio
-                    <textarea className="team-member-form__textarea" form="newmember" id="bio" name="bio" />
-                  </label>
-                </div>
+                <label className="team-member-form__label" htmlFor="email">
+                  E-mail Address
+                  <input className="team-member-form__input" type="text" id="email" name="email" required />
+                </label>
+                <label className="team-member-form__label" htmlFor="bio">
+                  Bio
+                  <textarea className="team-member-form__textarea" form="newmember" id="bio" name="bio" />
+                </label>
               </div>
 
               <div className="team-member-form__divider" />
 
               {/* LAST COLUMN */}
               <div className="team-member-form__last-column">
-                <div className="team-member-form__address">
-                  <label className="team-member-form__label" htmlFor="address">
-                    Address
-                    <input className="team-member-form__input" type="text" id="address" name="address" required />
-                  </label>
-                </div>
+                <label className="team-member-form__label" htmlFor="address">
+                  Address
+                  <input className="team-member-form__input" type="text" id="address" name="address" required />
+                </label>
                 <div className="team-member-form__zipcity">
-                  <div className="team-member-form__zip">
-                    <label className="team-member-form__label" htmlFor="zip">
-                      ZIP code
-                      <input className="team-member-form__input" type="text" name="zip" id="zip" required />
-                    </label>
-                  </div>
-                  <div className="team-member-form__city">
-                    <label className="team-member-form__label" htmlFor="city">
-                      City
-                      <input className="team-member-form__input" type="text" id="city" name="city" required />
-                    </label>
-                  </div>
-                </div>
-                <div className="team-member-form__socials">
-                  <label className="team-member-form__label">
-                    Social profiles
-                    <div className="team-member-form__twitter">
-                      <div className="team-member-form__logo-box team-member-form__logo-box--twitter">
-                        <img className="team-member-form__icon-socials" src="../../static/icons/twitter.svg" alt="Twitter" />
-                      </div>
-                      <input className="team-member-form__input team-member-form__input--twitter" type="text" id="twitter" name="twitter" />
-                    </div>
-                    <div className="team-member-form__facebook">
-                      <div className="team-member-form__logo-box team-member-form__logo-box--facebook">
-                        <img className="team-member-form__icon-socials" src="../../static/icons/facebook.svg" alt="Facebook" />
-                      </div>
-                      <input className="team-member-form__input team-member-form__input--facebook" type="text" id="facebook" name="facebook" />
-                    </div>
+                  <label className="team-member-form__label team-member-form__label--first" htmlFor="zip">
+                    ZIP code
+                    <input className="team-member-form__input" type="text" name="zip" id="zip" required />
+                  </label>
+                  <label className="team-member-form__label" htmlFor="city">
+                    City
+                    <input className="team-member-form__input" type="text" id="city" name="city" required />
                   </label>
                 </div>
+                <label className="team-member-form__label">
+                  Social profiles
+                  <div className="team-member-form__twitter">
+                    <div className="team-member-form__logo-box team-member-form__logo-box--twitter">
+                      <img className="team-member-form__icon-socials" src="/static/icons/twitter.svg" alt="Twitter" />
+                    </div>
+                    <input className="team-member-form__input team-member-form__input--twitter" type="text" id="twitter" name="twitter" />
+                  </div>
+                  <div className="team-member-form__facebook">
+                    <div className="team-member-form__logo-box team-member-form__logo-box--facebook">
+                      <img className="team-member-form__icon-socials" src="/static/icons/facebook.svg" alt="Facebook" />
+                    </div>
+                    <input className="team-member-form__input team-member-form__input--facebook" type="text" id="facebook" name="facebook" />
+                  </div>
+                </label>
               </div>
 
             </div>
