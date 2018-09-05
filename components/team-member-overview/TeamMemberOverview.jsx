@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import TeamMemberItem from '../team-member-item/TeamMemberItem';
 
@@ -6,9 +7,41 @@ import './team-member-overview.scss';
 
 class TeamMemberOverview extends React.Component {
   static propTypes = {
+    // isFormSaving: PropTypes.bool.isRequired,
+    // isFormVisible: PropTypes.bool.isRequired,
+    onDeleteTeamMember: PropTypes.func.isRequired,
+    requestTeamMembers: PropTypes.func.isRequired,
+    onSaveTeamMember: PropTypes.func.isRequired,
+    // onToggleFormVisibility: PropTypes.func.isRequired,
+    teamMembers: PropTypes.arrayOf(
+      PropTypes.shape({
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        employeeNumber: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        email: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        zip: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired,
+        biography: PropTypes.string.isRequired,
+        socialsTwitter: PropTypes.string.isRequired,
+        socialsFacebook: PropTypes.string.isRequired,
+        jobTitle: PropTypes.string.isRequired,
+        currentClient: PropTypes.string.isRequired,
+        startDate: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }
+
+  componentDidMount() {
+    const { requestTeamMembers } = this.props;
+    requestTeamMembers();
   }
 
   render() {
+    const { teamMembers } = this.props;
+
     return (
       <section className="team-member-overview row">
         <div className="team-member-overview__title-wrapper">
@@ -20,7 +53,6 @@ class TeamMemberOverview extends React.Component {
             <a className="render-whitespace--left">
               <button
                 className="btn team-member-overview__button-new"
-                onClick={this.handleFormVisibility}
                 type="button"
               >
                 <svg className="team-member-overview__icon-plus" />
@@ -36,8 +68,14 @@ class TeamMemberOverview extends React.Component {
           </select>
         </div>
 
-        <TeamMemberItem />
-        <TeamMemberItem />
+        {teamMembers.map((currentMember, index) => (
+          <TeamMemberItem
+            key={currentMember.id}
+            index={index}
+            {...currentMember}
+          />
+        ))}
+
       </section>
     );
   }

@@ -65,11 +65,11 @@ class TeamMemberForm extends React.Component {
               {/* SECOND COLUMN */}
               <div className="team-member-form__second-column">
                 <div className="team-member-form__name">
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="first-name">
+                  <label className="team-member-form__label team-member-form__label--half" htmlFor="first-name">
                     First name
                     <input className="team-member-form__input" type="text" name="first-name" id="first-name" required />
                   </label>
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="last-name">
+                  <label className="team-member-form__label" htmlFor="last-name">
                     Last name
                     <input className="team-member-form__input" type="text" id="last-name" name="last-name" required />
                   </label>
@@ -93,7 +93,7 @@ class TeamMemberForm extends React.Component {
                   <input className="team-member-form__input" type="text" id="address" name="address" required />
                 </label>
                 <div className="team-member-form__zipcity">
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="zip">
+                  <label className="team-member-form__label team-member-form__label--half" htmlFor="zip">
                     ZIP code
                     <input className="team-member-form__input" type="text" name="zip" id="zip" required />
                   </label>
