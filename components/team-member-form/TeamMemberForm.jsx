@@ -37,7 +37,7 @@ class TeamMemberForm extends React.Component {
           </div>
 
           {/* FORM */}
-          <div className="team-member-form__tab-form-container">
+          <div className="team-member-form__container">
             {/* TABS */}
             <div className="team-member-form__tab-row">
               <div className="team-member-form__tab">
@@ -55,7 +55,11 @@ class TeamMemberForm extends React.Component {
                   className="team-member-form__avatar"
                   src="../../static/images/avatar-naomi.jpg"
                 />
-                <p>Edit Avatar</p>
+                <p>
+                  <a href="#" className="text-link">
+                    Edit Avatar
+                  </a>
+                </p>
               </div>
 
               {/* SECOND COLUMN */}
@@ -64,20 +68,20 @@ class TeamMemberForm extends React.Component {
                   <div className="team-member-form__first-name">
                     <label className="team-member-form__label" htmlFor="first-name">
                       First name
-                      <input className="team-member-form__input" type="text" name="first-name" id="first-name" />
+                      <input className="team-member-form__input" type="text" name="first-name" id="first-name" required />
                     </label>
                   </div>
                   <div className="team-member-form__last-name">
                     <label className="team-member-form__label" htmlFor="last-name">
                       Last name
-                      <input className="team-member-form__input" type="text" id="last-name" name="last-name" />
+                      <input className="team-member-form__input" type="text" id="last-name" name="last-name" required />
                     </label>
                   </div>
                 </div>
                 <div className="team-member-form__email">
                   <label className="team-member-form__label" htmlFor="email">
                     E-mail Address
-                    <input className="team-member-form__input" type="text" id="email" name="email" />
+                    <input className="team-member-form__input" type="text" id="email" name="email" required />
                   </label>
                 </div>
                 <div className="team-member-form__bio">
@@ -95,20 +99,20 @@ class TeamMemberForm extends React.Component {
                 <div className="team-member-form__address">
                   <label className="team-member-form__label" htmlFor="address">
                     Address
-                    <input className="team-member-form__input" type="text" id="address" name="address" />
+                    <input className="team-member-form__input" type="text" id="address" name="address" required />
                   </label>
                 </div>
                 <div className="team-member-form__zipcity">
                   <div className="team-member-form__zip">
                     <label className="team-member-form__label" htmlFor="zip">
                       ZIP code
-                      <input className="team-member-form__input" type="text" name="zip" id="zip" />
+                      <input className="team-member-form__input" type="text" name="zip" id="zip" required />
                     </label>
                   </div>
                   <div className="team-member-form__city">
                     <label className="team-member-form__label" htmlFor="city">
                       City
-                      <input className="team-member-form__input" type="text" id="city" name="city" />
+                      <input className="team-member-form__input" type="text" id="city" name="city" required />
                     </label>
                   </div>
                 </div>

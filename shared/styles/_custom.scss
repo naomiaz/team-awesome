@@ -54,6 +54,10 @@ textarea {
   }
 }
 
+// --------------------------
+// LINK STYLES
+// --------------------------
+
 a {
   &:link,
   &:visited,
@@ -61,4 +65,9 @@ a {
   &:active {
     text-decoration: none;
   }
+}
+
+.text-link {
+  color: $color-monochrome-7;
+  font-weight: 500;
 }
