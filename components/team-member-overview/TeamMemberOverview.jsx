@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import TeamMemberItem from '../team-member-item/TeamMemberItem';
 
 import './team-member-overview.scss';
@@ -15,14 +16,18 @@ class TeamMemberOverview extends React.Component {
             All Humanoids
           </h2>
 
-          <button
-            className="btn team-member-overview__button-new"
-            onClick={this.handleFormVisibility}
-            type="button"
-          >
-            <svg className="team-member-overview__icon-plus" />
-            New Humanoid
-          </button>
+          <Link href="/add-new-team-member">
+            <a className="render-whitespace--left">
+              <button
+                className="btn team-member-overview__button-new"
+                onClick={this.handleFormVisibility}
+                type="button"
+              >
+                <svg className="team-member-overview__icon-plus" />
+                New Humanoid
+              </button>
+            </a>
+          </Link>
 
           <select className="input-field team-member-overview__filter" name="sort" id="select">
             <option value="default">Sort by:</option>

@@ -99,12 +99,12 @@ class NavHeader extends React.Component {
             <img
               alt="Humanoids"
               className="profile-btn__img--logo"
-              src="../../static/images/logo-humanoids.png"
+              src="/static/images/logo-humanoids.png"
             />
             <img
               alt=""
               className="profile-btn__img--user"
-              src="../../static/images/avatar-naomi.jpg"
+              src="/static/images/avatar-naomi.jpg"
             />
           </button>
 
@@ -115,7 +115,7 @@ class NavHeader extends React.Component {
           >
             <img
               alt=""
-              src="../../static/icons/arrow-down.svg"
+              src="/static/icons/arrow-down.svg"
             />
           </button>
         </div>

@@ -27,7 +27,7 @@ class TeamMemberItem extends React.Component {
             <img
               alt="Naomi Zuiverloon"
               className="team-member-item__avatar"
-              src="../../static/images/avatar-naomi.jpg"
+              src="/static/images/avatar-naomi.jpg"
             />
             <div className="team-member-item__personalia">
               <p className="team-member-item__text--primary">
