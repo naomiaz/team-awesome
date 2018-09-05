@@ -17,7 +17,7 @@ class TeamMemberOverview extends React.Component {
           </h2>
 
           <Link href="/add-new-team-member">
-            <a>
+            <a className="render-whitespace--left">
               <button
                 className="btn team-member-overview__button-new"
                 onClick={this.handleFormVisibility}

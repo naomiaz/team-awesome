@@ -39,7 +39,7 @@
 
   &__tab-form-container {
     border-bottom-left-radius: $border-radius-primary;
-    border-left: 4px solid $color-accent;
+    border-left: 4px solid $color-primary;
     border-top-left-radius: $border-radius-primary;
   }
 
@@ -78,7 +78,7 @@
     }
   }
 
-  &__primary-wrapper {
+  &__first-column {
     font-weight: 600;
     text-align: center;
   }
@@ -114,7 +114,7 @@
     font-weight: 500;
     height: 36px;
     margin-top: 7px;
-    padding: 0 13px;
+    padding: 0 15px;
     width: 100%;
 
     &--twitter,

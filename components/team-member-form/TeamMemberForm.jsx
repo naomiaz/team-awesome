@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import './team-member-form.scss';
 
@@ -16,13 +17,16 @@ class TeamMemberForm extends React.Component {
               Add new team member
             </h2>
 
-            <button
-              className="btn team-member-form__button team-member-form__button--cancel"
-              onClick={this.handleFormVisibility}
-              type="button"
-            >
-              Cancel
-            </button>
+            <Link href="/team-members">
+              <a className="render-whitespace--left">
+                <button
+                  className="btn team-member-form__button team-member-form__button--cancel"
+                  type="button"
+                >
+                  Cancel
+                </button>
+              </a>
+            </Link>
             <button
               className="btn team-member-form__button team-member-form__button--save"
               onClick={this.handleFormVisibility}
@@ -44,8 +48,8 @@ class TeamMemberForm extends React.Component {
             {/* FORM CONTAINER */}
             <div className="team-member-form__form-container">
 
-              {/* PRIMARY WRAPPER */}
-              <div className="team-member-form__primary-wrapper">
+              {/* FIRST COLUMN */}
+              <div className="team-member-form__first-column">
                 <img
                   alt="Edit Avatar"
                   className="team-member-form__avatar"
@@ -54,8 +58,8 @@ class TeamMemberForm extends React.Component {
                 <p>Edit Avatar</p>
               </div>
 
-              {/* SECONDARY WRAPPER */}
-              <div className="team-member-form__secondary-wrapper">
+              {/* SECOND COLUMN */}
+              <div className="team-member-form__second-column">
                 <div className="team-member-form__name">
                   <div className="team-member-form__first-name">
                     <label className="team-member-form__label" htmlFor="first-name">
@@ -86,8 +90,8 @@ class TeamMemberForm extends React.Component {
 
               <div className="team-member-form__divider" />
 
-              {/* TERTIARY WRAPPER */}
-              <div className="team-member-form__tertiary-wrapper">
+              {/* LAST COLUMN */}
+              <div className="team-member-form__last-column">
                 <div className="team-member-form__address">
                   <label className="team-member-form__label" htmlFor="address">
                     Address

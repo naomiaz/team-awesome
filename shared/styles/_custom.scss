@@ -4,16 +4,18 @@
 
 body {
   padding-top: 52px;
+
+  @include tablet {
+    padding: 0;
+  }
 }
 
 .row {
   padding: 0 16px;
-}
 
-@include tablet {
-  body { padding: 0; }
-
-  .row { padding: 0 12%; }
+  @include tablet {
+    padding: 0 200px;
+  }
 }
 
 .btn,
@@ -44,4 +46,19 @@ textarea {
 .text--secondary {
   color: $color-monochrome-4;
   font-weight: 400;
+}
+
+.render-whitespace {
+  &--left {
+    margin-left: auto;
+  }
+}
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
 }
