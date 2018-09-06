@@ -7,12 +7,8 @@ import './team-member-overview.scss';
 
 class TeamMemberOverview extends React.Component {
   static propTypes = {
-    // isFormSaving: PropTypes.bool.isRequired,
-    // isFormVisible: PropTypes.bool.isRequired,
-    onDeleteTeamMember: PropTypes.func.isRequired,
-    requestTeamMembers: PropTypes.func.isRequired,
+    onRequestTeamMembers: PropTypes.func.isRequired,
     onSaveTeamMember: PropTypes.func.isRequired,
-    // onToggleFormVisibility: PropTypes.func.isRequired,
     teamMembers: PropTypes.arrayOf(
       PropTypes.shape({
         firstName: PropTypes.string.isRequired,
@@ -35,8 +31,8 @@ class TeamMemberOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { requestTeamMembers } = this.props;
-    requestTeamMembers();
+    const { onRequestTeamMembers } = this.props;
+    onRequestTeamMembers();
   }
 
   render() {

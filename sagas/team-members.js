@@ -4,7 +4,6 @@ import {
   DELETE_TEAM_MEMBER,
   deleteTeamMemberSuccess,
   REQUEST_TEAM_MEMBERS,
-  REQUEST_TEAM_MEMBERS_SUCCESS,
   requestTeamMembersSuccess,
   SAVE_TEAM_MEMBER,
   saveTeamMemberSuccess
@@ -13,8 +12,7 @@ import {
 // Generator functions
 export function* requestTeamMembersGenerator() {
   const teamMembers = yield getTeamMembers();
-  yield put({ type: REQUEST_TEAM_MEMBERS_SUCCESS, teamMembers });
-  // yield put(requestTeamMembersSuccess(teamMembers));
+  yield put(requestTeamMembersSuccess(teamMembers));
 }
 
 export function* saveTeamMemberGenerator({ newTeamMember }) {

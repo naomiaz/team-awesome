@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   getTeamMembersSelector,
-  // isFormSavingSelector,
-  // isFormVisibleSelector,
-  deleteTeamMember,
   requestTeamMembers,
-  saveTeamMember,
-  toggleFormVisibility
+  saveTeamMember
 } from '../../ducks/team-members';
 import TeamMemberOverview from './TeamMemberOverview';
 
@@ -21,11 +17,8 @@ const mapStateToProps = (state) => ({
 
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  onDeleteTeamMember: deleteTeamMember,
-  // onRequestTeamMembers: requestTeamMembers,
-  requestTeamMembers,
-  onSaveTeamMember: saveTeamMember,
-  onToggleFormVisibility: toggleFormVisibility
+  onRequestTeamMembers: requestTeamMembers,
+  onSaveTeamMember: saveTeamMember
 }, dispatch);
 
 const TeamMemberOverviewContainer = (props) => (

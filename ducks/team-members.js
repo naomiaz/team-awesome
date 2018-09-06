@@ -11,7 +11,7 @@ export const DELETE_TEAM_MEMBER_SUCCESS = 'DELETE_TEAM_MEMBER_SUCCESS';
 // State Selectors -> To be imported in Container Component
 export const getTeamMembersSelector = (state) => state.teamMembers.members;
   //.sort((a, b) => (new Date(b.date) - new Date(a.date)));
-// export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
+export const isFormSavingSelector = (state) => state.teamMembers.isFormSaving;
 // export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
 
@@ -19,8 +19,7 @@ export const getTeamMembersSelector = (state) => state.teamMembers.members;
 export const initialState = {
   members: [],
   isLoading: false,
-  // isFormSaving: false,
-  // isFormVisible: false,
+  isFormSaving: false,
   error: null
 };
 
@@ -37,17 +36,13 @@ export function teamMembersReducer(state = initialState, action) {
         members: state.members.filter((member) => member.id !== action.id)
       };
     case REQUEST_TEAM_MEMBERS:
-      console.log('hello');
       return { ...state, isLoading: true };
     case REQUEST_TEAM_MEMBERS_SUCCESS:
-      console.log(action.teamMembers);
       return { ...state, isLoading: false, members: action.teamMembers };
     case SAVE_TEAM_MEMBER:
       return { ...state, isFormSaving: true };
     case SAVE_TEAM_MEMBER_SUCCESS:
       return { ...state, isFormSaving: false, members: [action.newMember, ...state.members] };
-    // case SET_FORM_VISIBILITY:
-    //   return { ...state, isFormVisible: action.isFormVisible };
     default:
       return state;
   }
@@ -55,12 +50,6 @@ export function teamMembersReducer(state = initialState, action) {
 
 
 // Action Creators -> To be called in Component (and are watched by rootSaga)
-
-// export const toggleFormVisibility = (isFormVisible) => ({
-//   type: SET_FORM_VISIBILITY,
-//   isFormVisible
-// });
-
 export const deleteTeamMember = (id) => ({
   type: DELETE_TEAM_MEMBER,
   id
@@ -71,10 +60,10 @@ export const deleteTeamMemberSuccess = (id) => ({
 });
 
 export const requestTeamMembers = () => ({ type: REQUEST_TEAM_MEMBERS });
-// export const requestTeamMembersSuccess = (teamMembers) => ({
-//   type: REQUEST_TEAM_MEMBERS_SUCCESS,
-//   teamMembers
-// });
+export const requestTeamMembersSuccess = (teamMembers) => ({
+  type: REQUEST_TEAM_MEMBERS_SUCCESS,
+  teamMembers
+});
 
 export const saveTeamMember = (newTeamMember) => ({
   type: SAVE_TEAM_MEMBER,
