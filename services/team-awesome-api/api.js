@@ -1,5 +1,7 @@
-const endpointTimeEntries = 'http://localhost:3001/api/time-entries';
-const endpointTeamMembers = 'http://localhost:3001/api/team-members';
+import environments from './environments';
+
+const endpointTimeEntries = `${environments}/time-entries`;
+const endpointTeamMembers = `${environments}/team-members`;
 
 // TIME ENTRIES
 export const getTimeEntries = () => fetch(endpointTimeEntries).then((response) => response.json());
