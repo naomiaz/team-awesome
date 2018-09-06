@@ -1,6 +1,5 @@
 import environments from './environments';
 
-
 const endpointTimeEntries = `${environments}/time-entries`;
 const endpointTeamMembers = `${environments}/team-members`;
 

@@ -8,6 +8,4 @@ const environments = {
 
 const environment = process.env.NODE_ENV === production ? production : development;
 
-// debugger;
-
 export default environments[environment];
