@@ -1,9 +1,13 @@
-const endpoint = 'http://localhost:3001/api/time-entries';
+import environments from './environments';
 
-export const getTimeEntries = () => fetch(endpoint)
+
+const endpointTimeEntries = `${environments}/time-entries`;
+const endpointTeamMembers = `${environments}/team-members`;
+
+export const getTimeEntries = () => fetch(endpointTimeEntries)
   .then((response) => response.json());
 
-export const postTimeEntry = (newTimeEntry) => fetch(endpoint, {
+export const postTimeEntry = (newTimeEntry) => fetch(endpointTimeEntries, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -11,6 +15,6 @@ export const postTimeEntry = (newTimeEntry) => fetch(endpoint, {
   body: JSON.stringify(newTimeEntry)
 }).then((response) => response.json());
 
-export const deleteTimeEntry = (id) => fetch(`${endpoint}/${id}`, {
+export const deleteTimeEntry = (id) => fetch(`${endpointTimeEntries}/${id}`, {
   method: 'DELETE'
 }).then((response) => response.json());
