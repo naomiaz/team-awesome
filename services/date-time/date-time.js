@@ -2,6 +2,7 @@ export const createIsoString = (date, time) => new Date(`${date} ${time}`).toISO
 
 export const convertDateToIso = (date) => date.split('-').reverse().join('-');
 export const convertIsoToDate = (isoString) => new Date(isoString).toLocaleDateString('nl-NL');
+export const convertIsoToMonthYear = (isoString) => new Date(isoString).toLocaleDateString('en-Us', { month: 'long', year: 'numeric' });
 
 export const convertTimeToIso = (time) => time.replace('.', ':');
 

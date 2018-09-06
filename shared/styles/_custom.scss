@@ -30,15 +30,6 @@ button {
   cursor: pointer;
 }
 
-button,
-input,
-select,
-textarea {
-  &:focus {
-    outline: none;
-  }
-}
-
 // --------------------------
 // TEXT STYLES
 // --------------------------

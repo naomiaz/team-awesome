@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { convertIsoToMonthYear } from '../../services/date-time/date-time';
 
 import './team-member-item.scss';
 
@@ -33,7 +34,13 @@ class TeamMemberItem extends React.Component {
     return (
       <div className="team-member-item" id={id}>
         {/* MAIN WRAPPER */}
-        <div className="team-member-item__main-wrapper">
+        <div
+          className="btn team-member-item__main-wrapper"
+          onClick={this.toggleDetailWrapper}
+          onKeyDown={this.toggleDetailWrapper}
+          role="button"
+          tabIndex="0"
+        >
 
           {/* PERSONALIA */}
           <div className="team-member-item__primary-wrapper">
@@ -72,7 +79,7 @@ class TeamMemberItem extends React.Component {
             </div>
             <div className="team-member-item__client-info">
               <p className="team-member-item__text--primary">
-                {startDate}
+                {convertIsoToMonthYear(startDate)}
               </p>
               <p className="team-member-item__text--secondary">
                 Starting date
@@ -81,14 +88,13 @@ class TeamMemberItem extends React.Component {
           </div>
 
           {/* CARET */}
-          <button
+          <div
             className="btn caret-btn"
-            name="button"
-            onClick={this.toggleDetailWrapper}
-            type="button"
+            // name="button"
+            // type="button"
           >
             <svg className={`team-member-item__icon-caret team-member-item__icon-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
-          </button>
+          </div>
         </div>
 
         {/* EXPANDABLE WRAPPER */}
@@ -107,7 +113,7 @@ class TeamMemberItem extends React.Component {
             </div>
             <div className="team-member-item__detail-client-info">
               <p className="team-member-item__text--primary">
-                {startDate}
+                {convertIsoToMonthYear(startDate)}
               </p>
               <p className="team-member-item__text--secondary">
                 Starting date

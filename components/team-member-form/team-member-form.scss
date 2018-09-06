@@ -27,6 +27,13 @@
       border: 1px solid $color-accent-alt-6;
       color: $color-monochrome-1;
       margin-left: 12px;
+
+      &[disabled] {
+        background-color: $color-monochrome-6;
+        background-image: none;
+        border: $color-monochrome-3;
+        color: $color-monochrome-3;
+      }
     }
 
     &--cancel {
@@ -101,7 +108,7 @@
       background: $color-monochrome-6;
       display: block;
       margin: 0 15px 19px;
-      width: 1px;
+      min-width: 1px;
     }
   }
 

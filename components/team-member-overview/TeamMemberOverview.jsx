@@ -46,15 +46,13 @@ class TeamMemberOverview extends React.Component {
           </h2>
 
           <Link href="/add-new-team-member">
-            <a className="render-whitespace--left">
-              <button
-                className="btn team-member-overview__button-new"
-                type="button"
-              >
-                <svg className="team-member-overview__icon-plus" />
-                New Humanoid
-              </button>
-            </a>
+            <button
+              className="btn team-member-overview__button-new render-whitespace--left"
+              type="button"
+            >
+              <svg className="team-member-overview__icon-plus" />
+              New Humanoid
+            </button>
           </Link>
 
           <select className="input-field team-member-overview__filter" name="sort" id="select">

@@ -11,8 +11,6 @@ import TeamMemberOverview from './TeamMemberOverview';
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
   teamMembers: getTeamMembersSelector(state)
-  // isFormSaving: isFormSavingSelector(state),
-  // isFormVisible: isFormVisibleSelector(state)
 });
 
 // Dispatch the actioncreators to props of a component

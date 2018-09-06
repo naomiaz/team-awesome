@@ -48,7 +48,7 @@
       "socialsFacebook": "",
       "jobTitle": "Front-end developer",
       "currentClient": "Humanoids",
-      "startDate": "2018-09-03",
+      "startDate": "2018-09-03T08:00:00.000Z",
       "id": 1
     },
     {
@@ -65,7 +65,7 @@
       "socialsFacebook": "beyonce",
       "jobTitle": "UX Designer",
       "currentClient": "Roc Nation",
-      "startDate": "2018-08-06",
+      "startDate": "2018-08-06T08:00:00.000Z",
       "id": 2
     },
     {
@@ -99,7 +99,7 @@
       "socialsFacebook": "Nieuwe Binnenweg 286A",
       "jobTitle": "Front-end developer",
       "currentClient": "Humanoids",
-      "startDate": "2018-09-03",
+      "startDate": "2018-09-03T08:00:00.000Z",
       "id": 4
     }
   ]

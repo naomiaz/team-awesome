@@ -9,11 +9,16 @@
 
   // MAIN WRAPPER
   &__main-wrapper {
+    cursor: pointer;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     padding: 20px;
     width: 100%;
+
+    &:hover {
+      background-color: $color-monochrome-2;
+    }
   }
 
   &__primary-wrapper {
@@ -85,9 +90,10 @@
 }
 
 .caret-btn {
+  align-items: center;
   background-color: transparent;
   border: none;
-  display: inherit;
+  display: flex;
   margin-left: 50px;
 
   .team-member-item__icon-caret {
