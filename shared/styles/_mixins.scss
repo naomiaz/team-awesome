@@ -200,3 +200,10 @@
     font-size: $heading-tertriary-size;
   }
 }
+
+@mixin input-field {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
+}
