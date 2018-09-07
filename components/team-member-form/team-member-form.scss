@@ -138,8 +138,16 @@
     padding: 0 15px;
     width: 100%;
 
-    &--twitter,
-    &--facebook {
+    &--valid {
+      border-bottom: 1px solid $color-accent-alt-5;
+    }
+
+    &--invalid {
+      border-bottom: 1px solid $color-accent-alt-10;
+    }
+
+    &-twitter,
+    &-facebook {
       border-left: none;
       border-radius: 0 $border-radius-primary $border-radius-primary 0;
       margin-top: 0;

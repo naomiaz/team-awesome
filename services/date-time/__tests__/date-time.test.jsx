@@ -3,6 +3,7 @@ import {
   calculateDurationPerDay,
   convertDateToIso,
   convertIsoToDate,
+  convertIsoToMonthYear,
   convertTimeToIso,
   createIsoString,
   getRelativeDay
@@ -16,6 +17,10 @@ test('Convert ISO string to NL date notation', () => {
   expect(convertIsoToDate('2018-10-19T08:00:00.000Z')).toEqual('2018-10-19');
 });
 
+test('Convert ISO string to EN date with month and year', () => {
+  expect(convertIsoToMonthYear('2018-10-19T08:00:00.000Z')).toEqual('October 2018');
+});
+
 test('Convert NL time notation(.) to EN time notation(:)', () => {
   expect(convertTimeToIso('10.00')).toEqual('10:00');
 });
@@ -25,7 +30,7 @@ test('Convert NL date and time notation to ISO timestamp', () => {
 });
 
 test('Return (today) or (yesterday) or nothing, based on the time entry date', () => {
-  expect(getRelativeDay('2018-08-30')).toEqual('(Today)');
+  expect(getRelativeDay('2018-09-06')).toEqual('(Today)');
 });
 
 test('Calculate the duration per entry in ms', () => {
