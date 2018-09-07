@@ -5,14 +5,12 @@ export const SAVE_TEAM_MEMBER = 'SAVE_TEAM_MEMBER';
 export const SAVE_TEAM_MEMBER_SUCCESS = 'SAVE_TEAM_MEMBER_SUCESS';
 export const DELETE_TEAM_MEMBER = 'DELETE_TEAM_MEMBER';
 export const DELETE_TEAM_MEMBER_SUCCESS = 'DELETE_TEAM_MEMBER_SUCCESS';
-// export const SET_FORM_VISIBILITY = 'SET_FORM_VISIBILITY';
 
 
 // State Selectors -> To be imported in Container Component
 export const getTeamMembersSelector = (state) => state.teamMembers.members;
-  //.sort((a, b) => (new Date(b.date) - new Date(a.date)));
+// .sort((a, b) => (new Date(b.date) - new Date(a.date)));
 export const isFormSavingSelector = (state) => state.teamMembers.isFormSaving;
-// export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
 
 // Initial State
