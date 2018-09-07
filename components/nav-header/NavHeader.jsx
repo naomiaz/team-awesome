@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProfileButton from '../profile-button/ProfileButton';
 
 import './nav-header.scss';
 
@@ -90,35 +91,7 @@ class NavHeader extends React.Component {
           </ul>
         </nav>
 
-        <div className="btn-wrapper">
-          <button
-            className="btn profile-btn"
-            name="button"
-            type="button"
-          >
-            <img
-              alt="Humanoids"
-              className="profile-btn__img--logo"
-              src="/static/images/logo-humanoids.png"
-            />
-            <img
-              alt=""
-              className="profile-btn__img--user"
-              src="/static/images/avatar-naomi.jpg"
-            />
-          </button>
-
-          <button
-            className="btn arrow-btn"
-            name="button"
-            type="button"
-          >
-            <img
-              alt=""
-              src="/static/icons/arrow-down.svg"
-            />
-          </button>
-        </div>
+        <ProfileButton />
 
       </header>
     );
