@@ -6,40 +6,60 @@
   display: flex;
   font-size: $heading-secondary-size;
   font-weight: $font-weight-semi-bold;
+  height: $main-navigation-height--mobile;
   justify-content: center;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 5;
-}
 
-// TEAM AWESOME LOGO
-.logo {
-  font-family: $font-secondary;
-  padding: 11px 0;
-  text-align: center;
+  @include tablet {
+    height: 100%;
+    justify-content: space-between;
+    min-height: $main-navigation-height;
+    padding: 0 30px;
+    position: static;
+  }
 
-  &__title {
+  &__logo {
     color: $color-monochrome-1;
+    font-family: $font-secondary;
     text-decoration: none;
     text-transform: lowercase;
     z-index: 1;
+
+    @include tablet { display: none; }
   }
 }
 
 // NAVIGATION ICONS
-.menu-btn {
-  background: none;
-  border: none;
-  outline: none;
-  padding: 0;
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  z-index: 2;
+.mobile-nav {
+  &__button {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    right: 16px;
+    z-index: 2;
 
-  .menu-btn-icon {
+    @include tablet { display: none; }
+
+    &--open {
+      .mobile-nav__icon {
+        &--open { display: none; }
+
+        &--close {
+          display: block;
+          height: auto;
+          width: 17px;
+        }
+      }
+    }
+  }
+
+  &__icon {
     &--open {
       display: block;
       height: auto;
@@ -47,140 +67,5 @@
     }
 
     &--close { display: none; }
-  }
-
-  &--open {
-    .menu-btn-icon {
-      &--open { display: none; }
-
-      &--close {
-        display: block;
-        height: auto;
-        width: 17px;
-      }
-    }
-  }
-}
-
-// MAIN NAVIGATION
-.main-nav {
-  @include mobile-max {
-    background-color: $color-primary;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 50px;
-    transform: translate(0, 100%);
-    transition: background-color .2s, color .2s, transform .2s;
-
-    &__item {
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    &__link {
-      color: $color-monochrome-1;
-      text-decoration: none;
-      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
-
-      &:hover,
-      &--active {
-        background-color: $color-active;
-        border-radius: $border-radius-primary;
-        padding: 1px 12px;
-      }
-    }
-
-    &--open {
-      -webkit-transform: translate(0, 0);
-      background-color: inherit;
-      transform: translate(0, 0);
-      z-index: 3;
-    }
-  }
-}
-
-.btn-wrapper { display: none; }
-
-@include tablet {
-  .header {
-    height: 70px;
-    justify-content: space-between;
-    padding: 0 30px;
-    position: static;
-  }
-
-  .logo { display: none; }
-  .menu-btn { display: none; }
-
-  // NAVIGATION
-  .main-nav {
-    flex-basis: 70%;
-    font-size: 14px;
-
-    &__item {
-      display: inline-block;
-      margin: 0 25px;
-      text-align: center;
-    }
-
-    &__link {
-      color: $color-monochrome-1;
-      text-decoration: none;
-      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
-
-      &:hover,
-      &--active {
-        background-color: $color-active;
-        border-radius: $border-radius-primary;
-        margin: 0 -18px;
-        padding: 6px 18px;
-      }
-    }
-
-    &--open {
-      height: auto;
-    }
-  }
-
-  // PROFILE BUTTON
-  .btn-wrapper {
-    align-items: center;
-    display: flex;
-    float: right;
-    justify-content: space-between;
-
-    .profile-btn {
-      align-items: center;
-      background-color: $color-monochrome-1;
-      border: none;
-      border-radius: 18px;
-      display: flex;
-      height: 36px;
-      justify-content: space-between;
-      margin: 0 2px;
-      padding-left: 10px;
-      padding-right: 3px;
-      width: 135px;
-
-      &__img--logo {
-        height: auto;
-        width: 75px;
-      }
-
-      &__img--user {
-        border-radius: 50%;
-        height: auto;
-        width: 32px;
-      }
-    }
-
-    .arrow-btn {
-      background-color: transparent;
-      border: none;
-      display: inherit;
-      margin: 0 16px 0 0;
-    }
   }
 }

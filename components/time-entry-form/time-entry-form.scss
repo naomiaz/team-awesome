@@ -1,6 +1,6 @@
 @import "../../shared/styles/main";
 
-.time-entry {
+.time-entry-form {
   background-color: $color-monochrome-2;
   border: 1px solid $color-monochrome-6;
   border-radius: $border-radius-primary;
@@ -9,20 +9,33 @@
   margin-top: 24px;
   padding: 16px;
 
-  &__title {
-    display: none;
-  }
-
-  &-wrapper {
-    position: relative;
-  }
-
   &--visible {
-    display: block;
+    display: flex;
   }
 
   &--hidden {
     display: none;
+  }
+
+  &__header {
+    display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+      margin-top: 33px;
+    }
+  }
+
+  &__form-wrapper {
+    position: relative;
+
+    @include tablet {
+      display: flex;
+      flex-basis: 75%;
+      justify-content: space-between;
+    }
   }
 
   &__label {
@@ -46,7 +59,7 @@
     width: 100%;
 
     &--valid {
-      border-bottom: 1px solid $color-accent-alt-5;
+      border-bottom: 1px solid $color-monochrome-6;
     }
 
     &--invalid {
@@ -68,6 +81,7 @@
     &[disabled] {
       background-color: $color-monochrome-6;
       color: $color-monochrome-3;
+      cursor: not-allowed;
     }
   }
 
@@ -132,7 +146,7 @@
 
   @include tablet {
     display: flex;
-    flex-flow: row;
+    flex-flow: row nowrap;
     justify-content: space-between;
 
     &__title {
@@ -142,7 +156,7 @@
       margin-top: 33px;
     }
 
-    &-wrapper {
+    &__form-wrapper {
       display: flex;
       flex-basis: 75%;
       justify-content: space-between;

@@ -1,21 +1,35 @@
 @import "../../shared/styles/main";
 
-.button-profile {
-  display: none;
+.profile-button {
+  &__button {
+    display: none;
 
-  @include desktop {
-    align-items: center;
-    background-color: $color-monochrome-1;
-    border: none;
-    border-radius: 18px;
-    display: flex;
-    height: 36px;
-    justify-content: space-between;
-    margin-right: 16px;
-    padding-left: 10px;
-    padding-right: 3px;
-    position: relative;
-    width: 135px;
+    @include desktop {
+      align-items: center;
+      background-color: $color-monochrome-1;
+      border: none;
+      border-radius: 18px;
+      display: flex;
+      height: 36px;
+      justify-content: space-between;
+      margin-right: 16px;
+      padding: 0 3px 0 10px;
+      position: relative;
+      width: 135px;
+    }
+
+    &::after {
+      background: url("/static/icons/arrow-down.svg") no-repeat center;
+      content: "";
+      display: block;
+      height: 4px;
+      padding: 16px 0;
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 8px;
+    }
   }
 
   &__logo {
@@ -27,18 +41,5 @@
     border-radius: 50%;
     height: auto;
     width: 32px;
-  }
-
-  &::after {
-    background: url("/static/icons/arrow-down.svg") no-repeat center;
-    content: "";
-    display: block;
-    height: 4px;
-    padding: 16px 0;
-    position: absolute;
-    right: -16px;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 8px;
   }
 }

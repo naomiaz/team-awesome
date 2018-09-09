@@ -1,0 +1,68 @@
+@import "../../shared/styles/main";
+
+.main-nav {
+  background-color: $color-primary;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: $main-navigation-height--mobile;
+  transform: translate(0, 100%);
+  transition: background-color .2s, color .2s, transform .2s;
+
+  @include tablet {
+    flex-basis: 70%;
+    font-size: 14px;
+    position: static;
+    transform: none;
+    transition: none;
+  }
+
+  &__item {
+    margin: 40px 0;
+    text-align: center;
+
+    @include tablet {
+      display: inline-block;
+      margin: 0 25px;
+      text-align: center;
+    }
+  }
+
+  &__link {
+    color: $color-monochrome-1;
+    text-decoration: none;
+    transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+
+    @include tablet {
+      color: $color-monochrome-1;
+      text-decoration: none;
+      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+    }
+
+    &:hover,
+    &--active {
+      background-color: $color-active;
+      border-radius: $border-radius-primary;
+      padding: 1px 12px;
+
+      @include tablet {
+        background-color: $color-active;
+        border-radius: $border-radius-primary;
+        margin: 0 -18px;
+        padding: 6px 18px;
+      }
+    }
+  }
+
+  &--open {
+    -webkit-transform: translate(0, 0);
+    background-color: inherit;
+    transform: translate(0, 0);
+    z-index: 3;
+
+    @include tablet {
+      height: auto;
+    }
+  }
+}

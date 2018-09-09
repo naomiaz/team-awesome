@@ -106,40 +106,40 @@ class TimeEntryForm extends React.Component {
 
     return (
       <section className="row">
-        <h2 className="time-entry__title">
+        <h2 className="time-entry-form__header">
           New Time Entry
         </h2>
         <button
-          className={`btn time-entry__button-new${isFormVisible ? '--hidden' : '--visible'}`}
+          className={`btn time-entry-form__button-new${isFormVisible ? '--hidden' : '--visible'}`}
           onClick={this.handleFormVisibility}
           type="button"
         >
-          <svg className="time-entry__icon--open" />
+          <svg className="time-entry-form__icon--open" />
           New time entry
         </button>
 
         <form
-          className={`time-entry ${isFormVisible ? 'time-entry--visible' : 'time-entry--hidden'}`}
+          className={`time-entry-form ${isFormVisible ? 'time-entry-form--visible' : 'time-entry-form--hidden'}`}
           onSubmit={this.handleSubmit}
           ref={this.formElement}
         >
-          <div className="time-entry-wrapper">
+          <div className="time-entry-form__form-wrapper">
             <button
-              className="time-entry__button-close"
+              className="time-entry-form__button-close"
               onClick={this.handleFormVisibility}
               type="button"
             >
-              <svg className="time-entry__icon--close" />
+              <svg className="time-entry-form__icon--close" />
             </button>
 
-            <div className="time-entry-client">
+            <div className="time-entry-form-client">
               <label
-                className="time-entry__label"
+                className="time-entry-form__label"
                 htmlFor="client"
               >
                 Client
                 <select
-                  className="time-entry__input"
+                  className="time-entry-form__input"
                   id="client"
                   name="client"
                   onChange={this.handleChange}
@@ -161,14 +161,14 @@ class TimeEntryForm extends React.Component {
               </label>
             </div>
 
-            <div className="time-entry-activity">
+            <div className="time-entry-form-activity">
               <label
-                className="time-entry__label"
+                className="time-entry-form__label"
                 htmlFor="activity"
               >
                 Activity
                 <select
-                  className="time-entry__input"
+                  className="time-entry-form__input"
                   id="activity"
                   name="activity"
                   onChange={this.handleChange}
@@ -190,16 +190,16 @@ class TimeEntryForm extends React.Component {
               </label>
             </div>
 
-            <div className="time-entry-date">
+            <div className="time-entry-form-date">
               <label
-                className="time-entry__label"
+                className="time-entry-form__label"
                 htmlFor="date"
               >
                 Date
                 <input
                   className={`
-                    time-entry__input
-                    time-entry__input--${validity.date ? 'valid' : 'invalid'}
+                    time-entry-form__input
+                    time-entry-form__input--${validity.date ? 'valid' : 'invalid'}
                   `}
                   id="date"
                   name="date"
@@ -214,17 +214,17 @@ class TimeEntryForm extends React.Component {
               </label>
             </div>
 
-            <div className="time-entry-time">
-              <div className="time-entry-time__from">
+            <div className="time-entry-form-time">
+              <div className="time-entry-form-time__from">
                 <label
-                  className="time-entry__label"
+                  className="time-entry-form__label"
                   htmlFor="time-from"
                 >
                   From
                   <input
                     className={`
-                      time-entry__input
-                      time-entry__input--${validity.timeFrom ? 'valid' : 'invalid'}
+                      time-entry-form__input
+                      time-entry-form__input--${validity.timeFrom ? 'valid' : 'invalid'}
                     `}
                     id="time-from"
                     name="timeFrom"
@@ -238,16 +238,16 @@ class TimeEntryForm extends React.Component {
                   />
                 </label>
               </div>
-              <div className="time-entry-time__to">
+              <div className="time-entry-form-time__to">
                 <label
-                  className="time-entry__label"
+                  className="time-entry-form__label"
                   htmlFor="time-to"
                 >
                   To
                   <input
                     className={`
-                      time-entry__input
-                      time-entry__input--${validity.timeTo ? 'valid' : 'invalid'}
+                      time-entry-form__input
+                      time-entry-form__input--${validity.timeTo ? 'valid' : 'invalid'}
                     `}
                     id="time-to"
                     name="timeTo"
@@ -269,7 +269,7 @@ class TimeEntryForm extends React.Component {
             // this.checkFormValidation() is invoked each time the state updates after blurring ->
             // It will return return true/become enabled once all items are valid
             disabled={isFormSaving || !this.checkFormValidation()}
-            className="btn time-entry__button-add"
+            className="btn time-entry-form__button-add"
             name="button"
             type="submit"
             value="Add"

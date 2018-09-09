@@ -1,7 +1,7 @@
 @import "../../shared/styles/main";
 
 .team-member-form {
-  margin: 30px 0;
+  @include row;
 
   // TITLE WRAPPER
   &__title-wrapper {
@@ -33,6 +33,7 @@
         background-image: none;
         border: $color-monochrome-3;
         color: $color-monochrome-3;
+        cursor: not-allowed;
       }
     }
 
@@ -139,7 +140,7 @@
     width: 100%;
 
     &--valid {
-      border-bottom: 1px solid $color-accent-alt-5;
+      border-bottom: 1px solid $color-monochrome-6;
     }
 
     &--invalid {
@@ -164,6 +165,7 @@
     height: 84px;
     margin-top: 7px;
     padding: 13px;
+    resize: vertical;
     width: 100%;
   }
 

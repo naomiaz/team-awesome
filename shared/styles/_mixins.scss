@@ -164,7 +164,10 @@
   }
 }
 
-/* font-size */
+// --------------------------
+// TEXT STYLES
+// --------------------------
+
 @mixin paragraph {
   font-size: $paragraph-size--mobile;
   font-weight: $font-weight-book;
@@ -206,4 +209,19 @@
   font-family: $font-primary;
   font-size: 14px;
   font-weight: 600;
+}
+
+// --------------------------
+// PAGE STYLES
+// --------------------------
+
+@mixin row {
+  margin: 24px auto;
+  padding: 0 16px;
+
+  @include tablet {
+    margin: 30px auto;
+    max-width: 1170px;
+    width: 100%;
+  }
 }
