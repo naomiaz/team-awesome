@@ -1,19 +1,40 @@
+import { createSelector } from 'reselect';
+
 // Action types
+export const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
+export const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
+export const FILTER_TIME_ENTRIES = 'FILTER_TIME_ENTRIES';
 export const REQUEST_TIME_ENTRIES = 'REQUEST_TIME_ENTRIES';
 export const REQUEST_TIME_ENTRIES_SUCCESS = 'REQUEST_TIME_ENTRIES_SUCCESS';
 export const SAVE_TIME_ENTRY = 'SAVE_TIME_ENTRY';
 export const SAVE_TIME_ENTRY_SUCCESS = 'SAVE_TIME_ENTRY_SUCESS';
-export const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
-export const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
 export const SET_FORM_VISIBILITY = 'SET_FORM_VISIBILITY';
 
 
 // State Selectors -> To be imported in Container Component
-export const getTimeEntriesSelector = (state) => state.timeEntries.items
-  .sort((a, b) => (new Date(b.date) - new Date(a.date)));
+const timeEntriesRootSelector = (state) => state.timeEntries;
+
+const timeEntriesSelector = createSelector(
+  // extract items form the timeEntriesRootSelector
+  timeEntriesRootSelector,
+  (timeEntries) => timeEntries.items
+);
+
+const timeEntriesActiveFilterSelector = createSelector(
+  timeEntriesRootSelector,
+  (timeEntries) => timeEntries.activeFilter
+);
+
+export const getTimeEntriesSelector = createSelector(
+  [timeEntriesSelector, timeEntriesActiveFilterSelector],
+  (items, activeFilter) => (
+    items.filter((item) => !activeFilter || item.client === activeFilter)
+      .sort((a, b) => (new Date(b.date) - new Date(a.date)))
+  )
+);
+
 export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
 export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
-
 
 // Initial State
 export const initialState = {
@@ -21,6 +42,7 @@ export const initialState = {
   isLoading: false,
   isFormSaving: false,
   isFormVisible: false,
+  activeFilter: '',
   error: null
 };
 
@@ -36,6 +58,8 @@ export function timeEntriesReducer(state = initialState, action) {
         isFormSaving: false,
         items: state.items.filter((item) => item.id !== action.id)
       };
+    case FILTER_TIME_ENTRIES:
+      return { ...state, activeFilter: action.filterValue };
     case REQUEST_TIME_ENTRIES:
       return { ...state, isLoading: true };
     case REQUEST_TIME_ENTRIES_SUCCESS:
@@ -65,6 +89,11 @@ export const deleteTimeEntry = (id) => ({
 export const deleteTimeEntrySuccess = (id) => ({
   type: DELETE_TIME_ENTRY_SUCCESS,
   id
+});
+
+export const filterTimeEntries = (filterValue) => ({
+  type: FILTER_TIME_ENTRIES,
+  filterValue
 });
 
 export const requestTimeEntries = () => ({ type: REQUEST_TIME_ENTRIES });
