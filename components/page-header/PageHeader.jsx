@@ -5,14 +5,12 @@ import './page-header.scss';
 
 const PageHeader = ({ pageTitle, unitCount, unit }) => (
   <section className="page-header">
-    {/* <div className="page-header__title-wrapper"> */}
     <h1 className="page-header__title">
       { pageTitle }
       <span className="page-header__text">
         {` ${unitCount} ${unit} `}
       </span>
     </h1>
-    {/* </div> */}
 
     <div className="page-header__search">
       <form

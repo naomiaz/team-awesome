@@ -3,7 +3,7 @@
 // --------------------------
 
 body {
-  padding-top: 52px;
+  padding-top: $main-navigation-height--mobile;
 
   @include tablet {
     padding: 0;

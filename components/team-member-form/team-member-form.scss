@@ -1,7 +1,7 @@
 @import "../../shared/styles/main";
 
 .team-member-form {
-  @include row;
+  @include section-row;
 
   // TITLE WRAPPER
   &__title-wrapper {

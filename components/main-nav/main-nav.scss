@@ -3,6 +3,7 @@
 .main-nav {
   background-color: $color-primary;
   bottom: 0;
+  font-size: $main-navigation-font-size--mobile;
   left: 0;
   position: fixed;
   right: 0;
@@ -11,46 +12,63 @@
   transition: background-color .2s, color .2s, transform .2s;
 
   @include tablet {
-    flex-basis: 70%;
-    font-size: 14px;
+    font-size: $main-navigation-font-size;
     position: static;
-    transform: none;
-    transition: none;
+    transform: unset;
+    transition: unset;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+
+    @include tablet {
+      flex-flow: row wrap;
+      margin-left: -18px;
+    }
   }
 
   &__item {
-    margin: 40px 0;
+    display: block;
+    margin-top: 40px;
     text-align: center;
 
     @include tablet {
-      display: inline-block;
-      margin: 0 25px;
+      margin: 14px 14px 14px 0;
       text-align: center;
     }
   }
 
   &__link {
     color: $color-monochrome-1;
+    padding: 3px 25px;
+    position: relative;
     text-decoration: none;
     transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+    z-index: 1;
 
     @include tablet {
-      color: $color-monochrome-1;
-      text-decoration: none;
-      transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+      padding: 6px 18px 7px;
+    }
+
+    &::after {
+      background-color: $color-active;
+      border-radius: $border-radius-primary;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .3s;
+      z-index: -1;
     }
 
     &:hover,
     &--active {
-      background-color: $color-active;
-      border-radius: $border-radius-primary;
-      padding: 1px 12px;
-
-      @include tablet {
-        background-color: $color-active;
-        border-radius: $border-radius-primary;
-        margin: 0 -18px;
-        padding: 6px 18px;
+      &::after {
+        opacity: 100;
       }
     }
   }

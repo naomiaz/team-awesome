@@ -23,7 +23,10 @@ const MainNav = ({ isMenuVisible }) => (
         </a>
       </li>
       <li className="main-nav__item">
-        <a className="main-nav__link" href="/projects">
+        <a
+          className="main-nav__link"
+          href="/projects"
+        >
           Projects
         </a>
       </li>
