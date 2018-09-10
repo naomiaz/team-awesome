@@ -105,8 +105,8 @@ class TimeEntryForm extends React.Component {
     const { isFormSaving, isFormVisible } = this.props;
 
     return (
-      <section className="row">
-        <h2 className="time-entry-form__header">
+      <section className="time-entry-form">
+        <h2 className="time-entry-form__title">
           New Time Entry
         </h2>
         <button
@@ -119,11 +119,14 @@ class TimeEntryForm extends React.Component {
         </button>
 
         <form
-          className={`time-entry-form ${isFormVisible ? 'time-entry-form--visible' : 'time-entry-form--hidden'}`}
+          className={`time-entry-form__form-container
+            ${isFormVisible ? 'time-entry-form__form-container--visible' : 'time-entry-form__form-container--hidden'}`}
           onSubmit={this.handleSubmit}
           ref={this.formElement}
         >
           <div className="time-entry-form__form-wrapper">
+
+            {/* CLOSE BUTTON (MOBILE) */}
             <button
               className="time-entry-form__button-close"
               onClick={this.handleFormVisibility}
@@ -132,135 +135,131 @@ class TimeEntryForm extends React.Component {
               <svg className="time-entry-form__icon--close" />
             </button>
 
-            <div className="time-entry-form-client">
-              <label
-                className="time-entry-form__label"
-                htmlFor="client"
+            {/* CLIENT */}
+            <label
+              className="time-entry-form__label time-entry-form__client"
+              htmlFor="client"
+            >
+              Client
+              <select
+                className="time-entry-form__input"
+                id="client"
+                name="client"
+                onChange={this.handleChange}
+                value={client}
               >
-                Client
-                <select
-                  className="time-entry-form__input"
-                  id="client"
-                  name="client"
-                  onChange={this.handleChange}
-                  value={client}
-                >
-                  <option value="Port of Rotterdam">
-                    Port of Rotterdam
-                  </option>
-                  <option value="Saab">
-                    Saab
-                  </option>
-                  <option value="Mercedes">
-                    Mercedes
-                  </option>
-                  <option value="Audi">
-                    Audi
-                  </option>
-                </select>
-              </label>
-            </div>
+                <option value="Port of Rotterdam">
+                  Port of Rotterdam
+                </option>
+                <option value="Saab">
+                  Saab
+                </option>
+                <option value="Mercedes">
+                  Mercedes
+                </option>
+                <option value="Audi">
+                  Audi
+                </option>
+              </select>
+            </label>
 
-            <div className="time-entry-form-activity">
-              <label
-                className="time-entry-form__label"
-                htmlFor="activity"
+            {/* ACTIVITY */}
+            <label
+              className="time-entry-form__label time-entry-form__activity"
+              htmlFor="activity"
+            >
+              Activity
+              <select
+                className="time-entry-form__input"
+                id="activity"
+                name="activity"
+                onChange={this.handleChange}
+                value={activity}
               >
-                Activity
-                <select
-                  className="time-entry-form__input"
-                  id="activity"
-                  name="activity"
-                  onChange={this.handleChange}
-                  value={activity}
-                >
-                  <option value="Design">
-                    Design
-                  </option>
-                  <option value="Saab">
-                    Saab
-                  </option>
-                  <option value="Mercedes">
-                    Mercedes
-                  </option>
-                  <option value="Audi">
-                    Audi
-                  </option>
-                </select>
-              </label>
-            </div>
+                <option value="Design">
+                  Design
+                </option>
+                <option value="Saab">
+                  Saab
+                </option>
+                <option value="Mercedes">
+                  Mercedes
+                </option>
+                <option value="Audi">
+                  Audi
+                </option>
+              </select>
+            </label>
 
-            <div className="time-entry-form-date">
+            {/* DATE */}
+            <label
+              className="time-entry-form__label time-entry-form__date"
+              htmlFor="date"
+            >
+              Date
+              <input
+                className={`
+                  time-entry-form__input
+                  time-entry-form__input--${validity.date ? 'valid' : 'invalid'}
+                `}
+                id="date"
+                name="date"
+                onBlur={this.handleBlur}
+                onChange={this.handleChange}
+                pattern="(0[1-9]|[1-2][0-9]|3[0-1])[-](0[1-9]|1[0-2])[-]20[0-1][0-9]"
+                placeholder="DD-MM-YYYY"
+                required
+                type="text"
+                value={date}
+              />
+            </label>
+
+            <div className="time-entry-form__time-wrapper">
+              {/* TIME FROM */}
               <label
-                className="time-entry-form__label"
-                htmlFor="date"
+                className="time-entry-form__label time-entry-form__label--half time-entry-form__time-from"
+                htmlFor="time-from"
               >
-                Date
+                From
                 <input
                   className={`
                     time-entry-form__input
-                    time-entry-form__input--${validity.date ? 'valid' : 'invalid'}
+                    time-entry-form__input--${validity.timeFrom ? 'valid' : 'invalid'}
                   `}
-                  id="date"
-                  name="date"
+                  id="time-from"
+                  name="timeFrom"
                   onBlur={this.handleBlur}
                   onChange={this.handleChange}
-                  pattern="(0[1-9]|[1-2][0-9]|3[0-1])[-](0[1-9]|1[0-2])[-]20[0-1][0-9]"
-                  placeholder="DD-MM-YYYY"
+                  pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
+                  placeholder="HH.MM"
                   required
                   type="text"
-                  value={date}
+                  value={timeFrom}
                 />
               </label>
-            </div>
 
-            <div className="time-entry-form-time">
-              <div className="time-entry-form-time__from">
-                <label
-                  className="time-entry-form__label"
-                  htmlFor="time-from"
-                >
-                  From
-                  <input
-                    className={`
-                      time-entry-form__input
-                      time-entry-form__input--${validity.timeFrom ? 'valid' : 'invalid'}
-                    `}
-                    id="time-from"
-                    name="timeFrom"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
-                    placeholder="HH.MM"
-                    required
-                    type="text"
-                    value={timeFrom}
-                  />
-                </label>
-              </div>
-              <div className="time-entry-form-time__to">
-                <label
-                  className="time-entry-form__label"
-                  htmlFor="time-to"
-                >
-                  To
-                  <input
-                    className={`
-                      time-entry-form__input
-                      time-entry-form__input--${validity.timeTo ? 'valid' : 'invalid'}
-                    `}
-                    id="time-to"
-                    name="timeTo"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
-                    placeholder="HH.MM"
-                    required
-                    type="text"
-                    value={timeTo}
-                  />
-                </label>
-              </div>
+              {/* TIME TO */}
+              <label
+                className="time-entry-form__label time-entry-form__time-to"
+                htmlFor="time-to"
+              >
+                To
+                <input
+                  className={`
+                    time-entry-form__input
+                    time-entry-form__input--${validity.timeTo ? 'valid' : 'invalid'}
+                  `}
+                  id="time-to"
+                  name="timeTo"
+                  onBlur={this.handleBlur}
+                  onChange={this.handleChange}
+                  pattern="(0[0-9]|1[0-9]|2[0-3])[.](0[0-9]|[1-5][0-9])"
+                  placeholder="HH.MM"
+                  required
+                  type="text"
+                  value={timeTo}
+                />
+              </label>
             </div>
           </div>
 

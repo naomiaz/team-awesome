@@ -1,22 +1,23 @@
 @import "../../shared/styles/main";
 
-.time-entry-overview {
-  margin: 32px 0;
+.time-entry {
+  &-overview {
+    @include section-row;
+    margin: 32px 0;
+  }
 
-  .time-entry__date-row {
+  &__date-row {
+    color: $color-monochrome-4;
     display: flex;
     font-size: 24px;
     font-weight: 400;
     justify-content: space-between;
+    margin-bottom: 10px;
     margin-top: 33px;
   }
 
-  .text--secondary {
-    margin-bottom: 10px;
+  &-item + &-item {
+    border-radius: 0 0 4px 4px;
+    margin-top: -1px;
   }
-}
-
-.time-entry__project + .time-entry__project {
-  border-radius: 0 0 4px 4px;
-  margin-top: -1px;
 }
