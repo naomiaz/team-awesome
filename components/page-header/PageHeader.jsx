@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterButton from '../filter-button/FilterButton';
+import SelectBox from '../select-box/SelectBox';
 
 import './page-header.scss';
 
@@ -15,7 +15,7 @@ const PageHeader = ({
       </span>
     </h1>
 
-    <FilterButton onFilterTimeEntries={onFilterTimeEntries} />
+    <SelectBox onFilterTimeEntries={onFilterTimeEntries} />
 
     <div className="page-header__search">
       <form

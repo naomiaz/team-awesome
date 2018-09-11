@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import
 
-import './filter-button.scss';
+import './select-box.scss';
 
-const FilterButton = ({ onFilterTimeEntries }) => (
+const SelectBox = ({ onFilterTimeEntries }) => (
   <select
     className="input-field filter-button"
     name="filterValue"
@@ -19,8 +18,8 @@ const FilterButton = ({ onFilterTimeEntries }) => (
   </select>
 );
 
-FilterButton.propTypes = {
+SelectBox.propTypes = {
   onFilterTimeEntries: PropTypes.func.isRequired
 };
 
-export default FilterButton;
+export default SelectBox;

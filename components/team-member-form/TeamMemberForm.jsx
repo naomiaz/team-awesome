@@ -70,7 +70,7 @@ class TeamMemberForm extends React.Component {
     const { onSaveTeamMember } = this.props;
     event.preventDefault();
 
-    if (!this.checkFormValidation()) {
+    if (!this.handleFormValidation()) {
       return;
     }
 
