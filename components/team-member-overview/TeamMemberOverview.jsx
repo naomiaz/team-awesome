@@ -6,13 +6,6 @@ import TeamMemberItem from '../team-member-item/TeamMemberItem';
 import './team-member-overview.scss';
 
 class TeamMemberOverview extends React.Component {
-  static sortDefaultValues = {
-    sort: {
-      sortBy: '',
-      sortDirection: 'ascending'
-    }
-  };
-
   static propTypes = {
     onRequestTeamMembers: PropTypes.func.isRequired,
     onSaveTeamMember: PropTypes.func.isRequired,
@@ -41,28 +34,12 @@ class TeamMemberOverview extends React.Component {
     ).isRequired
   }
 
-  state = {
-    sortValues: TeamMemberOverview.sortDefaultValues.sort
-  }
-
   componentDidMount() {
     const { onRequestTeamMembers } = this.props;
     onRequestTeamMembers();
   }
 
-  handleChange = ({ target }) => {
-    const { onSortTeamMembers } = this.props;
-    const { sortValues } = this.state;
-    this.setState((prevState) => ({
-      sortValues: {
-        ...prevState.sortValues,
-        [target.name]: target.value
-      }
-    }), onSortTeamMembers(sortValues));
-  }
-
   render() {
-    const { sortValues } = this.state;
     const { sortBy, sortDirection } = this.props;
     const { teamMembers, onSortTeamMembersBy, onSortTeamMembersDirection } = this.props;
 

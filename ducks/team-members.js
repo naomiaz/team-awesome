@@ -16,7 +16,7 @@ export const DELETE_TEAM_MEMBER_SUCCESS = 'DELETE_TEAM_MEMBER_SUCCESS';
 const teamMembersRootSelector = (state) => state.teamMembers;
 
 const teamMembersSelector = createSelector(
-  // extract items form the teamMembersRootSelector
+  // extract teamMembers form the teamMembersRootSelector
   teamMembersRootSelector,
   (teamMembers) => teamMembers.members
 );
@@ -37,7 +37,6 @@ export const getTeamMembersSelector = createSelector(
     [...teamMembers].sort((a, b) => {
       const memberA = a[sortBy].toUpperCase();
       const memberB = b[sortBy].toUpperCase();
-
       if (memberA < memberB) { return sortDirection === 'ascending' ? -1 : 1; }
       if (memberA > memberB) { return sortDirection === 'ascending' ? 1 : -1; }
       return 0;
@@ -102,7 +101,6 @@ export const sortTeamMembersBy = (sortBy) => ({
   type: SORT_TEAM_MEMBERS_BY,
   sortBy
 });
-
 export const sortTeamMembersDirection = (sortDirection) => ({
   type: SORT_TEAM_MEMBERS_DIRECTION,
   sortDirection
