@@ -41,7 +41,7 @@ const PageHeader = ({
 PageHeader.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   onFilterTimeEntries: PropTypes.func.isRequired,
-  unitCount: PropTypes.string.isRequired,
+  unitCount: PropTypes.number.isRequired,
   unit: PropTypes.string.isRequired
 };
 

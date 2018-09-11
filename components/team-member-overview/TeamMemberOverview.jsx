@@ -40,8 +40,9 @@ class TeamMemberOverview extends React.Component {
   }
 
   render() {
-    const { sortBy, sortDirection } = this.props;
-    const { teamMembers, onSortTeamMembersBy, onSortTeamMembersDirection } = this.props;
+    const {
+      teamMembers, onSortTeamMembersBy, onSortTeamMembersDirection, sortBy, sortDirection
+    } = this.props;
 
     return (
       <section className="team-member-overview row">
