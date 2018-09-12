@@ -88,7 +88,7 @@ class ClientItem extends React.Component {
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
-                  href={website}
+                  href={`http://${website}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -138,7 +138,7 @@ class ClientItem extends React.Component {
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
-                  href={website}
+                  href={`http://${website}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
