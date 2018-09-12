@@ -17,7 +17,6 @@ export function* requestClientsGenerator() {
 
 export function* saveClientGenerator({ newClient }) {
   yield postClient(newClient);
-  // const newClient = yield postClient(newClient);
   yield put(saveClientSuccess(newClient));
 }
 

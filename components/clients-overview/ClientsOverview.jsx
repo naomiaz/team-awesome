@@ -15,7 +15,7 @@ class ClientsOverview extends React.Component {
     sortDirection: PropTypes.string.isRequired,
     clients: PropTypes.arrayOf(
       PropTypes.shape({
-        client: PropTypes.string.isRequired,
+        clientName: PropTypes.string.isRequired,
         address: PropTypes.string.isRequired,
         zip: PropTypes.string.isRequired,
         city: PropTypes.string.isRequired,
@@ -66,6 +66,7 @@ class ClientsOverview extends React.Component {
           >
             <option value="">Sort by:</option>
             <option value="client">Client</option>
+            <option value="city">City</option>
           </select>
 
           <select

@@ -8,7 +8,7 @@ import './client-form.scss';
 class ClientForm extends React.Component {
   static newClientDefaultValues = {
     client: {
-      client: '',
+      clientName: '',
       address: '',
       zip: '',
       city: '',
@@ -78,7 +78,7 @@ class ClientForm extends React.Component {
   render() {
     const { newClient, validity } = this.state;
     const {
-      client, CoC, email, address, zip, city, remarks, website, phone
+      clientName, CoC, email, address, zip, city, remarks, website, phone
     } = newClient;
     const { isFormSaving } = this.props;
     return (
@@ -149,18 +149,18 @@ class ClientForm extends React.Component {
                 {/* CLIENT NAME */}
                 <label
                   className="client-form__label"
-                  htmlFor="client"
+                  htmlFor="clientName"
                 >
                   Client name
                   <input
-                    className={`client-form__input client-form__input--${!validity || validity.client ? 'valid' : 'invalid'}`}
-                    id="client"
-                    name="client"
+                    className={`client-form__input client-form__input--${!validity || validity.clientName ? 'valid' : 'invalid'}`}
+                    id="clientName"
+                    name="clientName"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                     required
                     type="text"
-                    value={client}
+                    value={clientName}
                   />
                 </label>
                 {/* CoC */}

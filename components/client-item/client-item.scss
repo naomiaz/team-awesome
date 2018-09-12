@@ -68,6 +68,13 @@
     }
   }
 
+  &__divider {
+    background: $color-monochrome-6;
+    display: block;
+    margin: 10px 0;
+    min-height: 1px;
+  }
+
   // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
   &__content {
     &--visible {
@@ -96,7 +103,7 @@
   }
 
   &__content-client-info {
-    padding: 0 0 10px;
+    padding: 0 0 15px;
   }
 
   // GENERAL STYLES
@@ -111,7 +118,7 @@
     color: $color-text-primary;
     display: block;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: $font-weight-semi-bold;
     margin-bottom: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -121,6 +128,16 @@
     color: $color-text-secondary;
     display: block;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: $font-weight-regular;
+  }
+
+  &__blockquote {
+    &::before {
+      color: $color-text-secondary;
+      content: "\201C";
+      font-size: 1.6em;
+      font-weight: $font-weight-regular;
+      margin-right: 2px;
+    }
   }
 }

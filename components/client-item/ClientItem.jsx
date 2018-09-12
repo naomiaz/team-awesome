@@ -5,7 +5,7 @@ import './client-item.scss';
 
 class ClientItem extends React.Component {
   static propTypes = {
-    client: PropTypes.string.isRequired,
+    clientName: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     zip: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
@@ -31,7 +31,7 @@ class ClientItem extends React.Component {
   render() {
     const { isDetailWrapperVisible } = this.state;
     const {
-      client, city, phone, email, website, avatar, id
+      clientName, city, phone, email, website, avatar, id, remarks
     } = this.props;
     return (
       <div className="client-item" id={id}>
@@ -47,13 +47,13 @@ class ClientItem extends React.Component {
           {/* PERSONALIA */}
           <div className="client-item__primary-wrapper">
             <img
-              alt={client}
+              alt={clientName}
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
             <div className="client-item__personalia">
               <span className="client-item__text--primary">
-                {client}
+                {clientName}
               </span>
               <span className="client-item__text--secondary">
                 {city}
@@ -98,7 +98,7 @@ class ClientItem extends React.Component {
         {/* EXPANDABLE WRAPPER */}
         <div className={`client-item__content${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
           <div className="client-item__content-title">
-            {`Detailed information about ${client}`}
+            {`Detailed information about ${clientName}`}
           </div>
           <ul className="client-item__content-wrapper">
             <li className="client-item__content-client-info">
@@ -125,6 +125,17 @@ class ClientItem extends React.Component {
                 Website
               </span>
             </li>
+
+            {remarks && (
+              <React.Fragment>
+                <div className="client-item__divider" />
+                <li className="client-item__content-client-info">
+                  <blockquote className="client-item__blockquote client-item__text--primary">
+                    {remarks}
+                  </blockquote>
+                </li>
+              </React.Fragment>
+            )}
           </ul>
         </div>
       </div>

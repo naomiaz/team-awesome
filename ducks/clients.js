@@ -52,7 +52,7 @@ export const initialState = {
   clients: [],
   isLoading: false,
   isFormSaving: false,
-  sortBy: 'client',
+  sortBy: 'clientName',
   sortDirection: 'ascending',
   error: null
 };
