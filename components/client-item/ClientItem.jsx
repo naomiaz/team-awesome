@@ -73,7 +73,12 @@ class ClientItem extends React.Component {
             </li>
             <li className="client-item__client-info">
               <span className="client-item__text--primary">
-                {email}
+                <a
+                  className="client-item__link"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
               </span>
               <span className="client-item__text--secondary">
                 E-mail address
@@ -81,7 +86,14 @@ class ClientItem extends React.Component {
             </li>
             <li className="client-item__client-info">
               <span className="client-item__text--primary">
-                {website}
+                <a
+                  className="client-item__link"
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {website}
+                </a>
               </span>
               <span className="client-item__text--secondary">
                 Website
@@ -111,7 +123,12 @@ class ClientItem extends React.Component {
             </li>
             <li className="client-item__content-client-info">
               <span className="client-item__text--primary">
-                {email}
+                <a
+                  className="client-item__link"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
               </span>
               <span className="client-item__text--secondary">
                 E-mail address
@@ -119,7 +136,14 @@ class ClientItem extends React.Component {
             </li>
             <li className="client-item__content-client-info">
               <span className="client-item__text--primary">
-                {website}
+                <a
+                  className="client-item__link"
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {website}
+                </a>
               </span>
               <span className="client-item__text--secondary">
                 Website

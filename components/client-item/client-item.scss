@@ -131,7 +131,18 @@
     font-weight: $font-weight-regular;
   }
 
+  &__link {
+    color: inherit;
+
+    &:hover {
+      color: $color-monochrome-3;
+    }
+  }
+
   &__blockquote {
+    margin: 0;
+    padding: 10px 10px 0;
+
     &::before {
       color: $color-text-secondary;
       content: "\201C";
