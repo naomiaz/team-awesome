@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
-import TimeEntryDetail from '../time-entry-detail/TimeEntryDetail';
+import TimeEntryItem from '../time-entry-item/TimeEntryItem';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
@@ -59,33 +59,33 @@ class TimeEntryOverview extends React.Component {
           timeEntries={timeEntries}
         />
 
-        <section className="row time-entry-overview">
+        <section className="time-entry-overview">
           {timeEntries.map((currentTimeEntry, index, array) => {
             // if (index === 0 ) { date + component } ------->> 0 is falsy
             // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
             // if (currentTimeEntry.date === previousTimeEntry.date) { component }
             const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
             return (
-              <div key={currentTimeEntry.id}>
+              <React.Fragment key={currentTimeEntry.id}>
                 {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
-                  <div className="time-entry__date-row">
-                    <span className="text--secondary">
+                  <h2 className="time-entry__date-row">
+                    <span>
                       {`${dateFormatted(currentTimeEntry.date)}
                       ${getRelativeDay(currentTimeEntry.timeFrom)}`}
                     </span>
 
-                    <span className="text--secondary">
+                    <span>
                       {new Date(calculateDurationPerDay(timeEntries, currentTimeEntry.date))
                         .toLocaleTimeString('nl-NL', { hour: 'numeric', minute: 'numeric' })}
                     </span>
-                  </div>
+                  </h2>
                 )}
 
-                <TimeEntryDetail
+                <TimeEntryItem
                   {...currentTimeEntry}
                   onEntryDelete={this.onEntryDelete}
                 />
-              </div>
+              </React.Fragment>
             );
           })
         }

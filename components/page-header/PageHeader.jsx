@@ -5,36 +5,29 @@ import './page-header.scss';
 
 const PageHeader = ({ pageTitle, unitCount, unit }) => (
   <section className="page-header">
-    <div className="page-header__title-wrapper">
-      <h2 className="page-header__title">
-        { pageTitle }
-      </h2>
-      <p className="page-header__text">
-        { unitCount }
-        &nbsp;
-        { unit }
-      </p>
-    </div>
+    <h1 className="page-header__title">
+      { pageTitle }
+      <span className="page-header__text">
+        {` ${unitCount} ${unit} `}
+      </span>
+    </h1>
 
     <div className="page-header__search">
-      <form action="/">
+      <form
+        className="page-header__form"
+      >
         <input
           aria-label="Search through site content"
-          className="input-field page-header__searchbar"
+          className="page-header__searchbar"
           id="site-search"
           name="search"
           placeholder="Search"
           type="search"
         />
         <button
-          className="page-header__searchbar-btn"
+          className="page-header__button-search"
           type="button"
-        >
-          <img
-            alt=""
-            src="/static/icons/magnifying-glass.svg"
-          />
-        </button>
+        />
       </form>
     </div>
   </section>

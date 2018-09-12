@@ -164,7 +164,10 @@
   }
 }
 
-/* font-size */
+// --------------------------
+// TEXT STYLES
+// --------------------------
+
 @mixin paragraph {
   font-size: $paragraph-size--mobile;
   font-weight: $font-weight-book;
@@ -198,5 +201,27 @@
   line-height: 1.5;
   @include tablet {
     font-size: $heading-tertriary-size;
+  }
+}
+
+@mixin input-field {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+// --------------------------
+// PAGE STYLES
+// --------------------------
+
+@mixin section-row {
+  margin: 24px auto;
+  padding: 0 16px;
+
+  @include tablet {
+    margin: 30px auto;
+    max-width: 1170px;
+    width: 100%;
   }
 }

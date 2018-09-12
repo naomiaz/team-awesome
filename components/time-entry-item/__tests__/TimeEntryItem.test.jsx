@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import TimeEntryDetail from '../TimeEntryDetail';
+import TimeEntryItem from '../TimeEntryItem';
 
 it('renders correctly', () => {
   const wrapper = shallow(
-    <TimeEntryDetail
+    <TimeEntryItem
       client="Port of Rotterdam"
       date="2018-08-30"
       id={1}

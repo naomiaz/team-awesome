@@ -9,7 +9,7 @@ export default () => (
     <PageHeader
       pageTitle="Timesheets"
       unitCount={12}
-      unit="entries"
+      unit="Entries"
     />
     <TimeEntryOverview />
   </React.Fragment>

@@ -1,18 +1,99 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Router from 'next/router';
 
 import './team-member-form.scss';
 
 class TeamMemberForm extends React.Component {
-  state = {
+  static newTeamMemberDefaultValues = {
+    teamMember: {
+      firstName: '',
+      lastName: '',
+      employeeNumber: 'HUM_',
+      email: '',
+      address: '',
+      zip: '',
+      city: '',
+      avatar: 'avatar-naomi.jpg',
+      biography: '',
+      socialsTwitter: '',
+      socialsFacebook: '',
+      jobTitle: 'Front-end developer',
+      currentClient: 'Humanoids',
+      startDate: '2018-09-03'
+    }
   };
 
+  static propTypes = {
+    isFormSaving: PropTypes.bool.isRequired,
+    onSaveTeamMember: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    this.formElement = React.createRef();
+  }
+
+  state = {
+    newTeamMember: TeamMemberForm.newTeamMemberDefaultValues.teamMember
+  };
+
+  handleBlur = ({ target }) => {
+    this.setState(({ validity }) => ({
+      validity: {
+        ...validity,
+        [target.name]: target.validity.valid
+      }
+    }));
+  }
+
+  handleChange = ({ target }) => {
+    this.setState((prevState) => ({
+      newTeamMember: {
+        ...prevState.newTeamMember,
+        [target.name]: target.value
+      }
+    }));
+  }
+
+  handleFormValidation = () => (
+    // First check if the formElement exists
+    // Then loop over each formElement and check its validity -> .every() returns boolean
+    this.formElement.current
+    && Array.from(this.formElement.current.elements)
+      .every((input) => input.validity.valid)
+  )
+
+  handleSubmit = (event) => {
+    const { newTeamMember } = this.state;
+    const { onSaveTeamMember } = this.props;
+    event.preventDefault();
+
+    if (!this.checkFormValidation()) {
+      return;
+    }
+
+    onSaveTeamMember({ ...newTeamMember });
+    this.setState({ newTeamMember: TeamMemberForm.newTeamMemberDefaultValues.teamMember });
+    Router.push('/team-members');
+  }
+
   render() {
+    const { newTeamMember, validity } = this.state;
+    const {
+      firstName, lastName, email, address, zip, city, biography, socialsTwitter, socialsFacebook
+    } = newTeamMember;
+    const { isFormSaving } = this.props;
     return (
-      <section className="team-member-form row">
-        <form action="" id="newmember">
+      <section className="team-member-form">
+        <form
+          id="newmember"
+          ref={this.formElement}
+          onSubmit={this.handleSubmit}
+        >
           {/* TITLE WRAPPER */}
-          <div className="team-member-form__title-wrapper">
+          <div className="team-member-form__header">
             <h2 className="team-member-form__title">
               Add new team member
             </h2>
@@ -29,8 +110,10 @@ class TeamMemberForm extends React.Component {
             </Link>
             <button
               className="btn team-member-form__button team-member-form__button--save"
-              onClick={this.handleFormVisibility}
+              disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
+              name="save"
+              value="Save"
             >
               Save
             </button>
@@ -56,7 +139,10 @@ class TeamMemberForm extends React.Component {
                   src="/static/images/avatar-naomi.jpg"
                 />
                 <p>
-                  <a href="#" className="text-link">
+                  <a
+                    className="text-link"
+                    href="#"
+                  >
                     Edit Avatar
                   </a>
                 </p>
@@ -65,22 +151,74 @@ class TeamMemberForm extends React.Component {
               {/* SECOND COLUMN */}
               <div className="team-member-form__second-column">
                 <div className="team-member-form__name">
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="first-name">
+                  {/* FIRST NAME */}
+                  <label
+                    className="team-member-form__label team-member-form__label--half"
+                    htmlFor="first-name"
+                  >
                     First name
-                    <input className="team-member-form__input" type="text" name="first-name" id="first-name" required />
+                    <input
+                      className={`team-member-form__input team-member-form__input--${!validity || validity.firstName ? 'valid' : 'invalid'}`}
+                      id="first-name"
+                      name="firstName"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      required
+                      type="text"
+                      value={firstName}
+                    />
                   </label>
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="last-name">
+                  {/* LAST NAME */}
+                  <label
+                    className="team-member-form__label"
+                    htmlFor="last-name"
+                  >
                     Last name
-                    <input className="team-member-form__input" type="text" id="last-name" name="last-name" required />
+                    <input
+                      className={`team-member-form__input team-member-form__input--${!validity || validity.lastName ? 'valid' : 'invalid'}`}
+                      id="last-name"
+                      name="lastName"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      required
+                      type="text"
+                      value={lastName}
+                    />
                   </label>
                 </div>
-                <label className="team-member-form__label" htmlFor="email">
+                {/* EMAIL */}
+                <label
+                  className="team-member-form__label"
+                  htmlFor="email"
+                >
                   E-mail Address
-                  <input className="team-member-form__input" type="text" id="email" name="email" required />
+                  <input
+                    className={`team-member-form__input
+                      team-member-form__input--${!validity || validity.email ? 'valid' : 'invalid'}`}
+                    id="email"
+                    name="email"
+                    onBlur={this.handleBlur}
+                    onChange={this.handleChange}
+                    required
+                    type="text"
+                    value={email}
+                  />
                 </label>
-                <label className="team-member-form__label" htmlFor="bio">
+                {/* BIOGRAPHY */}
+                <label
+                  className="team-member-form__label"
+                  htmlFor="bio"
+                >
                   Bio
-                  <textarea className="team-member-form__textarea" form="newmember" id="bio" name="bio" />
+                  <textarea
+                    className="team-member-form__textarea"
+                    form="newmember"
+                    id="biography"
+                    name="biography"
+                    onBlur={this.handleBlur}
+                    onChange={this.handleChange}
+                    value={biography}
+                  />
                 </label>
               </div>
 
@@ -88,33 +226,102 @@ class TeamMemberForm extends React.Component {
 
               {/* LAST COLUMN */}
               <div className="team-member-form__last-column">
-                <label className="team-member-form__label" htmlFor="address">
+                {/* ADDRESS */}
+                <label
+                  className="team-member-form__label"
+                  htmlFor="address"
+                >
                   Address
-                  <input className="team-member-form__input" type="text" id="address" name="address" required />
+                  <input
+                    className={`team-member-form__input
+                      team-member-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
+                    id="address"
+                    name="address"
+                    onBlur={this.handleBlur}
+                    onChange={this.handleChange}
+                    required
+                    title="Fill in this field"
+                    type="text"
+                    value={address}
+                  />
                 </label>
                 <div className="team-member-form__zipcity">
-                  <label className="team-member-form__label team-member-form__label--first" htmlFor="zip">
+                  {/* ZIP CODE */}
+                  <label
+                    className="team-member-form__label team-member-form__label--half"
+                    htmlFor="zip"
+                  >
                     ZIP code
-                    <input className="team-member-form__input" type="text" name="zip" id="zip" required />
+                    <input
+                      className={`team-member-form__input
+                        team-member-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}`}
+                      id="zip"
+                      name="zip"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      required
+                      type="text"
+                      value={zip}
+                    />
                   </label>
-                  <label className="team-member-form__label" htmlFor="city">
+                  {/* CITY */}
+                  <label
+                    className="team-member-form__label"
+                    htmlFor="city"
+                  >
                     City
-                    <input className="team-member-form__input" type="text" id="city" name="city" required />
+                    <input
+                      className={`team-member-form__input team-member-form__input--${!validity
+                        || validity.city ? 'valid' : 'invalid'}`}
+                      id="city"
+                      name="city"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      required
+                      type="text"
+                      value={city}
+                    />
                   </label>
                 </div>
                 <label className="team-member-form__label">
                   Social profiles
+                  {/* TWITTER */}
                   <div className="team-member-form__twitter">
                     <div className="team-member-form__logo-box team-member-form__logo-box--twitter">
-                      <img className="team-member-form__icon-socials" src="/static/icons/twitter.svg" alt="Twitter" />
+                      <img
+                        alt="Twitter"
+                        className="team-member-form__icon-socials"
+                        src="/static/icons/twitter.svg"
+                      />
                     </div>
-                    <input className="team-member-form__input team-member-form__input--twitter" type="text" id="twitter" name="twitter" />
+                    <input
+                      className="team-member-form__input team-member-form__input-twitter"
+                      id="twitter"
+                      name="socialsTwitter"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      type="text"
+                      value={socialsTwitter}
+                    />
                   </div>
+                  {/* FACEBOOK */}
                   <div className="team-member-form__facebook">
                     <div className="team-member-form__logo-box team-member-form__logo-box--facebook">
-                      <img className="team-member-form__icon-socials" src="/static/icons/facebook.svg" alt="Facebook" />
+                      <img
+                        alt="Facebook"
+                        className="team-member-form__icon-socials"
+                        src="/static/icons/facebook.svg"
+                      />
                     </div>
-                    <input className="team-member-form__input team-member-form__input--facebook" type="text" id="facebook" name="facebook" />
+                    <input
+                      className="team-member-form__input team-member-form__input-facebook"
+                      id="facebook"
+                      name="socialsFacebook"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      type="text"
+                      value={socialsFacebook}
+                    />
                   </div>
                 </label>
               </div>

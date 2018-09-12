@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { calculateDuration } from '../../services/date-time/date-time';
 
-import './time-entry-detail.scss';
+import './time-entry-item.scss';
 
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
@@ -31,33 +31,32 @@ class TimeEntryDetail extends React.Component {
   render() {
     const { client, timeFrom, timeTo } = this.props;
     return (
-      <div className="time-entry__project">
-        <div className="time-entry__client">
-          <p>
+      <div className="time-entry-item">
+        <div className="time-entry-item__client">
+          <span>
             {client}
-          </p>
+          </span>
 
           <button
-            className="btn time-entry__button-delete"
+            className="btn time-entry-item__button-delete"
             onClick={this.handleClick}
             type="button"
           >
-            <svg className="time-entry__icon--delete" />
             Delete
           </button>
 
         </div>
-        <div className="time-entry__time">
-          <p>
+        <div className="time-entry-item__time">
+          <span>
             {`
               ${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)}
               -
               ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)}
             `}
-          </p>
-          <p className="time-entry__duration">
+          </span>
+          <span className="time-entry-item__duration">
             {new Date(calculateDuration(timeFrom, timeTo)).toLocaleTimeString('nl-NL', timeOptions)}
-          </p>
+          </span>
         </div>
       </div>
     );

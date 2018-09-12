@@ -1,7 +1,7 @@
 import React from 'react';
 import NavHeaderContainer from '../components/nav-header/NavHeaderContainer';
 import PageHeader from '../components/page-header/PageHeader';
-import TeamMemberForm from '../components/team-member-form/TeamMemberForm';
+import TeamMemberFormContainer from '../components/team-member-form/TeamMemberFormContainer';
 
 export default () => (
   <React.Fragment>
@@ -11,6 +11,6 @@ export default () => (
       unitCount={22}
       unit="Humanoids"
     />
-    <TeamMemberForm />
+    <TeamMemberFormContainer />
   </React.Fragment>
 );

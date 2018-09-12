@@ -88,9 +88,11 @@ $columns--12: 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3%;
 /* font sizes */
 $default-font-size: 18px;
 $default-font-size--mobile: 16px;
+$main-navigation-font-size: 14px;
+$main-navigation-font-size--mobile: 24px;
 $heading-primary-size: 36px;
 $heading-primary-size--mobile: 32px;
-$heading-secondary-size: 25px;
+$heading-secondary-size: 24px;
 $heading-secondary-size--mobile: 18px;
 $heading-tertriary-size: 18px;
 $heading-tertriary-size--mobile: 16px;
@@ -104,11 +106,9 @@ $scheme-accent: "accent";
 $scheme-accent--dark: "accent-dark";
 
 /* sizing */
-$main-navigation-height: 90px;
-$main-navigation-height--small: 70px;
-
-$subnav-height: 80px;
-$subnav-height--mobile: 72px;
+$main-navigation-height: 70px;
+$main-navigation-height--mobile: 50px;
+$page-header-height: 70px;
 
 $border-radius-primary: 4px;
 

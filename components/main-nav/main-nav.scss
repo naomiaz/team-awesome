@@ -1,0 +1,85 @@
+@import "../../shared/styles/main";
+
+.main-nav {
+  background-color: $color-primary;
+  bottom: 0;
+  font-size: $main-navigation-font-size--mobile;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: $main-navigation-height--mobile;
+  transform: translate(0, 100%);
+  transition: background-color .2s, color .2s, transform .2s;
+
+  @include tablet {
+    font-size: $main-navigation-font-size;
+    position: static;
+    transform: unset;
+    transition: unset;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: column;
+
+    @include tablet {
+      flex-flow: row wrap;
+      margin-left: -18px;
+    }
+  }
+
+  &__item {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+
+    @include tablet {
+      margin: 14px 14px 14px 0;
+      text-align: center;
+    }
+  }
+
+  &__link {
+    color: $color-monochrome-1;
+    padding: 3px 25px;
+    position: relative;
+    text-decoration: none;
+    transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
+    z-index: 1;
+
+    @include tablet {
+      padding: 6px 18px 7px;
+    }
+
+    &::after {
+      background-color: $color-active;
+      border-radius: $border-radius-primary;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .3s;
+      z-index: -1;
+    }
+
+    &:hover,
+    &--active {
+      &::after {
+        opacity: 100;
+      }
+    }
+  }
+
+  &--open {
+    background-color: inherit;
+    transform: translate(0, 0);
+    z-index: 3;
+
+    @include tablet {
+      height: auto;
+    }
+  }
+}

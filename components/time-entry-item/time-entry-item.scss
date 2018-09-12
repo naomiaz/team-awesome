@@ -1,0 +1,65 @@
+@import "../../shared/styles/main";
+
+.time-entry-item {
+  align-items: center;
+  border: 1px solid $color-monochrome-6;
+  border-left: 4px solid $color-primary;
+  border-radius: $border-radius-primary;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 20px 19px;
+
+  &__button-delete {
+    display: none;
+    opacity: 0;
+
+    @include tablet {
+      background-color: $color-accent-alt-10;
+      border: none;
+      color: $color-monochrome-1;
+      display: flex;
+      height: 30px;
+      justify-content: center;
+      margin-left: 33px;
+      opacity: 0;
+      transition: opacity .2s, background-color .2s, ;
+      width: 80px;
+
+      &::before {
+        -webkit-mask: url("/static/icons/forbid.svg") no-repeat;
+        -webkit-mask-size: 16px 16px;
+        background-color: $color-monochrome-1;
+        border-style: none;
+        border-width: 0;
+        content: "";
+        height: 16px;
+        margin-right: 7px;
+        opacity: 1;
+        width: 16px;
+      }
+    }
+  }
+
+  &:hover {
+    .time-entry-item__button-delete {
+      opacity: 1;
+    }
+  }
+
+  &__client {
+    align-items: center;
+    display: flex;
+  }
+
+  &__time {
+    text-align: right;
+  }
+
+  &__duration {
+    color: $color-monochrome-4;
+    display: block;
+    font-size: 14px;
+    margin-top: 3px;
+  }
+}

@@ -3,7 +3,7 @@
 // --------------------------
 
 body {
-  padding-top: 52px;
+  padding-top: $main-navigation-height--mobile;
 
   @include tablet {
     padding: 0;
@@ -28,15 +28,6 @@ body {
 
 button {
   cursor: pointer;
-}
-
-button,
-input,
-select,
-textarea {
-  &:focus {
-    outline: none;
-  }
 }
 
 // --------------------------

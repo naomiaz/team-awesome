@@ -1,36 +1,61 @@
 @import "../../shared/styles/main";
 
-.time-entry {
-  background-color: $color-monochrome-2;
-  border: 1px solid $color-monochrome-6;
-  border-radius: $border-radius-primary;
-  display: flex;
-  flex-flow: column;
-  margin-top: 24px;
-  padding: 16px;
+.time-entry-form {
+  @include section-row;
+
+  &__form-container {
+    background-color: $color-monochrome-2;
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    display: flex;
+    flex-flow: column;
+    margin-top: 24px;
+    padding: 16px;
+
+    &--visible {
+      display: flex;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    @include tablet {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+  }
 
   &__title {
     display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+    }
   }
 
-  &-wrapper {
+  &__form-wrapper {
     position: relative;
-  }
 
-  &--visible {
-    display: block;
-  }
-
-  &--hidden {
-    display: none;
+    @include tablet {
+      display: flex;
+      flex-basis: 75%;
+    }
   }
 
   &__label {
     color: $color-monochrome-4;
-    display: block;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
+    width: 100%;
+
+    &--half { margin-right: 10px; }
+
+    @include tablet { margin-right: 10px; }
   }
 
   &__input {
@@ -45,13 +70,9 @@
     padding: 0 15px;
     width: 100%;
 
-    &--valid {
-      border-bottom: 1px solid $color-accent-alt-5;
-    }
+    &--valid { border-bottom: 1px solid $color-monochrome-6; }
 
-    &--invalid {
-      border-bottom: 1px solid $color-accent-alt-10;
-    }
+    &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
   }
 
   &__button-add {
@@ -68,6 +89,7 @@
     &[disabled] {
       background-color: $color-monochrome-6;
       color: $color-monochrome-3;
+      cursor: not-allowed;
     }
   }
 
@@ -84,9 +106,7 @@
     width: 100%;
   }
 
-  &__button-new--hidden {
-    display: none;
-  }
+  &__button-new--hidden { display: none; }
 
   &__button-close {
     background-color: transparent;
@@ -118,22 +138,18 @@
     width: 7px;
   }
 
-  &-time {
+  &__time-wrapper {
     display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+    // flex-flow: row;
+    // justify-content: space-between;
+  }
 
-    &__from,
-    &__to {
-      flex-basis: 49%;
-      width: 72px;
-    }
+  &__time-from,
+  &__time-to {
+    @include tablet { width: 80px; }
   }
 
   @include tablet {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
 
     &__title {
       display: block;
@@ -142,23 +158,8 @@
       margin-top: 33px;
     }
 
-    &-wrapper {
-      display: flex;
-      flex-basis: 75%;
-      justify-content: space-between;
-    }
-
-    &-client,
-    &-activity {
-      flex-basis: 245px;
-    }
-
     &-date {
       flex-basis: 130px;
-    }
-
-    &-time {
-      flex-basis: 64px;
     }
 
     &__button-add {

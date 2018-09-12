@@ -1,10 +1,10 @@
 @import "../../shared/styles/main";
 
 .team-member-form {
-  margin: 30px 0;
+  @include section-row;
 
-  // TITLE WRAPPER
-  &__title-wrapper {
+  // HEADER
+  &__header {
     align-items: center;
     display: flex;
     flex-flow: row;
@@ -27,6 +27,14 @@
       border: 1px solid $color-accent-alt-6;
       color: $color-monochrome-1;
       margin-left: 12px;
+
+      &[disabled] {
+        background-color: $color-monochrome-6;
+        background-image: none;
+        border: $color-monochrome-3;
+        color: $color-monochrome-3;
+        cursor: not-allowed;
+      }
     }
 
     &--cancel {
@@ -101,7 +109,7 @@
       background: $color-monochrome-6;
       display: block;
       margin: 0 15px 19px;
-      width: 1px;
+      min-width: 1px;
     }
   }
 
@@ -115,7 +123,7 @@
     text-transform: capitalize;
     width: 100%;
 
-    &--first {
+    &--half {
       margin-right: 10px;
     }
   }
@@ -131,8 +139,16 @@
     padding: 0 15px;
     width: 100%;
 
-    &--twitter,
-    &--facebook {
+    &--valid {
+      border-bottom: 1px solid $color-monochrome-6;
+    }
+
+    &--invalid {
+      border-bottom: 1px solid $color-accent-alt-10;
+    }
+
+    &-twitter,
+    &-facebook {
       border-left: none;
       border-radius: 0 $border-radius-primary $border-radius-primary 0;
       margin-top: 0;
@@ -149,6 +165,7 @@
     height: 84px;
     margin-top: 7px;
     padding: 13px;
+    resize: vertical;
     width: 100%;
   }
 
