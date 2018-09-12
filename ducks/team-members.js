@@ -92,6 +92,7 @@ export const deleteTeamMember = (id) => ({
   type: DELETE_TEAM_MEMBER,
   id
 });
+
 export const deleteTeamMemberSuccess = (id) => ({
   type: DELETE_TEAM_MEMBER_SUCCESS,
   id
@@ -107,6 +108,7 @@ export const sortTeamMembersDirection = (sortDirection) => ({
 });
 
 export const requestTeamMembers = () => ({ type: REQUEST_TEAM_MEMBERS });
+
 export const requestTeamMembersSuccess = (teamMembers) => ({
   type: REQUEST_TEAM_MEMBERS_SUCCESS,
   teamMembers
@@ -116,6 +118,7 @@ export const saveTeamMember = (newTeamMember) => ({
   type: SAVE_TEAM_MEMBER,
   newTeamMember
 });
+
 export const saveTeamMemberSuccess = (newMember) => ({
   type: SAVE_TEAM_MEMBER_SUCCESS,
   newMember

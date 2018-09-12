@@ -3,8 +3,8 @@
 .team-member-form {
   @include section-row;
 
-  // TITLE WRAPPER
-  &__title-wrapper {
+  // HEADER
+  &__header {
     align-items: center;
     display: flex;
     flex-flow: row;

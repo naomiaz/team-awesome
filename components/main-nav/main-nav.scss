@@ -74,7 +74,6 @@
   }
 
   &--open {
-    -webkit-transform: translate(0, 0);
     background-color: inherit;
     transform: translate(0, 0);
     z-index: 3;
