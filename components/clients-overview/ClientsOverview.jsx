@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-// import ClientItem from '../client-item/ClientItem';
+import ClientItem from '../client-item/ClientItem';
 
 import './clients-overview.scss';
 
-class ClientItem extends React.Component {
+class ClientsOverview extends React.Component {
   static propTypes = {
-    // onRequestTeamMembers: PropTypes.func.isRequired,
-    // onSaveTeamMember: PropTypes.func.isRequired,
-    // onSortTeamMembersBy: PropTypes.func.isRequired,
-    // onSortTeamMembersDirection: PropTypes.func.isRequired,
-    // sortBy: PropTypes.string.isRequired,
-    // sortDirection: PropTypes.string.isRequired,
+    onRequestClients: PropTypes.func.isRequired,
+    onSaveClient: PropTypes.func.isRequired,
+    onSortClientsBy: PropTypes.func.isRequired,
+    onSortClientsDirection: PropTypes.func.isRequired,
+    sortBy: PropTypes.string.isRequired,
+    sortDirection: PropTypes.string.isRequired,
     clients: PropTypes.arrayOf(
       PropTypes.shape({
         client: PropTypes.string.isRequired,
@@ -31,13 +31,13 @@ class ClientItem extends React.Component {
   }
 
   componentDidMount() {
-    // const { onRequestTeamMembers } = this.props;
-    // onRequestTeamMembers();
+    const { onRequestClients } = this.props;
+    onRequestClients();
   }
 
   render() {
     const {
-      clients, onSortTeamMembersBy, onSortTeamMembersDirection, sortBy, sortDirection
+      clients, onSortClientsBy, onSortClientsDirection, sortBy, sortDirection
     } = this.props;
 
     return (
@@ -47,7 +47,7 @@ class ClientItem extends React.Component {
             All Clients
           </h2>
 
-          <Link href="/add-new-team-member">
+          <Link href="/add-new-client">
             <button
               className="btn clients-overview__button-new render-whitespace--left"
               type="button"
@@ -62,18 +62,16 @@ class ClientItem extends React.Component {
             name="sortBy"
             value={sortBy}
             id="select"
-            onChange={({ target }) => onSortTeamMembersBy(target.value)}
+            onChange={({ target }) => onSortClientsBy(target.value)}
           >
             <option value="">Sort by:</option>
-            <option value="employeeNumber">Employee #</option>
-            <option value="jobTitle">Job Title</option>
-            <option value="lastName">Last Name</option>
+            <option value="client">Client</option>
           </select>
 
           <select
             className="input-field clients-overview__filter"
             name="sortDirection"
-            onChange={({ target }) => onSortTeamMembersDirection(target.value)}
+            onChange={({ target }) => onSortClientsDirection(target.value)}
             value={sortDirection}
             id="select"
           >
@@ -97,4 +95,4 @@ class ClientItem extends React.Component {
   }
 }
 
-export default ClientItem;
+export default ClientsOverview;

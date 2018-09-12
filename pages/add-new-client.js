@@ -1,7 +1,7 @@
 import React from 'react';
 import NavHeaderContainer from '../components/nav-header/NavHeaderContainer';
 import PageHeader from '../components/page-header/PageHeader';
-import ClientsOverviewContainer from '../components/clients-overview/ClientsOverviewContainer';
+import ClientFormContainer from '../components/client-form/ClientFormContainer';
 
 export default () => (
   <React.Fragment>
@@ -11,6 +11,6 @@ export default () => (
       unitCount={3}
       unit="Clients"
     />
-    <ClientsOverviewContainer />
+    <ClientFormContainer />
   </React.Fragment>
 );

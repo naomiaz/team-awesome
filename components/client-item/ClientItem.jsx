@@ -109,12 +109,20 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__detail-client-info">
+            <li className="client-item__content-client-info">
               <span className="client-item__text--primary">
                 {email}
               </span>
               <span className="client-item__text--secondary">
                 E-mail address
+              </span>
+            </li>
+            <li className="client-item__content-client-info">
+              <span className="client-item__text--primary">
+                {website}
+              </span>
+              <span className="client-item__text--secondary">
+                Website
               </span>
             </li>
           </ul>

@@ -2,29 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  getTeamMembersSelector,
-  requestTeamMembers,
-  saveTeamMember,
-  sortTeamMembersBy,
-  sortTeamMembersDirection,
-  teamMembersSortBySelector,
-  teamMembersSortDirectionSelector
-} from '../../ducks/team-members';
+  getClientsSelector,
+  requestClients,
+  saveClient,
+  sortClientsBy,
+  sortClientsDirection,
+  clientsSortBySelector,
+  clientsSortDirectionSelector
+} from '../../ducks/clients';
 import ClientsOverview from './ClientsOverview';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
-  teamMembers: getTeamMembersSelector(state),
-  sortBy: teamMembersSortBySelector(state),
-  sortDirection: teamMembersSortDirectionSelector(state)
+  clients: getClientsSelector(state),
+  sortBy: clientsSortBySelector(state),
+  sortDirection: clientsSortDirectionSelector(state)
 });
 
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  onRequestTeamMembers: requestTeamMembers,
-  onSaveTeamMember: saveTeamMember,
-  onSortTeamMembersBy: sortTeamMembersBy,
-  onSortTeamMembersDirection: sortTeamMembersDirection
+  onRequestClients: requestClients,
+  onSaveClient: saveClient,
+  onSortClientsBy: sortClientsBy,
+  onSortClientsDirection: sortClientsDirection
 }, dispatch);
 
 const ClientsOverviewContainer = (props) => (
