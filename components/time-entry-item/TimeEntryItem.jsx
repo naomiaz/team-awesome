@@ -42,7 +42,6 @@ class TimeEntryDetail extends React.Component {
             onClick={this.handleClick}
             type="button"
           >
-            {/* <svg className="time-entry-item__icon-delete" /> */}
             Delete
           </button>
 

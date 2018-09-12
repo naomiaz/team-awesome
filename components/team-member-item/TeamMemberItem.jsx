@@ -35,7 +35,7 @@ class TeamMemberItem extends React.Component {
       <div className="team-member-item" id={id}>
         {/* MAIN WRAPPER */}
         <div
-          className="btn team-member-item__main-wrapper"
+          className="btn team-member-item__header"
           onClick={this.toggleDetailWrapper}
           onKeyDown={this.toggleDetailWrapper}
           role="button"
@@ -50,76 +50,72 @@ class TeamMemberItem extends React.Component {
               src={`/static/images/${avatar}`}
             />
             <div className="team-member-item__personalia">
-              <p className="team-member-item__text--primary">
+              <span className="team-member-item__text--primary">
                 {`${firstName} ${lastName}`}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 {jobTitle}
-              </p>
+              </span>
             </div>
           </div>
 
           {/* WORK INFO */}
-          <div className="team-member-item__secondary-wrapper">
-            <div className="team-member-item__client-info">
-              <p className="team-member-item__text--primary">
+          <ul className="team-member-item__secondary-wrapper">
+            <li className="team-member-item__client-info">
+              <span className="team-member-item__text--primary">
                 {employeeNumber}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 Employee number
-              </p>
-            </div>
-            <div className="team-member-item__client-info">
-              <p className="team-member-item__text--primary">
+              </span>
+            </li>
+            <li className="team-member-item__client-info">
+              <span className="team-member-item__text--primary">
                 {currentClient}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 Current client
-              </p>
-            </div>
-            <div className="team-member-item__client-info">
-              <p className="team-member-item__text--primary">
+              </span>
+            </li>
+            <li className="team-member-item__client-info">
+              <span className="team-member-item__text--primary">
                 {convertIsoToMonthYear(startDate)}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 Starting date
-              </p>
-            </div>
-          </div>
+              </span>
+            </li>
+          </ul>
 
           {/* CARET */}
-          <div
-            className="btn caret-btn"
-            // name="button"
-            // type="button"
-          >
+          <div className="team-member-item__button-caret">
             <svg className={`team-member-item__icon-caret team-member-item__icon-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
           </div>
         </div>
 
         {/* EXPANDABLE WRAPPER */}
-        <div className={`team-member-item__detail-wrapper${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
-          <div className="team-member-item__detail-title">
+        <div className={`team-member-item__content${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
+          <div className="team-member-item__content-title">
             {`Detailed information about ${firstName}`}
           </div>
-          <div className="team-member-item__detail-content">
-            <div className="team-member-item__detail-client-info">
-              <p className="team-member-item__text--primary">
+          <ul className="team-member-item__content-wrapper">
+            <li className="team-member-item__content-client-info">
+              <span className="team-member-item__text--primary">
                 {currentClient}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 Current client
-              </p>
-            </div>
-            <div className="team-member-item__detail-client-info">
-              <p className="team-member-item__text--primary">
+              </span>
+            </li>
+            <li className="team-member-item__detail-client-info">
+              <span className="team-member-item__text--primary">
                 {convertIsoToMonthYear(startDate)}
-              </p>
-              <p className="team-member-item__text--secondary">
+              </span>
+              <span className="team-member-item__text--secondary">
                 Starting date
-              </p>
-            </div>
-          </div>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     );

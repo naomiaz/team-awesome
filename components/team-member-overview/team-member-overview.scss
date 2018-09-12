@@ -1,9 +1,9 @@
 @import "../../shared/styles/main";
 
 .team-member-overview {
-  margin: 30px 0;
+  @include section-row;
 
-  &__title-wrapper {
+  &__header {
     align-items: center;
     display: flex;
     flex-flow: row;

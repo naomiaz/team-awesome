@@ -87,9 +87,13 @@ class TeamMemberForm extends React.Component {
     const { isFormSaving } = this.props;
     return (
       <section className="team-member-form">
-        <form id="newmember" ref={this.formElement} onSubmit={this.handleSubmit}>
+        <form
+          id="newmember"
+          ref={this.formElement}
+          onSubmit={this.handleSubmit}
+        >
           {/* TITLE WRAPPER */}
-          <div className="team-member-form__title-wrapper">
+          <div className="team-member-form__header">
             <h2 className="team-member-form__title">
               Add new team member
             </h2>

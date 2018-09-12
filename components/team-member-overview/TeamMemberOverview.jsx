@@ -39,8 +39,8 @@ class TeamMemberOverview extends React.Component {
     const { teamMembers } = this.props;
 
     return (
-      <section className="team-member-overview row">
-        <div className="team-member-overview__title-wrapper">
+      <section className="team-member-overview">
+        <div className="team-member-overview__header">
           <h2 className="team-member-overview__title">
             All Humanoids
           </h2>
@@ -62,13 +62,16 @@ class TeamMemberOverview extends React.Component {
           </select>
         </div>
 
-        {teamMembers.map((currentMember, index) => (
-          <TeamMemberItem
-            key={currentMember.id}
-            index={index}
-            {...currentMember}
-          />
-        ))}
+        <ul>
+          {teamMembers && teamMembers.map((currentMember, index) => (
+            <li key={currentMember.id}>
+              <TeamMemberItem
+                index={index}
+                {...currentMember}
+              />
+            </li>
+          ))}
+        </ul>
 
       </section>
     );
