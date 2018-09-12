@@ -7,8 +7,8 @@
   border-radius: $border-radius-primary;
   margin-bottom: 20px;
 
-  // HEADER
-  &__header {
+  // BODY
+  &__body {
     cursor: pointer;
     display: flex;
     flex-flow: row nowrap;
@@ -17,12 +17,17 @@
     width: 100%;
   }
 
-  &__primary-wrapper {
+  &__personalia-wrapper {
     display: flex;
     flex-flow: row;
+    min-width: 40%;
   }
 
-  &__secondary-wrapper {
+  &__personalia {
+    min-width: 100%;
+  }
+
+  &__client-wrapper {
     display: none;
 
     @include tablet {
@@ -30,18 +35,36 @@
       flex-flow: row;
       justify-content: space-between;
       margin-left: auto;
-      width: 450px;
+      width: 50%;
+    }
+
+    &--expandable {
+      display: flex;
+      flex-flow: column;
+      padding: 16px 20px;
+      width: 100%;
+
+      @include tablet {
+        display: none;
+      }
     }
   }
 
-  &__personalia,
-  &__client-info {
+  &__new-line {
     display: flex;
     flex-flow: column;
     justify-content: center;
-  }
+    width: 33.333333%;
 
-  &__client-info { width: 33.333333%; }
+    &--expandable {
+      padding-bottom: 15px;
+      width: 100%;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
 
   &__button-caret {
     align-items: center;
@@ -50,26 +73,30 @@
     display: flex;
     margin-left: 20px;
 
-    .team-member-item__icon-caret {
-      -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
-      -webkit-mask-size: 10px 7px;
-      background-color: $color-monochrome-4;
+    &::after {
+      background: url("/static/icons/arrow-down-2.svg") no-repeat center;
+      content: "";
+      display: block;
       height: 10px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
       width: 10px;
+    }
 
-      &--down {
-        transition: transform .3s;
-      }
+    &--down {
+      transition: transform .3s;
+    }
 
-      &--up {
-        transform: rotate(180deg);
-        transition: transform .3s;
-      }
+    &--up {
+      transform: rotate(180deg);
+      transition: transform .3s;
     }
   }
 
   // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
-  &__content {
+  &__body-expandable {
     &--visible {
       display: flex;
       flex-flow: column;
@@ -81,7 +108,7 @@
     }
   }
 
-  &__content-title {
+  &__subtitle {
     background-color: $color-monochrome-2;
     border-bottom: 1px solid $color-monochrome-6;
     border-top: 1px solid $color-monochrome-6;
@@ -89,14 +116,6 @@
     font-size: 14px;
     font-weight: 600;
     padding: 10px 30px;
-  }
-
-  &__content-wrapper {
-    padding: 16px 20px;
-  }
-
-  &__content-client-info {
-    padding: 0 0 10px;
   }
 
   // GENERAL STYLES

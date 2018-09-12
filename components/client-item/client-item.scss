@@ -71,15 +71,20 @@
     background-color: transparent;
     border: none;
     display: flex;
-    margin-left: 20px;
-  }
+    padding-left: 20px;
+    position: relative;
 
-  &__icon-caret {
-    -webkit-mask: url("/static/icons/arrow-down-2.svg") no-repeat;
-    -webkit-mask-size: 10px 7px;
-    background-color: $color-monochrome-4;
-    height: 10px;
-    width: 10px;
+    &::after {
+      background: url("/static/icons/arrow-down-2.svg") no-repeat center;
+      content: "";
+      display: block;
+      height: 10px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+    }
 
     &--down {
       transition: transform .3s;

@@ -62,9 +62,9 @@ class ClientsOverview extends React.Component {
             name="sortBy"
             value={sortBy}
             id="select"
-            onChange={({ target }) => onSortClientsBy(target.value)}
+            onChange={({ target }) => (target.value) && onSortClientsBy(target.value)}
           >
-            <option>Sort by:</option>
+            <option value="">Sort by:</option>
             <option value="clientName">Client</option>
             <option value="city">City</option>
           </select>

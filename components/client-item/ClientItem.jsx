@@ -11,8 +11,7 @@ class ClientItem extends React.Component {
     phone: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
-    remarks: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    remarks: PropTypes.string.isRequired
   }
 
   state = {
@@ -28,7 +27,7 @@ class ClientItem extends React.Component {
   render() {
     const { isDetailWrapperVisible } = this.state;
     const {
-      clientName, city, phone, email, website, avatar, id, remarks
+      clientName, city, phone, email, website, avatar, remarks
     } = this.props;
     return (
       <React.Fragment>
@@ -99,9 +98,7 @@ class ClientItem extends React.Component {
           </ul>
 
           {/* CARET */}
-          <div className="client-item__button-caret">
-            <svg className={`client-item__icon-caret client-item__icon-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
-          </div>
+          <div className={`client-item__button-caret client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
         </div>
 
         {/* EXPANDABLE WRAPPER */}
@@ -151,11 +148,9 @@ class ClientItem extends React.Component {
           {remarks && (
             <React.Fragment>
               <div className="client-item__divider" />
-              {/* <li className="client-item__new-line client-item__new-line--expandable"> */}
-                <blockquote className="client-item__blockquote client-item__text--primary">
-                  {remarks}
-                </blockquote>
-              {/* </li> */}
+              <blockquote className="client-item__blockquote client-item__text--primary">
+                {remarks}
+              </blockquote>
             </React.Fragment>
           )}
         </div>

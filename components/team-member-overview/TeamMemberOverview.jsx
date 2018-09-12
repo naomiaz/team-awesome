@@ -66,7 +66,7 @@ class TeamMemberOverview extends React.Component {
             name="sortBy"
             value={sortBy}
             id="select"
-            onChange={({ target }) => onSortTeamMembersBy(target.value)}
+            onChange={({ target }) => (target.value) && onSortTeamMembersBy(target.value)}
           >
             <option value="">Sort by:</option>
             <option value="employeeNumber">Employee #</option>
@@ -88,7 +88,7 @@ class TeamMemberOverview extends React.Component {
 
         <ul>
           {teamMembers && teamMembers.map((currentMember, index) => (
-            <li key={currentMember.id}>
+            <li key={currentMember.id} className="team-member-item" id={currentMember.id}>
               <TeamMemberItem
                 index={index}
                 {...currentMember}
