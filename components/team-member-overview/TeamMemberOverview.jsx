@@ -9,6 +9,10 @@ class TeamMemberOverview extends React.Component {
   static propTypes = {
     onRequestTeamMembers: PropTypes.func.isRequired,
     onSaveTeamMember: PropTypes.func.isRequired,
+    onSortTeamMembersBy: PropTypes.func.isRequired,
+    onSortTeamMembersDirection: PropTypes.func.isRequired,
+    sortBy: PropTypes.string.isRequired,
+    sortDirection: PropTypes.string.isRequired,
     teamMembers: PropTypes.arrayOf(
       PropTypes.shape({
         firstName: PropTypes.string.isRequired,
@@ -36,7 +40,9 @@ class TeamMemberOverview extends React.Component {
   }
 
   render() {
-    const { teamMembers } = this.props;
+    const {
+      teamMembers, onSortTeamMembersBy, onSortTeamMembersDirection, sortBy, sortDirection
+    } = this.props;
 
     return (
       <section className="team-member-overview">
@@ -55,8 +61,26 @@ class TeamMemberOverview extends React.Component {
             </button>
           </Link>
 
-          <select className="input-field team-member-overview__filter" name="sort" id="select">
-            <option value="default">Sort by:</option>
+          <select
+            className="input-field team-member-overview__filter"
+            name="sortBy"
+            value={sortBy}
+            id="select"
+            onChange={({ target }) => onSortTeamMembersBy(target.value)}
+          >
+            <option value="">Sort by:</option>
+            <option value="employeeNumber">Employee #</option>
+            <option value="jobTitle">Job Title</option>
+            <option value="lastName">Last Name</option>
+          </select>
+
+          <select
+            className="input-field team-member-overview__filter"
+            name="sortDirection"
+            onChange={({ target }) => onSortTeamMembersDirection(target.value)}
+            value={sortDirection}
+            id="select"
+          >
             <option value="ascending">A-Z (asc)</option>
             <option value="descending">Z-A (desc)</option>
           </select>
