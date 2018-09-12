@@ -6,10 +6,7 @@ import './client-item.scss';
 class ClientItem extends React.Component {
   static propTypes = {
     clientName: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    zip: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    CoC: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     website: PropTypes.string.isRequired,
@@ -34,10 +31,10 @@ class ClientItem extends React.Component {
       clientName, city, phone, email, website, avatar, id, remarks
     } = this.props;
     return (
-      <div className="client-item" id={id}>
+      <React.Fragment>
         {/* MAIN WRAPPER */}
         <div
-          className="btn client-item__header"
+          className="btn client-item__body"
           onClick={this.toggleDetailWrapper}
           onKeyDown={this.toggleDetailWrapper}
           role="button"
@@ -45,13 +42,13 @@ class ClientItem extends React.Component {
         >
 
           {/* PERSONALIA */}
-          <div className="client-item__primary-wrapper">
+          <div className="client-item__personalia-wrapper">
             <img
               alt={clientName}
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="client-item__personalia">
+            <div className="client-item__personalia client-item__new-line">
               <span className="client-item__text--primary">
                 {clientName}
               </span>
@@ -62,8 +59,8 @@ class ClientItem extends React.Component {
           </div>
 
           {/* WORK INFO */}
-          <ul className="client-item__secondary-wrapper">
-            <li className="client-item__client-info">
+          <ul className="client-item__client-wrapper">
+            <li className="client-item__new-line">
               <span className="client-item__text--primary">
                 {phone}
               </span>
@@ -71,7 +68,7 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__client-info">
+            <li className="client-item__new-line">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -84,7 +81,7 @@ class ClientItem extends React.Component {
                 E-mail address
               </span>
             </li>
-            <li className="client-item__client-info">
+            <li className="client-item__new-line">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -108,12 +105,12 @@ class ClientItem extends React.Component {
         </div>
 
         {/* EXPANDABLE WRAPPER */}
-        <div className={`client-item__content${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
-          <div className="client-item__content-title">
+        <div className={`client-item__body-expandable${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
+          <div className="client-item__subtitle">
             {`Detailed information about ${clientName}`}
           </div>
-          <ul className="client-item__content-wrapper">
-            <li className="client-item__content-client-info">
+          <ul className="client-item__client-wrapper client-item__client-wrapper--expandable">
+            <li className="client-item__new-line client-item__new-line--expandable">
               <span className="client-item__text--primary">
                 {phone}
               </span>
@@ -121,7 +118,7 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__content-client-info">
+            <li className="client-item__new-line client-item__new-line--expandable">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -134,7 +131,7 @@ class ClientItem extends React.Component {
                 E-mail address
               </span>
             </li>
-            <li className="client-item__content-client-info">
+            <li className="client-item__new-line client-item__new-line--expandable">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -149,20 +146,20 @@ class ClientItem extends React.Component {
                 Website
               </span>
             </li>
-
-            {remarks && (
-              <React.Fragment>
-                <div className="client-item__divider" />
-                <li className="client-item__content-client-info">
-                  <blockquote className="client-item__blockquote client-item__text--primary">
-                    {remarks}
-                  </blockquote>
-                </li>
-              </React.Fragment>
-            )}
           </ul>
+
+          {remarks && (
+            <React.Fragment>
+              <div className="client-item__divider" />
+              {/* <li className="client-item__new-line client-item__new-line--expandable"> */}
+                <blockquote className="client-item__blockquote client-item__text--primary">
+                  {remarks}
+                </blockquote>
+              {/* </li> */}
+            </React.Fragment>
+          )}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

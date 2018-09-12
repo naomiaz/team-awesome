@@ -64,8 +64,8 @@ class ClientsOverview extends React.Component {
             id="select"
             onChange={({ target }) => onSortClientsBy(target.value)}
           >
-            <option value="">Sort by:</option>
-            <option value="client">Client</option>
+            <option>Sort by:</option>
+            <option value="clientName">Client</option>
             <option value="city">City</option>
           </select>
 
@@ -83,7 +83,7 @@ class ClientsOverview extends React.Component {
 
         <ul>
           {clients && clients.map((currentClient, index) => (
-            <li key={currentClient.id}>
+            <li key={currentClient.id} id={currentClient.id} className="client-item">
               <ClientItem
                 index={index}
                 {...currentClient}

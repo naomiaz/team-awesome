@@ -7,8 +7,8 @@
   border-radius: $border-radius-primary;
   margin-bottom: 20px;
 
-  // HEADER
-  &__header {
+  // BODY
+  &__body {
     cursor: pointer;
     display: flex;
     flex-flow: row nowrap;
@@ -17,12 +17,17 @@
     width: 100%;
   }
 
-  &__primary-wrapper {
+  &__personalia-wrapper {
     display: flex;
     flex-flow: row;
+    min-width: 40%;
   }
 
-  &__secondary-wrapper {
+  &__personalia {
+    min-width: 100%;
+  }
+
+  &__client-wrapper {
     display: none;
 
     @include tablet {
@@ -32,16 +37,34 @@
       margin-left: auto;
       width: 50%;
     }
+
+    &--expandable {
+      display: flex;
+      flex-flow: column;
+      padding: 16px 20px;
+      width: 100%;
+
+      @include tablet {
+        display: none;
+      }
+    }
   }
 
-  &__personalia,
-  &__client-info {
+  &__new-line {
     display: flex;
     flex-flow: column;
     justify-content: center;
-  }
+    width: 33.333333%;
 
-  &__client-info { width: 33.333333%; }
+    &--expandable {
+      padding-bottom: 15px;
+      width: 100%;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
 
   &__button-caret {
     align-items: center;
@@ -71,12 +94,16 @@
   &__divider {
     background: $color-monochrome-6;
     display: block;
-    margin: 10px 0;
+    margin: 0 20px;
     min-height: 1px;
+
+    @include tablet {
+      display: none;
+    }
   }
 
   // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
-  &__content {
+  &__body-expandable {
     &--visible {
       display: flex;
       flex-flow: column;
@@ -88,7 +115,7 @@
     }
   }
 
-  &__content-title {
+  &__subtitle {
     background-color: $color-monochrome-2;
     border-bottom: 1px solid $color-monochrome-6;
     border-top: 1px solid $color-monochrome-6;
@@ -96,14 +123,6 @@
     font-size: 14px;
     font-weight: 600;
     padding: 10px 30px;
-  }
-
-  &__content-wrapper {
-    padding: 16px 20px;
-  }
-
-  &__content-client-info {
-    padding: 0 0 15px;
   }
 
   // GENERAL STYLES
@@ -133,15 +152,19 @@
 
   &__link {
     color: inherit;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover {
-      color: $color-monochrome-3;
+      color: $color-monochrome-4;
     }
   }
 
   &__blockquote {
     margin: 0;
-    padding: 10px 10px 0;
+    padding: 16px 20px;
 
     &::before {
       color: $color-text-secondary;
