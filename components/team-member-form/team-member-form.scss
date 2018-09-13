@@ -146,13 +146,12 @@
     &--invalid {
       border-bottom: 1px solid $color-accent-alt-10;
     }
+  }
 
-    &-twitter,
-    &-facebook {
-      border-left: none;
-      border-radius: 0 $border-radius-primary $border-radius-primary 0;
-      margin-top: 0;
-    }
+  &__input-socials {
+    border-left: none;
+    border-radius: 0 $border-radius-primary $border-radius-primary 0;
+    margin-top: 0;
   }
 
   &__textarea {
@@ -170,32 +169,51 @@
   }
 
   // SPECIFIC FORM ELEMENTS
-  &__twitter,
-  &__facebook {
+  &__socials {
     display: flex;
     flex-flow: row nowrap;
     margin-top: 10px;
   }
 
-  &__logo-box {
+  &__icon-box {
     border-bottom-left-radius: $border-radius-primary;
     border-top-left-radius: $border-radius-primary;
     height: 36px;
+    position: relative;
     width: 36px;
 
-    &--twitter {
+    &--icon-twitter {
       background-image: linear-gradient(to bottom, $color-twitter-primary, $color-twitter-secondary);
+      position: relative;
+
+      &::after {
+        background: url("/static/icons/twitter.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 21px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.6);
+        width: 27px;
+      }
     }
 
-    &--facebook {
+    &--icon-facebook {
       background-image: linear-gradient(to top, $color-facebook-primary, $color-facebook-secondary);
-    }
-  }
 
-  &__icon-socials {
-    height: 13px;
-    margin: 12px 10px;
-    width: 16px;
+      &::after {
+        background: url("/static/icons/facebook.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 26px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.6);
+        width: 17px;
+      }
+    }
   }
 
   &__name,

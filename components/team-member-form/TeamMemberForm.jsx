@@ -286,16 +286,10 @@ class TeamMemberForm extends React.Component {
                 <label className="team-member-form__label">
                   Social profiles
                   {/* TWITTER */}
-                  <div className="team-member-form__twitter">
-                    <div className="team-member-form__logo-box team-member-form__logo-box--twitter">
-                      <img
-                        alt="Twitter"
-                        className="team-member-form__icon-socials"
-                        src="/static/icons/twitter.svg"
-                      />
-                    </div>
+                  <div className="team-member-form__socials">
+                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-twitter" />
                     <input
-                      className="team-member-form__input team-member-form__input-twitter"
+                      className="team-member-form__input team-member-form__input-socials"
                       id="twitter"
                       name="socialsTwitter"
                       onBlur={this.handleBlur}
@@ -305,16 +299,10 @@ class TeamMemberForm extends React.Component {
                     />
                   </div>
                   {/* FACEBOOK */}
-                  <div className="team-member-form__facebook">
-                    <div className="team-member-form__logo-box team-member-form__logo-box--facebook">
-                      <img
-                        alt="Facebook"
-                        className="team-member-form__icon-socials"
-                        src="/static/icons/facebook.svg"
-                      />
-                    </div>
+                  <div className="team-member-form__socials">
+                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-facebook" />
                     <input
-                      className="team-member-form__input team-member-form__input-facebook"
+                      className="team-member-form__input team-member-form__input-socials"
                       id="facebook"
                       name="socialsFacebook"
                       onBlur={this.handleBlur}

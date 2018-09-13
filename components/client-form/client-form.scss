@@ -95,6 +95,11 @@
     }
   }
 
+  &__second-column,
+  &__last-column {
+    width: 100%;
+  }
+
   &__avatar {
     border-radius: 50%;
     height: 100px;
@@ -220,27 +225,21 @@
     }
   }
 
-  // &__icon-socials {
-  //   height: 13px;
-  //   margin: 12px 10px;
-  //   width: 16px;
-  // }
-
   &__input-contact {
     border-left: none;
     border-radius: 0 $border-radius-primary $border-radius-primary 0;
     margin-top: 0;
   }
 
-  &__name,
-  &__zipcity {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-  }
-
-  &__first-name,
-  &__zip {
-    margin-right: 10px;
-  }
+  // &__name,
+  // &__zipcity {
+  //   display: flex;
+  //   flex-flow: row;
+  //   justify-content: space-between;
+  // }
+  //
+  // &__first-name,
+  // &__zip {
+  //   margin-right: 10px;
+  // }
 }

@@ -47,7 +47,7 @@ class ClientItem extends React.Component {
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="client-item__personalia client-item__new-line">
+            <div className="client-item__personalia client-item__text-block">
               <span className="client-item__text--primary">
                 {clientName}
               </span>
@@ -59,7 +59,7 @@ class ClientItem extends React.Component {
 
           {/* WORK INFO */}
           <ul className="client-item__client-wrapper">
-            <li className="client-item__new-line">
+            <li className="client-item__text-block">
               <span className="client-item__text--primary">
                 {phone}
               </span>
@@ -67,7 +67,7 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__new-line">
+            <li className="client-item__text-block">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -80,7 +80,7 @@ class ClientItem extends React.Component {
                 E-mail address
               </span>
             </li>
-            <li className="client-item__new-line">
+            <li className="client-item__text-block">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -107,7 +107,7 @@ class ClientItem extends React.Component {
             {`Detailed information about ${clientName}`}
           </div>
           <ul className="client-item__client-wrapper client-item__client-wrapper--expandable">
-            <li className="client-item__new-line client-item__new-line--expandable">
+            <li className="client-item__text-block client-item__text-block--expandable">
               <span className="client-item__text--primary">
                 {phone}
               </span>
@@ -115,7 +115,7 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__new-line client-item__new-line--expandable">
+            <li className="client-item__text-block client-item__text-block--expandable">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -128,7 +128,7 @@ class ClientItem extends React.Component {
                 E-mail address
               </span>
             </li>
-            <li className="client-item__new-line client-item__new-line--expandable">
+            <li className="client-item__text-block client-item__text-block--expandable">
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"

@@ -35,7 +35,7 @@
       flex-flow: row;
       justify-content: space-between;
       margin-left: auto;
-      width: 50%;
+      width: 47%;
     }
 
     &--expandable {
@@ -50,7 +50,7 @@
     }
   }
 
-  &__new-line {
+  &__text-block {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -71,7 +71,8 @@
     background-color: transparent;
     border: none;
     display: flex;
-    margin-left: 20px;
+    padding-left: 20px;
+    position: relative;
 
     &::after {
       background: url("/static/icons/arrow-down-2.svg") no-repeat center;
@@ -132,6 +133,9 @@
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__text--secondary {
