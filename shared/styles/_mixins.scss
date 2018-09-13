@@ -204,13 +204,6 @@
   }
 }
 
-@mixin input-field {
-  border-radius: $border-radius-primary;
-  font-family: $font-primary;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 // --------------------------
 // PAGE STYLES
 // --------------------------
@@ -224,4 +217,15 @@
     max-width: 1170px;
     width: 100%;
   }
+}
+
+// --------------------------
+// INPUT/BUTTON STYLES
+// --------------------------
+
+@mixin input-field {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
 }

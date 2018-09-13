@@ -20,7 +20,7 @@ const timeEntriesSelector = createSelector(
   (timeEntries) => timeEntries.items
 );
 
-const timeEntriesActiveFilterSelector = createSelector(
+export const timeEntriesActiveFilterSelector = createSelector(
   timeEntriesRootSelector,
   (timeEntries) => timeEntries.activeFilter
 );

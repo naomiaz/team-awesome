@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import SelectBox from '../../services/components/select-box/SelectBox';
 import ClientItem from '../client-item/ClientItem';
 
 import './clients-overview.scss';
@@ -60,31 +61,28 @@ class ClientsOverview extends React.Component {
             </button>
           </Link>
 
-          <select
-            className="input-field clients-overview__filter"
+          <SelectBox
+            className="clients-overview__filter"
+            defaultValue={sortBy}
             name="sortBy"
-            value={sortBy}
-            id="select"
-            onChange={({ target }) => onSortClientsBy(target.value)}
-          >
-            <option value="">Sort by:</option>
-            <option value="clientName">Client</option>
-            <option value="city">City</option>
-          </select>
+            onChangeFunction={onSortClientsBy}
+            options={[
+              { title: 'Sort by:', value: '' },
+              { title: 'Client', value: 'clientName' },
+              { title: 'City', value: 'city' }
+            ]}
+          />
 
-          <select
-            className="
-              input-field
-              clients-overview__filter
-            "
+          <SelectBox
+            className="clients-overview__filter"
+            defaultValue={sortDirection}
             name="sortDirection"
-            onChange={({ target }) => onSortClientsDirection(target.value)}
-            value={sortDirection}
-            id="select"
-          >
-            <option value="ascending">A-Z (asc)</option>
-            <option value="descending">Z-A (desc)</option>
-          </select>
+            onChangeFunction={onSortClientsDirection}
+            options={[
+              { title: 'A-Z (asc):', value: 'ascending' },
+              { title: 'Z-A (desc)', value: 'descending' }
+            ]}
+          />
         </div>
 
         <ul>

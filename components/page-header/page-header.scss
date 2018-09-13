@@ -30,11 +30,12 @@
       }
     }
 
-    &__form {
+    &__search {
+      margin-left: 10px;
       position: relative;
     }
 
-    &__searchbar {
+    &__search-field {
       @include input-field;
       background-color: transparent;
       border: 1px solid $color-monochrome-6;
