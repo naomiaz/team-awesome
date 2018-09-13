@@ -19,7 +19,7 @@ class ClientsOverview extends React.Component {
         address: PropTypes.string.isRequired,
         zip: PropTypes.string.isRequired,
         city: PropTypes.string.isRequired,
-        CoC: PropTypes.string.isRequired,
+        chamberOfCommerce: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         website: PropTypes.string.isRequired,
@@ -31,8 +31,7 @@ class ClientsOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { onRequestClients } = this.props;
-    onRequestClients();
+    this.props.onRequestClients();
   }
 
   render() {
@@ -62,7 +61,7 @@ class ClientsOverview extends React.Component {
             name="sortBy"
             value={sortBy}
             id="select"
-            onChange={({ target }) => (target.value) && onSortClientsBy(target.value)}
+            onChange={({ target }) => (target.value && onSortClientsBy(target.value))}
           >
             <option value="">Sort by:</option>
             <option value="clientName">Client</option>
@@ -82,12 +81,13 @@ class ClientsOverview extends React.Component {
         </div>
 
         <ul>
-          {clients && clients.map((currentClient, index) => (
-            <li key={currentClient.id} id={currentClient.id} className="client-item">
-              <ClientItem
-                index={index}
-                {...currentClient}
-              />
+          {clients && clients.map((currentClient) => (
+            <li
+              key={currentClient.id}
+              id={currentClient.id}
+              className="client-item"
+            >
+              <ClientItem {...currentClient} />
             </li>
           ))}
         </ul>

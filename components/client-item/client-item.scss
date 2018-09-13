@@ -17,17 +17,17 @@
     width: 100%;
   }
 
-  &__personalia-wrapper {
+  &__personalia {
     display: flex;
     flex-flow: row;
     min-width: 40%;
   }
 
-  &__personalia {
+  &__personalia-data {
     min-width: 100%;
   }
 
-  &__client-wrapper {
+  &__client-info {
     display: none;
 
     @include tablet {
@@ -73,6 +73,7 @@
     display: flex;
     padding-left: 20px;
     position: relative;
+    transition: transform .3s;
 
     &::after {
       background: url("/static/icons/arrow-down-2.svg") no-repeat center;
@@ -86,13 +87,8 @@
       width: 10px;
     }
 
-    &--down {
-      transition: transform .3s;
-    }
-
     &--up {
       transform: rotate(180deg);
-      transition: transform .3s;
     }
   }
 

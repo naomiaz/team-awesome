@@ -44,7 +44,10 @@ export const getClientsSelector = createSelector(
   )
 );
 
-export const isFormSavingSelector = (state) => state.clients.isFormSaving;
+export const isFormSavingSelector = createSelector(
+  clientsRootSelector,
+  (clients) => clients.isFormSaving
+);
 
 
 // Initial State

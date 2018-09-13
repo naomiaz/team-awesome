@@ -12,7 +12,7 @@ class ClientForm extends React.Component {
       address: '',
       zip: '',
       city: '',
-      CoC: '',
+      chamberOfCommerce: '',
       email: '',
       phone: '',
       website: '',
@@ -56,8 +56,8 @@ class ClientForm extends React.Component {
   handleFormValidation = () => (
     // First check if the formElement exists
     // Then loop over each formElement and check its validity -> .every() returns boolean
-    this.formElement.current
-    && Array.from(this.formElement.current.elements)
+    this.formElement.current && Array
+      .from(this.formElement.current.elements)
       .every((input) => input.validity.valid)
   )
 
@@ -66,19 +66,17 @@ class ClientForm extends React.Component {
     const { onSaveClient } = this.props;
     event.preventDefault();
 
-    if (!this.handleFormValidation()) {
-      return;
+    if (this.handleFormValidation()) {
+      onSaveClient(newClient);
+      this.setState({ newClient: ClientForm.newClientDefaultValues.client });
+      Router.push('/clients');
     }
-
-    onSaveClient({ ...newClient });
-    this.setState({ newClient: ClientForm.newClientDefaultValues.client });
-    Router.push('/clients');
   }
 
   render() {
     const { newClient, validity } = this.state;
     const {
-      clientName, CoC, email, address, zip, city, remarks, website, phone
+      clientName, chamberOfCommerce, email, address, zip, city, remarks, website, phone
     } = newClient;
     const { isFormSaving } = this.props;
     return (
@@ -97,7 +95,8 @@ class ClientForm extends React.Component {
             <Link href="/clients">
               <a className="render-whitespace--left">
                 <button
-                  className="btn client-form__button client-form__button--cancel"
+                  className="btn client-form__button
+                  client-form__button--cancel"
                   type="button"
                 >
                   Cancel
@@ -105,7 +104,8 @@ class ClientForm extends React.Component {
               </a>
             </Link>
             <button
-              className="btn client-form__button client-form__button--save"
+              className="btn client-form__button
+              client-form__button--save"
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
               name="save"
@@ -163,22 +163,22 @@ class ClientForm extends React.Component {
                     value={clientName}
                   />
                 </label>
-                {/* CoC */}
+                {/* chamberOfCommerce */}
                 <label
                   className="client-form__label"
-                  htmlFor="CoC"
+                  htmlFor="chamberOfCommerce"
                 >
                   Chamber of Commerce
                   <input
                     className={`client-form__input
-                      client-form__input--${!validity || validity.CoC ? 'valid' : 'invalid'}`}
-                    id="CoC"
-                    name="CoC"
+                      client-form__input--${!validity || validity.chamberOfCommerce ? 'valid' : 'invalid'}`}
+                    id="chamberOfCommerce"
+                    name="chamberOfCommerce"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                     required
                     type="text"
-                    value={CoC}
+                    value={chamberOfCommerce}
                   />
                 </label>
                 {/* REMARKS */}
@@ -225,7 +225,8 @@ class ClientForm extends React.Component {
                 <div className="client-form__zipcity">
                   {/* ZIP CODE */}
                   <label
-                    className="client-form__label client-form__label--half"
+                    className="client-form__label
+                    client-form__label--half"
                     htmlFor="zip"
                   >
                     ZIP code
@@ -248,7 +249,8 @@ class ClientForm extends React.Component {
                   >
                     City
                     <input
-                      className={`client-form__input client-form__input--${!validity
+                      className={`client-form__input
+                        client-form__input--${!validity
                         || validity.city ? 'valid' : 'invalid'}`}
                       id="city"
                       name="city"
@@ -265,9 +267,12 @@ class ClientForm extends React.Component {
                   Contact details
                   {/* PHONE */}
                   <div className="client-form__contact">
-                    <div className="client-form__icon-box client-form__icon-box--icon-phone" />
+                    <div className="client-form__icon-box
+                      client-form__icon-box--icon-phone"
+                    />
                     <input
-                      className="client-form__input client-form__input-contact"
+                      className="client-form__input
+                      client-form__input-contact"
                       id="phone"
                       name="phone"
                       onBlur={this.handleBlur}
@@ -278,9 +283,12 @@ class ClientForm extends React.Component {
                   </div>
                   {/* EMAIL */}
                   <div className="client-form__contact">
-                    <div className="client-form__icon-box client-form__icon-box--icon-email" />
+                    <div className="client-form__icon-box
+                      client-form__icon-box--icon-email"
+                    />
                     <input
-                      className="client-form__input client-form__input-contact"
+                      className="client-form__input
+                      client-form__input-contact"
                       id="email"
                       name="email"
                       onBlur={this.handleBlur}
@@ -291,9 +299,12 @@ class ClientForm extends React.Component {
                   </div>
                   {/* WEBSITE */}
                   <div className="client-form__contact">
-                    <div className="client-form__icon-box client-form__icon-box--icon-website" />
+                    <div className="client-form__icon-box
+                    client-form__icon-box--icon-website"
+                    />
                     <input
-                      className="client-form__input client-form__input-contact"
+                      className="client-form__input
+                      client-form__input-contact"
                       id="website"
                       name="website"
                       onBlur={this.handleBlur}

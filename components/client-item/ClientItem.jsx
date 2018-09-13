@@ -41,13 +41,15 @@ class ClientItem extends React.Component {
         >
 
           {/* PERSONALIA */}
-          <div className="client-item__personalia-wrapper">
+          <div className="client-item__personalia">
             <img
               alt={clientName}
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="client-item__personalia client-item__text-block">
+            <div className="client-item__personalia-data
+              client-item__text-block"
+            >
               <span className="client-item__text--primary">
                 {clientName}
               </span>
@@ -57,8 +59,8 @@ class ClientItem extends React.Component {
             </div>
           </div>
 
-          {/* WORK INFO */}
-          <ul className="client-item__client-wrapper">
+          {/* CLIENT INFO */}
+          <ul className="client-item__client-info">
             <li className="client-item__text-block">
               <span className="client-item__text--primary">
                 {phone}
@@ -98,7 +100,9 @@ class ClientItem extends React.Component {
           </ul>
 
           {/* CARET */}
-          <div className={`client-item__button-caret client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
+          <div className={`client-item__button-caret
+            client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
+          />
         </div>
 
         {/* EXPANDABLE WRAPPER */}
@@ -106,7 +110,7 @@ class ClientItem extends React.Component {
           <div className="client-item__subtitle">
             {`Detailed information about ${clientName}`}
           </div>
-          <ul className="client-item__client-wrapper client-item__client-wrapper--expandable">
+          <ul className="client-item__client-info client-item__client-wrapper--expandable">
             <li className="client-item__text-block client-item__text-block--expandable">
               <span className="client-item__text--primary">
                 {phone}
@@ -148,7 +152,9 @@ class ClientItem extends React.Component {
           {remarks && (
             <React.Fragment>
               <div className="client-item__divider" />
-              <blockquote className="client-item__blockquote client-item__text--primary">
+              <blockquote className="client-item__blockquote
+                client-item__text--primary"
+              >
                 {remarks}
               </blockquote>
             </React.Fragment>
