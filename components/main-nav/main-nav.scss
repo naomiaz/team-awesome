@@ -11,7 +11,7 @@
   transform: translate(0, 100%);
   transition: background-color .2s, color .2s, transform .2s;
 
-  @include tablet {
+  @include desktop {
     font-size: $main-navigation-font-size;
     position: static;
     transform: unset;
@@ -22,7 +22,7 @@
     display: flex;
     flex-flow: column;
 
-    @include tablet {
+    @include desktop {
       flex-flow: row wrap;
       margin-left: -18px;
     }
@@ -33,7 +33,7 @@
     margin-top: 40px;
     text-align: center;
 
-    @include tablet {
+    @include desktop {
       margin: 14px 14px 14px 0;
       text-align: center;
     }
@@ -47,7 +47,7 @@
     transition: background-color .2s, border-radius .2s, margin .2s, padding .2s;
     z-index: 1;
 
-    @include tablet {
+    @include desktop {
       padding: 6px 18px 7px;
     }
 
@@ -78,7 +78,7 @@
     transform: translate(0, 0);
     z-index: 3;
 
-    @include tablet {
+    @include desktop {
       height: auto;
     }
   }
