@@ -102,5 +102,72 @@
       "startDate": "2018-09-03T08:00:00.000Z",
       "id": 4
     }
+  ],
+  "clients": [
+    {
+      "clientName": "Hike One",
+      "address": "Schiedamsedijk 40a",
+      "zip": "3011 ED",
+      "city": "Rotterdam",
+      "chamberOfCommerce": "2503698",
+      "email": "hello@hike.one",
+      "phone": "0202044577",
+      "website": "www.hike.one",
+      "avatar": "logo-hike-one.png",
+      "remarks": "Don't wear pants unless it's Friday.",
+      "id": 1
+    },
+    {
+      "clientName": "Albert Heijn",
+      "address": "Schiedamsedijk 40a",
+      "zip": "3011 ED",
+      "city": "Zaandam",
+      "chamberOfCommerce": "2503698",
+      "email": "info@ah.nl",
+      "phone": "0202044577",
+      "website": "www.ah.nl/blablabla",
+      "avatar": "logo-ah.jpg",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": 2
+    },
+    {
+      "clientName": "Humanoids",
+      "address": "Stationsplein 45",
+      "zip": "3013 AK",
+      "city": "Rotterdam",
+      "chamberOfCommerce": "12345678",
+      "email": "hallo@humanoids.nl",
+      "phone": "0102403434",
+      "website": "www.humanoids.nl",
+      "avatar": "avatar-humanoids.jpg",
+      "remarks": "",
+      "id": 3
+    },
+    {
+      "clientName": "Apple",
+      "address": "Leidseplein 25",
+      "zip": "1017 PS",
+      "city": "Amsterdam",
+      "chamberOfCommerce": "12345678",
+      "email": "hallo@apple.nl",
+      "phone": "0205302200",
+      "website": "www.apple.com/nl/retail/amsterdam/?cid=aos-nl-seo-maps",
+      "avatar": "logo-apple.gif",
+      "remarks": "Apple-winkel met strak vormgegeven presentaties van iPhones, iPads en accessoires.",
+      "id": 4
+    },
+    {
+      "clientName": "Philips",
+      "address": "Weg 1",
+      "zip": "1234 AB",
+      "city": "Eindhoven",
+      "chamberOfCommerce": "12345678",
+      "email": "info@philips.nl",
+      "phone": "0123456789",
+      "website": "www.philips.nl",
+      "avatar": "avatar-humanoids.jpg",
+      "remarks": "Eindhoven",
+      "id": 5
+    }
   ]
 }
