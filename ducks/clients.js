@@ -34,13 +34,15 @@ export const clientsSortDirectionSelector = createSelector(
 export const getClientsSelector = createSelector(
   [clientsSelector, clientsSortBySelector, clientsSortDirectionSelector],
   (clients, sortBy, sortDirection) => (
-    [...clients].sort((a, b) => {
-      const clientA = a[sortBy].toUpperCase();
-      const clientB = b[sortBy].toUpperCase();
-      if (clientA < clientB) { return sortDirection === 'ascending' ? -1 : 1; }
-      if (clientA > clientB) { return sortDirection === 'ascending' ? 1 : -1; }
-      return 0;
-    })
+    !sortBy
+      ? clients
+      : [...clients].sort((a, b) => {
+        const clientA = a[sortBy].toUpperCase();
+        const clientB = b[sortBy].toUpperCase();
+        if (clientA < clientB) { return sortDirection === 'ascending' ? -1 : 1; }
+        if (clientA > clientB) { return sortDirection === 'ascending' ? 1 : -1; }
+        return 0;
+      })
   )
 );
 
@@ -55,7 +57,7 @@ export const initialState = {
   clients: [],
   isLoading: false,
   isFormSaving: false,
-  sortBy: 'clientName',
+  sortBy: '',
   sortDirection: 'ascending',
   error: null
 };

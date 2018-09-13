@@ -65,7 +65,7 @@ class TeamMemberOverview extends React.Component {
             className="input-field team-member-overview__filter"
             id="select"
             name="sortBy"
-            onChange={({ target }) => (target.value && onSortTeamMembersBy(target.value))}
+            onChange={({ target }) => onSortTeamMembersBy(target.value)}
             value={sortBy}
           >
             <option value="">Sort by:</option>

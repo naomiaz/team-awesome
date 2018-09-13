@@ -34,13 +34,15 @@ export const teamMembersSortDirectionSelector = createSelector(
 export const getTeamMembersSelector = createSelector(
   [teamMembersSelector, teamMembersSortBySelector, teamMembersSortDirectionSelector],
   (teamMembers, sortBy, sortDirection) => (
-    [...teamMembers].sort((a, b) => {
-      const memberA = a[sortBy].toUpperCase();
-      const memberB = b[sortBy].toUpperCase();
-      if (memberA < memberB) { return sortDirection === 'ascending' ? -1 : 1; }
-      if (memberA > memberB) { return sortDirection === 'ascending' ? 1 : -1; }
-      return 0;
-    })
+    !sortBy
+      ? teamMembers
+      : [...teamMembers].sort((a, b) => {
+        const memberA = a[sortBy].toUpperCase();
+        const memberB = b[sortBy].toUpperCase();
+        if (memberA < memberB) { return sortDirection === 'ascending' ? -1 : 1; }
+        if (memberA > memberB) { return sortDirection === 'ascending' ? 1 : -1; }
+        return 0;
+      })
   )
 );
 
@@ -52,7 +54,7 @@ export const initialState = {
   members: [],
   isLoading: false,
   isFormSaving: false,
-  sortBy: 'lastName',
+  sortBy: '',
   sortDirection: 'ascending',
   error: null
 };

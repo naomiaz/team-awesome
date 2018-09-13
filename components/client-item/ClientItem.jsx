@@ -110,8 +110,14 @@ class ClientItem extends React.Component {
           <div className="client-item__subtitle">
             {`Detailed information about ${clientName}`}
           </div>
-          <ul className="client-item__client-info client-item__client-wrapper--expandable">
-            <li className="client-item__text-block client-item__text-block--expandable">
+          <ul className="
+            client-item__client-info
+            client-item__client-info--expandable"
+          >
+            <li className="
+              client-item__text-block
+              lient-item__text-block--expandable"
+            >
               <span className="client-item__text--primary">
                 {phone}
               </span>
@@ -119,7 +125,10 @@ class ClientItem extends React.Component {
                 Phone number
               </span>
             </li>
-            <li className="client-item__text-block client-item__text-block--expandable">
+            <li className="
+              client-item__text-block
+              client-item__text-block--expandable"
+            >
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -132,7 +141,10 @@ class ClientItem extends React.Component {
                 E-mail address
               </span>
             </li>
-            <li className="client-item__text-block client-item__text-block--expandable">
+            <li className="
+              client-item__text-block
+              client-item__text-block--expandable"
+            >
               <span className="client-item__text--primary">
                 <a
                   className="client-item__link"
@@ -152,7 +164,8 @@ class ClientItem extends React.Component {
           {remarks && (
             <React.Fragment>
               <div className="client-item__divider" />
-              <blockquote className="client-item__blockquote
+              <blockquote className="
+                client-item__blockquote
                 client-item__text--primary"
               >
                 {remarks}

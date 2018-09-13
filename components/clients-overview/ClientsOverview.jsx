@@ -48,7 +48,11 @@ class ClientsOverview extends React.Component {
 
           <Link href="/add-new-client">
             <button
-              className="btn clients-overview__button-new render-whitespace--left"
+              className="
+                btn
+                clients-overview__button-new
+                render-whitespace--left
+              "
               type="button"
             >
               <svg className="clients-overview__icon-plus" />
@@ -61,7 +65,7 @@ class ClientsOverview extends React.Component {
             name="sortBy"
             value={sortBy}
             id="select"
-            onChange={({ target }) => (target.value && onSortClientsBy(target.value))}
+            onChange={({ target }) => onSortClientsBy(target.value)}
           >
             <option value="">Sort by:</option>
             <option value="clientName">Client</option>
@@ -69,7 +73,10 @@ class ClientsOverview extends React.Component {
           </select>
 
           <select
-            className="input-field clients-overview__filter"
+            className="
+              input-field
+              clients-overview__filter
+            "
             name="sortDirection"
             onChange={({ target }) => onSortClientsDirection(target.value)}
             value={sortDirection}
