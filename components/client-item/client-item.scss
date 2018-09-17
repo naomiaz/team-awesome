@@ -1,6 +1,6 @@
 @import "../../shared/styles/main";
 
-.team-member-item {
+.client-item {
   align-items: center;
   border: 1px solid $color-monochrome-6;
   border-left: 4px solid $color-primary;
@@ -17,17 +17,17 @@
     width: 100%;
   }
 
-  &__personalia-wrapper {
+  &__personalia {
     display: flex;
     flex-flow: row;
     min-width: 40%;
   }
 
-  &__personalia {
+  &__personalia-data {
     min-width: 100%;
   }
 
-  &__client-wrapper {
+  &__client-info {
     display: none;
 
     @include tablet {
@@ -35,7 +35,7 @@
       flex-flow: row;
       justify-content: space-between;
       margin-left: auto;
-      width: 47%;
+      width: 50%;
     }
 
     &--expandable {
@@ -75,7 +75,6 @@
     position: relative;
     transition: transform .3s;
 
-
     &::after {
       background: url("/static/icons/arrow-down-2.svg") no-repeat center;
       content: "";
@@ -90,6 +89,17 @@
 
     &--up {
       transform: rotate(180deg);
+    }
+  }
+
+  &__divider {
+    background: $color-monochrome-6;
+    display: block;
+    margin: 0 20px;
+    min-height: 1px;
+
+    @include tablet {
+      display: none;
     }
   }
 
@@ -119,26 +129,50 @@
   // GENERAL STYLES
   &__avatar {
     border-radius: 50%;
-    height: 50px;
     margin-right: 25px;
-    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
   }
 
   &__text--primary {
     color: $color-text-primary;
     display: block;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: $font-weight-semi-bold;
     margin-bottom: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   &__text--secondary {
     color: $color-text-secondary;
     display: block;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: $font-weight-regular;
+  }
+
+  &__link {
+    color: inherit;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-monochrome-4;
+    }
+  }
+
+  &__blockquote {
+    margin: 0;
+    padding: 16px 20px;
+
+    &::before {
+      color: $color-text-secondary;
+      content: "\201C";
+      font-size: 1.6em;
+      font-weight: $font-weight-regular;
+      margin-right: 2px;
+    }
   }
 }

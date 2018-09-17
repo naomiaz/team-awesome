@@ -5,16 +5,8 @@
 body {
   padding-top: $main-navigation-height--mobile;
 
-  @include tablet {
+  @include desktop {
     padding: 0;
-  }
-}
-
-.row {
-  padding: 0 16px;
-
-  @include tablet {
-    padding: 0 12%;
   }
 }
 

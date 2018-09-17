@@ -63,10 +63,10 @@ class TeamMemberOverview extends React.Component {
 
           <select
             className="input-field team-member-overview__filter"
-            name="sortBy"
-            value={sortBy}
             id="select"
+            name="sortBy"
             onChange={({ target }) => onSortTeamMembersBy(target.value)}
+            value={sortBy}
           >
             <option value="">Sort by:</option>
             <option value="employeeNumber">Employee #</option>
@@ -76,10 +76,10 @@ class TeamMemberOverview extends React.Component {
 
           <select
             className="input-field team-member-overview__filter"
+            id="select"
             name="sortDirection"
             onChange={({ target }) => onSortTeamMembersDirection(target.value)}
             value={sortDirection}
-            id="select"
           >
             <option value="ascending">A-Z (asc)</option>
             <option value="descending">Z-A (desc)</option>
@@ -87,12 +87,13 @@ class TeamMemberOverview extends React.Component {
         </div>
 
         <ul>
-          {teamMembers && teamMembers.map((currentMember, index) => (
-            <li key={currentMember.id}>
-              <TeamMemberItem
-                index={index}
-                {...currentMember}
-              />
+          {teamMembers && teamMembers.map((currentMember) => (
+            <li
+              className="team-member-item"
+              id={currentMember.id}
+              key={currentMember.id}
+            >
+              <TeamMemberItem {...currentMember} />
             </li>
           ))}
         </ul>
