@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './client-item.scss';
 
+
 class ClientItem extends React.Component {
   static propTypes = {
     clientName: PropTypes.string.isRequired,
