@@ -8,6 +8,12 @@ import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
   static propTypes = {
+    clientNames: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
     isFormSaving: PropTypes.bool.isRequired,
     isFormVisible: PropTypes.bool.isRequired,
     onDeleteTimeEntry: PropTypes.func.isRequired,
@@ -17,7 +23,8 @@ class TimeEntryOverview extends React.Component {
     timeEntries: PropTypes.arrayOf(
       PropTypes.shape({
         activity: PropTypes.string.isRequired,
-        client: PropTypes.string.isRequired,
+        clientId: PropTypes.string.isRequired,
+        clientLabel: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         timeFrom: PropTypes.string.isRequired,
@@ -43,6 +50,7 @@ class TimeEntryOverview extends React.Component {
 
   render() {
     const {
+      clientNames,
       timeEntries,
       isFormSaving,
       isFormVisible,
@@ -57,6 +65,7 @@ class TimeEntryOverview extends React.Component {
           onToggleFormVisibility={onToggleFormVisibility}
           onEntrySubmit={this.onEntrySubmit}
           timeEntries={timeEntries}
+          clientNames={clientNames}
         />
 
         <section className="time-entry-overview">

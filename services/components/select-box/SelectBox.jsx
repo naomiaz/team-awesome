@@ -9,7 +9,7 @@ const SelectBox = ({
   <select
     className={`select-box ${className}`}
     name={name}
-    onChange={(event) => onChangeFunction(event.target.value)}
+    onChange={onChangeFunction}
     value={defaultValue}
   >
     {options.map((currentOption) => (
@@ -25,6 +25,7 @@ const SelectBox = ({
 
 SelectBox.defaultProps = {
   className: ''
+  // name: ''
 };
 
 SelectBox.propTypes = {
@@ -35,7 +36,7 @@ SelectBox.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
     }).isRequired
   ).isRequired
 };

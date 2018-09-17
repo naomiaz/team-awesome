@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SelectBox from '../../services/components/select-box/SelectBox';
 
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
 
@@ -8,7 +9,7 @@ import './time-entry-form.scss';
 class TimeEntryForm extends React.Component {
   static timeEntriesDefaultValues = {
     timeEntry: {
-      client: 'Port of Rotterdam',
+      clientId: 'Bla',
       activity: 'Design',
       date: '',
       timeFrom: '',
@@ -23,6 +24,12 @@ class TimeEntryForm extends React.Component {
   };
 
   static propTypes = {
+    clientNames: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
     onEntrySubmit: PropTypes.func.isRequired,
     onToggleFormVisibility: PropTypes.func.isRequired,
     isFormSaving: PropTypes.bool.isRequired,
@@ -100,10 +107,9 @@ class TimeEntryForm extends React.Component {
   render() {
     const { timeEntry, validity } = this.state;
     const {
-      client, activity, date, timeFrom, timeTo
+      clientId, activity, date, timeFrom, timeTo
     } = timeEntry;
-    const { isFormSaving, isFormVisible } = this.props;
-
+    const { clientNames, isFormSaving, isFormVisible } = this.props;
     return (
       <section className="time-entry-form">
         <h2 className="time-entry-form__title">
@@ -141,26 +147,13 @@ class TimeEntryForm extends React.Component {
               htmlFor="client"
             >
               Client
-              <select
+              <SelectBox
                 className="time-entry-form__input"
-                id="client"
-                name="client"
-                onChange={this.handleChange}
-                value={client}
-              >
-                <option value="Port of Rotterdam">
-                  Port of Rotterdam
-                </option>
-                <option value="Saab">
-                  Saab
-                </option>
-                <option value="Mercedes">
-                  Mercedes
-                </option>
-                <option value="Audi">
-                  Audi
-                </option>
-              </select>
+                defaultValue={clientId}
+                name="clientId"
+                onChangeFunction={this.handleChange}
+                options={clientNames}
+              />
             </label>
 
             {/* ACTIVITY */}
@@ -169,26 +162,18 @@ class TimeEntryForm extends React.Component {
               htmlFor="activity"
             >
               Activity
-              <select
+              <SelectBox
                 className="time-entry-form__input"
-                id="activity"
+                defaultValue={activity}
                 name="activity"
-                onChange={this.handleChange}
-                value={activity}
-              >
-                <option value="Design">
-                  Design
-                </option>
-                <option value="Saab">
-                  Saab
-                </option>
-                <option value="Mercedes">
-                  Mercedes
-                </option>
-                <option value="Audi">
-                  Audi
-                </option>
-              </select>
+                onChangeFunction={this.handleChange}
+                options={[
+                  { title: 'Design', value: 'Design' },
+                  { title: 'Saab', value: 'Saab' },
+                  { title: 'Mercedes', value: 'Mercedes' },
+                  { title: 'Audi', value: 'Audi' }
+                ]}
+              />
             </label>
 
             {/* DATE */}

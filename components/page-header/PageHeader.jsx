@@ -19,7 +19,7 @@ const PageHeader = ({
       className="render-whitespace--left"
       defaultValue={activeFilter}
       name="filter"
-      onChangeFunction={onFilterTimeEntries}
+      onChangeFunction={(event) => onFilterTimeEntries(event.target.value)}
       options={[
         { title: 'All clients:', value: '' },
         { title: 'Port of Rotterdam', value: 'Port of Rotterdam' },
