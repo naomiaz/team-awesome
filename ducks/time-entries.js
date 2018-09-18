@@ -30,7 +30,7 @@ export const getTimeEntriesSelector = createSelector(
   [clientNameSelector, timeEntriesSelector, timeEntriesActiveFilterSelector],
   (clients, items, activeFilter) => (
     items
-      .filter((item) => !activeFilter || item.client === activeFilter)
+      .filter((item) => !activeFilter || item.clientId === activeFilter)
       .map((item) => ({
         ...item,
         clientLabel: clients.find((client) => client.value === item.clientId).title

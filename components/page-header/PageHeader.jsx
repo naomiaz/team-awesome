@@ -5,7 +5,7 @@ import SelectBox from '../../services/components/select-box/SelectBox';
 import './page-header.scss';
 
 const PageHeader = ({
-  activeFilter, pageTitle, onFilterTimeEntries, unitCount, unit
+  activeFilter, clientNames, pageTitle, onFilterTimeEntries, unitCount, unit
 }) => (
   <section className="page-header">
     <h1 className="page-header__title">
@@ -20,13 +20,14 @@ const PageHeader = ({
       defaultValue={activeFilter}
       name="filter"
       onChangeFunction={(event) => onFilterTimeEntries(event.target.value)}
-      options={[
-        { title: 'All clients:', value: '' },
-        { title: 'Port of Rotterdam', value: 'Port of Rotterdam' },
-        { title: 'Saab', value: 'Saab' },
-        { title: 'Mercedes', value: 'Mercedes' },
-        { title: 'Audi', value: 'Audi' }
-      ]}
+      options={clientNames}
+      // options={[
+      //   { title: 'All clients:', value: '' },
+      //   { title: 'Paard of Rotterdam', value: 'Paard of Rotterdam' },
+      //   { title: 'Saab', value: 'Saab' },
+      //   { title: 'Mercedes', value: 'Mercedes' },
+      //   { title: 'Audi', value: 'Audi' }
+      // ]}
     />
 
     <form className="page-header__search">

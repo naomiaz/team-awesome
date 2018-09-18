@@ -5,10 +5,12 @@ import {
   timeEntriesActiveFilterSelector,
   filterTimeEntries
 } from '../../ducks/time-entries';
+import { clientNameSelector } from '../../ducks/clients';
 import PageHeader from './PageHeader';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
+  clientNames: clientNameSelector(state),
   activeFilter: timeEntriesActiveFilterSelector(state)
 });
 
