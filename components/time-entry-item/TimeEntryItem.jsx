@@ -20,7 +20,7 @@ class TimeEntryItem extends React.Component {
     const {
       clientLabel, date, onEntryDelete, id, timeFrom, timeTo
     } = this.props;
-    const deleteEntryConfirm = confirm(`Are you sure you want to remove this entry?\n${clientLabel} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
+    const deleteEntryConfirm = window.confirm(`Are you sure you want to remove this entry?\n${clientLabel} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
 
     if (deleteEntryConfirm) {
       onEntryDelete(id);
