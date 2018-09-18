@@ -66,7 +66,7 @@ class TeamMemberOverview extends React.Component {
             className="team-member-overview__filter"
             defaultValue={sortBy}
             name="sortBy"
-            onChangeFunction={(event) => onSortTeamMembersBy(event.target.value)}
+            onChange={(event) => onSortTeamMembersBy(event.target.value)}
             options={[
               { title: 'Sort by:', value: '' },
               { title: 'Employee #', value: 'employeeNumber' },
@@ -80,7 +80,7 @@ class TeamMemberOverview extends React.Component {
             className="team-member-overview__filter"
             defaultValue={sortDirection}
             name="sortDirection"
-            onChangeFunction={(event) => onSortTeamMembersDirection(event.target.value)}
+            onChange={(event) => onSortTeamMembersDirection(event.target.value)}
             options={[
               { title: 'A-Z (asc):', value: 'ascending' },
               { title: 'Z-A (desc)', value: 'descending' }

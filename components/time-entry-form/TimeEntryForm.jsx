@@ -9,7 +9,7 @@ import './time-entry-form.scss';
 class TimeEntryForm extends React.Component {
   static timeEntriesDefaultValues = {
     timeEntry: {
-      clientId: 'Bla',
+      clientId: '1',
       activity: 'Design',
       date: '',
       timeFrom: '',
@@ -144,14 +144,14 @@ class TimeEntryForm extends React.Component {
             {/* CLIENT */}
             <label
               className="time-entry-form__label time-entry-form__client"
-              htmlFor="client"
+              htmlFor="clientId"
             >
               Client
               <SelectBox
                 className="time-entry-form__input"
                 defaultValue={clientId}
                 name="clientId"
-                onChangeFunction={this.handleChange}
+                onChange={this.handleChange}
                 options={clientNames}
               />
             </label>
@@ -166,7 +166,7 @@ class TimeEntryForm extends React.Component {
                 className="time-entry-form__input"
                 defaultValue={activity}
                 name="activity"
-                onChangeFunction={this.handleChange}
+                onChange={this.handleChange}
                 options={[
                   { title: 'Design', value: 'Design' },
                   { title: 'Saab', value: 'Saab' },

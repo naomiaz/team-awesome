@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<section
+  className="page-header"
+>
+  <div
+    className="page-header__title-wrapper"
+  >
+    <h2
+      className="page-header__title"
+    >
+      Timesheet
+    </h2>
+    <p
+      className="page-header__text"
+    >
+      12
+       
+      entries
+    </p>
+  </div>
+  <div
+    className="page-header__search"
+  >
+    <form
+      action="/"
+    >
+      <input
+        aria-label="Search through site content"
+        className="input-field page-header__searchbar"
+        id="site-search"
+        name="search"
+        placeholder="Search"
+        type="search"
+      />
+      <button
+        className="page-header__searchbar-btn"
+        type="button"
+      >
+        <img
+          alt=""
+          src="../../static/icons/magnifying-glass.svg"
+        />
+      </button>
+    </form>
+  </div>
+</section>
+`;
