@@ -1,6 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import {
-  getClients, getTimeEntries, postTimeEntry, deleteTimeEntry
+  getTimeEntries, postTimeEntry, deleteTimeEntry
 } from '../services/team-awesome-api/api';
 import {
   DELETE_TIME_ENTRY,
@@ -10,12 +10,9 @@ import {
   SAVE_TIME_ENTRY,
   saveTimeEntrySuccess
 } from '../ducks/time-entries';
-import { requestClientsSuccess } from '../ducks/clients';
 
 // Generator functions
 export function* requestTimeEntriesGenerator() {
-  const clients = yield getClients();
-  yield put(requestClientsSuccess(clients));
   const timeEntries = yield getTimeEntries();
   yield put(requestTimeEntriesSuccess(timeEntries));
 }

@@ -18,6 +18,7 @@ class TimeEntryOverview extends React.Component {
     isFormVisible: PropTypes.bool.isRequired,
     onDeleteTimeEntry: PropTypes.func.isRequired,
     onRequestTimeEntries: PropTypes.func.isRequired,
+    onRequestClients: PropTypes.func.isRequired,
     onSaveTimeEntry: PropTypes.func.isRequired,
     onToggleFormVisibility: PropTypes.func.isRequired,
     timeEntries: PropTypes.arrayOf(
@@ -34,18 +35,16 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { onRequestTimeEntries } = this.props;
-    onRequestTimeEntries();
+    this.props.onRequestClients();
+    this.props.onRequestTimeEntries();
   }
 
   onEntrySubmit = (newTimeEntry) => {
-    const { onSaveTimeEntry } = this.props;
-    onSaveTimeEntry(newTimeEntry);
+    this.props.onSaveTimeEntry(newTimeEntry);
   };
 
   onEntryDelete = (id) => {
-    const { onDeleteTimeEntry } = this.props;
-    onDeleteTimeEntry(id);
+    this.props.onDeleteTimeEntry(id);
   };
 
   render() {
