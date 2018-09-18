@@ -75,21 +75,17 @@ class TimeEntryForm extends React.Component {
   checkFormValidation = () => (
     // First check if the formElement exists
     // Then loop over each formElement and check its validity -> .every() returns boolean
-    this.formElement.current
-    && Array.from(this.formElement.current.elements).every((input) => input.validity.valid)
+    this.formElement.current && Array
+      .from(this.formElement.current.elements)
+      .every((input) => input.validity.valid)
   )
 
   handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!this.checkFormValidation()) {
-      return;
-    }
-
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
     const { onEntrySubmit } = this.props;
-    // Convert the dates/times to ISOStrings before updating the state
+    event.preventDefault();
+
     const newTimeEntryFormatted = {
       ...timeEntry,
       date: convertDateToIso(date),
@@ -97,10 +93,10 @@ class TimeEntryForm extends React.Component {
       timeTo: createIsoString(convertDateToIso(date), convertTimeToIso(timeTo))
     };
 
-    onEntrySubmit(newTimeEntryFormatted);
-
-    // 'Clear' inputs -> reset default values constructed in static class
-    this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry });
+    if (this.checkFormValidation()) {
+      onEntrySubmit(newTimeEntryFormatted);
+      this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry });
+    }
   };
 
 
@@ -116,17 +112,21 @@ class TimeEntryForm extends React.Component {
           New Time Entry
         </h2>
         <button
-          className={`btn time-entry-form__button-new${isFormVisible ? '--hidden' : '--visible'}`}
+          className={`
+            btn
+            time-entry-form__button-new
+            time-entry-form__button-new--${isFormVisible ? 'hidden' : 'visible'}
+          `}
           onClick={this.handleFormVisibility}
           type="button"
         >
-          <svg className="time-entry-form__icon--open" />
           New time entry
         </button>
 
         <form
-          className={`time-entry-form__form-container
-            ${isFormVisible ? 'time-entry-form__form-container--visible' : 'time-entry-form__form-container--hidden'}`}
+          className={`
+            time-entry-form__form-container
+            time-entry-form__form-container--${isFormVisible ? 'visible' : 'hidden'}`}
           onSubmit={this.handleSubmit}
           ref={this.formElement}
         >
@@ -138,12 +138,15 @@ class TimeEntryForm extends React.Component {
               onClick={this.handleFormVisibility}
               type="button"
             >
-              <svg className="time-entry-form__icon--close" />
+              <svg className="time-entry-form__icon-close" />
             </button>
 
             {/* CLIENT */}
             <label
-              className="time-entry-form__label time-entry-form__client"
+              className="
+                time-entry-form__label
+                time-entry-form__client
+              "
               htmlFor="clientId"
             >
               Client
@@ -158,7 +161,10 @@ class TimeEntryForm extends React.Component {
 
             {/* ACTIVITY */}
             <label
-              className="time-entry-form__label time-entry-form__activity"
+              className="
+                time-entry-form__label
+                time-entry-form__activity
+              "
               htmlFor="activity"
             >
               Activity
@@ -169,16 +175,19 @@ class TimeEntryForm extends React.Component {
                 onChange={this.handleChange}
                 options={[
                   { title: 'Design', value: 'Design' },
-                  { title: 'Saab', value: 'Saab' },
-                  { title: 'Mercedes', value: 'Mercedes' },
-                  { title: 'Audi', value: 'Audi' }
+                  { title: 'Development', value: 'Development' },
+                  { title: 'Meeting', value: 'Meeting' },
+                  { title: 'Traveling', value: 'Traveling' }
                 ]}
               />
             </label>
 
             {/* DATE */}
             <label
-              className="time-entry-form__label time-entry-form__date"
+              className="
+                time-entry-form__label
+                time-entry-form__date
+              "
               htmlFor="date"
             >
               Date
@@ -202,7 +211,11 @@ class TimeEntryForm extends React.Component {
             <div className="time-entry-form__time-wrapper">
               {/* TIME FROM */}
               <label
-                className="time-entry-form__label time-entry-form__label--half time-entry-form__time-from"
+                className="
+                  time-entry-form__label
+                  time-entry-form__label--half
+                  time-entry-form__time-from
+                "
                 htmlFor="time-from"
               >
                 From
@@ -225,7 +238,10 @@ class TimeEntryForm extends React.Component {
 
               {/* TIME TO */}
               <label
-                className="time-entry-form__label time-entry-form__time-to"
+                className="
+                  time-entry-form__label
+                  time-entry-form__time-to
+                "
                 htmlFor="time-to"
               >
                 To
