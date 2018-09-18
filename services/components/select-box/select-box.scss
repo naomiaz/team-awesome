@@ -2,11 +2,28 @@
 
 .select-box {
   @include input-field;
+  -webkit-appearance: none;
   background-color: transparent;
   border: 1px solid $color-monochrome-6;
   color: $color-monochrome-3;
   display: block;
   height: 39px;
   margin-left: 10px;
-  position: relative;
+  padding: 0 11px;
+
+  &__button-arrow {
+    position: relative;
+
+    &::after {
+      background: url("/static/icons/arrow-down.svg") no-repeat center;
+      content: "";
+      height: 16px;
+      pointer-events: none;
+      position: absolute;
+      right: 9px;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 16px;
+    }
+  }
 }

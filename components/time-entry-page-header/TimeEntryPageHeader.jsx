@@ -15,27 +15,28 @@ const TimeEntryPageHeader = ({
       </span>
     </h1>
 
-    <SelectBox
-      className="render-whitespace--left"
-      selectedValue={activeFilter}
-      onChange={(event) => onFilterTimeEntries(event.target.value)}
-      options={[{ title: 'All clients:', value: '' }, ...clientNames]}
-    />
+    <div className="time-entry-page-header__button-wrapper">
+      <SelectBox
+        selectedValue={activeFilter}
+        onChange={(event) => onFilterTimeEntries(event.target.value)}
+        options={[{ title: 'All clients:', value: '' }, ...clientNames]}
+      />
 
-    <form className="time-entry-page-header__search">
-      <input
-        aria-label="Search through site content"
-        className="time-entry-page-header__search-field"
-        id="site-search"
-        name="search"
-        placeholder="Search"
-        type="search"
-      />
-      <button
-        className="time-entry-page-header__button-search"
-        type="submit"
-      />
-    </form>
+      <form className="time-entry-page-header__search">
+        <input
+          aria-label="Search through site content"
+          className="time-entry-page-header__search-field"
+          id="site-search"
+          name="search"
+          placeholder="Search"
+          type="search"
+        />
+        <button
+          className="time-entry-page-header__button-search"
+          type="submit"
+        />
+      </form>
+    </div>
   </section>
 );
 

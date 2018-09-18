@@ -30,6 +30,11 @@
       }
     }
 
+    &__button-wrapper {
+      align-items: center;
+      display: flex;
+    }
+
     &__search {
       margin-left: 10px;
       position: relative;
