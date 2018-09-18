@@ -19,7 +19,7 @@ const TimeEntryPageHeader = ({
       className="render-whitespace--left"
       defaultValue={activeFilter}
       onChange={(event) => onFilterTimeEntries(event.target.value)}
-      options={clientNames}
+      options={[{ title: 'All clients:', value: '' }, ...clientNames]}
     />
 
     <form className="time-entry-page-header__search">
