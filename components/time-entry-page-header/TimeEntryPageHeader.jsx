@@ -17,7 +17,7 @@ const TimeEntryPageHeader = ({
 
     <SelectBox
       className="render-whitespace--left"
-      defaultValue={activeFilter}
+      selectedValue={activeFilter}
       onChange={(event) => onFilterTimeEntries(event.target.value)}
       options={[{ title: 'All clients:', value: '' }, ...clientNames]}
     />

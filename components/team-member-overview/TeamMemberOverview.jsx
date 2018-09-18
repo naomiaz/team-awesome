@@ -64,7 +64,7 @@ class TeamMemberOverview extends React.Component {
 
           <SelectBox
             className="team-member-overview__filter"
-            defaultValue={sortBy}
+            selectedValue={sortBy}
             name="sortBy"
             onChange={(event) => onSortTeamMembersBy(event.target.value)}
             options={[
@@ -78,7 +78,7 @@ class TeamMemberOverview extends React.Component {
 
           <SelectBox
             className="team-member-overview__filter"
-            defaultValue={sortDirection}
+            selectedValue={sortDirection}
             name="sortDirection"
             onChange={(event) => onSortTeamMembersDirection(event.target.value)}
             options={[

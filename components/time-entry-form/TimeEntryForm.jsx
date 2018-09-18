@@ -149,7 +149,7 @@ class TimeEntryForm extends React.Component {
               Client
               <SelectBox
                 className="time-entry-form__input"
-                defaultValue={clientId}
+                selectedValue={clientId}
                 name="clientId"
                 onChange={this.handleChange}
                 options={clientNames}
@@ -164,7 +164,7 @@ class TimeEntryForm extends React.Component {
               Activity
               <SelectBox
                 className="time-entry-form__input"
-                defaultValue={activity}
+                selectedValue={activity}
                 name="activity"
                 onChange={this.handleChange}
                 options={[
