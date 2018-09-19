@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import SelectBox from '../../services/components/select-box/SelectBox';
 import TeamMemberItem from '../team-member-item/TeamMemberItem';
 
 import './team-member-overview.scss';
@@ -61,29 +62,30 @@ class TeamMemberOverview extends React.Component {
             </button>
           </Link>
 
-          <select
-            className="input-field team-member-overview__filter"
-            id="select"
+          <SelectBox
+            className="team-member-overview__filter"
+            defaultValue={sortBy}
             name="sortBy"
-            onChange={({ target }) => onSortTeamMembersBy(target.value)}
-            value={sortBy}
-          >
-            <option value="">Sort by:</option>
-            <option value="employeeNumber">Employee #</option>
-            <option value="jobTitle">Job Title</option>
-            <option value="lastName">Last Name</option>
-          </select>
+            onChangeFunction={onSortTeamMembersBy}
+            options={[
+              { title: 'Sort by:', value: '' },
+              { title: 'Employee #', value: 'employeeNumber' },
+              { title: 'Job Title', value: 'jobTitle' },
+              { title: 'First Name', value: 'firstName' },
+              { title: 'Last Name', value: 'lastName' }
+            ]}
+          />
 
-          <select
-            className="input-field team-member-overview__filter"
-            id="select"
+          <SelectBox
+            className="team-member-overview__filter"
+            defaultValue={sortDirection}
             name="sortDirection"
-            onChange={({ target }) => onSortTeamMembersDirection(target.value)}
-            value={sortDirection}
-          >
-            <option value="ascending">A-Z (asc)</option>
-            <option value="descending">Z-A (desc)</option>
-          </select>
+            onChangeFunction={onSortTeamMembersDirection}
+            options={[
+              { title: 'A-Z (asc):', value: 'ascending' },
+              { title: 'Z-A (desc)', value: 'descending' }
+            ]}
+          />
         </div>
 
         <ul>

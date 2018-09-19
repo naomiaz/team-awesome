@@ -1,13 +1,12 @@
-@import "../../shared/styles/main";
+@import "../../../shared/styles/main";
 
-.filter-button {
+.select-box {
+  @include input-field;
   background-color: transparent;
   border: 1px solid $color-monochrome-6;
   color: $color-monochrome-3;
   display: block;
   height: 39px;
-  margin-left: auto;
-  margin-right: 10px;
-  min-width: 200px;
+  margin-left: 10px;
   position: relative;
 }
