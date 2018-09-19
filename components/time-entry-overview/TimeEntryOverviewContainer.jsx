@@ -10,10 +10,12 @@ import {
   saveTimeEntry,
   toggleFormVisibility
 } from '../../ducks/time-entries';
+import { clientNameSelector, requestClients } from '../../ducks/clients';
 import TimeEntryOverview from './TimeEntryOverview';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
+  clientNames: clientNameSelector(state),
   timeEntries: getTimeEntriesSelector(state),
   isFormSaving: isFormSavingSelector(state),
   isFormVisible: isFormVisibleSelector(state)
@@ -22,6 +24,7 @@ const mapStateToProps = (state) => ({
 // Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   onDeleteTimeEntry: deleteTimeEntry,
+  onRequestClients: requestClients,
   onRequestTimeEntries: requestTimeEntries,
   onSaveTimeEntry: saveTimeEntry,
   onToggleFormVisibility: toggleFormVisibility

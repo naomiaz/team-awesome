@@ -4,34 +4,37 @@ import PropTypes from 'prop-types';
 import './select-box.scss';
 
 const SelectBox = ({
-  className, defaultValue, name, onChangeFunction, options
+  className, selectedValue, name, onChange, options
 }) => (
-  <select
-    className={`select-box ${className}`}
-    name={name}
-    onChange={(event) => onChangeFunction(event.target.value)}
-    value={defaultValue}
-  >
-    {options.map((currentOption) => (
-      <option
-        key={currentOption.value}
-        value={currentOption.value}
-      >
-        {currentOption.title}
-      </option>
-    ))}
-  </select>
+  <div className="select-box__button-arrow">
+    <select
+      className={`select-box ${className}`}
+      name={name}
+      onChange={onChange}
+      value={selectedValue}
+    >
+      {options.map((currentOption) => (
+        <option
+          key={currentOption.value}
+          value={currentOption.value}
+        >
+          {currentOption.title}
+        </option>
+      ))}
+    </select>
+  </div>
 );
 
 SelectBox.defaultProps = {
-  className: ''
+  className: '',
+  name: ''
 };
 
 SelectBox.propTypes = {
   className: PropTypes.string,
-  onChangeFunction: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  defaultValue: PropTypes.string.isRequired,
+  selectedValue: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

@@ -6,7 +6,7 @@ import {
   filterTimeEntries
 } from '../../ducks/time-entries';
 import { clientNameSelector } from '../../ducks/clients';
-import PageHeader from './PageHeader';
+import TimeEntryPageHeader from './TimeEntryPageHeader';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
@@ -19,11 +19,11 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   onFilterTimeEntries: filterTimeEntries
 }, dispatch);
 
-const PageHeaderContainer = (props) => (
-  <PageHeader {...props} />
+const TimeEntryPageHeaderContainer = (props) => (
+  <TimeEntryPageHeader {...props} />
 );
 
 // Props of parent are equal to props of child
-PageHeaderContainer.propTypes = PageHeader.propTypes;
+TimeEntryPageHeaderContainer.propTypes = TimeEntryPageHeader.propTypes;
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageHeaderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TimeEntryPageHeaderContainer);

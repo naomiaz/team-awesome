@@ -8,16 +8,24 @@ import './time-entry-overview.scss';
 
 class TimeEntryOverview extends React.Component {
   static propTypes = {
+    clientNames: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
     isFormSaving: PropTypes.bool.isRequired,
     isFormVisible: PropTypes.bool.isRequired,
     onDeleteTimeEntry: PropTypes.func.isRequired,
     onRequestTimeEntries: PropTypes.func.isRequired,
+    onRequestClients: PropTypes.func.isRequired,
     onSaveTimeEntry: PropTypes.func.isRequired,
     onToggleFormVisibility: PropTypes.func.isRequired,
     timeEntries: PropTypes.arrayOf(
       PropTypes.shape({
         activity: PropTypes.string.isRequired,
-        client: PropTypes.string.isRequired,
+        clientId: PropTypes.string.isRequired,
+        clientLabel: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         timeFrom: PropTypes.string.isRequired,
@@ -27,22 +35,21 @@ class TimeEntryOverview extends React.Component {
   }
 
   componentDidMount() {
-    const { onRequestTimeEntries } = this.props;
-    onRequestTimeEntries();
+    this.props.onRequestClients();
+    this.props.onRequestTimeEntries();
   }
 
   onEntrySubmit = (newTimeEntry) => {
-    const { onSaveTimeEntry } = this.props;
-    onSaveTimeEntry(newTimeEntry);
+    this.props.onSaveTimeEntry(newTimeEntry);
   };
 
   onEntryDelete = (id) => {
-    const { onDeleteTimeEntry } = this.props;
-    onDeleteTimeEntry(id);
+    this.props.onDeleteTimeEntry(id);
   };
 
   render() {
     const {
+      clientNames,
       timeEntries,
       isFormSaving,
       isFormVisible,
@@ -57,6 +64,7 @@ class TimeEntryOverview extends React.Component {
           onToggleFormVisibility={onToggleFormVisibility}
           onEntrySubmit={this.onEntrySubmit}
           timeEntries={timeEntries}
+          clientNames={clientNames}
         />
 
         <section className="time-entry-overview">

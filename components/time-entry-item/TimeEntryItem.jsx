@@ -6,9 +6,9 @@ import './time-entry-item.scss';
 
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
-class TimeEntryDetail extends React.Component {
+class TimeEntryItem extends React.Component {
   static propTypes = {
-    client: PropTypes.string.isRequired,
+    clientLabel: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     onEntryDelete: PropTypes.func.isRequired,
@@ -18,23 +18,22 @@ class TimeEntryDetail extends React.Component {
 
   handleClick = () => {
     const {
-      client, date, onEntryDelete, id, timeFrom, timeTo
+      clientLabel, date, onEntryDelete, id, timeFrom, timeTo
     } = this.props;
-    const deleteEntryPrompt = prompt(`Are you sure you want to remove this entry?
-    ${client} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
+    const deleteEntryConfirm = window.confirm(`Are you sure you want to remove this entry?\n${clientLabel} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
 
-    if (deleteEntryPrompt) {
+    if (deleteEntryConfirm) {
       onEntryDelete(id);
     }
   };
 
   render() {
-    const { client, timeFrom, timeTo } = this.props;
+    const { clientLabel, timeFrom, timeTo } = this.props;
     return (
       <div className="time-entry-item">
         <div className="time-entry-item__client">
           <span>
-            {client}
+            {clientLabel}
           </span>
 
           <button
@@ -64,4 +63,4 @@ class TimeEntryDetail extends React.Component {
 }
 
 
-export default TimeEntryDetail;
+export default TimeEntryItem;
