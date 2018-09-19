@@ -1,33 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { calculateDuration } from '../../services/date-time/date-time';
 
 import './time-entry-item.scss';
 
 const timeOptions = { hour: 'numeric', minute: 'numeric' };
 
-class TimeEntryItem extends React.Component {
-  static propTypes = {
-    clientLabel: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    onEntryDelete: PropTypes.func.isRequired,
-    timeFrom: PropTypes.string.isRequired,
-    timeTo: PropTypes.string.isRequired
-  }
+export interface TimeEntryItemProps {
+  clientLabel?: string;
+  date: string;
+  id?: number;
+  timeFrom: string;
+  timeTo: string;
+  onEntryDelete: any;
+}
 
+class TimeEntryItem extends React.Component <TimeEntryItemProps> {
   handleClick = () => {
     const {
-      clientLabel, date, onEntryDelete, id, timeFrom, timeTo
+      clientLabel, date, id, timeFrom, timeTo
     } = this.props;
-    const deleteEntryConfirm = window.confirm(`Are you sure you want to remove this entry?\n${clientLabel} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`, 'OK, delete this entry');
+    const deleteEntryConfirm = window.confirm(`Are you sure you want to remove this entry?
+      ${clientLabel} on ${new Date(date).toLocaleDateString('nl-NL')} (${new Date(timeFrom).toLocaleTimeString('nl-NL', timeOptions)} - ${new Date(timeTo).toLocaleTimeString('nl-NL', timeOptions)})`);
 
     if (deleteEntryConfirm) {
-      onEntryDelete(id);
+      this.props.onEntryDelete(id);
     }
   };
 
-  render() {
+  render(): React.ReactNode {
     const { clientLabel, timeFrom, timeTo } = this.props;
     return (
       <div className="time-entry-item">

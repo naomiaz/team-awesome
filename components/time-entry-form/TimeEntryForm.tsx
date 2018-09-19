@@ -1,16 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SelectBox from '../../services/components/select-box/SelectBox';
-
+import { TimeEntryModel } from '../../ducks/time-entries';
+import { ClientNamesModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
 
 import './time-entry-form.scss';
 
-class TimeEntryForm extends React.Component {
-  static timeEntriesDefaultValues = {
+export interface TimeEntryFormProps {
+  clientNames: ClientNamesModel[];
+  onEntrySubmit;
+  onToggleFormVisibility;
+  isFormSaving: boolean;
+  isFormVisible: boolean;
+}
+
+export interface TimeEntryFormState {
+  timeEntry: TimeEntryModel;
+  validity: { date: boolean, timeFrom: boolean, timeTo: boolean };
+}
+
+class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormState> {
+  private defaultState: TimeEntryFormState = {
     timeEntry: {
-      clientId: '1',
       activity: 'Design',
+      clientId: '1',
       date: '',
       timeFrom: '',
       timeTo: ''
@@ -23,48 +36,25 @@ class TimeEntryForm extends React.Component {
     }
   };
 
-  static propTypes = {
-    clientNames: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
-      }).isRequired
-    ).isRequired,
-    onEntrySubmit: PropTypes.func.isRequired,
-    onToggleFormVisibility: PropTypes.func.isRequired,
-    isFormSaving: PropTypes.bool.isRequired,
-    isFormVisible: PropTypes.bool.isRequired
-  };
+  private formElement = React.createRef<HTMLFormElement>();
 
-  constructor(props) {
-    super(props);
-    this.formElement = React.createRef();
-  }
-
-  state = {
-    timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry,
-    validity: TimeEntryForm.timeEntriesDefaultValues.validity
-  };
-
+  readonly state: TimeEntryFormState = this.defaultState;
 
   handleFormVisibility = () => {
-    const { onToggleFormVisibility, isFormVisible } = this.props;
-    onToggleFormVisibility(!isFormVisible);
+    this.props.onToggleFormVisibility(!this.props.isFormVisible);
   };
 
   handleBlur = ({ target }) => {
-    // check validity on blur
-    this.setState((prevState) => ({
+    this.setState((prevState: TimeEntryFormState) => ({
       validity: {
         ...prevState.validity,
-        // e.g. date: true
         [target.name]: target.validity.valid
       }
     }));
   }
 
   handleChange = ({ target }) => {
-    this.setState((prevState) => ({
+    this.setState((prevState: TimeEntryFormState) => ({
       timeEntry: {
         ...prevState.timeEntry,
         [target.name]: target.value
@@ -77,16 +67,15 @@ class TimeEntryForm extends React.Component {
     // Then loop over each formElement and check its validity -> .every() returns boolean
     this.formElement.current && Array
       .from(this.formElement.current.elements)
-      .every((input) => input.validity.valid)
+      .every((input: HTMLInputElement) => input.validity.valid)
   )
 
   handleSubmit = (event) => {
     const { timeEntry } = this.state;
     const { date, timeFrom, timeTo } = timeEntry;
-    const { onEntrySubmit } = this.props;
     event.preventDefault();
 
-    const newTimeEntryFormatted = {
+    const newTimeEntryFormatted: TimeEntryModel = {
       ...timeEntry,
       date: convertDateToIso(date),
       timeFrom: createIsoString(convertDateToIso(date), convertTimeToIso(timeFrom)),
@@ -94,13 +83,12 @@ class TimeEntryForm extends React.Component {
     };
 
     if (this.checkFormValidation()) {
-      onEntrySubmit(newTimeEntryFormatted);
-      this.setState({ timeEntry: TimeEntryForm.timeEntriesDefaultValues.timeEntry });
+      this.props.onEntrySubmit(newTimeEntryFormatted);
+      this.setState(() => this.defaultState);
     }
   };
 
-
-  render() {
+  render(): React.ReactNode {
     const { timeEntry, validity } = this.state;
     const {
       clientId, activity, date, timeFrom, timeTo
