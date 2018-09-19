@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectBox from '../../services/components/select-box/SelectBox';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNamesModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';

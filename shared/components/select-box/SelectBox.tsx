@@ -1,11 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { ClientNamesModel } from '../../../ducks/clients';
 import './select-box.scss';
 
-const SelectBox = ({
+export interface SelectBoxProps {
+  className?: string;
+  name?: string;
+  onChange;
+  options: ClientNamesModel[];
+  selectedValue: string;
+}
+
+const SelectBox: React.SFC<SelectBoxProps> = ({
   className, selectedValue, name, onChange, options
-}) => (
+}: SelectBoxProps) => (
   <div className="select-box__button-arrow">
     <select
       className={`select-box ${className}`}
@@ -28,19 +35,6 @@ const SelectBox = ({
 SelectBox.defaultProps = {
   className: '',
   name: ''
-};
-
-SelectBox.propTypes = {
-  className: PropTypes.string,
-  selectedValue: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired
 };
 
 export default SelectBox;

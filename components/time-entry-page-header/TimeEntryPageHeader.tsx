@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClientNamesModel } from '../../ducks/clients';
-import SelectBox from '../../services/components/select-box/SelectBox';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 
 import './time-entry-page-header.scss';
 
@@ -26,8 +26,6 @@ const TimeEntryPageHeader = ({
 
     <div className="time-entry-page-header__button-wrapper">
       <SelectBox
-        className="class"
-        name="filter"
         selectedValue={activeFilter}
         onChange={(event) => onFilterTimeEntries(event.target.value)}
         options={[{ title: 'All clients:', value: '' }, ...clientNames]}
