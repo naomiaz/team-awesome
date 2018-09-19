@@ -37,7 +37,10 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
           </span>
 
           <button
-            className="btn time-entry-item__button-delete"
+            className="
+              btn
+              time-entry-item__button-delete
+            "
             onClick={this.handleClick}
             type="button"
           >
