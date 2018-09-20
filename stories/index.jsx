@@ -5,6 +5,7 @@ import SelectBox from '../shared/components/select-box/SelectBox';
 
 storiesOf('SelectBox', module)
   .add('with options', () => (
+    // test
     <SelectBox
       selectedValue="Design"
       onChange={action('selectbox clicked')}
