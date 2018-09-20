@@ -1,4 +1,4 @@
-#Team Awesome
+# Team Awesome
 
 Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents.
 
