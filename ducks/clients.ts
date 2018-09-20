@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-
 // Action types
 export const REQUEST_CLIENTS = 'REQUEST_CLIENTS';
 export const REQUEST_CLIENTS_SUCCESS = 'REQUEST_CLIENTS_SUCCESS';
@@ -77,10 +76,6 @@ export const clientNamesSelector = createSelector(
   clientsSelector,
   (clients: ClientState['clients']) => clients.map((client) =>
     ({ title: client.clientName, value: client.id }))
-  // (clients: ClientState['clients']) => clients.reduce((accumulator, currentValue) => ([
-  //   ...accumulator,
-  //   { title: currentValue.clientName, value: currentValue.id }
-  // ]), [])
 );
 
 export const isFormSavingSelector = createSelector(

@@ -53,7 +53,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.5.0"
+    "jest": "^23.5.0",
+    "typescript-eslint-parser": "^18.0.0"
   },
   "transform": {
     "^.+\\.js$": "babel-jest",
