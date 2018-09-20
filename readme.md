@@ -1,4 +1,4 @@
-Team Awesome
+#Team Awesome
 
 Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents.
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-To use this app you will need [NodeJS](https://nodejs.org/en/) and [Next.js](https://nextjs.org/).
+To use this app you will need [Node.js](https://nodejs.org/en/) and [Next.js](https://nextjs.org/).
 
 To deploy this project in a live environment, you can use [Now](https://zeit.co/now).
 
