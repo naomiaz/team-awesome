@@ -63,9 +63,9 @@ class ClientsOverview extends React.Component {
 
           <SelectBox
             className="clients-overview__filter"
-            defaultValue={sortBy}
+            selectedValue={sortBy}
             name="sortBy"
-            onChangeFunction={onSortClientsBy}
+            onChange={(event) => onSortClientsBy(event.target.value)}
             options={[
               { title: 'Sort by:', value: '' },
               { title: 'Client', value: 'clientName' },
@@ -75,11 +75,11 @@ class ClientsOverview extends React.Component {
 
           <SelectBox
             className="clients-overview__filter"
-            defaultValue={sortDirection}
+            selectedValue={sortDirection}
             name="sortDirection"
-            onChangeFunction={onSortClientsDirection}
+            onChange={(event) => onSortClientsDirection(event.target.value)}
             options={[
-              { title: 'A-Z (asc):', value: 'ascending' },
+              { title: 'A-Z (asc)', value: 'ascending' },
               { title: 'Z-A (desc)', value: 'descending' }
             ]}
           />

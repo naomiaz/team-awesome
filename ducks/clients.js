@@ -15,7 +15,7 @@ export const DELETE_CLIENT_SUCCESS = 'DELETE_CLIENT_SUCCESS';
 // State Selectors -> To be imported in Container Component
 const clientsRootSelector = (state) => state.clients;
 
-const clientsSelector = createSelector(
+export const clientsSelector = createSelector(
   // extract clients form the clientsRootSelector
   clientsRootSelector,
   (clients) => clients.clients
@@ -44,6 +44,14 @@ export const getClientsSelector = createSelector(
         return 0;
       })
   )
+);
+
+export const clientNameSelector = createSelector(
+  clientsSelector,
+  (clients) => clients.reduce((accumulator, currentValue) => ([
+    ...accumulator,
+    { title: currentValue.clientName, value: currentValue.id }
+  ]), [])
 );
 
 export const isFormSavingSelector = createSelector(

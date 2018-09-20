@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { clientNameSelector } from './clients';
 
 // Action types
 export const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
@@ -26,9 +27,14 @@ export const timeEntriesActiveFilterSelector = createSelector(
 );
 
 export const getTimeEntriesSelector = createSelector(
-  [timeEntriesSelector, timeEntriesActiveFilterSelector],
-  (items, activeFilter) => (
-    items.filter((item) => !activeFilter || item.client === activeFilter)
+  [clientNameSelector, timeEntriesSelector, timeEntriesActiveFilterSelector],
+  (clients, items, activeFilter) => (
+    items
+      .filter((item) => !activeFilter || item.clientId === activeFilter)
+      .map((item) => ({
+        ...item,
+        clientLabel: clients.find((client) => client.value === item.clientId).title
+      }))
       .sort((a, b) => (new Date(b.date) - new Date(a.date)))
   )
 );

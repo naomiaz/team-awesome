@@ -12,13 +12,9 @@
     margin-top: 24px;
     padding: 16px;
 
-    &--visible {
-      display: flex;
-    }
+    &--visible { display: flex; }
 
-    &--hidden {
-      display: none;
-    }
+    &--hidden { display: none; }
 
     @include tablet {
       display: flex;
@@ -62,6 +58,7 @@
     background-image: linear-gradient($color-monochrome-1, $color-monochrome-2);
     border: 1px solid $color-monochrome-6;
     border-radius: $border-radius-primary;
+    color: $color-monochrome-7;
     font-family: $font-primary;
     font-size: 14px;
     font-weight: 600;
@@ -91,9 +88,11 @@
       color: $color-monochrome-3;
       cursor: not-allowed;
     }
+
+    @include tablet { width: 90px; }
   }
 
-  &__button-new--visible {
+  &__button-new {
     background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
     border: 1px solid $color-accent-alt-6;
     border-radius: $border-radius-primary;
@@ -103,72 +102,50 @@
     font-weight: 400;
     margin-top: 25px;
     padding: 10px 0;
+    position: relative;
     width: 100%;
-  }
 
-  &__button-new--hidden { display: none; }
+    &::before {
+      background: url("/static/icons/plus.svg") no-repeat;
+      content: "";
+      display: inline-block;
+      height: 10px;
+      margin-right: 15px;
+      width: 10px;
+    }
+
+    &--visible { display: block; }
+
+    &--hidden { display: none; }
+
+    @include tablet { display: none; }
+  }
 
   &__button-close {
     background-color: transparent;
     border: none;
+    padding: 10px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -10px;
+    top: -10px;
+
+    @include tablet { display: none; }
   }
 
-  &__icon--open {
-    -webkit-mask: url("/static/icons/plus.svg") no-repeat;
-    -webkit-mask-size: 10px 10px;
-    background-color: $color-accent-alt-7;
-    border-style: none;
-    border-width: 0;
-    height: 10px;
-    margin-right: 10px;
-    position: relative;
-    width: 10px;
-  }
-
-  &__icon--close {
+  &__icon-close {
     -webkit-mask: url("/static/icons/close.svg") no-repeat;
     -webkit-mask-size: 7px 7px;
     background-color: $color-monochrome-5;
-    border-style: none;
-    border-width: 0;
     height: 7px;
     width: 7px;
   }
 
   &__time-wrapper {
     display: flex;
-    // flex-flow: row;
-    // justify-content: space-between;
   }
 
   &__time-from,
   &__time-to {
     @include tablet { width: 80px; }
-  }
-
-  @include tablet {
-
-    &__title {
-      display: block;
-      font-size: 24px;
-      font-weight: $font-weight-light;
-      margin-top: 33px;
-    }
-
-    &-date {
-      flex-basis: 130px;
-    }
-
-    &__button-add {
-      width: 90px;
-    }
-
-    &__button-new--visible,
-    &__button-close {
-      display: none;
-    }
   }
 }
