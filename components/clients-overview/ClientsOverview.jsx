@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import SelectBox from '../../shared/components/select-box/SelectBox.tsx';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 import ClientItem from '../client-item/ClientItem';
 
 import './clients-overview.scss';

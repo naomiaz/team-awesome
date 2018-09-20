@@ -15,7 +15,7 @@
     position: relative;
 
     &::after {
-      background: url("/static/icons/arrow-down.svg") no-repeat center;
+      background: url("../../../static/icons/arrow-down.svg") no-repeat center;
       content: "";
       height: 16px;
       pointer-events: none;
