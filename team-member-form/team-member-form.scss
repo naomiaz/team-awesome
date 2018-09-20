@@ -1,0 +1,224 @@
+@import "../../shared/styles/main";
+
+.team-member-form {
+  @include section-row;
+
+  // HEADER
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: $font-weight-light;
+  }
+
+  &__button {
+    font-weight: 400;
+    height: 39px;
+    width: 100px;
+
+    &--save {
+      background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
+      border: 1px solid $color-accent-alt-6;
+      color: $color-monochrome-1;
+      margin-left: 12px;
+
+      &[disabled] {
+        background-color: $color-monochrome-6;
+        background-image: none;
+        border: $color-monochrome-3;
+        color: $color-monochrome-3;
+        cursor: not-allowed;
+      }
+    }
+
+    &--cancel {
+      background-color: $color-monochrome-2;
+      border: 1px solid $color-monochrome-6;
+      color: $color-monochrome-3;
+      margin-left: auto;
+    }
+  }
+
+  &__container {
+    border-bottom-left-radius: $border-radius-primary;
+    border-left: 4px solid $color-primary;
+    border-top-left-radius: $border-radius-primary;
+  }
+
+  // TAB ROW
+  &__tab-row {
+    height: 52px;
+    overflow: hidden;
+
+  }
+
+  &__tab {
+    background-color: $color-monochrome-1;
+    border-right: 1px solid $color-monochrome-8;
+    border-top: 1px solid $color-monochrome-8;
+    border-top-right-radius: $border-radius-primary;
+    float: left;
+    font-size: 18px;
+    font-weight: $font-weight-semi-bold;
+    padding: 15px 33px;
+  }
+
+  // FORM CONTAINER
+  &__form-container {
+    border-bottom: 1px solid $color-monochrome-8;
+    border-radius: 0 $border-radius-primary $border-radius-primary 0;
+    border-right: 1px solid $color-monochrome-8;
+    border-top: 1px solid $color-monochrome-8;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin-top: -1px;
+    padding: 45px 30px;
+
+    @include tablet {
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__first-column {
+    font-weight: 600;
+    text-align: center;
+
+    @include tablet {
+      margin: 0 15px 0 0;
+    }
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+
+  &__divider {
+    display: none;
+
+    @include tablet {
+      background: $color-monochrome-6;
+      display: block;
+      margin: 0 15px 19px;
+      min-width: 1px;
+    }
+  }
+
+  // FORM ELEMENTS
+  &__label {
+    color: $color-text-secondary;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 19px;
+    text-transform: capitalize;
+    width: 100%;
+
+    &--half { margin-right: 10px; }
+  }
+
+  &__input {
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px;
+    margin-top: 7px;
+    padding: 0 15px;
+    width: 100%;
+
+    &--valid { border-bottom: 1px solid $color-monochrome-6; }
+
+    &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
+  }
+
+  &__input-socials {
+    border-left: none;
+    border-radius: 0 $border-radius-primary $border-radius-primary 0;
+    margin-top: 0;
+  }
+
+  &__textarea {
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    display: block;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 500;
+    height: 84px;
+    margin-top: 7px;
+    padding: 13px;
+    resize: vertical;
+    width: 100%;
+  }
+
+  // SPECIFIC FORM ELEMENTS
+  &__socials {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 10px;
+  }
+
+  &__icon-box {
+    border-bottom-left-radius: $border-radius-primary;
+    border-top-left-radius: $border-radius-primary;
+    height: 36px;
+    position: relative;
+    width: 36px;
+
+    &--icon-twitter {
+      background-image: linear-gradient(to bottom, $color-twitter-primary, $color-twitter-secondary);
+      position: relative;
+
+      &::after {
+        background: url("/static/icons/twitter.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 21px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.6);
+        width: 27px;
+      }
+    }
+
+    &--icon-facebook {
+      background-image: linear-gradient(to top, $color-facebook-primary, $color-facebook-secondary);
+
+      &::after {
+        background: url("/static/icons/facebook.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 26px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.6);
+        width: 17px;
+      }
+    }
+  }
+
+  &__name,
+  &__zipcity {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+
+  &__first-name,
+  &__zip {
+    margin-right: 10px;
+  }
+}

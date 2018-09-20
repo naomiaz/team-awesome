@@ -1,12 +1,12 @@
 import React from 'react';
-import { ClientNamesModel } from '../../../ducks/clients';
+import { ClientNameModel } from '../../../ducks/clients';
 import './select-box.scss';
 
 export interface SelectBoxProps {
   className?: string;
   name?: string;
   onChange;
-  options: ClientNamesModel[];
+  options: ClientNameModel[];
   selectedValue: string;
 }
 

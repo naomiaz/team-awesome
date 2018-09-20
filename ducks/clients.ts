@@ -11,13 +11,9 @@ export const SORT_CLIENTS_DIRECTION = 'SORT_CLIENTS_DIRECTION';
 export const DELETE_CLIENT = 'DELETE_CLIENT';
 export const DELETE_CLIENT_SUCCESS = 'DELETE_CLIENT_SUCCESS';
 
-export interface ClientNamesModel {
+export interface ClientNameModel {
   title: string;
   value: string;
-}
-
-export interface ClientNames {
-  clientNames: ClientNamesModel[];
 }
 
 export interface ClientModel {
@@ -77,7 +73,7 @@ export const getClientsSelector = createSelector(
   )
 );
 
-export const clientNameSelector = createSelector(
+export const clientNamesSelector = createSelector(
   clientsSelector,
   (clients: ClientState['clients']) => clients.reduce((accumulator, currentValue) => ([
     ...accumulator,

@@ -2,21 +2,21 @@ import React from 'react';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryItem from '../time-entry-item/TimeEntryItem';
 import { TimeEntryModel } from '../../ducks/time-entries';
-import { ClientNamesModel } from '../../ducks/clients';
+import { ClientNameModel } from '../../ducks/clients';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
 export interface TimeEntryOverviewProps {
   timeEntries: TimeEntryModel[];
-  clientNames: ClientNamesModel[];
+  clientNames: ClientNameModel[];
   isFormSaving: boolean;
   isFormVisible: boolean;
-  onDeleteTimeEntry;
-  onRequestTimeEntries;
-  onRequestClients;
-  onSaveTimeEntry;
-  onToggleFormVisibility;
+  onDeleteTimeEntry: (id: number) => void;
+  onRequestTimeEntries: () => void;
+  onRequestClients: () => void;
+  onSaveTimeEntry: (newTimeEntry) => void;
+  onToggleFormVisibility:(isFormVisible: boolean) => void;
 }
 
 
