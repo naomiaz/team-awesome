@@ -6,9 +6,7 @@ import SelectBox from '../shared/components/select-box/SelectBox';
 storiesOf('SelectBox', module)
   .add('with options', () => (
     <SelectBox
-      // className="time-entry-form__input"
       selectedValue="Design"
-      // name="clientId"
       onChange={action('selectbox clicked')}
       options={[
         { title: 'Design', value: 'Design' },
@@ -18,6 +16,3 @@ storiesOf('SelectBox', module)
       ]}
     />
   ));
-  // .add('with some emoji', () => (
-  //   <Button onClick={action('clicked')}><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
-  // ));
