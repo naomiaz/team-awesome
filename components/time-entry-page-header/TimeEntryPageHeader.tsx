@@ -1,12 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import SelectBox from '../../services/components/select-box/SelectBox';
+import { ClientNameModel } from '../../ducks/clients';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 
 import './time-entry-page-header.scss';
 
+export interface TimeEntryPageHeaderProps {
+  activeFilter: string,
+  clientNames: ClientNameModel[];
+  pageTitle: string,
+  onFilterTimeEntries: (filterValue: string) => void;
+  unitCount: number
+  unit: string
+}
+
 const TimeEntryPageHeader = ({
   activeFilter, clientNames, pageTitle, onFilterTimeEntries, unitCount, unit
-}) => (
+}: TimeEntryPageHeaderProps) => (
   <section className="time-entry-page-header">
     <h1 className="time-entry-page-header__title">
       { pageTitle }
@@ -39,19 +48,5 @@ const TimeEntryPageHeader = ({
     </div>
   </section>
 );
-
-TimeEntryPageHeader.propTypes = {
-  activeFilter: PropTypes.string.isRequired,
-  clientNames: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  pageTitle: PropTypes.string.isRequired,
-  onFilterTimeEntries: PropTypes.func.isRequired,
-  unitCount: PropTypes.number.isRequired,
-  unit: PropTypes.string.isRequired
-};
 
 export default TimeEntryPageHeader;

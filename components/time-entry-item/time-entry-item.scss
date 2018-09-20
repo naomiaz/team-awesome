@@ -42,9 +42,7 @@
   }
 
   &:hover {
-    .time-entry-item__button-delete {
-      opacity: 1;
-    }
+    .time-entry-item__button-delete { opacity: 1; }
   }
 
   &__client {
@@ -52,9 +50,7 @@
     display: flex;
   }
 
-  &__time {
-    text-align: right;
-  }
+  &__time { text-align: right; }
 
   &__duration {
     color: $color-monochrome-4;

@@ -1,39 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryItem from '../time-entry-item/TimeEntryItem';
+import { TimeEntryModel } from '../../ducks/time-entries';
+import { ClientNameModel } from '../../ducks/clients';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
 
 import './time-entry-overview.scss';
 
-class TimeEntryOverview extends React.Component {
-  static propTypes = {
-    clientNames: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
-      }).isRequired
-    ).isRequired,
-    isFormSaving: PropTypes.bool.isRequired,
-    isFormVisible: PropTypes.bool.isRequired,
-    onDeleteTimeEntry: PropTypes.func.isRequired,
-    onRequestTimeEntries: PropTypes.func.isRequired,
-    onRequestClients: PropTypes.func.isRequired,
-    onSaveTimeEntry: PropTypes.func.isRequired,
-    onToggleFormVisibility: PropTypes.func.isRequired,
-    timeEntries: PropTypes.arrayOf(
-      PropTypes.shape({
-        activity: PropTypes.string.isRequired,
-        clientId: PropTypes.string.isRequired,
-        clientLabel: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        timeFrom: PropTypes.string.isRequired,
-        timeTo: PropTypes.string.isRequired
-      })
-    ).isRequired
-  }
+export interface TimeEntryOverviewProps {
+  timeEntries: TimeEntryModel[];
+  clientNames: ClientNameModel[];
+  isFormSaving: boolean;
+  isFormVisible: boolean;
+  onDeleteTimeEntry: (id: number) => void;
+  onRequestTimeEntries: () => void;
+  onRequestClients: () => void;
+  onSaveTimeEntry: (newTimeEntry: TimeEntryModel) => void;
+  onToggleFormVisibility:(isFormVisible: boolean) => void;
+}
 
+
+class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
   componentDidMount() {
     this.props.onRequestClients();
     this.props.onRequestTimeEntries();
@@ -47,7 +34,7 @@ class TimeEntryOverview extends React.Component {
     this.props.onDeleteTimeEntry(id);
   };
 
-  render() {
+  render(): React.ReactNode {
     const {
       clientNames,
       timeEntries,
@@ -63,7 +50,6 @@ class TimeEntryOverview extends React.Component {
           isFormVisible={isFormVisible}
           onToggleFormVisibility={onToggleFormVisibility}
           onEntrySubmit={this.onEntrySubmit}
-          timeEntries={timeEntries}
           clientNames={clientNames}
         />
 

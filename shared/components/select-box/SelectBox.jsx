@@ -6,23 +6,21 @@ import './select-box.scss';
 const SelectBox = ({
   className, selectedValue, name, onChange, options
 }) => (
-  <div className="select-box__button-arrow">
-    <select
-      className={`select-box ${className}`}
-      name={name}
-      onChange={onChange}
-      value={selectedValue}
-    >
-      {options.map((currentOption) => (
-        <option
-          key={currentOption.value}
-          value={currentOption.value}
-        >
-          {currentOption.title}
-        </option>
-      ))}
-    </select>
-  </div>
+  <select
+    className={`select-box ${className}`}
+    name={name}
+    onChange={(event) => onChange(event.target.value)}
+    value={selectedValue}
+  >
+    {options.map((currentOption) => (
+      <option
+        key={currentOption.value}
+        value={currentOption.value}
+      >
+        {currentOption.title}
+      </option>
+    ))}
+  </select>
 );
 
 SelectBox.defaultProps = {
@@ -32,9 +30,9 @@ SelectBox.defaultProps = {
 
 SelectBox.propTypes = {
   className: PropTypes.string,
-  selectedValue: PropTypes.string.isRequired,
-  name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  selectedValue: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

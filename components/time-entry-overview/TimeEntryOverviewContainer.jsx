@@ -10,12 +10,12 @@ import {
   saveTimeEntry,
   toggleFormVisibility
 } from '../../ducks/time-entries';
-import { clientNameSelector, requestClients } from '../../ducks/clients';
+import { clientNamesSelector, requestClients } from '../../ducks/clients';
 import TimeEntryOverview from './TimeEntryOverview';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
-  clientNames: clientNameSelector(state),
+  clientNames: clientNamesSelector(state),
   timeEntries: getTimeEntriesSelector(state),
   isFormSaving: isFormSavingSelector(state),
   isFormVisible: isFormVisibleSelector(state)

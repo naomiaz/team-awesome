@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-
 // Action types
 export const REQUEST_CLIENTS = 'REQUEST_CLIENTS';
 export const REQUEST_CLIENTS_SUCCESS = 'REQUEST_CLIENTS_SUCCESS';
@@ -11,6 +10,33 @@ export const SORT_CLIENTS_DIRECTION = 'SORT_CLIENTS_DIRECTION';
 export const DELETE_CLIENT = 'DELETE_CLIENT';
 export const DELETE_CLIENT_SUCCESS = 'DELETE_CLIENT_SUCCESS';
 
+export interface ClientNameModel {
+  title: string;
+  value: string;
+}
+
+export interface ClientModel {
+  clientName: string;
+  address: string;
+  zip: string;
+  city: string;
+  chamberOfCommerce: string;
+  email: string;
+  phone: string;
+  website: string;
+  avatar: string;
+  remarks: string;
+  id?: string;
+}
+
+interface ClientState {
+  clients: ClientModel[];
+  isLoading: boolean,
+  isFormSaving: boolean,
+  sortBy: string,
+  sortDirection: string,
+  error: object;
+}
 
 // State Selectors -> To be imported in Container Component
 const clientsRootSelector = (state) => state.clients;
@@ -18,22 +44,22 @@ const clientsRootSelector = (state) => state.clients;
 export const clientsSelector = createSelector(
   // extract clients form the clientsRootSelector
   clientsRootSelector,
-  (clients) => clients.clients
+  (clients: ClientState) => clients.clients
 );
 
 export const clientsSortBySelector = createSelector(
   clientsRootSelector,
-  (clients) => clients.sortBy
+  (clients: ClientState) => clients.sortBy
 );
 
 export const clientsSortDirectionSelector = createSelector(
   clientsRootSelector,
-  (clients) => clients.sortDirection
+  (clients: ClientState) => clients.sortDirection
 );
 
 export const getClientsSelector = createSelector(
   [clientsSelector, clientsSortBySelector, clientsSortDirectionSelector],
-  (clients, sortBy, sortDirection) => (
+  (clients: ClientState['clients'], sortBy: ClientState['sortBy'], sortDirection: ClientState['sortDirection']) => (
     !sortBy
       ? clients
       : [...clients].sort((a, b) => {
@@ -46,22 +72,20 @@ export const getClientsSelector = createSelector(
   )
 );
 
-export const clientNameSelector = createSelector(
+export const clientNamesSelector = createSelector(
   clientsSelector,
-  (clients) => clients.reduce((accumulator, currentValue) => ([
-    ...accumulator,
-    { title: currentValue.clientName, value: currentValue.id }
-  ]), [])
+  (clients: ClientState['clients']) => clients.map((client) =>
+    ({ title: client.clientName, value: client.id }))
 );
 
 export const isFormSavingSelector = createSelector(
   clientsRootSelector,
-  (clients) => clients.isFormSaving
+  (clients: ClientState) => clients.isFormSaving
 );
 
 
 // Initial State
-export const initialState = {
+export const initialState: ClientState = {
   clients: [],
   isLoading: false,
   isFormSaving: false,
@@ -101,38 +125,38 @@ export function clientsReducer(state = initialState, action) {
 
 
 // Action Creators -> To be called in Component (and are watched by rootSaga)
-export const deleteClient = (id) => ({
+export const deleteClient = (id: ClientModel['id']) => ({
   type: DELETE_CLIENT,
   id
 });
 
-export const deleteClientSuccess = (id) => ({
+export const deleteClientSuccess = (id: ClientModel['id']) => ({
   type: DELETE_CLIENT_SUCCESS,
   id
 });
 
-export const sortClientsBy = (sortBy) => ({
+export const sortClientsBy = (sortBy: ClientState['sortBy']) => ({
   type: SORT_CLIENTS_BY,
   sortBy
 });
-export const sortClientsDirection = (sortDirection) => ({
+export const sortClientsDirection = (sortDirection: ClientState['sortDirection']) => ({
   type: SORT_CLIENTS_DIRECTION,
   sortDirection
 });
 
 export const requestClients = () => ({ type: REQUEST_CLIENTS });
 
-export const requestClientsSuccess = (clients) => ({
+export const requestClientsSuccess = (clients: ClientModel[]) => ({
   type: REQUEST_CLIENTS_SUCCESS,
   clients
 });
 
-export const saveClient = (newClient) => ({
+export const saveClient = (newClient: ClientModel) => ({
   type: SAVE_CLIENT,
   newClient
 });
 
-export const saveClientSuccess = (newClient) => ({
+export const saveClientSuccess = (newClient: ClientModel) => ({
   type: SAVE_CLIENT_SUCCESS,
   newClient
 });

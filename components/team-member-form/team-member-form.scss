@@ -123,9 +123,7 @@
     text-transform: capitalize;
     width: 100%;
 
-    &--half {
-      margin-right: 10px;
-    }
+    &--half { margin-right: 10px; }
   }
 
   &__input {
@@ -139,13 +137,9 @@
     padding: 0 15px;
     width: 100%;
 
-    &--valid {
-      border-bottom: 1px solid $color-monochrome-6;
-    }
+    &--valid { border-bottom: 1px solid $color-monochrome-6; }
 
-    &--invalid {
-      border-bottom: 1px solid $color-accent-alt-10;
-    }
+    &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
   }
 
   &__input-socials {
