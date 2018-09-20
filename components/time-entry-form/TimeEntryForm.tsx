@@ -1,15 +1,15 @@
 import React from 'react';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import { TimeEntryModel } from '../../ducks/time-entries';
-import { ClientNamesModel } from '../../ducks/clients';
+import { ClientNameModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
 
 import './time-entry-form.scss';
 
 export interface TimeEntryFormProps {
-  clientNames: ClientNamesModel[];
-  onEntrySubmit;
-  onToggleFormVisibility;
+  clientNames: ClientNameModel[];
+  onEntrySubmit: (newTimeEntryFormatted: TimeEntryModel) => void;
+  onToggleFormVisibility: (isFormVisible: boolean) => void;
   isFormSaving: boolean;
   isFormVisible: boolean;
 }

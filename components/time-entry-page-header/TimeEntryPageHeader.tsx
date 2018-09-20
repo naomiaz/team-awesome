@@ -1,14 +1,14 @@
 import React from 'react';
-import { ClientNamesModel } from '../../ducks/clients';
+import { ClientNameModel } from '../../ducks/clients';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 
 import './time-entry-page-header.scss';
 
 export interface TimeEntryPageHeaderProps {
   activeFilter: string,
-  clientNames: ClientNamesModel[];
+  clientNames: ClientNameModel[];
   pageTitle: string,
-  onFilterTimeEntries;
+  onFilterTimeEntries: (filterValue: string) => void;
   unitCount: number
   unit: string
 }
