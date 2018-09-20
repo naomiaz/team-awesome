@@ -15,7 +15,7 @@ export interface TimeEntryOverviewProps {
   onDeleteTimeEntry: (id: number) => void;
   onRequestTimeEntries: () => void;
   onRequestClients: () => void;
-  onSaveTimeEntry: (newTimeEntry) => void;
+  onSaveTimeEntry: (newTimeEntry: TimeEntryModel) => void;
   onToggleFormVisibility:(isFormVisible: boolean) => void;
 }
 
