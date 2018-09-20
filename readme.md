@@ -25,12 +25,16 @@ Run the app:
 
 The app runs on `localhost:3000`. To use another port, you can run `npm run dev -- -p <your port here>`.
 
-
 ## Running the tests
 
-The unit and snapshot tests are written with Jest and Enzyme. You can find the written tests in the `__tests__` folder inside the `components/` and `services/` folders. To run the tests:
-`npm run test`
+The unit and snapshot tests are written with Jest and Enzyme. You can find the written tests in the `__tests__` folder inside the `./components` and `./services` folders. To run the tests:
+`$ npm run test`
 
+## Component demonstration
+All generic components are documented in [Storybook](https://storybook.js.org), a development environment for UI components.
+
+To run Storybook:
+`$ npm run storybook`
 
 ## Built With
 
@@ -40,6 +44,7 @@ The unit and snapshot tests are written with Jest and Enzyme. You can find the w
 * [Now](https://zeit.co/now) - Serverless deployment
 * [Jest](https://jestjs.io/docs/en/getting-started) - Test runner and unit testing utility
 * [Enzyme](https://airbnb.io/enzyme/) - Snapshot testing utility
+* [Storybook](https://storybook.js.org) - UI development environment
 
 ## Author
 
