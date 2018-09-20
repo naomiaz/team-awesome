@@ -75,10 +75,12 @@ export const getClientsSelector = createSelector(
 
 export const clientNamesSelector = createSelector(
   clientsSelector,
-  (clients: ClientState['clients']) => clients.reduce((accumulator, currentValue) => ([
-    ...accumulator,
-    { title: currentValue.clientName, value: currentValue.id }
-  ]), [])
+  (clients: ClientState['clients']) => clients.map((client) =>
+    ({ title: client.clientName, value: client.id }))
+  // (clients: ClientState['clients']) => clients.reduce((accumulator, currentValue) => ([
+  //   ...accumulator,
+  //   { title: currentValue.clientName, value: currentValue.id }
+  // ]), [])
 );
 
 export const isFormSavingSelector = createSelector(
