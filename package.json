@@ -8,7 +8,7 @@
     "dev": "next & json-server --watch api/time-entries.json",
     "lint": "eslint --ext js,jsx .",
     "start": "next start",
-    "storybook": "npm run build && start-storybook -s ./ -p 9001 -c .storybook",
+    "storybook": "start-storybook -s ./ -p 9001 -c .storybook",
     "test": "NODE_ENV=test jest --watch"
   },
   "repository": {
@@ -23,6 +23,8 @@
   "homepage": "https://team-awesome-naomi.now.sh",
   "dependencies": {
     "@babel/core": "^7.1.0",
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/react": "^3.4.11",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
     "@zeit/next-sass": "^0.2.0",
@@ -43,8 +45,6 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.11",
-    "@storybook/react": "^3.4.11",
     "babel-jest": "23.4.2",
     "babel-core": "^7.0.0-beta",
     "babel-runtime": "^6.26.0",
