@@ -6,9 +6,9 @@ import './select-box.scss';
 const SelectBox = ({
   className, selectedValue, name, onChange, options
 }) => (
-  <div className="select-box__button-arrow">
+  <div className="select-box select-box__button-arrow">
     <select
-      className={`select-box ${className}`}
+      className={`select-box__select ${className}`}
       name={name}
       onChange={(event) => onChange(event.target.value)}
       value={selectedValue}
