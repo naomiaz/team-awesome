@@ -26,6 +26,8 @@ const TimeEntryPageHeader = ({
 
     <div className="time-entry-page-header__button-wrapper">
       <SelectBox
+        className=""
+        name=""
         selectedValue={activeFilter}
         onChange={(event) => onFilterTimeEntries(event.target.value)}
         options={[{ title: 'All clients:', value: '' }, ...clientNames]}

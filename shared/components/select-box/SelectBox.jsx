@@ -6,21 +6,23 @@ import './select-box.scss';
 const SelectBox = ({
   className, selectedValue, name, onChange, options
 }) => (
-  <select
-    className={`select-box ${className}`}
-    name={name}
-    onChange={(event) => onChange(event.target.value)}
-    value={selectedValue}
-  >
-    {options.map((currentOption) => (
-      <option
-        key={currentOption.value}
-        value={currentOption.value}
-      >
-        {currentOption.title}
-      </option>
-    ))}
-  </select>
+  <div className="select-box__button-arrow">
+    <select
+      className={`select-box ${className}`}
+      name={name}
+      onChange={(event) => onChange(event.target.value)}
+      value={selectedValue}
+    >
+      {options.map((currentOption) => (
+        <option
+          key={currentOption.value}
+          value={currentOption.value}
+        >
+          {currentOption.title}
+        </option>
+      ))}
+    </select>
+  </div>
 );
 
 SelectBox.defaultProps = {
