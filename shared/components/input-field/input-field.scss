@@ -1,0 +1,16 @@
+@import "../../../shared/styles/main";
+
+.input-field {
+  display: inline-block;
+  margin-left: 10px;
+
+  &__input {
+    @include input-field;
+    border: 1px solid $color-monochrome-6;
+    color: $color-monochrome-7;
+    height: 36px;
+    margin: 10px 0;
+    padding: 0 15px;
+    width: 100%;
+  }
+}

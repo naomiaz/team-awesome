@@ -7,7 +7,7 @@ storiesOf('SelectBox', module)
   .add('with options', () => (
     <SelectBox
       selectedValue="Design"
-      onChange={action('selectbox clicked')}
+      onChange={action('selectbox value')}
       options={[
         { title: 'Design', value: 'Design' },
         { title: 'Development', value: 'Development' },

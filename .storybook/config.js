@@ -1,7 +1,8 @@
 import { configure } from '@storybook/react';
 
 function loadStories() {
-  require('../stories/index.jsx');
+  require('../stories/SelectBox.jsx');
+  require('../stories/InputField.jsx');
   // You can require as many stories as you need.
 }
 
