@@ -2,7 +2,6 @@
 
 .select-box {
   display: block;
-  margin-left: 10px;
 
   &__select {
     @include input-field;

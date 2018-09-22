@@ -10,7 +10,7 @@ const SelectBox = ({
     <select
       className={`select-box__select ${className}`}
       name={name}
-      onChange={(event) => onChange(event.target.value)}
+      onChange={onChange}
       value={selectedValue}
     >
       {options.map((currentOption) => (
