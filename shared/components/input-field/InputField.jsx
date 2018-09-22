@@ -23,10 +23,10 @@ InputField.defaultProps = {
   className: '',
   name: '',
   onBlur: () => '',
-  pattern: '',
+  pattern: null,
   placeholder: '',
   value: '',
-  required: false
+  required: null
 };
 
 InputField.propTypes = {

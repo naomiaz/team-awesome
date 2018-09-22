@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+import InputField from '../../shared/components/input-field/InputField';
 
 import './team-member-form.scss';
 
@@ -109,7 +110,11 @@ class TeamMemberForm extends React.Component {
               </a>
             </Link>
             <button
-              className="btn team-member-form__button team-member-form__button--save"
+              className="
+                btn
+                team-member-form__button
+                team-member-form__button--save
+              "
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
               name="save"
@@ -153,13 +158,18 @@ class TeamMemberForm extends React.Component {
                 <div className="team-member-form__name">
                   {/* FIRST NAME */}
                   <label
-                    className="team-member-form__label team-member-form__label--half"
+                    className="
+                      team-member-form__label
+                      team-member-form__label--half
+                    "
                     htmlFor="first-name"
                   >
                     First name
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity || validity.firstName ? 'valid' : 'invalid'}`}
-                      id="first-name"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.firstName ? 'valid' : 'invalid'}
+                      `}
                       name="firstName"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -174,9 +184,11 @@ class TeamMemberForm extends React.Component {
                     htmlFor="last-name"
                   >
                     Last name
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity || validity.lastName ? 'valid' : 'invalid'}`}
-                      id="last-name"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.lastName ? 'valid' : 'invalid'}
+                      `}
                       name="lastName"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -192,10 +204,11 @@ class TeamMemberForm extends React.Component {
                   htmlFor="email"
                 >
                   E-mail Address
-                  <input
-                    className={`team-member-form__input
-                      team-member-form__input--${!validity || validity.email ? 'valid' : 'invalid'}`}
-                    id="email"
+                  <InputField
+                    className={`
+                      team-member-form__input
+                      team-member-form__input--${!validity || validity.email ? 'valid' : 'invalid'}
+                    `}
                     name="email"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -232,10 +245,11 @@ class TeamMemberForm extends React.Component {
                   htmlFor="address"
                 >
                   Address
-                  <input
-                    className={`team-member-form__input
-                      team-member-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
-                    id="address"
+                  <InputField
+                    className={`
+                      team-member-form__input
+                      team-member-form__input--${!validity || validity.address ? 'valid' : 'invalid'}
+                    `}
                     name="address"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -248,14 +262,18 @@ class TeamMemberForm extends React.Component {
                 <div className="team-member-form__zipcity">
                   {/* ZIP CODE */}
                   <label
-                    className="team-member-form__label team-member-form__label--half"
+                    className="
+                      team-member-form__label
+                      team-member-form__label--half
+                    "
                     htmlFor="zip"
                   >
                     ZIP code
-                    <input
-                      className={`team-member-form__input
-                        team-member-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}`}
-                      id="zip"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}
+                      `}
                       name="zip"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -270,10 +288,11 @@ class TeamMemberForm extends React.Component {
                     htmlFor="city"
                   >
                     City
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity
-                        || validity.city ? 'valid' : 'invalid'}`}
-                      id="city"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.city ? 'valid' : 'invalid'}
+                      `}
                       name="city"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -287,10 +306,16 @@ class TeamMemberForm extends React.Component {
                   Social profiles
                   {/* TWITTER */}
                   <div className="team-member-form__socials">
-                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-twitter" />
-                    <input
-                      className="team-member-form__input team-member-form__input-socials"
-                      id="twitter"
+                    <div className="
+                      team-member-form__icon-box
+                      team-member-form__icon-box--icon-twitter
+                    "
+                    />
+                    <InputField
+                      className="
+                        team-member-form__input
+                        team-member-form__input-socials
+                      "
                       name="socialsTwitter"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -300,10 +325,16 @@ class TeamMemberForm extends React.Component {
                   </div>
                   {/* FACEBOOK */}
                   <div className="team-member-form__socials">
-                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-facebook" />
-                    <input
-                      className="team-member-form__input team-member-form__input-socials"
-                      id="facebook"
+                    <div className="
+                      team-member-form__icon-box
+                      team-member-form__icon-box--icon-facebook
+                    "
+                    />
+                    <InputField
+                      className="
+                        team-member-form__input
+                        team-member-form__input-socials
+                      "
                       name="socialsFacebook"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}

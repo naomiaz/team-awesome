@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectBox from '../../shared/components/select-box/SelectBox';
+import InputField from '../../shared/components/input-field/InputField';
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNameModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
@@ -51,7 +52,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
         [target.name]: target.validity.valid
       }
     }));
-  }
+  };
 
   handleChange = ({ target }) => {
     this.setState((prevState: TimeEntryFormState) => ({
@@ -60,7 +61,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
         [target.name]: target.value
       }
     }));
-  }
+  };
 
   checkFormValidation = () => (
     // First check if the formElement exists
@@ -68,7 +69,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
     this.formElement.current && Array
       .from(this.formElement.current.elements)
       .every((input: HTMLInputElement) => input.validity.valid)
-  )
+  );
 
   handleSubmit = (event) => {
     const { timeEntry } = this.state;
@@ -139,7 +140,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             >
               Client
               <SelectBox
-                className="time-entry-form__input"
+                className="time-entry-form__input time-entry-form__select"
                 selectedValue={clientId}
                 name="clientId"
                 onChange={this.handleChange}
@@ -157,7 +158,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             >
               Activity
               <SelectBox
-                className="time-entry-form__input"
+                className="time-entry-form__input time-entry-form__select"
                 selectedValue={activity}
                 name="activity"
                 onChange={this.handleChange}
@@ -179,12 +180,11 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
               htmlFor="date"
             >
               Date
-              <input
+              <InputField
                 className={`
                   time-entry-form__input
                   time-entry-form__input--${validity.date ? 'valid' : 'invalid'}
                 `}
-                id="date"
                 name="date"
                 onBlur={this.handleBlur}
                 onChange={this.handleChange}
@@ -207,12 +207,11 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                 htmlFor="time-from"
               >
                 From
-                <input
+                <InputField
                   className={`
                     time-entry-form__input
                     time-entry-form__input--${validity.timeFrom ? 'valid' : 'invalid'}
                   `}
-                  id="time-from"
                   name="timeFrom"
                   onBlur={this.handleBlur}
                   onChange={this.handleChange}
@@ -233,12 +232,11 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                 htmlFor="time-to"
               >
                 To
-                <input
+                <InputField
                   className={`
                     time-entry-form__input
                     time-entry-form__input--${validity.timeTo ? 'valid' : 'invalid'}
                   `}
-                  id="time-to"
                   name="timeTo"
                   onBlur={this.handleBlur}
                   onChange={this.handleChange}

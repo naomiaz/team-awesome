@@ -56,20 +56,16 @@
 
   &__input {
     background-image: linear-gradient($color-monochrome-1, $color-monochrome-2);
-    border: 1px solid $color-monochrome-6;
-    border-radius: $border-radius-primary;
-    color: $color-monochrome-7;
-    font-family: $font-primary;
-    font-size: 14px;
-    font-weight: 600;
-    height: 36px;
-    margin: 10px 0;
-    padding: 0 15px;
-    width: 100%;
+    margin-top: 10px;
 
     &--valid { border-bottom: 1px solid $color-monochrome-6; }
 
     &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
+  }
+
+  &__select {
+    color: $color-monochrome-7;
+    height: 36px;
   }
 
   &__button-add {
