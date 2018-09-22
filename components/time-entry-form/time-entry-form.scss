@@ -20,6 +20,7 @@
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
+      padding-bottom: 6px;
     }
   }
 
@@ -56,6 +57,7 @@
 
   &__input {
     background-image: linear-gradient($color-monochrome-1, $color-monochrome-2);
+    margin-bottom: 10px;
     margin-top: 10px;
 
     &--valid { border-bottom: 1px solid $color-monochrome-6; }
@@ -69,36 +71,14 @@
   }
 
   &__button-add {
-    background-color: $color-accent-alt-5;
-    border: none;
-    border-radius: $border-radius-primary;
-    color: $color-monochrome-1;
-    font-size: 14px;
-    font-weight: 400;
     margin: 15px 0;
-    padding: 10px 0;
     width: 100%;
-
-    &[disabled] {
-      background-color: $color-monochrome-6;
-      color: $color-monochrome-3;
-      cursor: not-allowed;
-    }
 
     @include tablet { width: 90px; }
   }
 
   &__button-new {
-    background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
-    border: 1px solid $color-accent-alt-6;
-    border-radius: $border-radius-primary;
-    color: $color-monochrome-1;
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
     margin-top: 25px;
-    padding: 10px 0;
-    position: relative;
     width: 100%;
 
     &::before {
@@ -109,8 +89,6 @@
       margin-right: 15px;
       width: 10px;
     }
-
-    &--visible { display: block; }
 
     &--hidden { display: none; }
 

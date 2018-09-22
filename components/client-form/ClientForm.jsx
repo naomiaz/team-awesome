@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+import Button from '../../shared/components/button/Button';
 import InputField from '../../shared/components/input-field/InputField';
 
 import './client-form.scss';
@@ -95,31 +96,22 @@ class ClientForm extends React.Component {
 
             <Link href="/clients">
               <a className="render-whitespace--left">
-                <button
+                <Button
                   className="
-                    btn
                     client-form__button
-                    client-form__button--cancel
+                    client-form__button-cancel
                   "
                   type="button"
-                >
-                  Cancel
-                </button>
+                  value="Cancel"
+                />
               </a>
             </Link>
-            <button
-              className="
-                btn
-                client-form__button
-                client-form__button--save
-              "
+            <Button
+              className="client-form__button"
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
-              name="save"
               value="Save"
-            >
-              Save
-            </button>
+            />
           </div>
 
           {/* FORM */}

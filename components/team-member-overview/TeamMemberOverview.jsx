@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Button from '../../shared/components/button/Button';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import TeamMemberItem from '../team-member-item/TeamMemberItem';
 
@@ -53,13 +54,11 @@ class TeamMemberOverview extends React.Component {
           </h2>
 
           <Link href="/add-new-team-member">
-            <button
-              className="btn team-member-overview__button-new render-whitespace--left"
+            <Button
+              className="team-member-overview__button-new render-whitespace--left"
               type="button"
-            >
-              <svg className="team-member-overview__icon-plus" />
-              New Humanoid
-            </button>
+              value="New Humanoid"
+            />
           </Link>
 
           <SelectBox

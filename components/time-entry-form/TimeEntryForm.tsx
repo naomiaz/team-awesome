@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../shared/components/button/Button';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import InputField from '../../shared/components/input-field/InputField';
 import { TimeEntryModel } from '../../ducks/time-entries';
@@ -100,17 +101,15 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
         <h2 className="time-entry-form__title">
           New Time Entry
         </h2>
-        <button
+        <Button
           className={`
-            btn
             time-entry-form__button-new
             time-entry-form__button-new--${isFormVisible ? 'hidden' : 'visible'}
           `}
           onClick={this.handleFormVisibility}
           type="button"
-        >
-          New time entry
-        </button>
+          value="New time entry"
+        />
 
         <form
           className={`
@@ -250,18 +249,17 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             </div>
           </div>
 
-          <button
+          <Button
             // Disable the Add button if the form is saving or if the form isn't valid (false)
             // this.checkFormValidation() is invoked each time the state updates after blurring ->
             // It will return return true/become enabled once all items are valid
             disabled={isFormSaving || !this.checkFormValidation()}
-            className="btn time-entry-form__button-add"
-            name="button"
+            className="time-entry-form__button-add"
             type="submit"
             value="Add"
           >
             Add
-          </button>
+          </Button>
         </form>
       </section>
     );

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+import Button from '../../shared/components/button/Button';
 import InputField from '../../shared/components/input-field/InputField';
 
 import './team-member-form.scss';
@@ -101,27 +102,22 @@ class TeamMemberForm extends React.Component {
 
             <Link href="/team-members">
               <a className="render-whitespace--left">
-                <button
-                  className="btn team-member-form__button team-member-form__button--cancel"
+                <Button
+                  className="
+                    team-member-form__button
+                    team-member-form__button-cancel
+                  "
                   type="button"
-                >
-                  Cancel
-                </button>
+                  value="Cancel"
+                />
               </a>
             </Link>
-            <button
-              className="
-                btn
-                team-member-form__button
-                team-member-form__button--save
-              "
+            <Button
+              className="team-member-form__button"
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
-              name="save"
               value="Save"
-            >
-              Save
-            </button>
+            />
           </div>
 
           {/* FORM */}

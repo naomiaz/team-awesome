@@ -229,3 +229,10 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+@mixin button {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
+}

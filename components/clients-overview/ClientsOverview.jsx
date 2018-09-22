@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Button from '../../shared/components/button/Button';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import ClientItem from '../client-item/ClientItem';
 
@@ -48,17 +49,13 @@ class ClientsOverview extends React.Component {
           </h2>
 
           <Link href="/add-new-client">
-            <button
-              className="
-                btn
-                clients-overview__button-new
-                render-whitespace--left
-              "
-              type="button"
-            >
-              <svg className="clients-overview__icon-plus" />
-              New Client
-            </button>
+            <a className="render-whitespace--left">
+              <Button
+                className="clients-overview__button-new"
+                type="button"
+                value="New Client"
+              />
+            </a>
           </Link>
 
           <SelectBox
