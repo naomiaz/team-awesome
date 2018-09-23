@@ -48,7 +48,8 @@ class ClientItem extends React.Component {
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="client-item__personalia-data
+            <div className="
+              client-item__personalia-data
               client-item__text-block"
             >
               <span className="client-item__text--primary">
@@ -101,7 +102,8 @@ class ClientItem extends React.Component {
           </ul>
 
           {/* CARET */}
-          <div className={`client-item__button-caret
+          <div className={`
+            client-item__button-caret
             client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
           />
         </div>

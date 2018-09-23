@@ -4,6 +4,7 @@
   @include section-row;
 
   &__form-container {
+    align-items: center;
     background-color: $color-monochrome-2;
     border: 1px solid $color-monochrome-6;
     border-radius: $border-radius-primary;

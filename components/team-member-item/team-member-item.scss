@@ -17,15 +17,15 @@
     width: 100%;
   }
 
-  &__personalia-wrapper {
+  &__personalia {
     display: flex;
     flex-flow: row;
     min-width: 40%;
   }
 
-  &__personalia { min-width: 100%; }
+  &__personalia-data { min-width: 100%; }
 
-  &__client-wrapper {
+  &__client-info {
     display: none;
 
     @include tablet {
@@ -85,6 +85,15 @@
     &--up { transform: rotate(180deg); }
   }
 
+  &__divider {
+    background: $color-monochrome-6;
+    display: block;
+    margin: 0 20px;
+    min-height: 1px;
+
+    @include tablet { display: none; }
+  }
+
   // EXPANDABLE WRAPPER (VISIBLE/HIDDEN)
   &__body-expandable {
     &--visible {
@@ -130,5 +139,18 @@
     display: block;
     font-size: 14px;
     font-weight: 400;
+  }
+
+  &__blockquote {
+    margin: 0;
+    padding: 16px 20px;
+
+    &::before {
+      color: $color-text-secondary;
+      content: "\201C";
+      font-size: 1.6em;
+      font-weight: $font-weight-regular;
+      margin-right: 2px;
+    }
   }
 }

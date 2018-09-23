@@ -137,7 +137,7 @@ class TeamMemberForm extends React.Component {
                 <img
                   alt="Edit Avatar"
                   className="team-member-form__avatar"
-                  src="/static/images/avatar-naomi.jpg"
+                  src="/static/images/avatar-humanoids.jpg"
                 />
                 <p>
                   <a
