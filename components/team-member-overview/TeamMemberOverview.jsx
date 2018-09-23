@@ -70,30 +70,32 @@ class TeamMemberOverview extends React.Component {
               />
             </Link>
 
-            <SelectBox
-              className="team-member-overview__filter"
-              selectedValue={sortBy}
-              name="sortBy"
-              onChange={(event) => onSortTeamMembersBy(event.target.value)}
-              options={[
-                { title: 'Sort by:', value: '' },
-                { title: 'Employee #', value: 'employeeNumber' },
-                { title: 'Job Title', value: 'jobTitle' },
-                { title: 'First Name', value: 'firstName' },
-                { title: 'Last Name', value: 'lastName' }
-              ]}
-            />
+            <div className="team-member-overview__filter-wrapper">
+              <SelectBox
+                className="team-member-overview__filter"
+                selectedValue={sortBy}
+                name="sortBy"
+                onChange={(event) => onSortTeamMembersBy(event.target.value)}
+                options={[
+                  { title: 'Sort by:', value: '' },
+                  { title: 'Employee #', value: 'employeeNumber' },
+                  { title: 'Job Title', value: 'jobTitle' },
+                  { title: 'First Name', value: 'firstName' },
+                  { title: 'Last Name', value: 'lastName' }
+                ]}
+              />
 
-            <SelectBox
-              className="team-member-overview__filter"
-              selectedValue={sortDirection}
-              name="sortDirection"
-              onChange={(event) => onSortTeamMembersDirection(event.target.value)}
-              options={[
-                { title: 'A-Z (asc):', value: 'ascending' },
-                { title: 'Z-A (desc)', value: 'descending' }
-              ]}
-            />
+              <SelectBox
+                className="team-member-overview__filter"
+                selectedValue={sortDirection}
+                name="sortDirection"
+                onChange={(event) => onSortTeamMembersDirection(event.target.value)}
+                options={[
+                  { title: 'A-Z (asc):', value: 'ascending' },
+                  { title: 'Z-A (desc)', value: 'descending' }
+                ]}
+              />
+            </div>
           </div>
 
           <ul>

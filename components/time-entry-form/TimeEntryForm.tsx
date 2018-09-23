@@ -106,6 +106,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             time-entry-form__button-new
             time-entry-form__button-new--${isFormVisible ? 'hidden' : 'visible'}
           `}
+          disabled={null}
           onClick={this.handleFormVisibility}
           type="button"
           value="New time entry"
@@ -255,6 +256,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             // It will return return true/become enabled once all items are valid
             disabled={isFormSaving || !this.checkFormValidation()}
             className="time-entry-form__button-add"
+            onClick={() => ''}
             type="submit"
             value="Add"
           >

@@ -58,13 +58,11 @@ class ClientsOverview extends React.Component {
             </h2>
 
             <Link href="/add-new-client">
-              <a className="render-whitespace--left">
-                <Button
-                  className="clients-overview__button-new"
-                  type="button"
-                  value="New Client"
-                />
-              </a>
+              <Button
+                className="clients-overview__button-new render-whitespace--left"
+                type="button"
+                value="New Client"
+              />
             </Link>
 
             <SelectBox
