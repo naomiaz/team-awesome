@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../shared/components/button/Button';
 import { calculateDuration } from '../../services/date-time/date-time';
 
 import './time-entry-item.scss';
@@ -30,23 +31,18 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
   render(): React.ReactNode {
     const { clientLabel, timeFrom, timeTo } = this.props;
     return (
-      <div className="time-entry-item">
+      <li className="time-entry-item">
         <div className="time-entry-item__client">
           <span>
             {clientLabel}
           </span>
 
-          <button
-            className="
-              btn
-              time-entry-item__button-delete
-            "
+          <Button
+            className="time-entry-item__button-delete"
             onClick={this.handleClick}
             type="button"
-          >
-            Delete
-          </button>
-
+            value="Delete"
+          />
         </div>
         <div className="time-entry-item__time">
           <span>
@@ -60,7 +56,7 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
             {new Date(calculateDuration(timeFrom, timeTo)).toLocaleTimeString('nl-NL', timeOptions)}
           </span>
         </div>
-      </div>
+      </li>
     );
   }
 }

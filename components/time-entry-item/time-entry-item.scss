@@ -16,6 +16,7 @@
 
     @include tablet {
       background-color: $color-accent-alt-10;
+      background-image: none;
       border: none;
       color: $color-monochrome-1;
       display: flex;
@@ -23,6 +24,7 @@
       justify-content: center;
       margin-left: 33px;
       opacity: 0;
+      padding: 0;
       transition: opacity .2s, background-color .2s, ;
       width: 80px;
 
