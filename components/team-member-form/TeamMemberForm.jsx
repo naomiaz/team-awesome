@@ -12,13 +12,13 @@ class TeamMemberForm extends React.Component {
     teamMember: {
       firstName: '',
       lastName: '',
-      employeeNumber: 'HUM_',
+      employeeNumber: '',
       email: '',
       address: '',
       zip: '',
       city: '',
       avatar: 'avatar-naomi.jpg',
-      biography: '',
+      biography: 'Lorem ipsum dolor sit amet',
       socialsTwitter: '',
       socialsFacebook: '',
       jobTitle: 'Front-end developer',
@@ -29,6 +29,25 @@ class TeamMemberForm extends React.Component {
 
   static propTypes = {
     isFormSaving: PropTypes.bool.isRequired,
+    teamMembers: PropTypes.arrayOf(
+      PropTypes.shape({
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        employeeNumber: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        email: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        zip: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired,
+        biography: PropTypes.string.isRequired,
+        socialsTwitter: PropTypes.string.isRequired,
+        socialsFacebook: PropTypes.string.isRequired,
+        jobTitle: PropTypes.string.isRequired,
+        currentClient: PropTypes.string.isRequired,
+        startDate: PropTypes.string.isRequired
+      })
+    ).isRequired,
     onSaveTeamMember: PropTypes.func.isRequired
   }
 
@@ -67,16 +86,22 @@ class TeamMemberForm extends React.Component {
       .every((input) => input.validity.valid)
   )
 
+  addOne = (number) => (number + 1)
+
   handleSubmit = (event) => {
-    const { newTeamMember } = this.state;
-    const { onSaveTeamMember } = this.props;
     event.preventDefault();
+    const { newTeamMember } = this.state;
+    const { onSaveTeamMember, teamMembers } = this.props;
+    const newTeamMemberFormatted = {
+      ...newTeamMember,
+      employeeNumber: `HUM_${this.addOne(teamMembers.length).toString().padStart(3, '0')}`
+    };
 
     if (!this.handleFormValidation()) {
       return;
     }
 
-    onSaveTeamMember({ ...newTeamMember });
+    onSaveTeamMember(newTeamMemberFormatted);
     this.setState({ newTeamMember: TeamMemberForm.newTeamMemberDefaultValues.teamMember });
     Router.push('/team-members');
   }
