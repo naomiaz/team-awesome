@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../shared/components/button/Button';
 import { calculateDuration } from '../../services/date-time/date-time';
 
 import './time-entry-item.scss';
@@ -36,17 +37,13 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
             {clientLabel}
           </span>
 
-          <button
-            className="
-              btn
-              time-entry-item__button-delete
-            "
+          <Button
+            className="time-entry-item__button-delete"
+            disabled={false}
             onClick={this.handleClick}
             type="button"
-          >
-            Delete
-          </button>
-
+            value="Delete"
+          />
         </div>
         <div className="time-entry-item__time">
           <span>

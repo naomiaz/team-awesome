@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Button from '../../shared/components/button/Button';
+import PageHeader from '../../shared/components/page-header/PageHeader';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import ClientItem from '../client-item/ClientItem';
 
@@ -41,62 +43,65 @@ class ClientsOverview extends React.Component {
     } = this.props;
 
     return (
-      <section className="clients-overview">
-        <div className="clients-overview__header">
-          <h2 className="clients-overview__title">
-            All Clients
-          </h2>
+      <React.Fragment>
+        <PageHeader
+          pageTitle="Clients"
+          unitCount={clients.length}
+          unitPlural="Clients"
+          unitSingular="Client"
+        />
 
-          <Link href="/add-new-client">
-            <button
-              className="
-                btn
-                clients-overview__button-new
-                render-whitespace--left
-              "
-              type="button"
-            >
-              <svg className="clients-overview__icon-plus" />
-              New Client
-            </button>
-          </Link>
+        <section className="clients-overview">
+          <div className="clients-overview__header">
+            <h2 className="clients-overview__title">
+              All Clients
+            </h2>
 
-          <SelectBox
-            className="clients-overview__filter"
-            selectedValue={sortBy}
-            name="sortBy"
-            onChange={(event) => onSortClientsBy(event.target.value)}
-            options={[
-              { title: 'Sort by:', value: '' },
-              { title: 'Client', value: 'clientName' },
-              { title: 'City', value: 'city' }
-            ]}
-          />
+            <Link href="/add-new-client">
+              <Button
+                className="clients-overview__button-new render-whitespace--left"
+                type="button"
+                value="New Client"
+              />
+            </Link>
 
-          <SelectBox
-            className="clients-overview__filter"
-            selectedValue={sortDirection}
-            name="sortDirection"
-            onChange={(event) => onSortClientsDirection(event.target.value)}
-            options={[
-              { title: 'A-Z (asc)', value: 'ascending' },
-              { title: 'Z-A (desc)', value: 'descending' }
-            ]}
-          />
-        </div>
+            <SelectBox
+              className="clients-overview__filter"
+              selectedValue={sortBy}
+              name="sortBy"
+              onChange={(event) => onSortClientsBy(event.target.value)}
+              options={[
+                { title: 'Sort by:', value: '' },
+                { title: 'Client', value: 'clientName' },
+                { title: 'City', value: 'city' }
+              ]}
+            />
 
-        <ul>
-          {clients && clients.map((currentClient) => (
-            <li
-              key={currentClient.id}
-              id={currentClient.id}
-              className="client-item"
-            >
-              <ClientItem {...currentClient} />
-            </li>
-          ))}
-        </ul>
-      </section>
+            <SelectBox
+              className="clients-overview__filter"
+              selectedValue={sortDirection}
+              name="sortDirection"
+              onChange={(event) => onSortClientsDirection(event.target.value)}
+              options={[
+                { title: 'A-Z (asc)', value: 'ascending' },
+                { title: 'Z-A (desc)', value: 'descending' }
+              ]}
+            />
+          </div>
+
+          <ul>
+            {clients && clients.map((currentClient) => (
+              <li
+                key={currentClient.id}
+                id={currentClient.id}
+                className="client-item"
+              >
+                <ClientItem {...currentClient} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </React.Fragment>
     );
   }
 }

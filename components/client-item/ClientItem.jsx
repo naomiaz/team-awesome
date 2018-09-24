@@ -25,10 +25,16 @@ class ClientItem extends React.Component {
     }));
   };
 
+  formatPhoneNumber = (number) => {
+    const areaCode = number.substring(0, 3);
+    const subscriberNumber = number.substring(number.length - 7);
+    return `${areaCode}-${subscriberNumber}`;
+  };
+
   render() {
     const { isDetailWrapperVisible } = this.state;
     const {
-      clientName, city, phone, email, website, avatar, remarks
+      avatar, clientName, city, email, phone, remarks, website
     } = this.props;
     return (
       <React.Fragment>
@@ -48,7 +54,8 @@ class ClientItem extends React.Component {
               className="client-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="client-item__personalia-data
+            <div className="
+              client-item__personalia-data
               client-item__text-block"
             >
               <span className="client-item__text--primary">
@@ -64,7 +71,7 @@ class ClientItem extends React.Component {
           <ul className="client-item__client-info">
             <li className="client-item__text-block">
               <span className="client-item__text--primary">
-                {phone}
+                {this.formatPhoneNumber(phone)}
               </span>
               <span className="client-item__text--secondary">
                 Phone number
@@ -101,7 +108,8 @@ class ClientItem extends React.Component {
           </ul>
 
           {/* CARET */}
-          <div className={`client-item__button-caret
+          <div className={`
+            client-item__button-caret
             client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
           />
         </div>
@@ -117,10 +125,10 @@ class ClientItem extends React.Component {
           >
             <li className="
               client-item__text-block
-              lient-item__text-block--expandable"
+              client-item__text-block--expandable"
             >
               <span className="client-item__text--primary">
-                {phone}
+                {this.formatPhoneNumber(phone)}
               </span>
               <span className="client-item__text--secondary">
                 Phone number

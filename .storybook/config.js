@@ -1,9 +1,10 @@
 import { configure } from '@storybook/react';
-import {} from '../stories'
 
 function loadStories() {
-  require('../stories/index.js');
-  // You can require as many stories as you need.
+  require('../stories/Button.jsx');
+  require('../stories/InputField.jsx');
+  require('../stories/PageHeader.jsx');
+  require('../stories/SelectBox.jsx');
 }
 
 configure(loadStories, module);

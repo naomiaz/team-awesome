@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+import Button from '../../shared/components/button/Button';
+import InputField from '../../shared/components/input-field/InputField';
 
 import './client-form.scss';
 
@@ -36,9 +38,9 @@ class ClientForm extends React.Component {
   };
 
   handleBlur = ({ target }) => {
-    this.setState(({ validity }) => ({
+    this.setState((prevState) => ({
       validity: {
-        ...validity,
+        ...prevState.validity,
         [target.name]: target.validity.valid
       }
     }));
@@ -94,31 +96,22 @@ class ClientForm extends React.Component {
 
             <Link href="/clients">
               <a className="render-whitespace--left">
-                <button
+                <Button
                   className="
-                    btn
                     client-form__button
-                    client-form__button--cancel
+                    client-form__button-cancel
                   "
                   type="button"
-                >
-                  Cancel
-                </button>
+                  value="Cancel"
+                />
               </a>
             </Link>
-            <button
-              className="
-                btn
-                client-form__button
-                client-form__button--save
-              "
+            <Button
+              className="client-form__button"
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
-              name="save"
               value="Save"
-            >
-              Save
-            </button>
+            />
           </div>
 
           {/* FORM */}
@@ -158,12 +151,11 @@ class ClientForm extends React.Component {
                   htmlFor="clientName"
                 >
                   Client name
-                  <input
+                  <InputField
                     className={`
                       client-form__input
                       client-form__input--${!validity || validity.clientName ? 'valid' : 'invalid'}
                     `}
-                    id="clientName"
                     name="clientName"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -178,12 +170,11 @@ class ClientForm extends React.Component {
                   htmlFor="chamberOfCommerce"
                 >
                   Chamber of Commerce
-                  <input
+                  <InputField
                     className={`
                       client-form__input
                       client-form__input--${!validity || validity.chamberOfCommerce ? 'valid' : 'invalid'}
                     `}
-                    id="chamberOfCommerce"
                     name="chamberOfCommerce"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -220,10 +211,9 @@ class ClientForm extends React.Component {
                   htmlFor="address"
                 >
                   Address
-                  <input
+                  <InputField
                     className={`client-form__input
                       client-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
-                    id="address"
                     name="address"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -241,12 +231,11 @@ class ClientForm extends React.Component {
                     htmlFor="zip"
                   >
                     ZIP code
-                    <input
+                    <InputField
                       className={`
                         client-form__input
                         client-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}
                       `}
-                      id="zip"
                       name="zip"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -261,12 +250,11 @@ class ClientForm extends React.Component {
                     htmlFor="city"
                   >
                     City
-                    <input
+                    <InputField
                       className={`
                         client-form__input
                         client-form__input--${!validity || validity.city ? 'valid' : 'invalid'}
                       `}
-                      id="city"
                       name="city"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -286,12 +274,11 @@ class ClientForm extends React.Component {
                       client-form__icon-box--icon-phone
                     "
                     />
-                    <input
+                    <InputField
                       className="
                         client-form__input
                         client-form__input-contact
                       "
-                      id="phone"
                       name="phone"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -306,12 +293,11 @@ class ClientForm extends React.Component {
                       client-form__icon-box--icon-email
                     "
                     />
-                    <input
+                    <InputField
                       className="
                         client-form__input
                         client-form__input-contact
                       "
-                      id="email"
                       name="email"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -326,12 +312,11 @@ class ClientForm extends React.Component {
                       client-form__icon-box--icon-website
                     "
                     />
-                    <input
+                    <InputField
                       className="
                         client-form__input
                         client-form__input-contact
                         "
-                      id="website"
                       name="website"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}

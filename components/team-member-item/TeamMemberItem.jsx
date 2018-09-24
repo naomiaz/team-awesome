@@ -6,12 +6,13 @@ import './team-member-item.scss';
 
 class TeamMemberItem extends React.Component {
   static propTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    employeeNumber: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
-    jobTitle: PropTypes.string.isRequired,
+    biography: PropTypes.string.isRequired,
     currentClient: PropTypes.string.isRequired,
+    employeeNumber: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    jobTitle: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
     startDate: PropTypes.string.isRequired
   }
 
@@ -28,7 +29,7 @@ class TeamMemberItem extends React.Component {
   render() {
     const { isDetailWrapperVisible } = this.state;
     const {
-      firstName, lastName, employeeNumber, avatar, jobTitle, currentClient, startDate
+      firstName, lastName, employeeNumber, avatar, biography, jobTitle, currentClient, startDate
     } = this.props;
     return (
       <React.Fragment>
@@ -42,13 +43,17 @@ class TeamMemberItem extends React.Component {
         >
 
           {/* PERSONALIA */}
-          <div className="team-member-item__personalia-wrapper">
+          <div className="team-member-item__personalia">
             <img
               alt={`${firstName} ${lastName}`}
               className="team-member-item__avatar"
               src={`/static/images/${avatar}`}
             />
-            <div className="team-member-item__personalia team-member-item__text-block">
+            <div className="
+              team-member-item__personalia-data
+              team-member-item__text-block
+            "
+            >
               <span className="team-member-item__text--primary">
                 {`${firstName} ${lastName}`}
               </span>
@@ -59,7 +64,7 @@ class TeamMemberItem extends React.Component {
           </div>
 
           {/* WORK INFO */}
-          <ul className="team-member-item__client-wrapper">
+          <ul className="team-member-item__client-info">
             <li className="team-member-item__text-block">
               <span className="team-member-item__text--primary">
                 {employeeNumber}
@@ -87,7 +92,9 @@ class TeamMemberItem extends React.Component {
           </ul>
 
           {/* CARET */}
-          <div className={`team-member-item__button-caret team-member-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`} />
+          <div className={`
+            team-member-item__button-caret team-member-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
+          />
         </div>
 
         {/* EXPANDABLE WRAPPER */}
@@ -95,8 +102,12 @@ class TeamMemberItem extends React.Component {
           <div className="team-member-item__subtitle">
             {`Detailed information about ${firstName}`}
           </div>
-          <ul className="team-member-item__client-wrapper team-member-item__client-wrapper--expandable">
-            <li className="team-member-item__text-block team-member-item__text-block--expandable">
+          <ul className="
+            team-member-item__client-info team-member-item__client-info--expandable"
+          >
+            <li className="
+              team-member-item__text-block team-member-item__text-block--expandable"
+            >
               <span className="team-member-item__text--primary">
                 {currentClient}
               </span>
@@ -104,7 +115,9 @@ class TeamMemberItem extends React.Component {
                 Current client
               </span>
             </li>
-            <li className="team-member-item__text-block team-member-item__text-block--expandable">
+            <li className="
+              team-member-item__text-block team-member-item__text-block--expandable"
+            >
               <span className="team-member-item__text--primary">
                 {convertIsoToMonthYear(startDate)}
               </span>
@@ -113,6 +126,18 @@ class TeamMemberItem extends React.Component {
               </span>
             </li>
           </ul>
+
+          {biography && (
+            <React.Fragment>
+              <div className="team-member-item__divider" />
+              <blockquote className="
+                team-member-item__blockquote
+                team-member-item__text--primary"
+              >
+                {biography}
+              </blockquote>
+            </React.Fragment>
+          )}
         </div>
       </React.Fragment>
     );

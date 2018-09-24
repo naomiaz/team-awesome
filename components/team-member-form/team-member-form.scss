@@ -18,31 +18,15 @@
   }
 
   &__button {
-    font-weight: 400;
-    height: 39px;
     width: 100px;
+  }
 
-    &--save {
-      background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
-      border: 1px solid $color-accent-alt-6;
-      color: $color-monochrome-1;
-      margin-left: 12px;
-
-      &[disabled] {
-        background-color: $color-monochrome-6;
-        background-image: none;
-        border: $color-monochrome-3;
-        color: $color-monochrome-3;
-        cursor: not-allowed;
-      }
-    }
-
-    &--cancel {
-      background-color: $color-monochrome-2;
-      border: 1px solid $color-monochrome-6;
-      color: $color-monochrome-3;
-      margin-left: auto;
-    }
+  &__button-cancel {
+    background-color: $color-monochrome-2;
+    background-image: none;
+    border: 1px solid $color-monochrome-6;
+    color: $color-monochrome-3;
+    margin-right: 10px;
   }
 
   &__container {
@@ -145,7 +129,7 @@
   &__input-socials {
     border-left: none;
     border-radius: 0 $border-radius-primary $border-radius-primary 0;
-    margin-top: 0;
+    margin: 0;
   }
 
   &__textarea {

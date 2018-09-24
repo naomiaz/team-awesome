@@ -16,15 +16,17 @@
 
     @include tablet {
       background-color: $color-accent-alt-10;
+      background-image: none;
       border: none;
       color: $color-monochrome-1;
       display: flex;
       height: 30px;
       justify-content: center;
       margin-left: 33px;
+      min-width: 80px;
       opacity: 0;
-      transition: opacity .2s, background-color .2s, ;
-      width: 80px;
+      padding: 0;
+      transition: opacity .2s, background-color .2s;
 
       &::before {
         -webkit-mask: url("/static/icons/forbid.svg") no-repeat;

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+import Button from '../../shared/components/button/Button';
+import InputField from '../../shared/components/input-field/InputField';
 
 import './team-member-form.scss';
 
@@ -10,13 +12,13 @@ class TeamMemberForm extends React.Component {
     teamMember: {
       firstName: '',
       lastName: '',
-      employeeNumber: 'HUM_',
+      employeeNumber: '',
       email: '',
       address: '',
       zip: '',
       city: '',
       avatar: 'avatar-naomi.jpg',
-      biography: '',
+      biography: 'Lorem ipsum dolor sit amet',
       socialsTwitter: '',
       socialsFacebook: '',
       jobTitle: 'Front-end developer',
@@ -27,6 +29,25 @@ class TeamMemberForm extends React.Component {
 
   static propTypes = {
     isFormSaving: PropTypes.bool.isRequired,
+    teamMembers: PropTypes.arrayOf(
+      PropTypes.shape({
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        employeeNumber: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        email: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        zip: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired,
+        biography: PropTypes.string.isRequired,
+        socialsTwitter: PropTypes.string.isRequired,
+        socialsFacebook: PropTypes.string.isRequired,
+        jobTitle: PropTypes.string.isRequired,
+        currentClient: PropTypes.string.isRequired,
+        startDate: PropTypes.string.isRequired
+      })
+    ).isRequired,
     onSaveTeamMember: PropTypes.func.isRequired
   }
 
@@ -65,16 +86,22 @@ class TeamMemberForm extends React.Component {
       .every((input) => input.validity.valid)
   )
 
+  addOne = (number) => (number + 1)
+
   handleSubmit = (event) => {
-    const { newTeamMember } = this.state;
-    const { onSaveTeamMember } = this.props;
     event.preventDefault();
+    const { newTeamMember } = this.state;
+    const { onSaveTeamMember, teamMembers } = this.props;
+    const newTeamMemberFormatted = {
+      ...newTeamMember,
+      employeeNumber: `HUM_${this.addOne(teamMembers.length).toString().padStart(3, '0')}`
+    };
 
     if (!this.handleFormValidation()) {
       return;
     }
 
-    onSaveTeamMember({ ...newTeamMember });
+    onSaveTeamMember(newTeamMemberFormatted);
     this.setState({ newTeamMember: TeamMemberForm.newTeamMemberDefaultValues.teamMember });
     Router.push('/team-members');
   }
@@ -100,23 +127,22 @@ class TeamMemberForm extends React.Component {
 
             <Link href="/team-members">
               <a className="render-whitespace--left">
-                <button
-                  className="btn team-member-form__button team-member-form__button--cancel"
+                <Button
+                  className="
+                    team-member-form__button
+                    team-member-form__button-cancel
+                  "
                   type="button"
-                >
-                  Cancel
-                </button>
+                  value="Cancel"
+                />
               </a>
             </Link>
-            <button
-              className="btn team-member-form__button team-member-form__button--save"
+            <Button
+              className="team-member-form__button"
               disabled={isFormSaving || !this.handleFormValidation()}
               type="submit"
-              name="save"
               value="Save"
-            >
-              Save
-            </button>
+            />
           </div>
 
           {/* FORM */}
@@ -136,7 +162,7 @@ class TeamMemberForm extends React.Component {
                 <img
                   alt="Edit Avatar"
                   className="team-member-form__avatar"
-                  src="/static/images/avatar-naomi.jpg"
+                  src="/static/images/avatar-humanoids.jpg"
                 />
                 <p>
                   <a
@@ -153,13 +179,18 @@ class TeamMemberForm extends React.Component {
                 <div className="team-member-form__name">
                   {/* FIRST NAME */}
                   <label
-                    className="team-member-form__label team-member-form__label--half"
+                    className="
+                      team-member-form__label
+                      team-member-form__label--half
+                    "
                     htmlFor="first-name"
                   >
                     First name
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity || validity.firstName ? 'valid' : 'invalid'}`}
-                      id="first-name"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.firstName ? 'valid' : 'invalid'}
+                      `}
                       name="firstName"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -174,9 +205,11 @@ class TeamMemberForm extends React.Component {
                     htmlFor="last-name"
                   >
                     Last name
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity || validity.lastName ? 'valid' : 'invalid'}`}
-                      id="last-name"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.lastName ? 'valid' : 'invalid'}
+                      `}
                       name="lastName"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -192,10 +225,11 @@ class TeamMemberForm extends React.Component {
                   htmlFor="email"
                 >
                   E-mail Address
-                  <input
-                    className={`team-member-form__input
-                      team-member-form__input--${!validity || validity.email ? 'valid' : 'invalid'}`}
-                    id="email"
+                  <InputField
+                    className={`
+                      team-member-form__input
+                      team-member-form__input--${!validity || validity.email ? 'valid' : 'invalid'}
+                    `}
                     name="email"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -232,10 +266,11 @@ class TeamMemberForm extends React.Component {
                   htmlFor="address"
                 >
                   Address
-                  <input
-                    className={`team-member-form__input
-                      team-member-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
-                    id="address"
+                  <InputField
+                    className={`
+                      team-member-form__input
+                      team-member-form__input--${!validity || validity.address ? 'valid' : 'invalid'}
+                    `}
                     name="address"
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
@@ -248,14 +283,18 @@ class TeamMemberForm extends React.Component {
                 <div className="team-member-form__zipcity">
                   {/* ZIP CODE */}
                   <label
-                    className="team-member-form__label team-member-form__label--half"
+                    className="
+                      team-member-form__label
+                      team-member-form__label--half
+                    "
                     htmlFor="zip"
                   >
                     ZIP code
-                    <input
-                      className={`team-member-form__input
-                        team-member-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}`}
-                      id="zip"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}
+                      `}
                       name="zip"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -270,10 +309,11 @@ class TeamMemberForm extends React.Component {
                     htmlFor="city"
                   >
                     City
-                    <input
-                      className={`team-member-form__input team-member-form__input--${!validity
-                        || validity.city ? 'valid' : 'invalid'}`}
-                      id="city"
+                    <InputField
+                      className={`
+                        team-member-form__input
+                        team-member-form__input--${!validity || validity.city ? 'valid' : 'invalid'}
+                      `}
                       name="city"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -287,10 +327,16 @@ class TeamMemberForm extends React.Component {
                   Social profiles
                   {/* TWITTER */}
                   <div className="team-member-form__socials">
-                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-twitter" />
-                    <input
-                      className="team-member-form__input team-member-form__input-socials"
-                      id="twitter"
+                    <div className="
+                      team-member-form__icon-box
+                      team-member-form__icon-box--icon-twitter
+                    "
+                    />
+                    <InputField
+                      className="
+                        team-member-form__input
+                        team-member-form__input-socials
+                      "
                       name="socialsTwitter"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
@@ -300,10 +346,16 @@ class TeamMemberForm extends React.Component {
                   </div>
                   {/* FACEBOOK */}
                   <div className="team-member-form__socials">
-                    <div className="team-member-form__icon-box team-member-form__icon-box--icon-facebook" />
-                    <input
-                      className="team-member-form__input team-member-form__input-socials"
-                      id="facebook"
+                    <div className="
+                      team-member-form__icon-box
+                      team-member-form__icon-box--icon-facebook
+                    "
+                    />
+                    <InputField
+                      className="
+                        team-member-form__input
+                        team-member-form__input-socials
+                      "
                       name="socialsFacebook"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}

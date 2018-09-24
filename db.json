@@ -92,57 +92,6 @@
       "currentClient": "Humanoids",
       "startDate": "2018-07-03T08:00:00.000Z",
       "id": 3
-    },
-    {
-      "firstName": "Naomi",
-      "lastName": "Babbbbbb",
-      "employeeNumber": "HUM_",
-      "email": "naomizuiverloon@gmail.com",
-      "address": "Nieuwe Binnenweg 286A, 1e verdieping",
-      "zip": "3021GS",
-      "city": "Rotterdam",
-      "avatar": "avatar-naomi.jpg",
-      "biography": "",
-      "socialsTwitter": "",
-      "socialsFacebook": "Nieuwe Binnenweg 286A",
-      "jobTitle": "Front-end developer",
-      "currentClient": "Humanoids",
-      "startDate": "2018-06-03T08:00:00.000Z",
-      "id": 4
-    },
-    {
-      "firstName": "Naomi",
-      "lastName": "Xuiverloon",
-      "employeeNumber": "HUM_",
-      "email": "naomizuiverloon@gmail.com",
-      "address": "Bagijnhof",
-      "zip": "2611AN",
-      "city": "Delft",
-      "avatar": "avatar-naomi.jpg",
-      "biography": "",
-      "socialsTwitter": "",
-      "socialsFacebook": "",
-      "jobTitle": "Front-end developer",
-      "currentClient": "Humanoids",
-      "startDate": "2018-09-03",
-      "id": 5
-    },
-    {
-      "firstName": "Naomi",
-      "lastName": "bbbb",
-      "employeeNumber": "HUM_",
-      "email": "naomizuiverloon@gmail.com",
-      "address": "Bagijnhof",
-      "zip": "2611AN",
-      "city": "Delft",
-      "avatar": "avatar-naomi.jpg",
-      "biography": "",
-      "socialsTwitter": "@jemoeder",
-      "socialsFacebook": "",
-      "jobTitle": "Front-end developer",
-      "currentClient": "Humanoids",
-      "startDate": "2018-09-03",
-      "id": 6
     }
   ],
   "clients": [
@@ -151,12 +100,12 @@
       "address": "Schiedamsedijk 40a",
       "zip": "3011 ED",
       "city": "Rotterdam",
-      "chamberOfCommerce": "2503698",
+      "chamberOfCommerce": "12345678",
       "email": "hello@hike.one",
       "phone": "0202044577",
       "website": "www.hike.one",
       "avatar": "logo-hike-one.png",
-      "remarks": "Don't wear pants unless it's Friday.",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
       "id": "1"
     },
     {
@@ -164,10 +113,10 @@
       "address": "Schiedamsedijk 40a",
       "zip": "3011 ED",
       "city": "Zaandam",
-      "chamberOfCommerce": "2503698",
+      "chamberOfCommerce": "12345678",
       "email": "info@ah.nl",
       "phone": "0202044577",
-      "website": "www.ah.nl/blablabla",
+      "website": "www.ah.nl",
       "avatar": "logo-ah.jpg",
       "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
       "id": "2"
@@ -182,7 +131,7 @@
       "phone": "0102403434",
       "website": "www.humanoids.nl",
       "avatar": "avatar-humanoids.jpg",
-      "remarks": "",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
       "id": "3"
     },
     {
@@ -191,11 +140,11 @@
       "zip": "1017 PS",
       "city": "Amsterdam",
       "chamberOfCommerce": "12345678",
-      "email": "hallo@apple.nl",
+      "email": "info@apple.com",
       "phone": "0205302200",
-      "website": "www.apple.com/nl/retail/amsterdam/?cid=aos-nl-seo-maps",
+      "website": "www.apple.com/nl/",
       "avatar": "logo-apple.gif",
-      "remarks": "Apple-winkel met strak vormgegeven presentaties van iPhones, iPads en accessoires.",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
       "id": "4"
     },
     {
@@ -208,7 +157,7 @@
       "phone": "0123456789",
       "website": "www.philips.nl",
       "avatar": "logo-port-of-rotterdam.jpg",
-      "remarks": "Eindhoven",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
       "id": "5"
     }
   ]

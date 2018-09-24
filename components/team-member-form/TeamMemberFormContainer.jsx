@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isFormSavingSelector, saveTeamMember } from '../../ducks/team-members';
+import { isFormSavingSelector, getTeamMembersSelector, saveTeamMember } from '../../ducks/team-members';
 import TeamMemberForm from './TeamMemberForm';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
-  isFormSaving: isFormSavingSelector(state)
+  isFormSaving: isFormSavingSelector(state),
+  teamMembers: getTeamMembersSelector(state)
 });
 
 // Dispatch the actioncreators to props of a component
