@@ -75,7 +75,6 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
-          <ul>
           {timeEntries.map((currentTimeEntry, index, array) => {
             // if (index === 0 ) { date + component } ------->> 0 is falsy
             // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
@@ -96,16 +95,14 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
                     </span>
                   </h2>
                 )}
-
-                <TimeEntryItem
-                  {...currentTimeEntry}
-                  onEntryDelete={this.onEntryDelete}
-                />
+                  <TimeEntryItem
+                    {...currentTimeEntry}
+                    onEntryDelete={this.onEntryDelete}
+                  />
               </React.Fragment>
             );
           })
         }
-        </ul>
         </section>
       </React.Fragment>
     );

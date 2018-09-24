@@ -7,9 +7,9 @@
   color: $color-monochrome-1;
   cursor: pointer;
   display: block;
+  min-width: 100px;
   padding: 9px 0;
   position: relative;
-  width: 100px;
 
   &[disabled] {
     background-color: $color-monochrome-6;

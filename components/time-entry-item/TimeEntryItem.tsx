@@ -31,7 +31,7 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
   render(): React.ReactNode {
     const { clientLabel, timeFrom, timeTo } = this.props;
     return (
-      <li className="time-entry-item">
+      <div className="time-entry-item">
         <div className="time-entry-item__client">
           <span>
             {clientLabel}
@@ -39,6 +39,7 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
 
           <Button
             className="time-entry-item__button-delete"
+            disabled={null}
             onClick={this.handleClick}
             type="button"
             value="Delete"
@@ -56,7 +57,7 @@ class TimeEntryItem extends React.Component <TimeEntryItemProps> {
             {new Date(calculateDuration(timeFrom, timeTo)).toLocaleTimeString('nl-NL', timeOptions)}
           </span>
         </div>
-      </li>
+      </div>
     );
   }
 }

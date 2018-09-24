@@ -18,9 +18,9 @@ const PageHeader = ({
     <div className="page-header__button-wrapper">
       {
         selectBox && selectBox.map(
-          (currentSelectBox, index) => (
+          (currentSelectBox) => (
             <SelectBox
-              key={currentSelectBox.options[index]}
+              key={currentSelectBox.name}
               {...currentSelectBox}
             />
           )
