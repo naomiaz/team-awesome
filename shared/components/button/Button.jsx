@@ -18,7 +18,7 @@ const Button = ({
 
 Button.defaultProps = {
   className: '',
-  disabled: null,
+  disabled: false,
   onClick: () => ''
 };
 

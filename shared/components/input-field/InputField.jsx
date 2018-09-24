@@ -26,7 +26,7 @@ InputField.defaultProps = {
   pattern: null,
   placeholder: '',
   value: '',
-  required: null
+  required: false
 };
 
 InputField.propTypes = {

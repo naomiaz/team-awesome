@@ -95,10 +95,10 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
                     </span>
                   </h2>
                 )}
-                  <TimeEntryItem
-                    {...currentTimeEntry}
-                    onEntryDelete={this.onEntryDelete}
-                  />
+                <TimeEntryItem
+                  {...currentTimeEntry}
+                  onEntryDelete={this.onEntryDelete}
+                />
               </React.Fragment>
             );
           })
