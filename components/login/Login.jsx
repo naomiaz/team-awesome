@@ -30,7 +30,7 @@ class Login extends React.Component {
     const { email, password } = this.state.loginData;
     return (
       <div className="login">
-        <div className="login__wrapper">
+        <div className="login__body">
           <form className="login__form">
             <h1 className="login__logo">Team Awesome</h1>
             <label
@@ -56,6 +56,7 @@ class Login extends React.Component {
                 className="login__input"
                 name="password"
                 onChange={this.handleChange}
+                placeholder="********"
                 // required
                 type="password"
                 value={password}

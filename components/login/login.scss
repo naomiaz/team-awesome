@@ -2,36 +2,40 @@
 
 .login {
   background-color: $color-primary;
-  height: 100vh;
-  margin-top: -50px;
-  position: relative;
-  width: 100vw;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 
   @include desktop { margin-top: 0; }
 
-  &__wrapper {
+  &__body {
     background-color: $color-monochrome-1;
     border: solid 1px $color-monochrome-8;
     border-radius: $border-radius-primary;
     left: 50%;
+    max-width: 350px;
+    min-width: 290px;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
   }
 
   &__form {
     border-bottom: solid 1px $color-monochrome-8;
     border-top-left-radius: $border-radius-primary;
     border-top-right-radius: $border-radius-primary;
-    padding: 24px 32px 21px 28px;
+    padding: 24px 18px 21px;
+
+    @include tablet { padding: 24px 32px 21px 28px; }
   }
 
   &__logo {
     @include logo;
     color: $color-primary;
     font-size: $heading-secondary-size;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     text-align: center;
   }
 
