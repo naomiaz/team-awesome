@@ -23,10 +23,8 @@
   }
 
   &__logo {
+    @include logo;
     color: $color-monochrome-1;
-    font-family: $font-secondary;
-    text-decoration: none;
-    text-transform: lowercase;
     z-index: 1;
 
     @include desktop { display: none; }

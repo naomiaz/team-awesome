@@ -219,6 +219,13 @@
   }
 }
 
+@mixin logo {
+  font-family: $font-secondary;
+  font-weight: $font-weight-semi-bold;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
 // --------------------------
 // INPUT/BUTTON STYLES
 // --------------------------
