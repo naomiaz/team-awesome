@@ -2,6 +2,7 @@
 
 .time-entry-form {
   @include section-row;
+  margin-bottom: 0;
 
   &__form-container {
     align-items: center;
@@ -37,6 +38,7 @@
 
   &__form-wrapper {
     position: relative;
+    width: 100%;
 
     @include tablet {
       display: flex;

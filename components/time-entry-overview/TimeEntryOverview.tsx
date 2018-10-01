@@ -1,5 +1,6 @@
 import React from 'react';
 import PageHeader from '../../shared/components/page-header/PageHeader';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryItem from '../time-entry-item/TimeEntryItem';
 import { TimeEntryModel } from '../../ducks/time-entries';
@@ -75,6 +76,14 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
+          <SelectBox
+            className="time-entry-overview__filter"
+            name=""
+            onChange={(event) => onFilterTimeEntries(event.target.value)}
+            options={[{ title: 'All clients:', value: '' }, ...clientNames]}
+            selectedValue={activeFilter}
+          />
+
           {timeEntries.map((currentTimeEntry, index, array) => {
             // if (index === 0 ) { date + component } ------->> 0 is falsy
             // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
@@ -83,7 +92,7 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
             return (
               <React.Fragment key={currentTimeEntry.id}>
                 {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
-                  <h2 className="time-entry__date-row">
+                  <h2 className="time-entry-overview__date-row">
                     <span>
                       {`${dateFormatted(currentTimeEntry.date)}
                       ${getRelativeDay(currentTimeEntry.timeFrom)}`}

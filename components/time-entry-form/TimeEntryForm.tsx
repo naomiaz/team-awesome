@@ -132,15 +132,15 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
 
             {/* CLIENT */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__client
-              "
+              className="time-entry-form__label"
               htmlFor="clientId"
             >
               Client
               <SelectBox
-                className="time-entry-form__input time-entry-form__select"
+                className="
+                  time-entry-form__input
+                  time-entry-form__select
+                "
                 selectedValue={clientId}
                 name="clientId"
                 onChange={this.handleChange}
@@ -150,15 +150,15 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
 
             {/* ACTIVITY */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__activity
-              "
+              className="time-entry-form__label"
               htmlFor="activity"
             >
               Activity
               <SelectBox
-                className="time-entry-form__input time-entry-form__select"
+                className="
+                  time-entry-form__input
+                  time-entry-form__select
+                "
                 selectedValue={activity}
                 name="activity"
                 onChange={this.handleChange}
@@ -173,10 +173,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
 
             {/* DATE */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__date
-              "
+              className="time-entry-form__label"
               htmlFor="date"
             >
               Date
