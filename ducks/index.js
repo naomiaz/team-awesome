@@ -5,6 +5,7 @@ import { navHeaderReducer } from './nav-header';
 import { timeEntriesReducer } from './time-entries';
 import { teamMembersReducer } from './team-members';
 import { clientsReducer } from './clients';
+import { loginReducer } from './login';
 
 import { watchTimeEntries } from '../sagas/time-entries';
 import { watchTeamMembers } from '../sagas/team-members';
@@ -14,7 +15,8 @@ export const rootReducer = combineReducers({
   navHeader: navHeaderReducer,
   timeEntries: timeEntriesReducer,
   teamMembers: teamMembersReducer,
-  clients: clientsReducer
+  clients: clientsReducer,
+  loginData: loginReducer
 });
 
 export function* rootSaga() {
