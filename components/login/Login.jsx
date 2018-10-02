@@ -9,8 +9,8 @@ import './login.scss';
 class Login extends React.Component {
   static loginDefaultValues = {
     loginData: {
-      email: '',
-      password: ''
+      email: 'admin',
+      password: 'admin'
     }
   };
 
@@ -30,7 +30,8 @@ class Login extends React.Component {
   state = { loginData: Login.loginDefaultValues.loginData };
 
   componentDidMount() {
-    // Check if visitor is already logged in. If so, redirect to Timesheet page but if not, stay on Login page
+    // Check if visitor is already logged in.
+    // If already logged in, redirect to Timesheet page - if not logged in, stay on Login page.
     const { email, password } = this.props.loginData;
     if (email === 'admin' && password === 'admin') {
       Router.push('/');

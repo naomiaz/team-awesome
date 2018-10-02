@@ -12,6 +12,7 @@ import './time-entry-overview.scss';
 export interface TimeEntryOverviewProps {
   activeFilter: string;
   timeEntries: TimeEntryModel[];
+  timeEntriesList: TimeEntryModel[];
   clientNames: ClientNameModel[];
   isFormSaving: boolean;
   isFormVisible: boolean;
@@ -42,6 +43,16 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
     this.props.onDeleteTimeEntry(id);
   };
 
+  checkArrayLength = () => {
+    if (!this.props.timeEntriesList.length) {
+      return <span className="time-entry-overview__copy">There are currently no timesheets. Add your first timesheet now!</span>;
+    }
+    else if (!this.props.timeEntries.length) {
+      return <span className="time-entry-overview__copy">There are no timesheets of this client yet.</span>;
+    }
+    return false;
+  };
+
   render(): React.ReactNode {
     const {
       activeFilter,
@@ -50,17 +61,21 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
       isFormSaving,
       isFormVisible,
       onFilterTimeEntries,
-      onToggleFormVisibility
+      onToggleFormVisibility,
+      timeEntriesList
     } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <PageHeader
-          selectBox={[{
-            onChange: (event) => onFilterTimeEntries(event.target.value),
-            options: [{ title: 'All clients:', value: '' }, ...clientNames],
-            selectedValue: activeFilter
-          }]}
+          selectBox={!timeEntriesList.length
+            ? []
+            : [{
+                onChange: (event) => onFilterTimeEntries(event.target.value),
+                options: [{ title: 'All clients:', value: '' }, ...clientNames],
+                selectedValue: activeFilter
+              }]
+          }
           pageTitle="Timesheets"
           unitCount={timeEntries.length}
           unitPlural="Entries"
@@ -76,15 +91,20 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
-          <SelectBox
-            className="time-entry-overview__filter"
-            name=""
-            onChange={(event) => onFilterTimeEntries(event.target.value)}
-            options={[{ title: 'All clients:', value: '' }, ...clientNames]}
-            selectedValue={activeFilter}
-          />
+          {!timeEntries.length
+            ? ''
+            : <SelectBox
+                className="time-entry-overview__filter"
+                name=""
+                onChange={(event) => onFilterTimeEntries(event.target.value)}
+                options={[{ title: 'All clients:', value: '' }, ...clientNames]}
+                selectedValue={activeFilter}
+              />
+          }
 
-          {timeEntries.map((currentTimeEntry, index, array) => {
+
+          { this.checkArrayLength() ||
+            timeEntries.map((currentTimeEntry, index, array) => {
             // if (index === 0 ) { date + component } ------->> 0 is falsy
             // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
             // if (currentTimeEntry.date === previousTimeEntry.date) { component }

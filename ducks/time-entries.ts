@@ -34,7 +34,7 @@ interface TimeEntryState {
 // State Selectors -> To be imported in Container Component
 const timeEntriesRootSelector = (state) => state.timeEntries;
 
-const timeEntriesSelector = createSelector(
+export const timeEntriesSelector = createSelector(
   // extract items form the timeEntriesRootSelector
   timeEntriesRootSelector,
   (timeEntries: TimeEntryState) => timeEntries.items

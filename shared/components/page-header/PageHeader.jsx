@@ -16,15 +16,12 @@ const PageHeader = ({
     </h1>
 
     <div className="page-header__button-wrapper">
-      {
-        selectBox && selectBox.map(
-          (currentSelectBox) => (
-            <SelectBox
-              key={currentSelectBox.name}
-              {...currentSelectBox}
-            />
-          )
-        )
+      {selectBox.map((currentSelectBox, index) => (
+        <SelectBox
+          key={index}
+          {...currentSelectBox}
+        />
+      ))
       }
 
       <form className="page-header__search">
@@ -59,7 +56,7 @@ PageHeader.propTypes = {
         value: PropTypes.string.isRequired
       }).isRequired,
       selectedValue: PropTypes.string.isRequired
-    }).isRequired
+    })
   ),
   unitCount: PropTypes.number.isRequired,
   unitSingular: PropTypes.string.isRequired,

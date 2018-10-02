@@ -51,11 +51,21 @@ class NavHeader extends React.Component {
         <MainNav
           isMenuVisible={isMenuVisible}
           menuItems={[
-            { id: '1', title: 'Timesheets', path: '/' },
-            { id: '2', title: 'Team members', path: '/team-members' },
-            { id: '3', title: 'Projects', path: '/projects' },
-            { id: '4', title: 'Clients', path: '/clients' },
-            { id: '5', title: 'Documents', path: '/documents' }
+            {
+              id: '1', title: 'Timesheets', path: '/'
+            },
+            {
+              id: '2', title: 'Team members', path: '/team-members', keyword: 'team'
+            },
+            {
+              id: '3', title: 'Projects', path: '/projects', keyword: 'project'
+            },
+            {
+              id: '4', title: 'Clients', path: '/clients', keyword: 'client'
+            },
+            {
+              id: '5', title: 'Documents', path: '/documents', keyword: 'document'
+            }
           ]}
         />
 

@@ -10,6 +10,16 @@
     @include tablet { display: none; }
   }
 
+  &__copy {
+    display: block;
+    font-size: $default-font-size;
+    font-weight: $font-weight-light;
+    margin-top: 24px;
+    text-align: center;
+
+    @include tablet { font-size: $default-font-size-large; }
+  }
+
   &__date-row {
     color: $color-monochrome-4;
     display: flex;
@@ -21,7 +31,6 @@
   }
 
   .time-entry-item + .time-entry-item {
-    border-radius: 0 0 4px 4px;
     margin-top: -1px;
   }
 

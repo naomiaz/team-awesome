@@ -11,7 +11,7 @@ const MainNav = ({ isMenuVisible, menuItems, router }) => (
       {menuItems.map((item) => (
         <li className="main-nav__item" key={`${item.id}`}>
           <Link href={item.path}>
-            <a className={`main-nav__link${(router.pathname === item.path) ? ' main-nav__link--active' : ''}`}>
+            <a className={`main-nav__link${((router.pathname === item.path) || (router.pathname.includes(item.keyword))) ? ' main-nav__link--active' : ''}`}>
               {item.title}
             </a>
           </Link>
@@ -30,7 +30,7 @@ MainNav.propTypes = {
       path: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
 };
 
 export default withRouter(MainNav);
