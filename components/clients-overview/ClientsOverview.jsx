@@ -28,7 +28,7 @@ class ClientsOverview extends React.Component {
         website: PropTypes.string.isRequired,
         avatar: PropTypes.string.isRequired,
         remarks: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired
+        id: PropTypes.string.isRequired
       })
     ).isRequired
   }
