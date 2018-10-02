@@ -18,7 +18,7 @@ const PageHeader = ({
     <div className="page-header__button-wrapper">
       {selectBox.map((currentSelectBox, index) => (
         <SelectBox
-          key={index}
+          key={index} // eslint-disable-line
           {...currentSelectBox}
         />
       ))
