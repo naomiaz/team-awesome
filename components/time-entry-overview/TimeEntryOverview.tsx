@@ -12,7 +12,7 @@ import './time-entry-overview.scss';
 export interface TimeEntryOverviewProps {
   activeFilter: string;
   timeEntries: TimeEntryModel[];
-  timeEntriesList: TimeEntryModel[];
+  timeEntriesUnfiltered: TimeEntryModel[];
   clientNames: ClientNameModel[];
   isFormSaving: boolean;
   isFormVisible: boolean;
@@ -44,11 +44,20 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
   };
 
   checkArrayLength = () => {
-    if (!this.props.timeEntriesList.length) {
-      return <span className="time-entry-overview__copy">There are currently no timesheets. Add your first timesheet now!</span>;
+    const { timeEntries, timeEntriesUnfiltered } = this.props;
+    if (!timeEntriesUnfiltered.length) {
+      return (
+        <span className="time-entry-overview__copy">
+          There are currently no timesheets. Add your first timesheet now!
+        </span>
+      );
     }
-    else if (!this.props.timeEntries.length) {
-      return <span className="time-entry-overview__copy">There are no timesheets of this client yet.</span>;
+    else if (!timeEntries.length) {
+      return (
+        <span className="time-entry-overview__copy">
+          There are no timesheets of this client yet.
+        </span>
+      );
     }
     return false;
   };
@@ -62,13 +71,14 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
       isFormVisible,
       onFilterTimeEntries,
       onToggleFormVisibility,
-      timeEntriesList
+      timeEntriesUnfiltered
     } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <PageHeader
-          selectBox={!timeEntriesList.length
+          // only show filter when there are timesheets
+          selectBox={!timeEntriesUnfiltered.length
             ? []
             : [{
                 onChange: (event) => onFilterTimeEntries(event.target.value),
@@ -91,7 +101,8 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
-          {!timeEntries.length
+          { // only show filter when there are timesheets
+            !timeEntries.length
             ? ''
             : <SelectBox
                 className="time-entry-overview__filter"
@@ -102,9 +113,8 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
               />
           }
 
-
-          { this.checkArrayLength() ||
-            timeEntries.map((currentTimeEntry, index, array) => {
+          {this.checkArrayLength() ||
+          timeEntries.map((currentTimeEntry, index, array) => {
             // if (index === 0 ) { date + component } ------->> 0 is falsy
             // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
             // if (currentTimeEntry.date === previousTimeEntry.date) { component }

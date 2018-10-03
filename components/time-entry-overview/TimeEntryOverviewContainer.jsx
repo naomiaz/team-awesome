@@ -21,7 +21,7 @@ const mapStateToProps = (state) => ({
   activeFilter: timeEntriesActiveFilterSelector(state),
   clientNames: clientNamesSelector(state),
   timeEntries: getTimeEntriesSelector(state),
-  timeEntriesList: timeEntriesSelector(state),
+  timeEntriesUnfiltered: timeEntriesSelector(state),
   isFormSaving: isFormSavingSelector(state),
   isFormVisible: isFormVisibleSelector(state)
 });

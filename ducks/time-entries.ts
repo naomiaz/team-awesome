@@ -58,7 +58,6 @@ export const getTimeEntriesSelector = createSelector(
   )
 );
 
-// SELECTORS HERSCHRIJVEN
 export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
 export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
