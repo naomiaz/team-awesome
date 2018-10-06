@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import SelectBox from '../select-box/SelectBox';
 
 import './page-header.scss';
