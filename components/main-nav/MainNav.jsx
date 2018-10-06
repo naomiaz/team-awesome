@@ -5,7 +5,9 @@ import { withRouter } from 'next/router';
 
 import './main-nav.scss';
 
-const MainNav = ({ isMenuVisible, menuItems, router }) => (
+const MainNav = ({
+  isMenuVisible, menuItems, router
+}) => (
   <nav className={`main-nav ${isMenuVisible ? 'main-nav--open' : ''}`}>
     <ul className="main-nav__list">
       {menuItems.map((item) => (

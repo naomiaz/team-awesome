@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-import NavHeaderContainer from '../nav-header/NavHeaderContainer';
+
+import NavHeader from '../nav-header/NavHeader';
 import TimeEntryOverview from '../time-entry-overview';
 
 
@@ -24,7 +25,7 @@ class Index extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <NavHeaderContainer siteName="Team Awesome" />
+        <NavHeader siteName="Team Awesome" />
         <TimeEntryOverview />
       </React.Fragment>
     );

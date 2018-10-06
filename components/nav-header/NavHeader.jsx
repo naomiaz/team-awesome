@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import MainNav from '../main-nav/MainNav';
 import ProfileButton from '../profile-button/ProfileButton';
 
@@ -7,19 +8,24 @@ import './nav-header.scss';
 
 class NavHeader extends React.Component {
   static propTypes = {
-    siteName: PropTypes.string.isRequired,
-    isMenuVisible: PropTypes.bool.isRequired,
-    onToggleMenuVisibility: PropTypes.func.isRequired
+    siteName: PropTypes.string.isRequired
+  }
+
+  state = {
+    isMenuVisible: false
   }
 
   toggleMenu = () => {
-    const { isMenuVisible, onToggleMenuVisibility } = this.props;
-    onToggleMenuVisibility(!isMenuVisible);
+    this.setState((prevState) => ({
+      ...prevState,
+      isMenuVisible: !prevState.isMenuVisible
+    }));
   };
 
 
   render() {
-    const { isMenuVisible, siteName } = this.props;
+    const { siteName } = this.props;
+    const { isMenuVisible } = this.state;
     return (
       <header className="header">
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import NavHeaderContainer from '../components/nav-header/NavHeaderContainer';
+import NavHeader from '../components/nav-header/NavHeader';
 import TeamMemberFormContainer from '../components/team-member-form/TeamMemberFormContainer';
 
 export default () => (
   <React.Fragment>
-    <NavHeaderContainer siteName="Team Awesome" />
+    <NavHeader siteName="Team Awesome" />
     <TeamMemberFormContainer />
   </React.Fragment>
 );
