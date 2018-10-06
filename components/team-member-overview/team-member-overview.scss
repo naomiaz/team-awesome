@@ -6,9 +6,10 @@
   &__header {
     align-items: center;
     display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 22px;
+
+    @include tablet { flex-direction: row; }
   }
 
   &__title {
@@ -40,16 +41,31 @@
     }
   }
 
-  &__filter {
-    display: none;
+  &__spacing {
+    margin: 10px 0;
 
     @include tablet {
-      display: block;
-      min-width: 120px;
+      margin: 0 10px 0 0;
     }
   }
 
   &__filter-wrapper {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include tablet {
+      flex-direction: row;
+      width: auto;
+    }
+  }
+
+  &__filter {
+    display: block;
+
+    @include tablet {
+      display: block;
+      min-width: 120px;
+    }
   }
 }

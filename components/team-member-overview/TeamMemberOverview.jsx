@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+
 import Button from '../../shared/components/button/Button';
 import PageHeader from '../../shared/components/page-header/PageHeader';
 import SelectBox from '../../shared/components/select-box/SelectBox';
@@ -71,19 +72,21 @@ class TeamMemberOverview extends React.Component {
             </Link>
 
             <div className="team-member-overview__filter-wrapper">
-              <SelectBox
-                className="team-member-overview__filter"
-                selectedValue={sortBy}
-                name="sortBy"
-                onChange={(event) => onSortTeamMembersBy(event.target.value)}
-                options={[
-                  { title: 'Sort by:', value: '' },
-                  { title: 'Employee #', value: 'employeeNumber' },
-                  { title: 'Job Title', value: 'jobTitle' },
-                  { title: 'First Name', value: 'firstName' },
-                  { title: 'Last Name', value: 'lastName' }
-                ]}
-              />
+              <div className="team-member-overview__spacing">
+                <SelectBox
+                  className="team-member-overview__filter"
+                  selectedValue={sortBy}
+                  name="sortBy"
+                  onChange={(event) => onSortTeamMembersBy(event.target.value)}
+                  options={[
+                    { title: 'Sort by:', value: '' },
+                    { title: 'Employee #', value: 'employeeNumber' },
+                    { title: 'Job Title', value: 'jobTitle' },
+                    { title: 'First Name', value: 'firstName' },
+                    { title: 'Last Name', value: 'lastName' }
+                  ]}
+                />
+              </div>
 
               <SelectBox
                 className="team-member-overview__filter"
@@ -91,7 +94,7 @@ class TeamMemberOverview extends React.Component {
                 name="sortDirection"
                 onChange={(event) => onSortTeamMembersDirection(event.target.value)}
                 options={[
-                  { title: 'A-Z (asc):', value: 'ascending' },
+                  { title: 'A-Z (asc)', value: 'ascending' },
                   { title: 'Z-A (desc)', value: 'descending' }
                 ]}
               />

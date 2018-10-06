@@ -1,8 +1,10 @@
 import React from 'react';
+
 import PageHeader from '../../shared/components/page-header/PageHeader';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryItem from '../time-entry-item/TimeEntryItem';
+
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNameModel } from '../../ducks/clients';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
@@ -102,7 +104,7 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
 
         <section className="time-entry-overview">
           { // only show filter when there are timesheets
-            !timeEntries.length
+            !timeEntriesUnfiltered.length
             ? ''
             : <SelectBox
                 className="time-entry-overview__filter"
