@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+
 import Button from '../../shared/components/button/Button';
 import InputField from '../../shared/components/input-field/InputField';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { convertIsoToMonthYear } from '../../services/date-time/date-time';
 
 import './team-member-item.scss';

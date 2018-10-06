@@ -20,7 +20,7 @@ class TeamMemberForm extends React.Component {
       zip: '',
       city: '',
       avatar: 'avatar-naomi.jpg',
-      biography: 'Lorem ipsum dolor sit amet',
+      biography: '',
       socialsTwitter: '',
       socialsFacebook: '',
       jobTitle: 'Front-end developer',
@@ -96,6 +96,7 @@ class TeamMemberForm extends React.Component {
     const { onSaveTeamMember, teamMembers } = this.props;
     const newTeamMemberFormatted = {
       ...newTeamMember,
+      biography: !newTeamMember.biography ? 'This team member does not have a biography' : newTeamMember.biography,
       employeeNumber: `HUM_${this.addOne(teamMembers.length).toString().padStart(3, '0')}`
     };
 

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Button from '../../shared/components/button/Button';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import InputField from '../../shared/components/input-field/InputField';
+
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNameModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
