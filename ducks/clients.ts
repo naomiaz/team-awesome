@@ -38,11 +38,10 @@ interface ClientState {
   error: object;
 }
 
-// State Selectors -> To be imported in Container Component
+// State Selectors
 const clientsRootSelector = (state) => state.clients;
 
 export const clientsSelector = createSelector(
-  // extract clients form the clientsRootSelector
   clientsRootSelector,
   (clients: ClientState) => clients.clients
 );
@@ -124,7 +123,7 @@ export function clientsReducer(state = initialState, action) {
 }
 
 
-// Action Creators -> To be called in Component (and are watched by rootSaga)
+// Action Creators
 export const deleteClient = (id: ClientModel['id']) => ({
   type: DELETE_CLIENT,
   id

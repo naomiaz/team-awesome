@@ -12,11 +12,10 @@ export const DELETE_TEAM_MEMBER = 'DELETE_TEAM_MEMBER';
 export const DELETE_TEAM_MEMBER_SUCCESS = 'DELETE_TEAM_MEMBER_SUCCESS';
 
 
-// State Selectors -> To be imported in Container Component
+// State Selectors
 const teamMembersRootSelector = (state) => state.teamMembers;
 
 const teamMembersSelector = createSelector(
-  // extract teamMembers form the teamMembersRootSelector
   teamMembersRootSelector,
   (teamMembers) => teamMembers.members
 );
@@ -89,7 +88,7 @@ export function teamMembersReducer(state = initialState, action) {
 }
 
 
-// Action Creators -> To be called in Component (and are watched by rootSaga)
+// Action Creators
 export const deleteTeamMember = (id) => ({
   type: DELETE_TEAM_MEMBER,
   id

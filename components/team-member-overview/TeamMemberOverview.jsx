@@ -72,21 +72,20 @@ class TeamMemberOverview extends React.Component {
             </Link>
 
             <div className="team-member-overview__filter-wrapper">
-              <div className="team-member-overview__spacing">
-                <SelectBox
-                  className="team-member-overview__filter"
-                  selectedValue={sortBy}
-                  name="sortBy"
-                  onChange={(event) => onSortTeamMembersBy(event.target.value)}
-                  options={[
-                    { title: 'Sort by:', value: '' },
-                    { title: 'Employee #', value: 'employeeNumber' },
-                    { title: 'Job Title', value: 'jobTitle' },
-                    { title: 'First Name', value: 'firstName' },
-                    { title: 'Last Name', value: 'lastName' }
-                  ]}
-                />
-              </div>
+              <SelectBox
+                className="team-member-overview__filter"
+                hasSibling
+                selectedValue={sortBy}
+                name="sortBy"
+                onChange={(event) => onSortTeamMembersBy(event.target.value)}
+                options={[
+                  { title: 'Sort by:', value: '' },
+                  { title: 'Employee #', value: 'employeeNumber' },
+                  { title: 'Job Title', value: 'jobTitle' },
+                  { title: 'First Name', value: 'firstName' },
+                  { title: 'Last Name', value: 'lastName' }
+                ]}
+              />
 
               <SelectBox
                 className="team-member-overview__filter"

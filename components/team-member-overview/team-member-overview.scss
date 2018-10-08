@@ -41,14 +41,6 @@
     }
   }
 
-  &__spacing {
-    margin: 10px 0;
-
-    @include tablet {
-      margin: 0 10px 0 0;
-    }
-  }
-
   &__filter-wrapper {
     display: flex;
     flex-direction: column;

@@ -67,19 +67,18 @@ class ClientsOverview extends React.Component {
             </Link>
 
             <div className="clients-overview__filter-wrapper">
-              <div className="clients-overview__spacing">
-                <SelectBox
-                  className="clients-overview__filter"
-                  selectedValue={sortBy}
-                  name="sortBy"
-                  onChange={(event) => onSortClientsBy(event.target.value)}
-                  options={[
-                    { title: 'Sort by:', value: '' },
-                    { title: 'Client', value: 'clientName' },
-                    { title: 'City', value: 'city' }
-                  ]}
-                />
-              </div>
+              <SelectBox
+                className="clients-overview__filter"
+                hasSibling
+                selectedValue={sortBy}
+                name="sortBy"
+                onChange={(event) => onSortClientsBy(event.target.value)}
+                options={[
+                  { title: 'Sort by:', value: '' },
+                  { title: 'Client', value: 'clientName' },
+                  { title: 'City', value: 'city' }
+                ]}
+              />
 
               <SelectBox
                 className="clients-overview__filter"

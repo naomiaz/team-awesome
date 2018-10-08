@@ -1,7 +1,7 @@
 // Actions
 const SAVE_LOGIN_DATA = 'SAVE_LOGIN_DATA';
 
-// State Selectors -> To be imported in Container Component
+// State Selectors
 export const loginDataSelector = (state) => state.loginData.loginData;
 
 // Initial State
@@ -20,7 +20,7 @@ export function loginReducer(state = initialState, action) {
   }
 }
 
-// Action Creators -> To be used in Component
+// Action Creators
 export const saveLoginData = (loginData) => ({
   type: SAVE_LOGIN_DATA,
   loginData

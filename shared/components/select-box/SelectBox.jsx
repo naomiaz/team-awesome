@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import './select-box.scss';
 
 const SelectBox = ({
-  className, selectedValue, name, onChange, options
+  className, hasSibling, selectedValue, name, onChange, options
 }) => (
-  <div className="
+  <div className={`
     select-box
-    select-box__button-arrow"
+    select-box__button-arrow
+    ${hasSibling ? 'select-box__spacing' : ''}`}
   >
     <select
       className={`select-box__select ${className}`}
@@ -30,11 +31,13 @@ const SelectBox = ({
 
 SelectBox.defaultProps = {
   className: '',
+  hasSibling: false,
   name: ''
 };
 
 SelectBox.propTypes = {
   className: PropTypes.string,
+  hasSibling: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string,
   selectedValue: PropTypes.string.isRequired,

@@ -12,10 +12,10 @@ import './time-entry-form.scss';
 
 export interface TimeEntryFormProps {
   clientNames: ClientNameModel[];
-  onEntrySubmit: (newTimeEntryFormatted: TimeEntryModel) => void;
-  onToggleFormVisibility: (isFormVisible: boolean) => void;
   isFormSaving: boolean;
   isFormVisible: boolean;
+  onEntrySubmit: (newTimeEntryFormatted: TimeEntryModel) => void;
+  onToggleFormVisibility: (isFormVisible: boolean) => void;
 }
 
 export interface TimeEntryFormState {
@@ -33,7 +33,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
       timeTo: ''
     },
     validity: {
-      // True by default so that form doesn't show errors on page load
       date: true,
       timeFrom: true,
       timeTo: true
@@ -123,7 +122,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
         >
           <div className="time-entry-form__form-wrapper">
 
-            {/* CLOSE BUTTON (MOBILE) */}
             <button
               className="time-entry-form__button-close"
               onClick={this.handleFormVisibility}
@@ -132,7 +130,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
               <svg className="time-entry-form__icon-close" />
             </button>
 
-            {/* CLIENT */}
             <label
               className="time-entry-form__label"
               htmlFor="clientId"
@@ -150,7 +147,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
               />
             </label>
 
-            {/* ACTIVITY */}
             <label
               className="time-entry-form__label"
               htmlFor="activity"
@@ -196,7 +192,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             </label>
 
             <div className="time-entry-form__time-wrapper">
-              {/* TIME FROM */}
               <label
                 className="
                   time-entry-form__label
@@ -222,7 +217,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                 />
               </label>
 
-              {/* TIME TO */}
               <label
                 className="
                   time-entry-form__label

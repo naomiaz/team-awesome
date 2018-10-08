@@ -11,9 +11,9 @@ export interface TimeEntryItemProps {
   clientLabel?: string;
   date: string;
   id?: number;
+  onEntryDelete: any;
   timeFrom: string;
   timeTo: string;
-  onEntryDelete: any;
 }
 
 class TimeEntryItem extends React.Component <TimeEntryItemProps> {

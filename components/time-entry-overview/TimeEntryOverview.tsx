@@ -13,21 +13,21 @@ import './time-entry-overview.scss';
 
 export interface TimeEntryOverviewProps {
   activeFilter: string;
-  timeEntries: TimeEntryModel[];
-  timeEntriesUnfiltered: TimeEntryModel[];
   clientNames: ClientNameModel[];
   isFormSaving: boolean;
   isFormVisible: boolean;
   onDeleteTimeEntry: (id: number) => void;
   onFilterTimeEntries: (filterValue: string) => void;
-  onRequestTimeEntries: () => void;
   onRequestClients: () => void;
+  onRequestTimeEntries: () => void;
   onSaveTimeEntry: (newTimeEntry: TimeEntryModel) => void;
   onToggleFormVisibility:(isFormVisible: boolean) => void;
   pageTitle: string;
+  timeEntries: TimeEntryModel[];
+  timeEntriesUnfiltered: TimeEntryModel[];
   unitCount: number;
-  unitSingular: string;
   unitPlural: string;
+  unitSingular: string;
 }
 
 
@@ -103,7 +103,7 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
-          { // only show filter when there are timesheets
+          { // Only show filter when there are timesheets
             !timeEntriesUnfiltered.length
             ? ''
             : <SelectBox
@@ -117,9 +117,6 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
 
           {this.checkArrayLength() ||
           timeEntries.map((currentTimeEntry, index, array) => {
-            // if (index === 0 ) { date + component } ------->> 0 is falsy
-            // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
-            // if (currentTimeEntry.date === previousTimeEntry.date) { component }
             const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
             return (
               <React.Fragment key={currentTimeEntry.id}>

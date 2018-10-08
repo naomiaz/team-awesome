@@ -31,11 +31,10 @@ interface TimeEntryState {
   error: object;
 }
 
-// State Selectors -> To be imported in Container Component
+// State Selectors
 const timeEntriesRootSelector = (state) => state.timeEntries;
 
 export const timeEntriesSelector = createSelector(
-  // extract items form the timeEntriesRootSelector
   timeEntriesRootSelector,
   (timeEntries: TimeEntryState) => timeEntries.items
 );
@@ -101,7 +100,7 @@ export function timeEntriesReducer(state = initialState, action) {
 }
 
 
-// Action Creators -> To be called in Component (and are watched by rootSaga)
+// Action Creators
 export const toggleFormVisibility = (isFormVisible: TimeEntryState['isFormVisible']) => ({
   type: SET_FORM_VISIBILITY,
   isFormVisible
