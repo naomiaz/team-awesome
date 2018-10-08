@@ -1,6 +1,6 @@
 import React from 'react';
-import IndexContainer from '../components/index/IndexContainer';
+import TimesheetsContainer from '../components/timesheets/TimesheetsContainer';
 
 export default () => (
-  <IndexContainer />
+  <TimesheetsContainer />
 );

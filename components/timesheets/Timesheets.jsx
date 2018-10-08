@@ -6,7 +6,7 @@ import NavHeader from '../nav-header/NavHeader';
 import TimeEntryOverview from '../time-entry-overview';
 
 
-class Index extends React.Component {
+class Timesheets extends React.Component {
   static propTypes = {
     loginData: PropTypes.shape({
       email: PropTypes.string,
@@ -32,4 +32,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default Timesheets;
