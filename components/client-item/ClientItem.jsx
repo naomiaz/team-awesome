@@ -17,7 +17,7 @@ class ClientItem extends React.Component {
 
   state = {
     isDetailWrapperVisible: false
-  }
+  };
 
   toggleDetailWrapper = () => {
     this.setState((prevState) => ({
