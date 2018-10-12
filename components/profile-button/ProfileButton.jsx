@@ -11,12 +11,12 @@ const ProfileButton = () => (
         type="button"
       >
         <img
-          alt="Humanoids"
+          alt="Logo Humanoids"
           className="profile-button__logo"
           src="/static/images/logo-humanoids.png"
         />
         <img
-          alt=""
+          alt="Avatar"
           className="profile-button__avatar"
           src="/static/images/avatar-naomi.jpg"
         />

@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { ClientNameModel, clientNamesSelector } from './clients';
 
-// Action types
 export const DELETE_TIME_ENTRY = 'DELETE_TIME_ENTRY';
 export const DELETE_TIME_ENTRY_SUCCESS = 'DELETE_TIME_ENTRY_SUCCESS';
 export const FILTER_TIME_ENTRIES = 'FILTER_TIME_ENTRIES';
@@ -31,7 +30,7 @@ interface TimeEntryState {
   error: object;
 }
 
-// State Selectors
+
 const timeEntriesRootSelector = (state) => state.timeEntries;
 
 export const timeEntriesSelector = createSelector(
@@ -60,7 +59,7 @@ export const getTimeEntriesSelector = createSelector(
 export const isFormSavingSelector = (state) => state.timeEntries.isFormSaving;
 export const isFormVisibleSelector = (state) => state.timeEntries.isFormVisible;
 
-// Initial State
+
 export const initialState: TimeEntryState = {
   items: [],
   isLoading: false,
@@ -71,7 +70,6 @@ export const initialState: TimeEntryState = {
 };
 
 
-// Action Reducers
 export function timeEntriesReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_TIME_ENTRY:
@@ -100,7 +98,6 @@ export function timeEntriesReducer(state = initialState, action) {
 }
 
 
-// Action Creators
 export const toggleFormVisibility = (isFormVisible: TimeEntryState['isFormVisible']) => ({
   type: SET_FORM_VISIBILITY,
   isFormVisible

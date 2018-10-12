@@ -85,7 +85,8 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
             : [{
                 onChange: (event) => onFilterTimeEntries(event.target.value),
                 options: [{ title: 'All clients:', value: '' }, ...clientNames],
-                selectedValue: activeFilter
+                selectedValue: activeFilter,
+                id: "timeEntryOverview"
               }]
           }
           pageTitle="Timesheets"

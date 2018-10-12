@@ -32,7 +32,7 @@ MainNav.propTypes = {
       path: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  router: PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+  router: PropTypes.object.isRequired
 };
 
 export default withRouter(MainNav);

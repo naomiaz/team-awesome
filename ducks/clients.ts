@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-// Action types
 export const REQUEST_CLIENTS = 'REQUEST_CLIENTS';
 export const REQUEST_CLIENTS_SUCCESS = 'REQUEST_CLIENTS_SUCCESS';
 export const SAVE_CLIENT = 'SAVE_CLIENT';
@@ -38,7 +37,6 @@ interface ClientState {
   error: object;
 }
 
-// State Selectors
 const clientsRootSelector = (state) => state.clients;
 
 export const clientsSelector = createSelector(
@@ -83,7 +81,6 @@ export const isFormSavingSelector = createSelector(
 );
 
 
-// Initial State
 export const initialState: ClientState = {
   clients: [],
   isLoading: false,
@@ -94,7 +91,6 @@ export const initialState: ClientState = {
 };
 
 
-// Action Reducers
 export function clientsReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_CLIENT:
@@ -123,7 +119,6 @@ export function clientsReducer(state = initialState, action) {
 }
 
 
-// Action Creators
 export const deleteClient = (id: ClientModel['id']) => ({
   type: DELETE_CLIENT,
   id

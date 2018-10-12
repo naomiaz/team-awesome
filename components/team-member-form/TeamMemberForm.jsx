@@ -130,7 +130,6 @@ class TeamMemberForm extends React.Component {
             ref={this.formElement}
             onSubmit={this.handleSubmit}
           >
-            {/* TITLE WRAPPER */}
             <div className="team-member-form__header">
               <h2 className="team-member-form__title">
                 Add new team member
@@ -148,6 +147,7 @@ class TeamMemberForm extends React.Component {
                   />
                 </a>
               </Link>
+
               <Button
                 className="team-member-form__button"
                 disabled={isFormSaving || !this.handleFormValidation()}
@@ -156,19 +156,14 @@ class TeamMemberForm extends React.Component {
               />
             </div>
 
-            {/* FORM */}
             <div className="team-member-form__container">
-              {/* TABS */}
               <div className="team-member-form__tab-row">
                 <div className="team-member-form__tab">
                   Personal details
                 </div>
               </div>
 
-              {/* FORM CONTAINER */}
               <div className="team-member-form__form-container">
-
-                {/* FIRST COLUMN */}
                 <div className="team-member-form__first-column">
                   <img
                     alt="Edit Avatar"
@@ -185,10 +180,8 @@ class TeamMemberForm extends React.Component {
                   </p>
                 </div>
 
-                {/* SECOND COLUMN */}
                 <div className="team-member-form__second-column">
                   <div className="team-member-form__name">
-                    {/* FIRST NAME */}
                     <label
                       className="
                         team-member-form__label
@@ -210,7 +203,6 @@ class TeamMemberForm extends React.Component {
                         value={firstName}
                       />
                     </label>
-                    {/* LAST NAME */}
                     <label
                       className="team-member-form__label"
                       htmlFor="last-name"
@@ -230,7 +222,6 @@ class TeamMemberForm extends React.Component {
                       />
                     </label>
                   </div>
-                  {/* EMAIL */}
                   <label
                     className="team-member-form__label"
                     htmlFor="email"
@@ -249,7 +240,6 @@ class TeamMemberForm extends React.Component {
                       value={email}
                     />
                   </label>
-                  {/* BIOGRAPHY */}
                   <label
                     className="team-member-form__label"
                     htmlFor="bio"
@@ -269,9 +259,7 @@ class TeamMemberForm extends React.Component {
 
                 <div className="team-member-form__divider" />
 
-                {/* LAST COLUMN */}
                 <div className="team-member-form__last-column">
-                  {/* ADDRESS */}
                   <label
                     className="team-member-form__label"
                     htmlFor="address"
@@ -292,7 +280,6 @@ class TeamMemberForm extends React.Component {
                     />
                   </label>
                   <div className="team-member-form__zipcity">
-                    {/* ZIP CODE */}
                     <label
                       className="
                         team-member-form__label
@@ -314,7 +301,6 @@ class TeamMemberForm extends React.Component {
                         value={zip}
                       />
                     </label>
-                    {/* CITY */}
                     <label
                       className="team-member-form__label"
                       htmlFor="city"
@@ -336,7 +322,6 @@ class TeamMemberForm extends React.Component {
                   </div>
                   <label className="team-member-form__label">
                     Social profiles
-                    {/* TWITTER */}
                     <div className="team-member-form__socials">
                       <div className="
                         team-member-form__icon-box
@@ -355,7 +340,6 @@ class TeamMemberForm extends React.Component {
                         value={socialsTwitter}
                       />
                     </div>
-                    {/* FACEBOOK */}
                     <div className="team-member-form__socials">
                       <div className="
                         team-member-form__icon-box

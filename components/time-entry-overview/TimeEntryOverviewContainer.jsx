@@ -16,7 +16,6 @@ import {
 import { clientNamesSelector, requestClients } from '../../ducks/clients';
 import TimeEntryOverview from './TimeEntryOverview';
 
-// Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
   activeFilter: timeEntriesActiveFilterSelector(state),
   clientNames: clientNamesSelector(state),
@@ -26,7 +25,6 @@ const mapStateToProps = (state) => ({
   isFormVisible: isFormVisibleSelector(state)
 });
 
-// Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   onDeleteTimeEntry: deleteTimeEntry,
   onFilterTimeEntries: filterTimeEntries,
@@ -40,7 +38,6 @@ const TimeEntryOverviewContainer = (props) => (
   <TimeEntryOverview {...props} />
 );
 
-// Props of parent are equal to props of child
 TimeEntryOverviewContainer.propTypes = TimeEntryOverview.propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeEntryOverviewContainer);

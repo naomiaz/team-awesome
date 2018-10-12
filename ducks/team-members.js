@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 
 
-// Action types
 export const REQUEST_TEAM_MEMBERS = 'REQUEST_TEAM_MEMBERS';
 export const REQUEST_TEAM_MEMBERS_SUCCESS = 'REQUEST_TEAM_MEMBERS_SUCCESS';
 export const SAVE_TEAM_MEMBER = 'SAVE_TEAM_MEMBER';
@@ -12,7 +11,6 @@ export const DELETE_TEAM_MEMBER = 'DELETE_TEAM_MEMBER';
 export const DELETE_TEAM_MEMBER_SUCCESS = 'DELETE_TEAM_MEMBER_SUCCESS';
 
 
-// State Selectors
 const teamMembersRootSelector = (state) => state.teamMembers;
 
 const teamMembersSelector = createSelector(
@@ -48,7 +46,6 @@ export const getTeamMembersSelector = createSelector(
 export const isFormSavingSelector = (state) => state.teamMembers.isFormSaving;
 
 
-// Initial State
 export const initialState = {
   members: [],
   isLoading: false,
@@ -59,7 +56,6 @@ export const initialState = {
 };
 
 
-// Action Reducers
 export function teamMembersReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_TEAM_MEMBER:
@@ -88,7 +84,6 @@ export function teamMembersReducer(state = initialState, action) {
 }
 
 
-// Action Creators
 export const deleteTeamMember = (id) => ({
   type: DELETE_TEAM_MEMBER,
   id

@@ -20,7 +20,7 @@ class Login extends React.Component {
       email: PropTypes.string,
       password: PropTypes.string
     }).isRequired,
-    onSaveLoginData: PropTypes.func.isRequired
+    onRegister: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -31,8 +31,6 @@ class Login extends React.Component {
   state = { loginData: Login.loginDefaultValues.loginData };
 
   componentDidMount() {
-    // Check if visitor is already logged in.
-    // If already logged in, redirect to Timesheet page - if not logged in, stay on Login page.
     const { email, password } = this.props.loginData;
     if (email === 'admin' && password === 'admin') {
       Router.push('/');
@@ -67,7 +65,7 @@ class Login extends React.Component {
     event.preventDefault();
     const { loginData } = this.state;
     if (this.handleFormValidation()) {
-      this.props.onSaveLoginData(loginData);
+      this.props.onRegister(loginData);
       this.setState({ loginData: Login.loginDefaultValues.loginData });
       Router.push('/');
     }

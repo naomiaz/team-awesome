@@ -15,7 +15,8 @@
     "jsx-a11y/anchor-is-valid": "off",
     "arrow-parens": ["error", "always"],
     "react/destructuring-assignment": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "react/forbid-prop-types": "off"
   },
   "settings": {
     "import/resolver": {

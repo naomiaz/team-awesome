@@ -1,27 +1,26 @@
-// Actions
-const SAVE_LOGIN_DATA = 'SAVE_LOGIN_DATA';
+const REGISTER = 'REGISTER';
 
-// State Selectors
+
 export const loginDataSelector = (state) => state.loginData.loginData;
 
-// Initial State
+
 export const initialState = {
   loginData: {},
   error: null
 };
 
-// Action Reducers
+
 export function loginReducer(state = initialState, action) {
   switch (action.type) {
-    case SAVE_LOGIN_DATA:
+    case REGISTER:
       return { ...state, loginData: action.loginData };
     default:
       return state;
   }
 }
 
-// Action Creators
-export const saveLoginData = (loginData) => ({
-  type: SAVE_LOGIN_DATA,
+
+export const register = (loginData) => ({
+  type: REGISTER,
   loginData
 });

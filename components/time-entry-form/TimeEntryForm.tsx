@@ -140,6 +140,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                   time-entry-form__input
                   time-entry-form__select
                 "
+                hasSibling={false}
                 selectedValue={clientId}
                 name="clientId"
                 onChange={this.handleChange}
@@ -157,6 +158,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                   time-entry-form__input
                   time-entry-form__select
                 "
+                hasSibling={false}
                 selectedValue={activity}
                 name="activity"
                 onChange={this.handleChange}

@@ -12,14 +12,12 @@ import {
 } from '../../ducks/clients';
 import ClientsOverview from './ClientsOverview';
 
-// Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
   clients: getClientsSelector(state),
   sortBy: clientsSortBySelector(state),
   sortDirection: clientsSortDirectionSelector(state)
 });
 
-// Dispatch the actioncreators to props of a component
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   onRequestClients: requestClients,
   onSaveClient: saveClient,
@@ -31,7 +29,6 @@ const ClientsOverviewContainer = (props) => (
   <ClientsOverview {...props} />
 );
 
-// Props of parent are equal to props of child
 ClientsOverviewContainer.propTypes = ClientsOverview.propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientsOverviewContainer);

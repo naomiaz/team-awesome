@@ -34,7 +34,6 @@ class TeamMemberItem extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        {/* MAIN WRAPPER */}
         <div
           className="btn team-member-item__body"
           onClick={this.toggleDetailWrapper}
@@ -43,7 +42,6 @@ class TeamMemberItem extends React.Component {
           tabIndex="0"
         >
 
-          {/* PERSONALIA */}
           <div className="team-member-item__personalia">
             <img
               alt={`${firstName} ${lastName}`}
@@ -64,7 +62,6 @@ class TeamMemberItem extends React.Component {
             </div>
           </div>
 
-          {/* WORK INFO */}
           <ul className="team-member-item__client-info">
             <li className="team-member-item__text-block">
               <span className="team-member-item__text--primary">
@@ -92,22 +89,23 @@ class TeamMemberItem extends React.Component {
             </li>
           </ul>
 
-          {/* CARET */}
           <div className={`
-            team-member-item__button-caret team-member-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
+            team-member-item__button-caret
+            team-member-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
           />
         </div>
 
-        {/* EXPANDABLE WRAPPER */}
         <div className={`team-member-item__body-expandable${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
           <div className="team-member-item__subtitle">
             {`Detailed information about ${firstName}`}
           </div>
           <ul className="
-            team-member-item__client-info team-member-item__client-info--expandable"
+            team-member-item__client-info
+            team-member-item__client-info--expandable"
           >
             <li className="
-              team-member-item__text-block team-member-item__text-block--expandable"
+              team-member-item__text-block
+              team-member-item__text-block--expandable"
             >
               <span className="team-member-item__text--primary">
                 {currentClient}
@@ -117,7 +115,8 @@ class TeamMemberItem extends React.Component {
               </span>
             </li>
             <li className="
-              team-member-item__text-block team-member-item__text-block--expandable"
+              team-member-item__text-block
+              team-member-item__text-block--expandable"
             >
               <span className="team-member-item__text--primary">
                 {convertIsoToMonthYear(startDate)}

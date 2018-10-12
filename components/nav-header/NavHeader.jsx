@@ -43,12 +43,12 @@ class NavHeader extends React.Component {
           type="button"
         >
           <img
-            alt=""
+            alt="Open"
             className="mobile-nav__icon mobile-nav__icon--open"
             src="../../static/icons/hamburger.svg"
           />
           <img
-            alt=""
+            alt="Close"
             className="mobile-nav__icon mobile-nav__icon--close"
             src="../../static/icons/close.svg"
           />
