@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Router from 'next/router';
+
+import PageHeader from '../../shared/components/page-header/PageHeader';
 import Button from '../../shared/components/button/Button';
 import InputField from '../../shared/components/input-field/InputField';
 
@@ -24,6 +26,21 @@ class ClientForm extends React.Component {
   };
 
   static propTypes = {
+    clients: PropTypes.arrayOf(
+      PropTypes.shape({
+        clientName: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        zip: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        chamberOfCommerce: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        website: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired,
+        remarks: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+      })
+    ).isRequired,
     isFormSaving: PropTypes.bool.isRequired,
     onSaveClient: PropTypes.func.isRequired
   }
@@ -80,258 +97,267 @@ class ClientForm extends React.Component {
     const {
       clientName, chamberOfCommerce, email, address, zip, city, remarks, website, phone
     } = newClient;
-    const { isFormSaving } = this.props;
+    const { isFormSaving, clients } = this.props;
     return (
-      <section className="client-form">
-        <form
-          id="newclient"
-          ref={this.formElement}
-          onSubmit={this.handleSubmit}
-        >
-          {/* TITLE WRAPPER */}
-          <div className="client-form__header">
-            <h2 className="client-form__title">
-              Add new client
-            </h2>
+      <React.Fragment>
+        <PageHeader
+          pageTitle="Clients"
+          unitCount={clients.length}
+          unitPlural="Clients"
+          unitSingular="Client"
+        />
 
-            <Link href="/clients">
-              <a className="render-whitespace--left">
-                <Button
-                  className="
-                    client-form__button
-                    client-form__button-cancel
-                  "
-                  type="button"
-                  value="Cancel"
-                />
-              </a>
-            </Link>
-            <Button
-              className="client-form__button"
-              disabled={isFormSaving || !this.handleFormValidation()}
-              type="submit"
-              value="Save"
-            />
-          </div>
+        <section className="client-form">
+          <form
+            id="newclient"
+            ref={this.formElement}
+            onSubmit={this.handleSubmit}
+          >
+            {/* TITLE WRAPPER */}
+            <div className="client-form__header">
+              <h2 className="client-form__title">
+                Add new client
+              </h2>
 
-          {/* FORM */}
-          <div className="client-form__container">
-            {/* TABS */}
-            <div className="client-form__tab-row">
-              <div className="client-form__tab">
-                Client details
-              </div>
+              <Link href="/clients">
+                <a className="render-whitespace--left">
+                  <Button
+                    className="
+                      client-form__button
+                      client-form__button-cancel
+                    "
+                    type="button"
+                    value="Cancel"
+                  />
+                </a>
+              </Link>
+              <Button
+                className="client-form__button"
+                disabled={isFormSaving || !this.handleFormValidation()}
+                type="submit"
+                value="Save"
+              />
             </div>
 
-            {/* FORM CONTAINER */}
-            <div className="client-form__form-container">
-
-              {/* FIRST COLUMN */}
-              <div className="client-form__first-column">
-                <img
-                  alt="Edit Avatar"
-                  className="client-form__avatar"
-                  src="/static/images/avatar-humanoids.jpg"
-                />
-                <p>
-                  <a
-                    className="text-link"
-                    href="#"
-                  >
-                    Edit Logo
-                  </a>
-                </p>
+            {/* FORM */}
+            <div className="client-form__container">
+              {/* TABS */}
+              <div className="client-form__tab-row">
+                <div className="client-form__tab">
+                  Client details
+                </div>
               </div>
 
-              {/* SECOND COLUMN */}
-              <div className="client-form__second-column">
-                {/* CLIENT NAME */}
-                <label
-                  className="client-form__label"
-                  htmlFor="clientName"
-                >
-                  Client name
-                  <InputField
-                    className={`
-                      client-form__input
-                      client-form__input--${!validity || validity.clientName ? 'valid' : 'invalid'}
-                    `}
-                    name="clientName"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    required
-                    type="text"
-                    value={clientName}
-                  />
-                </label>
-                {/* chamberOfCommerce */}
-                <label
-                  className="client-form__label"
-                  htmlFor="chamberOfCommerce"
-                >
-                  Chamber of Commerce
-                  <InputField
-                    className={`
-                      client-form__input
-                      client-form__input--${!validity || validity.chamberOfCommerce ? 'valid' : 'invalid'}
-                    `}
-                    name="chamberOfCommerce"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    required
-                    type="text"
-                    value={chamberOfCommerce}
-                  />
-                </label>
-                {/* REMARKS */}
-                <label
-                  className="client-form__label"
-                  htmlFor="remarks"
-                >
-                  Remarks
-                  <textarea
-                    className="client-form__textarea"
-                    form="newclient"
-                    id="remarks"
-                    name="remarks"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    value={remarks}
-                  />
-                </label>
-              </div>
+              {/* FORM CONTAINER */}
+              <div className="client-form__form-container">
 
-              <div className="client-form__divider" />
-
-              {/* LAST COLUMN */}
-              <div className="client-form__last-column">
-                {/* ADDRESS */}
-                <label
-                  className="client-form__label"
-                  htmlFor="address"
-                >
-                  Address
-                  <InputField
-                    className={`client-form__input
-                      client-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
-                    name="address"
-                    onBlur={this.handleBlur}
-                    onChange={this.handleChange}
-                    required
-                    title="Fill in this field"
-                    type="text"
-                    value={address}
+                {/* FIRST COLUMN */}
+                <div className="client-form__first-column">
+                  <img
+                    alt="Edit Avatar"
+                    className="client-form__avatar"
+                    src="/static/images/avatar-humanoids.jpg"
                   />
-                </label>
-                <div className="client-form__zipcity">
-                  {/* ZIP CODE */}
-                  <label
-                    className="client-form__label
-                    client-form__label--half"
-                    htmlFor="zip"
-                  >
-                    ZIP code
-                    <InputField
-                      className={`
-                        client-form__input
-                        client-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}
-                      `}
-                      name="zip"
-                      onBlur={this.handleBlur}
-                      onChange={this.handleChange}
-                      required
-                      type="text"
-                      value={zip}
-                    />
-                  </label>
-                  {/* CITY */}
+                  <p>
+                    <a
+                      className="text-link"
+                      href="#"
+                    >
+                      Edit Logo
+                    </a>
+                  </p>
+                </div>
+
+                {/* SECOND COLUMN */}
+                <div className="client-form__second-column">
+                  {/* CLIENT NAME */}
                   <label
                     className="client-form__label"
-                    htmlFor="city"
+                    htmlFor="clientName"
                   >
-                    City
+                    Client name
                     <InputField
                       className={`
                         client-form__input
-                        client-form__input--${!validity || validity.city ? 'valid' : 'invalid'}
+                        client-form__input--${!validity || validity.clientName ? 'valid' : 'invalid'}
                       `}
-                      name="city"
+                      name="clientName"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
                       required
                       type="text"
-                      value={city}
+                      value={clientName}
+                    />
+                  </label>
+                  {/* chamberOfCommerce */}
+                  <label
+                    className="client-form__label"
+                    htmlFor="chamberOfCommerce"
+                  >
+                    Chamber of Commerce
+                    <InputField
+                      className={`
+                        client-form__input
+                        client-form__input--${!validity || validity.chamberOfCommerce ? 'valid' : 'invalid'}
+                      `}
+                      name="chamberOfCommerce"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      required
+                      type="text"
+                      value={chamberOfCommerce}
+                    />
+                  </label>
+                  {/* REMARKS */}
+                  <label
+                    className="client-form__label"
+                    htmlFor="remarks"
+                  >
+                    Remarks
+                    <textarea
+                      className="client-form__textarea"
+                      form="newclient"
+                      id="remarks"
+                      name="remarks"
+                      onBlur={this.handleBlur}
+                      onChange={this.handleChange}
+                      value={remarks}
                     />
                   </label>
                 </div>
 
-                <label className="client-form__label">
-                  Contact details
-                  {/* PHONE */}
-                  <div className="client-form__contact">
-                    <div className="
-                      client-form__icon-box
-                      client-form__icon-box--icon-phone
-                    "
-                    />
+                <div className="client-form__divider" />
+
+                {/* LAST COLUMN */}
+                <div className="client-form__last-column">
+                  {/* ADDRESS */}
+                  <label
+                    className="client-form__label"
+                    htmlFor="address"
+                  >
+                    Address
                     <InputField
-                      className="
-                        client-form__input
-                        client-form__input-contact
-                      "
-                      name="phone"
+                      className={`client-form__input
+                        client-form__input--${!validity || validity.address ? 'valid' : 'invalid'}`}
+                      name="address"
                       onBlur={this.handleBlur}
                       onChange={this.handleChange}
+                      required
+                      title="Fill in this field"
                       type="text"
-                      value={phone}
+                      value={address}
                     />
+                  </label>
+                  <div className="client-form__zipcity">
+                    {/* ZIP CODE */}
+                    <label
+                      className="client-form__label
+                      client-form__label--half"
+                      htmlFor="zip"
+                    >
+                      ZIP code
+                      <InputField
+                        className={`
+                          client-form__input
+                          client-form__input--${!validity || validity.zip ? 'valid' : 'invalid'}
+                        `}
+                        name="zip"
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                        required
+                        type="text"
+                        value={zip}
+                      />
+                    </label>
+                    {/* CITY */}
+                    <label
+                      className="client-form__label"
+                      htmlFor="city"
+                    >
+                      City
+                      <InputField
+                        className={`
+                          client-form__input
+                          client-form__input--${!validity || validity.city ? 'valid' : 'invalid'}
+                        `}
+                        name="city"
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                        required
+                        type="text"
+                        value={city}
+                      />
+                    </label>
                   </div>
-                  {/* EMAIL */}
-                  <div className="client-form__contact">
-                    <div className="
-                      client-form__icon-box
-                      client-form__icon-box--icon-email
-                    "
-                    />
-                    <InputField
-                      className="
-                        client-form__input
-                        client-form__input-contact
+
+                  <label className="client-form__label">
+                    Contact details
+                    {/* PHONE */}
+                    <div className="client-form__contact">
+                      <div className="
+                        client-form__icon-box
+                        client-form__icon-box--icon-phone
                       "
-                      name="email"
-                      onBlur={this.handleBlur}
-                      onChange={this.handleChange}
-                      type="text"
-                      value={email}
-                    />
-                  </div>
-                  {/* WEBSITE */}
-                  <div className="client-form__contact">
-                    <div className="
-                      client-form__icon-box
-                      client-form__icon-box--icon-website
-                    "
-                    />
-                    <InputField
-                      className="
-                        client-form__input
-                        client-form__input-contact
+                      />
+                      <InputField
+                        className="
+                          client-form__input
+                          client-form__input-contact
                         "
-                      name="website"
-                      onBlur={this.handleBlur}
-                      onChange={this.handleChange}
-                      type="text"
-                      value={website}
-                    />
-                  </div>
-                </label>
+                        name="phone"
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                        type="text"
+                        value={phone}
+                      />
+                    </div>
+                    {/* EMAIL */}
+                    <div className="client-form__contact">
+                      <div className="
+                        client-form__icon-box
+                        client-form__icon-box--icon-email
+                      "
+                      />
+                      <InputField
+                        className="
+                          client-form__input
+                          client-form__input-contact
+                        "
+                        name="email"
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                        type="text"
+                        value={email}
+                      />
+                    </div>
+                    {/* WEBSITE */}
+                    <div className="client-form__contact">
+                      <div className="
+                        client-form__icon-box
+                        client-form__icon-box--icon-website
+                      "
+                      />
+                      <InputField
+                        className="
+                          client-form__input
+                          client-form__input-contact
+                          "
+                        name="website"
+                        onBlur={this.handleBlur}
+                        onChange={this.handleChange}
+                        type="text"
+                        value={website}
+                      />
+                    </div>
+                  </label>
+                </div>
+
               </div>
-
             </div>
-          </div>
 
-        </form>
-      </section>
+          </form>
+        </section>
+      </React.Fragment>
     );
   }
 }

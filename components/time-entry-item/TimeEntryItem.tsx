@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Button from '../../shared/components/button/Button';
 import { calculateDuration } from '../../services/date-time/date-time';
 
@@ -10,9 +11,9 @@ export interface TimeEntryItemProps {
   clientLabel?: string;
   date: string;
   id?: number;
+  onEntryDelete: any;
   timeFrom: string;
   timeTo: string;
-  onEntryDelete: any;
 }
 
 class TimeEntryItem extends React.Component <TimeEntryItemProps> {

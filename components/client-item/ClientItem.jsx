@@ -17,7 +17,7 @@ class ClientItem extends React.Component {
 
   state = {
     isDetailWrapperVisible: false
-  }
+  };
 
   toggleDetailWrapper = () => {
     this.setState((prevState) => ({
@@ -38,7 +38,6 @@ class ClientItem extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        {/* MAIN WRAPPER */}
         <div
           className="btn client-item__body"
           onClick={this.toggleDetailWrapper}
@@ -47,7 +46,6 @@ class ClientItem extends React.Component {
           tabIndex="0"
         >
 
-          {/* PERSONALIA */}
           <div className="client-item__personalia">
             <img
               alt={clientName}
@@ -67,7 +65,6 @@ class ClientItem extends React.Component {
             </div>
           </div>
 
-          {/* CLIENT INFO */}
           <ul className="client-item__client-info">
             <li className="client-item__text-block">
               <span className="client-item__text--primary">
@@ -107,14 +104,12 @@ class ClientItem extends React.Component {
             </li>
           </ul>
 
-          {/* CARET */}
           <div className={`
             client-item__button-caret
             client-item__button-caret${isDetailWrapperVisible ? '--up' : '--down'}`}
           />
         </div>
 
-        {/* EXPANDABLE WRAPPER */}
         <div className={`client-item__body-expandable${isDetailWrapperVisible ? '--visible' : '--hidden'}`}>
           <div className="client-item__subtitle">
             {`Detailed information about ${clientName}`}

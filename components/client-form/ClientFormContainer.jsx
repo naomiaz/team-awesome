@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { isFormSavingSelector, saveClient } from '../../ducks/clients';
+import { getClientsSelector, isFormSavingSelector, saveClient } from '../../ducks/clients';
 import ClientForm from './ClientForm';
 
 // Select items from your state to place in the props of your component
 const mapStateToProps = (state) => ({
+  clients: getClientsSelector(state),
   isFormSaving: isFormSavingSelector(state)
 });
 

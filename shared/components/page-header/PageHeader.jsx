@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import SelectBox from '../select-box/SelectBox';
 
 import './page-header.scss';
@@ -16,15 +17,12 @@ const PageHeader = ({
     </h1>
 
     <div className="page-header__button-wrapper">
-      {
-        selectBox && selectBox.map(
-          (currentSelectBox) => (
-            <SelectBox
-              key={currentSelectBox.name}
-              {...currentSelectBox}
-            />
-          )
-        )
+      {selectBox.map((currentSelectBox) => (
+        <SelectBox
+          key={currentSelectBox.id}
+          {...currentSelectBox}
+        />
+      ))
       }
 
       <form className="page-header__search">
@@ -59,7 +57,7 @@ PageHeader.propTypes = {
         value: PropTypes.string.isRequired
       }).isRequired,
       selectedValue: PropTypes.string.isRequired
-    }).isRequired
+    })
   ),
   unitCount: PropTypes.number.isRequired,
   unitSingular: PropTypes.string.isRequired,

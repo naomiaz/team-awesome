@@ -1,9 +1,23 @@
 @import "../../shared/styles/main";
 
-.time-entry {
-  &-overview {
-    @include section-row;
-    margin: 32px 0;
+.time-entry-overview {
+  @include section-row;
+  margin-top: 10px;
+
+  &__filter {
+    display: block;
+
+    @include tablet { display: none; }
+  }
+
+  &__copy {
+    display: block;
+    font-size: $default-font-size;
+    font-weight: $font-weight-light;
+    margin-top: 24px;
+    text-align: center;
+
+    @include tablet { font-size: $default-font-size-large; }
   }
 
   &__date-row {
@@ -16,8 +30,15 @@
     margin-top: 33px;
   }
 
-  &-item + &-item {
-    border-radius: 0 0 4px 4px;
+  .time-entry-item + .time-entry-item {
     margin-top: -1px;
+  }
+
+  .select-box__button-arrow {
+    &::after {
+      display: block;
+
+      @include tablet { display: none; }
+    }
   }
 }

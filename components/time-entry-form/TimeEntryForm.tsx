@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Button from '../../shared/components/button/Button';
 import SelectBox from '../../shared/components/select-box/SelectBox';
 import InputField from '../../shared/components/input-field/InputField';
+
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNameModel } from '../../ducks/clients';
 import { convertTimeToIso, convertDateToIso, createIsoString } from '../../services/date-time/date-time';
@@ -10,10 +12,10 @@ import './time-entry-form.scss';
 
 export interface TimeEntryFormProps {
   clientNames: ClientNameModel[];
-  onEntrySubmit: (newTimeEntryFormatted: TimeEntryModel) => void;
-  onToggleFormVisibility: (isFormVisible: boolean) => void;
   isFormSaving: boolean;
   isFormVisible: boolean;
+  onEntrySubmit: (newTimeEntryFormatted: TimeEntryModel) => void;
+  onToggleFormVisibility: (isFormVisible: boolean) => void;
 }
 
 export interface TimeEntryFormState {
@@ -31,7 +33,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
       timeTo: ''
     },
     validity: {
-      // True by default so that form doesn't show errors on page load
       date: true,
       timeFrom: true,
       timeTo: true
@@ -121,7 +122,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
         >
           <div className="time-entry-form__form-wrapper">
 
-            {/* CLOSE BUTTON (MOBILE) */}
             <button
               className="time-entry-form__button-close"
               onClick={this.handleFormVisibility}
@@ -130,17 +130,17 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
               <svg className="time-entry-form__icon-close" />
             </button>
 
-            {/* CLIENT */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__client
-              "
+              className="time-entry-form__label"
               htmlFor="clientId"
             >
               Client
               <SelectBox
-                className="time-entry-form__input time-entry-form__select"
+                className="
+                  time-entry-form__input
+                  time-entry-form__select
+                "
+                hasSibling={false}
                 selectedValue={clientId}
                 name="clientId"
                 onChange={this.handleChange}
@@ -148,17 +148,17 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
               />
             </label>
 
-            {/* ACTIVITY */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__activity
-              "
+              className="time-entry-form__label"
               htmlFor="activity"
             >
               Activity
               <SelectBox
-                className="time-entry-form__input time-entry-form__select"
+                className="
+                  time-entry-form__input
+                  time-entry-form__select
+                "
+                hasSibling={false}
                 selectedValue={activity}
                 name="activity"
                 onChange={this.handleChange}
@@ -173,10 +173,7 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
 
             {/* DATE */}
             <label
-              className="
-                time-entry-form__label
-                time-entry-form__date
-              "
+              className="time-entry-form__label"
               htmlFor="date"
             >
               Date
@@ -197,7 +194,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
             </label>
 
             <div className="time-entry-form__time-wrapper">
-              {/* TIME FROM */}
               <label
                 className="
                   time-entry-form__label
@@ -223,7 +219,6 @@ class TimeEntryForm extends React.Component <TimeEntryFormProps, TimeEntryFormSt
                 />
               </label>
 
-              {/* TIME TO */}
               <label
                 className="
                   time-entry-form__label

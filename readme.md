@@ -1,6 +1,6 @@
 # Team Awesome
 
-Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents.
+Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents: [team-awesome-naomi.now.sh](https://team-awesome-naomi.now.sh/)
 
 ## Getting Started
 
@@ -15,26 +15,36 @@ To deploy this project in a live environment, you can use [Now](https://zeit.co/
 ### Installing
 
 First, clone the source locally:
-`$ git clone https://github.com/humanoidsbv/team-awesome-naomi.git`
+```
+$ git clone https://github.com/humanoidsbv/team-awesome-naomi.git
+```
 
 Install project dependencies:
-`$ npm install`
+```
+$ npm install
+```
 
 Run the app:
-`$ npm run dev`
+```
+$ npm run dev
+```
 
 The app runs on `localhost:3000`. To use another port, you can run `npm run dev -- -p <your port here>`.
 
 ## Running the tests
 
 The unit and snapshot tests are written with Jest and Enzyme. You can find the written tests in the `__tests__` folder inside the `./components` and `./services` folders. To run the tests:
-`$ npm run test`
+```
+$ npm run test
+```
 
 ## Component demonstration
 All generic components are documented in [Storybook](https://storybook.js.org), a development environment for UI components.
 
 To run Storybook:
-`$ npm run storybook`
+```
+$ npm run storybook
+```
 
 ## Built With
 

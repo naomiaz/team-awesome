@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+
 import Button from '../../shared/components/button/Button';
 import PageHeader from '../../shared/components/page-header/PageHeader';
 import SelectBox from '../../shared/components/select-box/SelectBox';
@@ -28,7 +29,7 @@ class ClientsOverview extends React.Component {
         website: PropTypes.string.isRequired,
         avatar: PropTypes.string.isRequired,
         remarks: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired
+        id: PropTypes.string.isRequired
       })
     ).isRequired
   }
@@ -65,28 +66,31 @@ class ClientsOverview extends React.Component {
               />
             </Link>
 
-            <SelectBox
-              className="clients-overview__filter"
-              selectedValue={sortBy}
-              name="sortBy"
-              onChange={(event) => onSortClientsBy(event.target.value)}
-              options={[
-                { title: 'Sort by:', value: '' },
-                { title: 'Client', value: 'clientName' },
-                { title: 'City', value: 'city' }
-              ]}
-            />
+            <div className="clients-overview__filter-wrapper">
+              <SelectBox
+                className="clients-overview__filter"
+                hasSibling
+                selectedValue={sortBy}
+                name="sortBy"
+                onChange={(event) => onSortClientsBy(event.target.value)}
+                options={[
+                  { title: 'Sort by:', value: '' },
+                  { title: 'Client', value: 'clientName' },
+                  { title: 'City', value: 'city' }
+                ]}
+              />
 
-            <SelectBox
-              className="clients-overview__filter"
-              selectedValue={sortDirection}
-              name="sortDirection"
-              onChange={(event) => onSortClientsDirection(event.target.value)}
-              options={[
-                { title: 'A-Z (asc)', value: 'ascending' },
-                { title: 'Z-A (desc)', value: 'descending' }
-              ]}
-            />
+              <SelectBox
+                className="clients-overview__filter"
+                selectedValue={sortDirection}
+                name="sortDirection"
+                onChange={(event) => onSortClientsDirection(event.target.value)}
+                options={[
+                  { title: 'A-Z (asc)', value: 'ascending' },
+                  { title: 'Z-A (desc)', value: 'descending' }
+                ]}
+              />
+            </div>
           </div>
 
           <ul>

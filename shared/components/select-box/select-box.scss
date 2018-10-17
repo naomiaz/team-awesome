@@ -29,4 +29,12 @@
       width: 16px;
     }
   }
+
+  &__spacing {
+    margin: 10px 0;
+
+    @include tablet {
+      margin: 0 10px 0 0;
+    }
+  }
 }

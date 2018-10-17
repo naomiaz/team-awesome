@@ -1,7 +1,10 @@
 import React from 'react';
+
 import PageHeader from '../../shared/components/page-header/PageHeader';
+import SelectBox from '../../shared/components/select-box/SelectBox';
 import TimeEntryForm from '../time-entry-form/TimeEntryForm';
 import TimeEntryItem from '../time-entry-item/TimeEntryItem';
+
 import { TimeEntryModel } from '../../ducks/time-entries';
 import { ClientNameModel } from '../../ducks/clients';
 import { getRelativeDay, calculateDurationPerDay } from '../../services/date-time/date-time';
@@ -10,20 +13,21 @@ import './time-entry-overview.scss';
 
 export interface TimeEntryOverviewProps {
   activeFilter: string;
-  timeEntries: TimeEntryModel[];
   clientNames: ClientNameModel[];
   isFormSaving: boolean;
   isFormVisible: boolean;
   onDeleteTimeEntry: (id: number) => void;
   onFilterTimeEntries: (filterValue: string) => void;
-  onRequestTimeEntries: () => void;
   onRequestClients: () => void;
+  onRequestTimeEntries: () => void;
   onSaveTimeEntry: (newTimeEntry: TimeEntryModel) => void;
   onToggleFormVisibility:(isFormVisible: boolean) => void;
   pageTitle: string;
+  timeEntries: TimeEntryModel[];
+  timeEntriesUnfiltered: TimeEntryModel[];
   unitCount: number;
-  unitSingular: string;
   unitPlural: string;
+  unitSingular: string;
 }
 
 
@@ -41,6 +45,25 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
     this.props.onDeleteTimeEntry(id);
   };
 
+  checkArrayLength = () => {
+    const { timeEntries, timeEntriesUnfiltered } = this.props;
+    if (!timeEntriesUnfiltered.length) {
+      return (
+        <span className="time-entry-overview__copy">
+          There are currently no timesheets. Add your first timesheet now!
+        </span>
+      );
+    }
+    else if (!timeEntries.length) {
+      return (
+        <span className="time-entry-overview__copy">
+          There are no timesheets of this client yet.
+        </span>
+      );
+    }
+    return false;
+  };
+
   render(): React.ReactNode {
     const {
       activeFilter,
@@ -49,17 +72,23 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
       isFormSaving,
       isFormVisible,
       onFilterTimeEntries,
-      onToggleFormVisibility
+      onToggleFormVisibility,
+      timeEntriesUnfiltered
     } = this.props;
     const dateOptions = { weekday: 'long', day: 'numeric', month: '2-digit' };
     return (
       <React.Fragment>
         <PageHeader
-          selectBox={[{
-            onChange: (event) => onFilterTimeEntries(event.target.value),
-            options: [{ title: 'All clients:', value: '' }, ...clientNames],
-            selectedValue: activeFilter
-          }]}
+          // only show filter when there are timesheets
+          selectBox={!timeEntriesUnfiltered.length
+            ? []
+            : [{
+                onChange: (event) => onFilterTimeEntries(event.target.value),
+                options: [{ title: 'All clients:', value: '' }, ...clientNames],
+                selectedValue: activeFilter,
+                id: "timeEntryOverview"
+              }]
+          }
           pageTitle="Timesheets"
           unitCount={timeEntries.length}
           unitPlural="Entries"
@@ -75,15 +104,25 @@ class TimeEntryOverview extends React.Component <TimeEntryOverviewProps> {
         />
 
         <section className="time-entry-overview">
-          {timeEntries.map((currentTimeEntry, index, array) => {
-            // if (index === 0 ) { date + component } ------->> 0 is falsy
-            // if (currentTimeEntry.date !== previousTimeEntry.date) { date + component }
-            // if (currentTimeEntry.date === previousTimeEntry.date) { component }
+          { // Only show filter when there are timesheets
+            !timeEntriesUnfiltered.length
+            ? ''
+            : <SelectBox
+                className="time-entry-overview__filter"
+                name=""
+                onChange={(event) => onFilterTimeEntries(event.target.value)}
+                options={[{ title: 'All clients:', value: '' }, ...clientNames]}
+                selectedValue={activeFilter}
+              />
+          }
+
+          {this.checkArrayLength() ||
+          timeEntries.map((currentTimeEntry, index, array) => {
             const dateFormatted = (date) => new Date(date).toLocaleDateString('en-NL', dateOptions).replace('/', '-').replace(',', '');
             return (
               <React.Fragment key={currentTimeEntry.id}>
                 {(!index || (currentTimeEntry.date !== array[index - 1].date)) && (
-                  <h2 className="time-entry__date-row">
+                  <h2 className="time-entry-overview__date-row">
                     <span>
                       {`${dateFormatted(currentTimeEntry.date)}
                       ${getRelativeDay(currentTimeEntry.timeFrom)}`}

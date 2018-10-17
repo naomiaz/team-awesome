@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+
 import Button from '../../shared/components/button/Button';
 import PageHeader from '../../shared/components/page-header/PageHeader';
 import SelectBox from '../../shared/components/select-box/SelectBox';
@@ -73,6 +74,7 @@ class TeamMemberOverview extends React.Component {
             <div className="team-member-overview__filter-wrapper">
               <SelectBox
                 className="team-member-overview__filter"
+                hasSibling
                 selectedValue={sortBy}
                 name="sortBy"
                 onChange={(event) => onSortTeamMembersBy(event.target.value)}
@@ -91,7 +93,7 @@ class TeamMemberOverview extends React.Component {
                 name="sortDirection"
                 onChange={(event) => onSortTeamMembersDirection(event.target.value)}
                 options={[
-                  { title: 'A-Z (asc):', value: 'ascending' },
+                  { title: 'A-Z (asc)', value: 'ascending' },
                   { title: 'Z-A (desc)', value: 'descending' }
                 ]}
               />
