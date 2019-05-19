@@ -1,7 +1,5 @@
-import { put, takeEvery } from 'redux-saga/effects';
-import {
-  getTimeEntries, postTimeEntry, deleteTimeEntry
-} from '../services/team-awesome-api/api';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../services/time-entries-api/time-entries-api';
 import {
   DELETE_TIME_ENTRY,
   deleteTimeEntrySuccess,
@@ -13,17 +11,17 @@ import {
 
 // Generator functions
 export function* requestTimeEntriesGenerator() {
-  const timeEntries = yield getTimeEntries();
+  const timeEntries = yield call(getTimeEntries);
   yield put(requestTimeEntriesSuccess(timeEntries));
 }
 
 export function* saveTimeEntryGenerator({ newTimeEntry }) {
-  const newEntry = yield postTimeEntry(newTimeEntry);
+  const newEntry = yield call(postTimeEntry, newTimeEntry);
   yield put(saveTimeEntrySuccess(newEntry));
 }
 
 export function* deleteTimeEntryGenerator({ id }) {
-  yield deleteTimeEntry(id);
+  yield call(deleteTimeEntry, id);
   yield put(deleteTimeEntrySuccess(id));
 }
 
