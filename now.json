@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "team-awesome-naomi",
-  "alias": "team-awesome",
+  "alias": "team-awesome-naomiaz",
   "env": {
     "NODE_ENV": "production"
   },
