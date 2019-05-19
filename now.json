@@ -3,5 +3,7 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "name": "team-awesome-naomi"
+  "builds": [
+      { "src": "next.config.js", "use": "@now/next" }
+  ]
 }
