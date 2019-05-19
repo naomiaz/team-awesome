@@ -6,6 +6,6 @@
     "NODE_ENV": "production"
   },
   "builds": [
-      { "src": "next.config.js", "use": "@now/next" },
+      { "src": "next.config.js", "use": "@now/next" }
   ]
 }
