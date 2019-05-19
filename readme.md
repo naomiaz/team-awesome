@@ -1,6 +1,6 @@
 # Team Awesome
 
-Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents: [team-awesome-naomi.now.sh](https://team-awesome-naomi.now.sh/)
+Team Awesome is a demo cross-platform app to track and manage work hours of team members, current projects, clients and documents.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ To deploy this project in a live environment, you can use [Now](https://zeit.co/
 
 First, clone the source locally:
 ```
-$ git clone https://github.com/humanoidsbv/team-awesome-naomi.git
+$ git clone https://github.com/naomiaz/team-awesome.git
 ```
 
 Install project dependencies:
