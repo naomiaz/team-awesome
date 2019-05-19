@@ -1,164 +1,126 @@
 @import "../../shared/styles/main";
 
-.time-entry {
-  background-color: $color-monochrome-2;
-  border: 1px solid $color-monochrome-6;
-  border-radius: $border-radius-primary;
-  display: flex;
-  flex-flow: column;
-  margin-top: 24px;
-  padding: 16px;
+.time-entry-form {
+  @include section-row;
+  margin-bottom: 0;
+
+  &__form-container {
+    align-items: center;
+    background-color: $color-monochrome-2;
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    display: flex;
+    flex-flow: column;
+    margin-top: 24px;
+    padding: 16px;
+
+    &--visible { display: flex; }
+
+    &--hidden { display: none; }
+
+    @include tablet {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      padding-bottom: 6px;
+    }
+  }
 
   &__title {
     display: none;
+
+    @include tablet {
+      display: block;
+      font-size: 24px;
+      font-weight: $font-weight-light;
+    }
   }
 
-  &-wrapper {
+  &__form-wrapper {
     position: relative;
-  }
+    width: 100%;
 
-  &--visible {
-    display: block;
-  }
-
-  &--hidden {
-    display: none;
+    @include tablet {
+      display: flex;
+      flex-basis: 75%;
+    }
   }
 
   &__label {
     color: $color-monochrome-4;
-    display: block;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
+    width: 100%;
+
+    &--half { margin-right: 10px; }
+
+    @include tablet { margin-right: 10px; }
   }
 
   &__input {
     background-image: linear-gradient($color-monochrome-1, $color-monochrome-2);
-    border: 1px solid $color-monochrome-6;
-    border-radius: $border-radius-primary;
-    font-family: $font-primary;
-    font-size: 14px;
-    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    &--valid { border-bottom: 1px solid $color-monochrome-6; }
+
+    &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
+  }
+
+  &__select {
+    color: $color-monochrome-7;
     height: 36px;
-    margin: 10px 0;
-    padding: 0 15px;
-    width: 100%;
   }
 
   &__button-add {
-    background-color: $color-accent-alt-5;
-    border: none;
-    border-radius: $border-radius-primary;
-    color: $color-monochrome-1;
-    font-size: 14px;
-    font-weight: 400;
     margin: 15px 0;
-    padding: 10px 0;
     width: 100%;
 
-    &:disabled {
-      background-color: $color-monochrome-7;
-    }
+    @include tablet { width: 90px; }
   }
 
-  &__button-new--visible {
-    background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
-    border: 1px solid $color-accent-alt-6;
-    border-radius: $border-radius-primary;
-    color: $color-monochrome-1;
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
+  &__button-new {
     margin-top: 25px;
-    padding: 10px 0;
     width: 100%;
-  }
 
-  &__button-new--hidden {
-    display: none;
+    &::before {
+      background: url("/static/icons/plus.svg") no-repeat;
+      content: "";
+      display: inline-block;
+      height: 10px;
+      margin-right: 15px;
+      width: 10px;
+    }
+
+    &--hidden { display: none; }
+
+    @include tablet { display: none; }
   }
 
   &__button-close {
     background-color: transparent;
     border: none;
+    padding: 10px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -10px;
+    top: -10px;
+
+    @include tablet { display: none; }
   }
 
-  &__icon--open {
-    -webkit-mask: url("/static/icons/plus.svg") no-repeat;
-    -webkit-mask-size: 10px 10px;
-    background-color: $color-accent-alt-7;
-    border-style: none;
-    border-width: 0;
-    height: 10px;
-    margin-right: 10px;
-    position: relative;
-    width: 10px;
-  }
-
-  &__icon--close {
+  &__icon-close {
     -webkit-mask: url("/static/icons/close.svg") no-repeat;
     -webkit-mask-size: 7px 7px;
     background-color: $color-monochrome-5;
-    border-style: none;
-    border-width: 0;
     height: 7px;
     width: 7px;
   }
 
-  &-time {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
+  &__time-wrapper { display: flex; }
 
-    &__from,
-    &__to {
-      flex-basis: 49%;
-      width: 72px;
-    }
-  }
-
-  @include tablet {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-
-    &__title {
-      display: block;
-      font-size: 24px;
-      font-weight: $font-weight-light;
-      margin-top: 33px;
-    }
-
-    &-wrapper {
-      display: flex;
-      flex-basis: 75%;
-      justify-content: space-between;
-    }
-
-    &-client,
-    &-activity {
-      flex-basis: 245px;
-    }
-
-    &-date {
-      flex-basis: 130px;
-    }
-
-    &-time {
-      flex-basis: 64px;
-    }
-
-    &__button-add {
-      width: 90px;
-    }
-
-    &__button-new--visible,
-    &__button-close {
-      display: none;
-    }
+  &__time-from,
+  &__time-to {
+    @include tablet { width: 80px; }
   }
 }

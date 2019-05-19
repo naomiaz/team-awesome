@@ -3,29 +3,11 @@
 // --------------------------
 
 body {
-  padding-top: 52px;
-}
+  padding-top: $main-navigation-height--mobile;
 
-.row {
-  padding: 0 16px;
-}
-
-@include tablet {
-  body { padding: 0; }
-
-  .row { padding: 0 12%; }
-}
-
-.btn,
-.input-field {
-  border-radius: $border-radius-primary;
-  font-family: $font-primary;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.btn {
-  cursor: pointer;
+  @include desktop {
+    padding: 0;
+  }
 }
 
 // --------------------------
@@ -35,4 +17,28 @@ body {
 .text--secondary {
   color: $color-monochrome-4;
   font-weight: 400;
+}
+
+.render-whitespace {
+  &--left {
+    margin-left: auto;
+  }
+}
+
+// --------------------------
+// LINK STYLES
+// --------------------------
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.text-link {
+  color: $color-monochrome-7;
+  font-weight: 500;
 }

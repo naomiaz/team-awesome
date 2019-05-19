@@ -1,0 +1,21 @@
+@import "../../../shared/styles/main";
+
+.button {
+  @include button;
+  background-image: linear-gradient($color-accent-alt-8, $color-accent-alt-9);
+  border: 1px solid $color-accent-alt-6;
+  color: $color-monochrome-1;
+  cursor: pointer;
+  display: block;
+  min-width: 100px;
+  padding: 9px 0;
+  position: relative;
+
+  &[disabled] {
+    background-color: $color-monochrome-6;
+    background-image: none;
+    border: 1px solid $color-monochrome-6;
+    color: $color-monochrome-3;
+    cursor: not-allowed;
+  }
+}

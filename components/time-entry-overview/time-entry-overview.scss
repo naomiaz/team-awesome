@@ -1,22 +1,44 @@
 @import "../../shared/styles/main";
 
 .time-entry-overview {
-  margin: 32px 0;
+  @include section-row;
+  margin-top: 10px;
 
-  .time-entry__date-row {
+  &__filter {
+    display: block;
+
+    @include tablet { display: none; }
+  }
+
+  &__copy {
+    display: block;
+    font-size: $default-font-size;
+    font-weight: $font-weight-light;
+    margin-top: 24px;
+    text-align: center;
+
+    @include tablet { font-size: $default-font-size-large; }
+  }
+
+  &__date-row {
+    color: $color-monochrome-4;
     display: flex;
     font-size: 24px;
     font-weight: 400;
     justify-content: space-between;
+    margin-bottom: 10px;
     margin-top: 33px;
   }
 
-  .text--secondary {
-    margin-bottom: 10px;
+  .time-entry-item + .time-entry-item {
+    margin-top: -1px;
   }
-}
 
-.time-entry__project + .time-entry__project {
-  border-radius: 0 0 4px 4px;
-  margin-top: -1px;
+  .select-box__button-arrow {
+    &::after {
+      display: block;
+
+      @include tablet { display: none; }
+    }
+  }
 }

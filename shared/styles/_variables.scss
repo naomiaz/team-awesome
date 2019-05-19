@@ -12,13 +12,21 @@ $font-weight-book: $font-weight-regular;
 
 /* colors */
 $color-primary: #4f88ef;
-$color-secondary: #372347;
+$color-secondary: #2068eb;
 $color-tertriary: #9c92a4;
+
+$color-text-primary: #354052;
+$color-text-secondary: #7f8fa4;
 
 $color-accent: #0092ff;
 $color-active: #1166a5;
 
 $color-error: #f60000;
+
+$color-facebook-primary: #137ece;
+$color-facebook-secondary: #288bd5;
+$color-twitter-primary: #2ea1f8;
+$color-twitter-secondary: #1a91ec;
 
 $color-monochrome-1: #fff;
 $color-monochrome-2: #f4f6f8;
@@ -27,6 +35,8 @@ $color-monochrome-4: #87858a;
 $color-monochrome-5: #36333c;
 $color-monochrome-6: #e4e7ee;
 $color-monochrome-7: #000;
+$color-monochrome-8: #e6eaee;
+$color-monochrome-9: #f8fafc;
 
 $color-accent-alt-1: #f70;
 $color-accent-alt-2: #70c017;
@@ -78,10 +88,13 @@ $columns--12: 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3% 8.3%;
 
 /* font sizes */
 $default-font-size: 18px;
+$default-font-size-large: 20px;
 $default-font-size--mobile: 16px;
+$main-navigation-font-size: 14px;
+$main-navigation-font-size--mobile: 24px;
 $heading-primary-size: 36px;
 $heading-primary-size--mobile: 32px;
-$heading-secondary-size: 25px;
+$heading-secondary-size: 24px;
 $heading-secondary-size--mobile: 18px;
 $heading-tertriary-size: 18px;
 $heading-tertriary-size--mobile: 16px;
@@ -95,11 +108,9 @@ $scheme-accent: "accent";
 $scheme-accent--dark: "accent-dark";
 
 /* sizing */
-$main-navigation-height: 90px;
-$main-navigation-height--small: 70px;
-
-$subnav-height: 80px;
-$subnav-height--mobile: 72px;
+$main-navigation-height: 70px;
+$main-navigation-height--mobile: 50px;
+$page-header-height: 70px;
 
 $border-radius-primary: 4px;
 

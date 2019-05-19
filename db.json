@@ -1,0 +1,164 @@
+{
+  "time-entries": [
+    {
+      "clientId": "3",
+      "activity": "Development",
+      "date": "2018-08-22",
+      "timeFrom": "2018-08-22T08:00:00.000Z",
+      "timeTo": "2018-08-22T13:00:00.000Z",
+      "id": 31
+    },
+    {
+      "clientId": "2",
+      "activity": "Design",
+      "date": "2018-09-17",
+      "timeFrom": "2018-09-17T07:05:00.000Z",
+      "timeTo": "2018-09-17T08:30:00.000Z",
+      "id": 32
+    },
+    {
+      "clientId": "1",
+      "activity": "Development",
+      "date": "2018-09-18",
+      "timeFrom": "2018-09-18T08:30:00.000Z",
+      "timeTo": "2018-09-18T09:30:00.000Z",
+      "id": 35
+    },
+    {
+      "clientId": "4",
+      "activity": "Design",
+      "date": "2018-08-22",
+      "timeFrom": "2018-08-22T08:00:00.000Z",
+      "timeTo": "2018-08-22T08:30:00.000Z",
+      "id": 36
+    },
+    {
+      "clientId": "1",
+      "activity": "Design",
+      "date": "2018-10-19",
+      "timeFrom": "2018-10-19T08:00:00.000Z",
+      "timeTo": "2018-10-19T16:00:00.000Z",
+      "id": 37
+    }
+  ],
+  "team-members": [
+    {
+      "firstName": "Naomi",
+      "lastName": "Zuiverloon",
+      "employeeNumber": "HUM_001",
+      "email": "naomizuiverloon@gmail.com",
+      "address": "Nieuwe Binnenweg 286",
+      "zip": "3021 GS",
+      "city": "Rotterdam",
+      "avatar": "avatar-naomi.jpg",
+      "biography": "This team member does not have a biography",
+      "socialsTwitter": "",
+      "socialsFacebook": "",
+      "jobTitle": "Front-end developer",
+      "currentClient": "Humanoids",
+      "startDate": "2018-09-03T08:00:00.000Z",
+      "id": 1
+    },
+    {
+      "firstName": "Beyonce",
+      "lastName": "Knowles",
+      "employeeNumber": "HUM_002",
+      "email": "beyonceknowles@gmail.com",
+      "address": "New York Street 1",
+      "zip": "12345",
+      "city": "New York",
+      "avatar": "avatar-beyonce.jpeg",
+      "biography": "This team member does not have a biography",
+      "socialsTwitter": "@beyonce",
+      "socialsFacebook": "beyonce",
+      "jobTitle": "UX Designer",
+      "currentClient": "Roc Nation",
+      "startDate": "2018-08-06T08:00:00.000Z",
+      "id": 2
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Jackson",
+      "employeeNumber": "HUM_003",
+      "email": "michaeljackson@gmail.com",
+      "address": "Neverland Street 100",
+      "zip": "12345",
+      "city": "Los Olivos",
+      "avatar": "avatar-mj.jpg",
+      "biography": "This team member does not have a biography",
+      "socialsTwitter": "",
+      "socialsFacebook": "",
+      "jobTitle": "Back-end developer",
+      "currentClient": "Port of Rotterdam",
+      "startDate": "2018-07-03T08:00:00.000Z",
+      "id": 3
+    }
+  ],
+  "clients": [
+    {
+      "clientName": "Hike One",
+      "address": "Schiedamsedijk 40a",
+      "zip": "3011 ED",
+      "city": "Rotterdam",
+      "chamberOfCommerce": "12345678",
+      "email": "hello@hike.one",
+      "phone": "0202044577",
+      "website": "www.hike.one",
+      "avatar": "logo-hike-one.png",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": "1"
+    },
+    {
+      "clientName": "Ahold Europe",
+      "address": "Provincialeweg 11",
+      "zip": "1506 MA",
+      "city": "Zaandam",
+      "chamberOfCommerce": "12345678",
+      "email": "info@ah.nl",
+      "phone": "0202044577",
+      "website": "www.ah.nl",
+      "avatar": "logo-ah.jpg",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": "2"
+    },
+    {
+      "clientName": "Humanoids",
+      "address": "Stationsplein 45",
+      "zip": "3013 AK",
+      "city": "Rotterdam",
+      "chamberOfCommerce": "12345678",
+      "email": "hallo@humanoids.nl",
+      "phone": "0102403434",
+      "website": "www.humanoids.nl",
+      "avatar": "avatar-humanoids.jpg",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": "3"
+    },
+    {
+      "clientName": "Apple",
+      "address": "Leidseplein 25",
+      "zip": "1017 PS",
+      "city": "Amsterdam",
+      "chamberOfCommerce": "12345678",
+      "email": "info@apple.com",
+      "phone": "0205302200",
+      "website": "www.apple.com/nl/",
+      "avatar": "logo-apple.gif",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": "4"
+    },
+    {
+      "clientName": "Port of Rotterdam",
+      "address": "Weg 1",
+      "zip": "1234 AB",
+      "city": "Eindhoven",
+      "chamberOfCommerce": "12345678",
+      "email": "info@philips.nl",
+      "phone": "0123456789",
+      "website": "www.philips.nl",
+      "avatar": "logo-port-of-rotterdam.jpg",
+      "remarks": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis turpis sed sollicitudin porta. Morbi velit felis, pretium ac magna vel, bibendum tincidunt ipsum.",
+      "id": "5"
+    }
+  ]
+}

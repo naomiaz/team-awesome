@@ -1,0 +1,201 @@
+@import "../../shared/styles/main";
+
+.client-form {
+  @include section-row;
+
+  // HEADER
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: $font-weight-light;
+  }
+
+  &__button {
+    width: 100px;
+  }
+
+  &__button-cancel {
+    background-color: $color-monochrome-2;
+    background-image:  none;
+    border: 1px solid $color-monochrome-6;
+    color: $color-monochrome-3;
+    margin-right: 10px;
+  }
+
+  &__container {
+    border-bottom-left-radius: $border-radius-primary;
+    border-left: 4px solid $color-primary;
+    border-top-left-radius: $border-radius-primary;
+  }
+
+  // TAB ROW
+  &__tab-row {
+    height: 52px;
+    overflow: hidden;
+
+  }
+
+  &__tab {
+    background-color: $color-monochrome-1;
+    border-right: 1px solid $color-monochrome-8;
+    border-top: 1px solid $color-monochrome-8;
+    border-top-right-radius: $border-radius-primary;
+    float: left;
+    font-size: 18px;
+    font-weight: $font-weight-semi-bold;
+    padding: 15px 33px;
+  }
+
+  // FORM CONTAINER
+  &__form-container {
+    border-bottom: 1px solid $color-monochrome-8;
+    border-radius: 0 $border-radius-primary $border-radius-primary 0;
+    border-right: 1px solid $color-monochrome-8;
+    border-top: 1px solid $color-monochrome-8;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin-top: -1px;
+    padding: 45px 30px;
+
+    @include tablet {
+      flex-flow: row nowrap;
+    }
+  }
+
+  &__first-column {
+    font-weight: 600;
+    text-align: center;
+
+    @include tablet {
+      margin: 0 15px 0 0;
+    }
+  }
+
+  &__second-column,
+  &__last-column { width: 100%; }
+
+  &__avatar {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+
+  &__divider {
+    display: none;
+
+    @include tablet {
+      background: $color-monochrome-6;
+      display: block;
+      margin: 0 15px 19px;
+      min-width: 1px;
+    }
+  }
+
+  // FORM ELEMENTS
+  &__label {
+    color: $color-text-secondary;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 19px;
+    text-transform: capitalize;
+    width: 100%;
+
+    &--half { margin-right: 10px; }
+  }
+
+  &__input {
+    margin-top: 7px;
+
+    &--valid { border-bottom: 1px solid $color-monochrome-6; }
+
+    &--invalid { border-bottom: 1px solid $color-accent-alt-10; }
+  }
+
+  &__input-contact {
+    border-left: none;
+    border-radius: 0 $border-radius-primary $border-radius-primary 0;
+    margin-top: 0;
+  }
+
+  &__textarea {
+    border: 1px solid $color-monochrome-6;
+    border-radius: $border-radius-primary;
+    display: block;
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 500;
+    height: 84px;
+    margin-top: 7px;
+    padding: 13px;
+    resize: vertical;
+    width: 100%;
+  }
+
+  // SPECIFIC FORM ELEMENTS
+  &__contact {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 10px;
+  }
+
+  &__icon-box {
+    background-image: linear-gradient(to bottom, $color-primary, $color-secondary);
+    border-bottom-left-radius: $border-radius-primary;
+    border-top-left-radius: $border-radius-primary;
+    height: 36px;
+    position: relative;
+    width: 36px;
+
+    &--icon-phone {
+      &::after {
+        background: url("/static/icons/phone.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 14px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+      }
+    }
+
+    &--icon-email {
+      &::after {
+        background: url("/static/icons/at.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 14px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+      }
+    }
+
+    &--icon-website {
+      &::after {
+        background: url("/static/icons/earth.svg") no-repeat center;
+        content: "";
+        display: block;
+        height: 14px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+      }
+    }
+  }
+}

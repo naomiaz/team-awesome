@@ -1,0 +1,40 @@
+@import "../../../shared/styles/main";
+
+.select-box {
+  display: block;
+
+  &__select {
+    @include input-field;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 1px solid $color-monochrome-6;
+    color: $color-monochrome-3;
+    padding: 9px 30px 9px 11px;
+    position: relative;
+    width: 100%;
+  }
+
+  &__button-arrow {
+    position: relative;
+
+    &::after {
+      background: url("/static/icons/arrow-down.svg") no-repeat center;
+      content: "";
+      height: 16px;
+      pointer-events: none;
+      position: absolute;
+      right: 9px;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 16px;
+    }
+  }
+
+  &__spacing {
+    margin: 10px 0;
+
+    @include tablet {
+      margin: 0 10px 0 0;
+    }
+  }
+}

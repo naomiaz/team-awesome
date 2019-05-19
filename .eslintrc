@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
+    "jest": true,
     "node": true
   },
   "parser": "babel-eslint",
@@ -9,7 +10,28 @@
   "root": true,
   "rules": {
     "comma-dangle": [ "error", "never" ],
-    "jsx-a11y/label-has-for": [ "off" ],
-    "arrow-parens": ["error", "always"]
-  }
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "arrow-parens": ["error", "always"],
+    "react/destructuring-assignment": "off",
+    "react/button-has-type": "off",
+    "react/forbid-prop-types": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "typescript-eslint-parser",
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 }

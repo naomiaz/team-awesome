@@ -164,7 +164,10 @@
   }
 }
 
-/* font-size */
+// --------------------------
+// TEXT STYLES
+// --------------------------
+
 @mixin paragraph {
   font-size: $paragraph-size--mobile;
   font-weight: $font-weight-book;
@@ -199,4 +202,44 @@
   @include tablet {
     font-size: $heading-tertriary-size;
   }
+}
+
+// --------------------------
+// PAGE STYLES
+// --------------------------
+
+@mixin section-row {
+  margin: 24px auto;
+  padding: 0 16px;
+
+  @include tablet {
+    margin: 30px auto;
+    max-width: 1170px;
+    width: 100%;
+  }
+}
+
+@mixin logo {
+  font-family: $font-secondary;
+  font-weight: $font-weight-semi-bold;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+// --------------------------
+// INPUT/BUTTON STYLES
+// --------------------------
+
+@mixin input-field {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@mixin button {
+  border-radius: $border-radius-primary;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 600;
 }
