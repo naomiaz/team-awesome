@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../services/time-entries-api/time-entries-api';
+import { getTimeEntries, postTimeEntry, deleteTimeEntry } from '../services/team-awesome-api/api';
 import {
   DELETE_TIME_ENTRY,
   deleteTimeEntrySuccess,
